@@ -5,8 +5,12 @@
 *.toc
 *.sty
 *.cls
+*.ps
+*.pdf
 **/*.aux
 **/*.dvi
+**/*.ps
+**/*.pdf
 **/*.out
 **/*.log
 **/*.toc
@@ -15,3 +19,4 @@
 **/*.sty
 **/*.cls
 polished/**/*
+tmp/*

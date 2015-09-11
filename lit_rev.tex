@@ -108,157 +108,157 @@
 %Dark halo substructure may reveal itself through secondary, small--scale gravitational lensing effects on light sources that are macrolensed by a foreground galaxy. Here, we explore the prospects of using Very Long Baseline Interferometry (VLBI) observations of multiply--imaged quasar jets to search for submilliarcsecond--scale image distortions produced by various forms of dark substructures in the $10^3$---$10^{8}\ M_\odot$ mass range. We present lensing simulations relevant for the angular resolutions attainable with the existing European VLBI Network (EVN), the global VLBI array, and an upcoming observing mode in which the Atacama Large Millimeter Array (ALMA) is connected to the global VLBI array. While observations of this type would not be sensitive to standard cold dark matter subhalos, they can be used to detect more compact forms of halo substructure predicted in alternative structure formation scenarios. By mapping $\approx 5$ strongly lensed systems, it should be possible to detect or robustly rule out primordial black holes in the $10^3$----$10^6\ M_\odot$ mass range if they constitute $\gtrsim 1\%$ of the dark matter in these lenses. Ultracompact minihalos are harder to detect using this technique, but $10^6$----$10^8\ M_\odot$ ultracompact minihalos could in principle be detected if they constitute $\gtrsim 10\%$ of the dark matter.
 \end{abstract}
 
+%\newpage
+%\section{Structure formation}
+%\label{sec:structure formation}
+%{\bf This section needs a HARD polishing! If for no other reason, then simply because it's prone to plagiarism as I'm adopting the framework from this reference of mine and have not changed it much yet!!}
+
+%Things I need to be able to make the conversion back and forth (by heart!):
+%\begin{itemize}
+%\item $v_{circ} - M_{vir}$
+%\item $M_{vir} - M_{Ein}$ for my redshift combinations and density profile (at least relatively/roughly)
+%\item $r (pc) - r (arcsec)$ in both source and lens plane
+%\end{itemize}
+%\subsection{Concordance model}
+%%based on (arXiv: 1208.5931v2)
+%The concordance model of cosmology is a special case of the FLRW world model currently accepted by most astronomers as the theoretical framework of cosmology, where gravity is the dominant interaction in our Universe which is homogeneous and isotropic on ``large enough'', i.e., $>\sim 100$ Mpc,  scales (cosmological principle). These models have been on the heart of modern cosmology from the beginning of the 20$^\mathrm{th}$ century, when the cosmological principle was mainly backed up with philosophical arguments such as the \emph{Copernican principle} stating that we do not occupy a special place in the Universe, rather than detailed observational evidence. As opposed to a few decades later when cosmic isotropy was confirmed by the cosmic microwave background, first by satellite COBE (ref?) and then WMAP (ref?), and very recently PLANCK(ref?). Besides, the homogeneity of the Universe is now backed up by large surveys such as the 2--degree field galaxy redshift survey (2dfGRS), and the Sloan digital sky survey (SDSS).
+
+%Here I can go through the RW metric and its terms, but this is not important in the case of my project, so I'll skip it altogether and just talk about its physical interpretation instead!
+
+%Dark matter as the currently second dominant energy contribution of the Universe is thought to be non--baryonic, cold (i.e. non--relativistic), very (?!) weakly interacting massive particle (WIMP). Some of these characteristics are inferred from cosmological evidence. For instance, observation of small--scale cosmic structure implies the DM to be non--relativistic, while the theory of cosmic nucleosynthesis results in the DM being non--baryonic. (elaborate and cite!!)
+
+%\subsection{Newtonian theory of structure formation}
+%Our Universe is neither homogeneous nor isotropic on scales smaller than 100 Mpc. Galaxies and galaxy clusters are huge overdens regions with respect to the mean matter density. They make up the cosmic web consisting of sheets and filaments. Even though the detailed account of structure formation is only possible in the framework of general relativity, the Newtonian approach is sufficient to give a simple analytical description of most of the processes. This section describes the Newtonian theory of structure formation (within our horizon) in the framework of the Concordance model, i.e. a flat geometry.
+
+%The current large--scale structure in the Universe grew (by gravitational instability) from small perturbations in the homogeneous FLRW model. In order to solve perturbed hydrodynamic equations, we keep the first perturbed terms only (linear perturbation), and treat it in the framework of Newtonian theory implying (explain how exactly!) the following assumptions:
+%\begin{itemize}
+%\item The scale of perturbations is small compared to the horizon ($\ell \ll ct_0$)
+%\item The flow is non--relativistic ($|v| \ll c$) and ($p \ll \rho c^2$) 
+%\end{itemize}
+
+%Moreover, we assume that the Universe is filled with an inhomogeneous, dissipationless ($p$ is very small!), and ideal fluid. (me: Therefore, we are basically dealing with DM particles as they are currently understood, and not baryons which are clearly dissipative!). Moreover, we are assuming what arises is adiabatic perturbations, meaning that the relative number density of flows remain constant. It also implies that different flows do not transfer energy and the conservation of energy is satisfied by each flow independently, $\rho_I \propto a_I^{--3}$
+
+%Friedmann equations can be solved for various flows as long as they do not interact beyond gravity. This is the case for different fluids in the structure formation (i.e. post--inflation) era. The matter density, velocity field, pressure, gravitational potential, and entropy per unit mass of the fluid are shown as $\rho(t, {\bf r})$, ${\bf v}(t, {\bf r})$, $p(t, {\bf r})$, $\Phi(t, {\bf r})$, and $S(t, {\bf r})$, respectively. where $t$ is the cosmic time and ${\bf r}$ denotes the physical (not comoving!) coordinates. 
+%Therefore, we can write the equation of mass conservation (\emph{continuity equation}):
+%\begin{equation}
+%\label{continuity}
+%\frac{\partial \rho}{\partial t} + {\bf \nabla}.(\rho {\bf v}) = 0,
+%\end{equation}
+%the \emph{Euler equation}
+%\begin{equation}
+%\label{Euler}
+%\frac{\partial {\bf v}}{\partial t} + {\bf (v .\nabla) v} = -\frac{{\bf \nabla} P}{\rho} - {\bf \nabla \Phi},
+%\end{equation}
+%the \emph{Poisson equation}
+%\begin{equation}
+%\label{Poisson}
+%\nabla ^2 \Phi = 4\pi G \rho,
+%\end{equation}
+%and the conservation of entropy
+%\begin{equation}
+%\label{entropy}
+%\frac{\partial S}{\partial t} + {\bf (v .\nabla)}S = 0,
+%\end{equation}
+%and an equation of state $P = P(\rho, S)$.
+%Now, we add the perturbation term to each solution. Therefore we have:
+%\begin{equation}
+%\rho(t, {\bf r}) = \bar{\rho}(t) + \delta\rho(t, {\bf r})\nonumber
+%\end{equation}
+%\begin{equation}
+%{\bf v}(t, {\bf r}) = \bar{{\bf v}}(t, {\bf r}) + \delta{\bf v}(t, {\bf r})\nonumber 
+%\end{equation}
+%\begin{equation}
+%p(t, {\bf r}) = \bar{p}(t) + \delta p(t, {\bf r})\nonumber 
+%\end{equation}
+%\begin{equation}
+%\Phi(t, {\bf r}) = \bar{\Phi}(t, {\bf r}) + \delta\Phi(t, {\bf r})\nonumber 
+%\end{equation}
+%\begin{equation}
+%S(t, {\bf r}) = \bar{S}(t) + \delta S(t, {\bf r})\nonumber 
+%\end{equation}
+%The velocity field is homogeneous in the comoving coordinate system (and not the physical system we are working on)(are we assuming that? is it the direct consequence of homogeneity and isotropy?, else where does it come from?). The the comoving distance $D(t)$ is related to the proper distance as $D(t) = \frac{D_{prop}(t)}{a(t)}$. Moreover, $H^2 = (\frac{\dot{a}}{a})^2$ by definition(?). Therefore, the homogeneous velocity field is given by the Hubble Law as
+%\begin{equation}
+%\label{Hubble}
+%\bar{\bf v}(t, {\bf r}) = H(t){\bf r} 
+%\end{equation}
+%The continuity equation for the homogeneous background becomes then
+%\begin{equation}
+%\dot{\bar{\rho}} + 3\bar{\rho}H(t) = 0 \nonumber 
+%\end{equation}
+%and the divergence of Euler equation, combined with the Poisson equation gives
+%\begin{equation}
+%\dot{H} + H^2 = -\frac{4\pi G\bar{\rho}}{3} \nonumber
+%\end{equation}
+%Now, we substitute perturbed fluid equations to hydrodynamic equations \ref{continuity}, \ref{Euler}, \ref{Poisson}, and \ref{entropy} and keep only the linear terms.
+%\begin{equation}
+%\label{continuity_pert}
+%\frac{\partial \delta\rho}{\partial t} + \bar{\rho}{\bf \nabla}.\delta {\bf v}  + {\bf \nabla}.(\delta \rho {\bar{\bf v}}) = 0
+%\end{equation}
+%\begin{equation}
+%\label{Euler_pert}
+%\frac{\partial\delta{\bf v}}{\partial t} + (\delta{\bf v .\nabla}){\bf \bar{v}} +({\bf \bar{v} . \nabla})\delta{\bf v}  = -\frac{{\bf \nabla }}{\bar{\rho}}(c_s^2 \;\delta\rho + \sigma \;\delta S) - {\bf \nabla} \delta{\bf\Phi} 
+%\end{equation}
+%\begin{equation}
+%\label{Poisson_pert}
+%\nabla ^2 \delta\Phi = 4\pi G \delta\rho
+%\end{equation}
+%\begin{equation}
+%\label{entropy_pert}
+%\frac{\partial \delta S}{\partial t} + {\bf (\bar{v} .\nabla)}\delta S = 0
+%\end{equation}
+%In the case of the Euler equation we use
+%\begin{equation}
+%\frac{1}{(\bar{\rho}+\delta\rho)} \simeq \frac{1}{\bar{\rho}} + \frac{\delta\rho}{\bar{\rho}^2}+ \dots \nonumber \\
+%\end{equation}
+%Moreover, we substituted the perturbed EoS at the first order with $\delta P = c_s^2 \; \delta\rho + \sigma \; \delta S$, where $c_s^2 = (\partial \bar{P}/\partial \bar{\rho})_{\bar{S}}$ is the square of the sound speed and $\sigma = (\partial \bar{P}/\partial \bar{S})_{\bar{\rho}}$. Note that the EoS of an ideal gas is given by $P = \frac{\Re_*}{\mu} \rho T$, where T is related to S with the speed of sound, c. (how?). In other words, EoS of an ideal gas is given by P =  
+%Now, by going from physical coordinate system $(t, {\bf r})$, to comoving $(t, {\bf x})$ defined as $x = r/a(t)$ and the proper time $d\tau = dt/a(t)$, we can simplify our hydrodynamic equation set by using transformations below.
+%\begin{eqnarray}
+%{\bf r} &\rightarrow& a(t) {\bf x}  \nonumber \\
+%%\Rightarrow \left\{
+%%	\begin{array}{1 1}
+%{\bf \nabla_r} &\rightarrow& \frac{1}{a(t)}{\bf \nabla_x} \nonumber \\
+%\left.\frac{\partial}{\partial t}\right |_{\bf r} &\rightarrow& \left.\frac{\partial}{\partial \tau}\right |_{\bf x} - \frac{1}{a(t)} {\bf \bar{v}}.{\bf \nabla_x} \nonumber
+%%	\end{array}
+%\end{eqnarray}
+%According to \ref{Hubble}, one can substitute $\bar{\bf v}$ with $H{\bf r}$ in the physical coordinate system and therefore $\dot{a}{\bf x}$ in the comoving system of coordinates. Therefore,
+%\begin{equation}
+%{\bf \nabla . \bar{v}} = 3H
+%\end{equation}
+%and
+%\begin{equation}
+%(\delta{\bf v.\nabla})\bar{\bf v}/a = \delta{\bf v}H 
+%\end{equation}
+%Then the linearized hydrodynamic equations become:
+%\begin{equation}
+%\label{continuity_1}
+%\delta\dot{\rho} - \frac{1}{a}v.\nabla \delta\rho + \frac{\bar{\rho}}{a}\nabla . \delta v + \frac{1}{a} 3\delta\rho H = 0
+%\end{equation}
+%\begin{equation}
+%\label{Euler_1}
+%\delta \dot{v} - \frac{1}{a}v.\nabla \delta v + \delta vH + \frac{1}{a}(v.\nabla)\delta v = - \frac{\nabla}{a\bar{\rho}}(c_s^2\delta\rho + \sigma\delta S) - \frac{1}{a}\nabla \delta\Phi
+%\end{equation}
+%\begin{equation}
+%\label{Poisson_1}
+%\frac{1}{a^2}\nabla^2\delta\Phi = 4\pi G\delta\rho
+%\end{equation}
+%\begin{equation}
+%\label{entropy_1}
+%\delta\dot{S} - \frac{1}{a}v.\nabla \delta S + \frac{1}{a} (v.\nabla) \delta S = 0
+%\end{equation}
+
+%Now, this guy takes the FT of the above equation set with respect to the comoving coordinates, to obtain them for a given mode ${\bf k}$, but I do not understand why!(beginning of page 32 in his manuscript!), then discusses three individual perturbation modes (one entropy mode, two vortical modes and two adiabatic modes) individually and concludes that the only interesting mode for structure formation in an expanding Universe would be the adiabatic modes, while the most general solution is a superposition of all these five!
+
+%{\bf I leave the structure formation here now and go through halo discussions first, then come back to this later!}
+
+%%\subsection{Hierarchical structure formation}
+%%Right after recombination ($z=1100$ and assuming $T = 3000$K), the Jeans mass is $M_J \sim 2 \times 10^6 M_\odot$, i.e. just about the mass of a dwarf galaxy. Meaning, anything smaller than this could not collapse, and anything larger would, but on the other hand, more massive objects are less dense, and therefore take longer to collapse. Formal Jeans equation does not really apply to developing larger structures, rather ensembles of smaller objects fall together to form the larger structure.
+%\label{sec:structure formation}
+
 \newpage
-\section{Structure formation}
-\label{sec:structure formation}
-{\bf This section needs a HARD polishing! If for no other reason, then simply because it's prone to plagiarism as I'm adopting the framework from this reference of mine and have not changed it much yet!!}
-
-Things I need to be able to make the conversion back and forth (by heart!):
-\begin{itemize}
-\item $v_{circ} - M_{vir}$
-\item $M_{vir} - M_{Ein}$ for my redshift combinations and density profile (at least relatively/roughly)
-\item $r (pc) - r (arcsec)$ in both source and lens plane
-\end{itemize}
-\subsection{Concordance model}
-%based on (arXiv: 1208.5931v2)
-The concordance model of cosmology is a special case of the FLRW world model currently accepted by most astronomers as the theoretical framework of cosmology, where gravity is the dominant interaction in our Universe which is homogeneous and isotropic on ``large enough'', i.e., $>\sim 100$ Mpc,  scales (cosmological principle). These models have been on the heart of modern cosmology from the beginning of the 20$^\mathrm{th}$ century, when the cosmological principle was mainly backed up with philosophical arguments such as the \emph{Copernican principle} stating that we do not occupy a special place in the Universe, rather than detailed observational evidence. As opposed to a few decades later when cosmic isotropy was confirmed by the cosmic microwave background, first by satellite COBE (ref?) and then WMAP (ref?), and very recently PLANCK(ref?). Besides, the homogeneity of the Universe is now backed up by large surveys such as the 2--degree field galaxy redshift survey (2dfGRS), and the Sloan digital sky survey (SDSS).
-
-Here I can go through the RW metric and its terms, but this is not important in the case of my project, so I'll skip it altogether and just talk about its physical interpretation instead!
-
-Dark matter as the currently second dominant energy contribution of the Universe is thought to be non--baryonic, cold (i.e. non--relativistic), very (?!) weakly interacting massive particle (WIMP). Some of these characteristics are inferred from cosmological evidence. For instance, observation of small--scale cosmic structure implies the DM to be non--relativistic, while the theory of cosmic nucleosynthesis results in the DM being non--baryonic. (elaborate and cite!!)
-
-\subsection{Newtonian theory of structure formation}
-Our Universe is neither homogeneous nor isotropic on scales smaller than 100 Mpc. Galaxies and galaxy clusters are huge overdens regions with respect to the mean matter density. They make up the cosmic web consisting of sheets and filaments. Even though the detailed account of structure formation is only possible in the framework of general relativity, the Newtonian approach is sufficient to give a simple analytical description of most of the processes. This section describes the Newtonian theory of structure formation (within our horizon) in the framework of the Concordance model, i.e. a flat geometry.
-
-The current large--scale structure in the Universe grew (by gravitational instability) from small perturbations in the homogeneous FLRW model. In order to solve perturbed hydrodynamic equations, we keep the first perturbed terms only (linear perturbation), and treat it in the framework of Newtonian theory implying (explain how exactly!) the following assumptions:
-\begin{itemize}
-\item The scale of perturbations is small compared to the horizon ($\ell \ll ct_0$)
-\item The flow is non--relativistic ($|v| \ll c$) and ($p \ll \rho c^2$) 
-\end{itemize}
-
-Moreover, we assume that the Universe is filled with an inhomogeneous, dissipationless ($p$ is very small!), and ideal fluid. (me: Therefore, we are basically dealing with DM particles as they are currently understood, and not baryons which are clearly dissipative!). Moreover, we are assuming what arises is adiabatic perturbations, meaning that the relative number density of flows remain constant. It also implies that different flows do not transfer energy and the conservation of energy is satisfied by each flow independently, $\rho_I \propto a_I^{--3}$
-
-Friedmann equations can be solved for various flows as long as they do not interact beyond gravity. This is the case for different fluids in the structure formation (i.e. post--inflation) era. The matter density, velocity field, pressure, gravitational potential, and entropy per unit mass of the fluid are shown as $\rho(t, {\bf r})$, ${\bf v}(t, {\bf r})$, $p(t, {\bf r})$, $\Phi(t, {\bf r})$, and $S(t, {\bf r})$, respectively. where $t$ is the cosmic time and ${\bf r}$ denotes the physical (not comoving!) coordinates. 
-Therefore, we can write the equation of mass conservation (\emph{continuity equation}):
-\begin{equation}
-\label{continuity}
-\frac{\partial \rho}{\partial t} + {\bf \nabla}.(\rho {\bf v}) = 0,
-\end{equation}
-the \emph{Euler equation}
-\begin{equation}
-\label{Euler}
-\frac{\partial {\bf v}}{\partial t} + {\bf (v .\nabla) v} = -\frac{{\bf \nabla} P}{\rho} - {\bf \nabla \Phi},
-\end{equation}
-the \emph{Poisson equation}
-\begin{equation}
-\label{Poisson}
-\nabla ^2 \Phi = 4\pi G \rho,
-\end{equation}
-and the conservation of entropy
-\begin{equation}
-\label{entropy}
-\frac{\partial S}{\partial t} + {\bf (v .\nabla)}S = 0,
-\end{equation}
-and an equation of state $P = P(\rho, S)$.
-Now, we add the perturbation term to each solution. Therefore we have:
-\begin{equation}
-\rho(t, {\bf r}) = \bar{\rho}(t) + \delta\rho(t, {\bf r})\nonumber
-\end{equation}
-\begin{equation}
-{\bf v}(t, {\bf r}) = \bar{{\bf v}}(t, {\bf r}) + \delta{\bf v}(t, {\bf r})\nonumber 
-\end{equation}
-\begin{equation}
-p(t, {\bf r}) = \bar{p}(t) + \delta p(t, {\bf r})\nonumber 
-\end{equation}
-\begin{equation}
-\Phi(t, {\bf r}) = \bar{\Phi}(t, {\bf r}) + \delta\Phi(t, {\bf r})\nonumber 
-\end{equation}
-\begin{equation}
-S(t, {\bf r}) = \bar{S}(t) + \delta S(t, {\bf r})\nonumber 
-\end{equation}
-The velocity field is homogeneous in the comoving coordinate system (and not the physical system we are working on)(are we assuming that? is it the direct consequence of homogeneity and isotropy?, else where does it come from?). The the comoving distance $D(t)$ is related to the proper distance as $D(t) = \frac{D_{prop}(t)}{a(t)}$. Moreover, $H^2 = (\frac{\dot{a}}{a})^2$ by definition(?). Therefore, the homogeneous velocity field is given by the Hubble Law as
-\begin{equation}
-\label{Hubble}
-\bar{\bf v}(t, {\bf r}) = H(t){\bf r} 
-\end{equation}
-The continuity equation for the homogeneous background becomes then
-\begin{equation}
-\dot{\bar{\rho}} + 3\bar{\rho}H(t) = 0 \nonumber 
-\end{equation}
-and the divergence of Euler equation, combined with the Poisson equation gives
-\begin{equation}
-\dot{H} + H^2 = -\frac{4\pi G\bar{\rho}}{3} \nonumber
-\end{equation}
-Now, we substitute perturbed fluid equations to hydrodynamic equations \ref{continuity}, \ref{Euler}, \ref{Poisson}, and \ref{entropy} and keep only the linear terms.
-\begin{equation}
-\label{continuity_pert}
-\frac{\partial \delta\rho}{\partial t} + \bar{\rho}{\bf \nabla}.\delta {\bf v}  + {\bf \nabla}.(\delta \rho {\bar{\bf v}}) = 0
-\end{equation}
-\begin{equation}
-\label{Euler_pert}
-\frac{\partial\delta{\bf v}}{\partial t} + (\delta{\bf v .\nabla}){\bf \bar{v}} +({\bf \bar{v} . \nabla})\delta{\bf v}  = -\frac{{\bf \nabla }}{\bar{\rho}}(c_s^2 \;\delta\rho + \sigma \;\delta S) - {\bf \nabla} \delta{\bf\Phi} 
-\end{equation}
-\begin{equation}
-\label{Poisson_pert}
-\nabla ^2 \delta\Phi = 4\pi G \delta\rho
-\end{equation}
-\begin{equation}
-\label{entropy_pert}
-\frac{\partial \delta S}{\partial t} + {\bf (\bar{v} .\nabla)}\delta S = 0
-\end{equation}
-In the case of the Euler equation we use
-\begin{equation}
-\frac{1}{(\bar{\rho}+\delta\rho)} \simeq \frac{1}{\bar{\rho}} + \frac{\delta\rho}{\bar{\rho}^2}+ \dots \nonumber \\
-\end{equation}
-Moreover, we substituted the perturbed EoS at the first order with $\delta P = c_s^2 \; \delta\rho + \sigma \; \delta S$, where $c_s^2 = (\partial \bar{P}/\partial \bar{\rho})_{\bar{S}}$ is the square of the sound speed and $\sigma = (\partial \bar{P}/\partial \bar{S})_{\bar{\rho}}$. Note that the EoS of an ideal gas is given by $P = \frac{\Re_*}{\mu} \rho T$, where T is related to S with the speed of sound, c. (how?). In other words, EoS of an ideal gas is given by P =  
-Now, by going from physical coordinate system $(t, {\bf r})$, to comoving $(t, {\bf x})$ defined as $x = r/a(t)$ and the proper time $d\tau = dt/a(t)$, we can simplify our hydrodynamic equation set by using transformations below.
-\begin{eqnarray}
-{\bf r} &\rightarrow& a(t) {\bf x}  \nonumber \\
-%\Rightarrow \left\{
-%	\begin{array}{1 1}
-{\bf \nabla_r} &\rightarrow& \frac{1}{a(t)}{\bf \nabla_x} \nonumber \\
-\left.\frac{\partial}{\partial t}\right |_{\bf r} &\rightarrow& \left.\frac{\partial}{\partial \tau}\right |_{\bf x} - \frac{1}{a(t)} {\bf \bar{v}}.{\bf \nabla_x} \nonumber
-%	\end{array}
-\end{eqnarray}
-According to \ref{Hubble}, one can substitute $\bar{\bf v}$ with $H{\bf r}$ in the physical coordinate system and therefore $\dot{a}{\bf x}$ in the comoving system of coordinates. Therefore,
-\begin{equation}
-{\bf \nabla . \bar{v}} = 3H
-\end{equation}
-and
-\begin{equation}
-(\delta{\bf v.\nabla})\bar{\bf v}/a = \delta{\bf v}H 
-\end{equation}
-Then the linearized hydrodynamic equations become:
-\begin{equation}
-\label{continuity_1}
-\delta\dot{\rho} - \frac{1}{a}v.\nabla \delta\rho + \frac{\bar{\rho}}{a}\nabla . \delta v + \frac{1}{a} 3\delta\rho H = 0
-\end{equation}
-\begin{equation}
-\label{Euler_1}
-\delta \dot{v} - \frac{1}{a}v.\nabla \delta v + \delta vH + \frac{1}{a}(v.\nabla)\delta v = - \frac{\nabla}{a\bar{\rho}}(c_s^2\delta\rho + \sigma\delta S) - \frac{1}{a}\nabla \delta\Phi
-\end{equation}
-\begin{equation}
-\label{Poisson_1}
-\frac{1}{a^2}\nabla^2\delta\Phi = 4\pi G\delta\rho
-\end{equation}
-\begin{equation}
-\label{entropy_1}
-\delta\dot{S} - \frac{1}{a}v.\nabla \delta S + \frac{1}{a} (v.\nabla) \delta S = 0
-\end{equation}
-
-Now, this guy takes the FT of the above equation set with respect to the comoving coordinates, to obtain them for a given mode ${\bf k}$, but I do not understand why!(beginning of page 32 in his manuscript!), then discusses three individual perturbation modes (one entropy mode, two vortical modes and two adiabatic modes) individually and concludes that the only interesting mode for structure formation in an expanding Universe would be the adiabatic modes, while the most general solution is a superposition of all these five!
-
-{\bf I leave the structure formation here now and go through halo discussions first, then come back to this later!}
-
-%\subsection{Hierarchical structure formation}
-%Right after recombination ($z=1100$ and assuming $T = 3000$K), the Jeans mass is $M_J \sim 2 \times 10^6 M_\odot$, i.e. just about the mass of a dwarf galaxy. Meaning, anything smaller than this could not collapse, and anything larger would, but on the other hand, more massive objects are less dense, and therefore take longer to collapse. Formal Jeans equation does not really apply to developing larger structures, rather ensembles of smaller objects fall together to form the larger structure.
-\label{sec:structure formation}
-
-\newpage
-\section{Dark matter (9/17)}
+\section{Dark matter}
 The ``missing matter" in the Universe has represented itself both locally, i.e. in the galactic disk and around the Sun, and globally in the past century and even though the problem has been approached from the particle--physics point of view in addition to the cosmological one, it is still considered as one of the biggest challenges of both! On the one hand, modern data suggests an insignificant amount of dark matter in the Solar vicinity which is made of baryonic but not luminous matter such as faint stars or Jupiter--like objects. In short, according to our current understanding of the Universe, dark matter is the dominant matter component of the Universe.
 
-\subsection{Cosmological evidence (9/17)}
+\subsection{Cosmological evidence}
 %http://www.quantumdiaries.org/2013/06/26/does-dark-matter-really-exist/
 \subsubsection{Masses of galaxy clusters}
 In the beginning of 1930s, Zwicky ({\bf cite!}) was first to notice the order--of--magnitude difference in dynamical mass of the Coma cluster with the mass derived from luminosities of individual galaxies. The discrepancy was not recognized as an issue until after its persistence in various cases ({\bf cite!})\ignore{cite Kahn \& Woltjer 1959 about the Andromeda's negative redshift and masses of galaxy groups Holmberg 1937! or rather just focus on rotational curve discrepancies whose agreement needs a new population of stars tenfold the regular ones in the galaxy with very large M/L  Einasto et al. 1974 ans Ostriker et al. 1974}. The previously--unknown population of dark (or high mass--to--light--ratio) matter was proven to dominate the mass budget of the Universe. The mean density of the matter was shown to be $\sim 0.2$ of the critical density of the Universe and different models for the dark matter started appearing in the literature. Firstly, the missing matter was thought to be in faint stars or hot gas but both failed to explain the situation\ignore{cite and explain why! or maybe not as it's not really important now!!}.
