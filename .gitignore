@@ -1,0 +1,17 @@
+*.aux
+*.dvi
+*.out
+*.log
+*.toc
+*.sty
+*.cls
+**/*.aux
+**/*.dvi
+**/*.out
+**/*.log
+**/*.toc
+**/*.lot
+**/*.lof
+**/*.sty
+**/*.cls
+polished/**/*
