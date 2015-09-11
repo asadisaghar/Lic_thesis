@@ -1,0 +1,177 @@
+%I need 12000 words~27 pages of introduction to my Licentiate as the literature review part, I think the space budget can go (roughly) like this:
+
+%1%. Theory of structure formation 
+% 5 pages (2 pages done)
+%2%. Dark matter problem in general (including what particle physics has to say about DM particles)
+% 5 pages
+%3%. Small--scale dark matter in the context of LCDM vs. observations 
+% 7 pages (~3 pages done)
+%4%. Gravitational lensing formalism
+% 3 pages
+%5%. Optical vs. radio data in the context of our work + Radio interferometry
+% 3 pages
+%6%. Quasars vs. SMGs in the context of our work
+% 3 pages
+
+%----------------------------------------------------------------------------------------
+%    PACKAGES AND OTHER DOCUMENT CONFIGUratioS
+%----------------------------------------------------------------------------------------
+
+\documentclass[paper=a4, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+\oddsidemargin=-0.54cm
+\evensidemargin=-0.54cm
+\topmargin=-1.2cm
+\textwidth=17cm
+\textheight=25cm
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+\usepackage{hyperref}
+\makeatletter
+\newcommand\urlfootnote@[1]{\footnote{\url@{#1}}}
+\DeclareRobustCommand{\urlfootnote}{\hyper@normalise\urlfootnote@}
+\makeatother
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{epstopdf}
+\usepackage{titlesec}
+\usepackage{verbatim}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+\makeatletter
+\@addtoreset{section}{part}
+\makeatother
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+%----------------------------------------------------------------------------------------
+%    TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+\newcommand{\ignore}[1]{}
+
+\title{    
+\normalfont \normalsize 
+%\textsc{Dark Cosmology Center\\Copenhagen - Denmark} \\ [25pt] % Your university, school and/or department name(s)
+\horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+\huge  Gravitational lensing and radio interferometers probe sub-galactic dark matter structure\\
+\large (story of my life) % The assignment title
+\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{Saghar Asadi} % Your name
+
+\date{\normalsize 2012--2014 \\ Department of Astronomy \\ Stockholm University} % Today's date or a custom date
+
+\pagestyle{empty}
+
+\begin{document}
+
+\maketitle % Print the title
+\newpage
+\tableofcontents
+\newpage
+
+\begin{abstract}
+Blah Blah Abstract
+\end{abstract}
+
+\newpage
+\section{Dark matter}
+
+\begin{itemize}
+\item What are the mass limits for DM particles? Where are the lines between CDM, WDM and HDM? In terms of particle mass/energy?
+\item What is the typical M/L for galaxies. What is it for dwarf galaxies?
+
+\item First DM evidence by Zwicky in 1930s, using the velocity disperion of galaxies in the Coma cluster \ref{Zwicky1993}
+\item DM discovery at galactic scales in 1970s by Ver Rubin et al. deriving the existence of DM from the flat rotation curves of disk galaxies. They show that the rotational velocity of galaxy at large radii can only remain flat if there is a mass component increasing with radius. The Keplerian velocity of a galaxy whose dominent mass component is the disk implies a gravitational force experiences by any particle of mass $m$ at radius $r$ as $F = \frac{G M m}{r^2} = m v^2/r$. Therefore, $v = sqrt(GM/r)$, decreasing as $r^{1/2}$. While the observed rotational curve of disk calagiex show $v \approx constant$, which requires $M \ propto r$.
+\item Another evidence for dark matter at galactic scales come from weak and strong gravitationa lensing
+\item One very convincing evidence for the presence and amount of DM in our Universe is from the fluctuations of the CMB. Quote the cosmological density fractions for DM, baryon, and the Hubble constant for the latest Planck paper.
+\item The amount of baryons in the Universe could me measured with five independent methods; all of which result in a fraction less than 5\% of the total content of the Universe.
+\begin{enumerate}
+\item X-ray emission from galaxy clusters
+\item anisotropies in the angular power spectrum of the CMB -- relative height of the odd and even picks
+\item the Big Bang Neucleosynthesis (BBN) - the abundance of light elements; $D$, $^4He$, and $^7Li$.
+\item Baryonic acoustic oscillations
+\item Quasar absorption lines
+\end{enumerate}
+\item There is a lower limit for the temperature of the Universe during the radiation--dominated epoch, comig from both inflation and BBN scenarios (according to these two independent theories, the ''reheating temperature´´ is $T_\mathrm{HR} \geq 4$ MeV \citep[ref. 10 in lecturenotes!][]{}. Also, this is the period where most dark matter particle candidates are produced.
+\item We have observed DM gravitational interaction with both ordinary and dark matter, but we have never observed [any evidence] of the decay of DM meaning that it must be stable or has a lifetime much larger than the age of the Universe. Since we have not been able to observe any evidence supporting the DM having any other type of interaction, but through gravity, makes it possible to wonder if there is no real entity as dark matter and all the evidence come from the lack of a good law of gravity. This lead to a category of solutions to the dark matter problem, the most successfull of which is the Modified Newtonian Dynamics (MOND) \citep[ref. 14 \& 15 in lecturenotes!][]{}.
+\item MOND was first introduced to solve the discrepancy with the flat rotation curves of galaxies through a general form of the infamous $F = ma$, which only deviates from the classical form in systems with very small accelerations. The law of gravity according to MOND is $F=\mu(a)ma$. Therefore, for a particle of mass $m$ moving around a massive galaxy of $M$ at radius $r$ we have: $F = \frac{GMm}{r^2} = \mu m a$. For very small accelerations, i.e. $a<<a_0$, $\mu = a/a_0$, and therefore at large radii from the center of a galaxy, where $a<<a_0$, $a=\sqrt(GMa_0)/r$. On the other hand, $a = v^2/r$. Combining the two, $v = (GMa_0)^\mathrm{1/4}$, and the rotational curve of the galaxy becomes flat consistent to observations.
+
+\end{itemize}
+
+The ``missing matter" in the Universe has represented itself both locally, i.e. in the galactic disk and around the Sun, and globally in the past century and even though the problem has been approached from the particle--physics point of view in addition to the cosmological one, it is still considered as one of the biggest challenges of both! On the one hand, modern data suggests an insignificant amount of dark matter in the Solar vicinity which is made of baryonic but not luminous matter such as faint stars or Jupiter--like objects. In short, according to our current understanding of the Universe, dark matter is the dominant matter component of the Universe.
+
+\subsection{Cosmological evidence}
+%http://www.quantumdiaries.org/2013/06/26/does-dark-matter-really-exist/
+\subsubsection{Masses of galaxy clusters}
+In the beginning of 1930s, Zwicky ({\bf cite!}) was first to notice the order--of--magnitude difference in dynamical mass of the Coma cluster with the mass derived from luminosities of individual galaxies. The discrepancy was not recognized as an issue until after its persistence in various cases ({\bf cite!})\ignore{cite Kahn \& Woltjer 1959 about the Andromeda's negative redshift and masses of galaxy groups Holmberg 1937! or rather just focus on rotational curve discrepancies whose agreement needs a new population of stars tenfold the regular ones in the galaxy with very large M/L  Einasto et al. 1974 ans Ostriker et al. 1974}. The previously--unknown population of dark (or high mass--to--light--ratio) matter was proven to dominate the mass budget of the Universe. The mean density of the matter was shown to be $\sim 0.2$ of the critical density of the Universe and different models for the dark matter started appearing in the literature. Firstly, the missing matter was thought to be in faint stars or hot gas but both failed to explain the situation\ignore{cite and explain why! or maybe not as it's not really important now!!}.
+
+**Since (non--baryonic) dark matter is needed for the gravitational clustering and structure formation in the Universe as well as resolving the controversy ({\bf what controversy?}) about Big Bang nucleosynthesis, essential information about the nature of dark matter comes from studying the cosmic web and CMB.
+
+\subsubsection{Galactic rotation curves}
+In the end of the 20$^\mathrm{th}$ century, both optical(Rubin et al. 1978, 1980) and radio(Bosma 1978) data confirmed the flat rotational curves of galaxies at large radii providing important evidence for the presence of massive halos around galaxies. This was followed by new X--ray observations of hot gas in galaxy clusters confirming that the hot gas reservoir cannot explain the missing mass either. The X--ray data, additionally, provided new measurements of the velocity dispersions of galaxies in clusters, confirming the previous dynamical mass estimates(Forman et al. 1972, Gursky et al. 1972, Kellogg et al. 1973). Another independent probe for mass of galaxy clusters was gravitational lensing, which served as yet another support for the presence of a dark massive component.({\bf cite!})
+
+\subsubsection{Gravitational lensing}
+The mathematical framework of gravitational lensing is a commonly--accepted framework in astronomy for a long time. However, only after the general relativistic corrections to the Newtonian formalism of gravitational lensing, the dark matter problem arose in this context. Gravitational lensing, as an accurate and reliable gravitational mass measurement of the lens, confirmed the discrepancy between the gravitational and luminous mass both on galactic and galaxy cluster scales.
+
+\subsubsection{CMB temperature fluctuations}
+As discussed in section \ref{sec:structure formation}, structures in the Universe are believed to have grown from small fluctuations in the density field of the Universe after the era of recombination. Density fluctuations are of the same order as temperature fluctuations ({\bf cite!})\ignore{\bf why? look back in the structure formation part!}, therefore measuring temperature fluctuations of the CMB reveals the order of magnitude of density fluctuations in the early Universe. However, taking only the baryonic matter into account, these fluctuations are two small to give rise to any structure formation in our expanding Universe. While the required amount of matter in the Universe is $\sim 0.2 - 0.3$ in units of the critical cosmological density ({\bf cite?}), the big bang nucleosynthesis puts an upper limit of $\sim 0.04$ on the amount of baryonic matter ({\bf cite!}) supporting the non--baryonic nature of dark matter. Moreover, if dark matter is non--baryonic, its density fluctuations can start growing already at the radiation--dominated era while the growth of baryonic matter is damped by radiation, therefore this could explain small density fluctuations of the CMB.
+The first non--baryonic candidate for dark matter particles was neutrino. However, simulations based on this model (Doroshkevich \& Shandarin 1978) indicated that neutrino--dominated dark matter cannot give rise to small--scale structure in the distribution of galaxies, due to the cut--off at the power--spectrum of these rapidly--moving particles. This also suggested that suitable candidates for dark matter particles not only need to be dissipationless, but also required to be much more massive than neutrinos (Blumenthal et al. 1982, Bond et al. 1982, Peebles, 1982). Therefore, the first numerical cosmological simulations based on cold dark matter (CDM) was performed by (Melott et al. 1983) which could represent the small structures of the Universe much more accurately.
+
+%Despite all the effort for direct detection of dark matter particles, the nature of these particles is still unknown. However, there are recent claims of a double--peak gamma--ray spectrum detections with the Fermi satellite (LAT), both in the center of our galaxy and nearby galaxy clusters (Weniger 2012, Tempel et al. 2012a, Hektor et al, 2013) which is interpreted as a signal of dark matter annihilation. ({\bf consider elaborating more on this and self--annihilating dark matter in general!})
+
+The discrepancy between the expected amplitude of temperature fluctuations in the CMB data based on structure formation (density/temperature fluctuations of the order of $10^{-3}$) cannot be explained without a large amount of non--baryonic matter in the radiation--dominated era. Another strong argument supporting the presence of some matter in addition to the baryonic matter in the Universe is also coming from the CMB. ({\bf the first peak in baryonic acoustic oscillations})
+
+%Einasto 2013 -- Profumo 2012 -- Popolo 2013 -- Profumo 2013
+
+\subsection{Detection methods}
+%%TASI lectures on astrophysical probes of dark matter
+\subsubsection*{Indirect detection of DM particles}
+Actually, there is a category of methods, this author calls ``very indirect'' methods for detecting dark matter and all cosmological/astrophysical effects induced by dark matter is included in this category. On the other hand, gamma--rays and neutrinos are ``not--so--indirect'' probes of dark matter in his book.
+
+3 main processes to study, (a) \emph{pair--annihilation}, (b) \emph{decay of DM particles into SM ones}, (c) \emph{elastic scattering between DM and SM particles}, where SM means standard model particles, i.e. baryons!
+Observing the rate of SM particle production places constraints on DM particles via processes (a) and (b).
+Momentum (mass) of DM particles is set by observing energy scale of SM ``messengers'' via (c).
+The type of SM particles produced in (a) is strongly dependent on details of DM particle model.
+
+In the very early Universe, when matter and radiation was coupled, at those high temperatures, the particle interaction ($\Gamma$) rate was larger than the Hubble expansion rate (H), we call the point in time/temperature where $\Gamma \sim H$, ``freeze--out''. After this point, particle species just ``redshift'' whatever momentum and number density they had at this point. This point differs for various particle species, with different number densities and interaction cross sections. If the particle species freeze out while they are relativistic, they are called \emph{hot relics}, otherwise they are \emph{cold relics} because the freeze--out temperature is much lower than the mass of the particle. The details of DM particle model puts an upper limit as well as a lower limit to the mass of \emph{cold} dark matter particles. This lower limit corresponds to the mass of first structures that gravitationally collapsed in the Universe, and for a typical WIMP model is $\sim M_\oplus \simeq 10^{-6} M_\odot$ ({\bf cite!}). However, this cut--off limit changes significantly in various models with substantial consequences for the dark matter predictions on small scales! 
+
+\subsubsection{self--annihilating dark matter and gamma--ray emission}
+Despite all the effort for direct detection of dark matter particles, the nature of these particles is still unknown. However, there are recent claims of a double--peak gamma--ray spectrum detections with the Fermi satellite (LAT), both in the center of our galaxy and nearby galaxy clusters (Weniger 2012, Tempel et al. 2012a, Hektor et al, 2013) which is interpreted as a signal of dark matter annihilation. ({\bf consider elaborating more on this and self--annihilating dark matter in general!})
+
+Apart from gamma--ray hints of DM from the galactic center, the diffuse isotropic gamma--ray background (IGRB) at the new Fermi IGRB measurements could also place constraints on $M_\mathrm{min}$ of dark matter halos. ``A more detailed analysis of the IGRB, with new Fermi IGRB measurements and modeling of astrophysical backgrounds, may be able to probe values of $M_\mathrm{min}$ up to $\sim 1 M_\odot$; for the 130 GeV candidate and $\sim 10^{-6} M_\odot$; for the light DM candidates. Increasing the substructure content of halos by a reasonable amount would further improve these constraints.'' %\bibitem[Ng et al.(2014)]{2014PhRvD..89h3001N} Ng, K.~C.~Y., Laha, R., Campbell, S., et al.\ 2014, \prd, 89, 083001 
+
+\subsection{Alternative solutions}
+\subsubsection{Modified theories of gravity}
+%IAC Talk (Dark matter in galaxies)
+The relativistic modification of gravity came around after the Newtonian theory of gravity failed to predict correct position of Mercury in its orbit. A few decades later, and not even general relativity could estimate the correct dynamics for the galaxies without including a large amount of a mysterious invisible matter, soon called the ``dark matter''. Even today, around 80 years after Zwicky first mentioned the discrepancy, we have no clue what dark matter is and if this is the right approach at all, in comparison to further modification in our theory of gravity. 
+%%%%%%%%%%
+Therefor, another appealing idea, suggested by (Milgrom \& Bekenstein 1987) was questioning the validity of the Newtonian law of gravity in large distances. This theory which is now know as modified Newtonian dynamics (MOND) has been able to explain a number of observational data without any dark matter. However, there are still a number of observational evidence in favor of non--baryonic dark matter which is inexplicable with MOND. 
+
+
+
+%The observations of the cosmic microwave background radiation (CMB) and the large--scale structure of galaxies (for instance using the Sloan Digital Sky Survey, SDSS, or the 2--degree survey) supported the existence of dark matter, however the questions about its nature remained inconclusive. 
+%/////
+
+
+\end{document}
+
