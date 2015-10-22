@@ -354,8 +354,8 @@ A cosmologically--motivated halo density profile is
 \end{equation}
 where $\rho_0$ is a characteristic halo density, $r_s$ is a scale radius (the radius at which $\rho \propto 1/r^2$), and $r_c$ is the core radius. 
 
-\subsubsection*{Maximum circular velocity $V_{max}$ and that of the infall epoch $V_{infall}$}
-\subsubsection*{Mass accretion history (MAH)}
+%\subsubsection*{Maximum circular velocity $V_{max}$ and that of the infall epoch $V_{infall}$}
+%\subsubsection*{Mass accretion history (MAH)}
 
 \subsubsection{Normalization}
 Recently, (Boylan--Kolchin, Bullock and Kaplinghat, 2011) pointed out another discrepancy in the structural properties of DM subhalos and dSphs in the local group. While one would naively expect that the most luminous dwarf galaxies correspond to the most massive subhalos, high--resolution cosmological simulations persistently produce massive subhalos ($M_{vir} \geq 10^{10} M_\odot$) which are too concentrated in their central kpc to host any of the satellite galaxies around the Milky Way or Andromeda. (\cite{Boylan--Kolchin11}). The combination of measured effective (half--light) radius $R_e$ and velocity dispersion $\sigma$ of a dSph with simple dynamical arguments (chi daghighan? + ref.) can constrain the total mass of the dwarf within $R_e$. The Upper mass limits derived for the 8 most massive satellites of the MW, (excluding the Magellanic clouds), are systematically smaller than those of the 10 most massive subhalos in high--resolution cosmological simulations, within the same radii (Aquarius/Millennium/LV2 in this case?). Therefore, the most massive subhalos cannot host the most luminous dSphs of the MW. Consequently, unless MW halo is a very peculiar system, the most massive subhalos of the galaxy remain dark while the most luminous dSphs reside in less--massive dark matter halos. One naive explanation of this discrepancy could be that the halo of the MW is less massive than previously estimated and therefore, the local massive dSphs should be compared to simulated subhalos of a less--massive halo. However, ``the simplest formulation of the TBTF problem is as following: the mean densities inferred within the central few--hundred pc of the most luminous dSphs are systematically smaller than predicted in CDM simulation.'' Therefore, the problem is pointing to a more fundamental difference in simulated CDM halos and dSphs than the uncertainty in the MW halo mass.
@@ -423,6 +423,187 @@ in WDM models, a competitor of the CDM paradigm, structure formation is suppress
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 A spatially unresolved measurement of the flux density from a lensed source is a factor of order $\mu$ brighter than for an unlensed source, while spatially resolved measurements can provide a factor of $\sqrt(\mu)$ higher resolution. (Schneider et al. 1992)
+
+%----------------------------------------------------------------------------------------
+
+\newpage
+\section{Gravitational Lensing} 
+The deflection of light is a predictable phenomenon in the framework of Newtonian mechanics, serving as one of the major tests of general relativity by the famous 1919 solar eclipse experiment \citep[][]{Eddington+1919}. In Newtonian description, light photons are treated as test particles being influenced by gravity of a massive object. Therefore, a test particle passing with velocity $v$ near a point-like massive object, $M$, with an impact parameter $\xi$, is deflected by an angle $\alpha$. Considering a very small deflection angle (the most likely case in cosmology), $\alpha$ is given by
+
+\begin{eqnarray}
+\label{eq:alpha}
+\alpha \simeq \frac{4GM}{v^2 \xi}.
+\end{eqnarray}
+
+In the case of a light beam, where $v = c$, passing very close to the surface of the Sun, the deflection angle turns out to be $\sim$ 0.85$^{\prime \prime}$. This value coincides with what was obtained by Einstein prior to the final formulation of GR, provided space is considered Euclidean not affected by gravity of the Sun. However, the pre-relativistic predicted deflection angle is half the predicted angle by general relativity in its fully developed form. The factor added by general relativity represents the local spatial curvature produced by the mass and was proven to be consistent with observational results in 1919 for the first time. Several groups measured the angular shift of stars projected close to the solar limb during a total eclipse \citet{Eddington+1919}. This served as the second evidence in support of GR, after perihelion precession of Mercury. Based on the calculation using the generalization of this phenomenon for two distant stars, it was generally accepted that the separated images of a star due to the gravity of another star was impossible to detect with the technology of the day. A few years later, Fritz Zwicky suggested  \citep{Zwicky1937} that the effect of an extragalactic ``nebula'', i.e. a galaxy, rather than a foreground star is big enough and should have been observed by then. Even though his calculation was too optimistic due to overestimating the masses of galaxies at that time, the idea of utilizing this phenomenon as a ``natural telescope''  remained as a curiosity until 1979 when for the first time two identical quasars ($0957+561$ A \& B) were revealed in an observation \citep{1979}. The similarity of the spectra of the two quasars with the same redshifts, $z \sim 1.41$, and 6 arcseconds angular separation were mostly accepted to be convincing evidence for the fact that the two objects are physically associated. Furthermore, finding a galaxy at a lower redshift close to the two images lent more support to the idea that this was another case of gravitational lensing. Several cases of gravitational lensing have been found and investigated ever since.
+
+\subsection{Mathematical Description}
+Here I strat with setting up the gemoetrical framework for the gravitational lensing assuming a point--like lens (the same calculations for an extended lens requires integrating over the projected lens area). Another simplifying factor is the ``thin lens approximation'', implying that the impact parameter of the lens is considerably small compared to the distances in the system, thus the extension of the lens along the line of sight is ignored.
+
+The relation between the unlensed source position, $\boldsymbol \beta$, and the position of the image(s), $\boldsymbol \theta$, is called the \emph{lens equation}. This equation can be derived geometrically from the setup displayed in figure \ref{fig:config} and shown below:
+
+\begin{eqnarray}
+\label{eq:lens_eq_angle}
+\boldsymbol \beta = \boldsymbol \theta - \frac{D_{ds}}{D_s} \hat{\boldsymbol \alpha}(\boldsymbol \xi).
+\end{eqnarray}
+
+ where the image position is $\boldsymbol \theta = \frac{\boldsymbol \xi}{D_{d}}$. Hence, by substituting $\alpha$ with the expression found in equation \ref{eq:alpha}, we have
+
+ \begin{eqnarray}
+ \label{eq:lens_equation}
+ \boldsymbol \beta = \boldsymbol \theta - \frac{D_{ds}}{D_s D_d} \frac{4GM}{c^2 \boldsymbol \theta}.
+ \end{eqnarray}
+
+ Alternatively, using the distance from the source to the optical axis, in the source plane,  $\boldsymbol \eta = D_{s} \boldsymbol \beta$, the lens equation becomes
+
+\begin{eqnarray}
+\label{eq:lens_eq_distance}
+\boldsymbol \eta = \frac{D_s}{D_d}\boldsymbol \xi - D_{ds}\hat{\boldsymbol \alpha}(\boldsymbol \xi)
+\end{eqnarray}
+
+\begin{figure}[][t]
+ \label{fig:config}
+ \centering
+%\includegraphics[width=0.5\textwidth]{figs/setup}
+% \caption{The relation between angles and distances in a gravitational lensing setup as described by the lens equation. In this schematic figure, $O$ represents the position of the observer, $S$ is the source and the lens (deflector) is reduced to its projection on a plane perpendicular to the line of sight, as assumed in the ``thin lens approximation''. (Figure adopted from \citet{narayan_lectures_97}).}
+\includegraphics[width=0.5\textwidth]{figs/Gravitational-lensing-angles}
+ \caption{The relation between angles and distances in a gravitational lensing setup as described by the lens equation. In this schematic figure, $O$ represents the position of the observer, $S$ is the source and the lens (deflector) is reduced to its projection on a plane perpendicular to the line of sight, as assumed in the ``thin lens approximation''. (Figure from Wikipedia}
+ \end{figure}
+
+Given a certain mass distribution and a fixed $\boldsymbol \xi$, the lens equation can have more than one solutions for $\boldsymbol \theta$; each of which corresponds to an image of the source in the sky.  Although obtaining the source position $\eta$ from a given image position $\xi$ using the lens equation is straightforward, finding a general analytical solution for the position of the image(s) of a source at a given position is not. Keeping in mind that the mapping of $\xi$ to $\eta$ is non--linear. There are, however, analytical models to solve this equation for simple matter distributions on the lens plane such as point--mass, axially symmetric, and elliptical lenses.
+
+The deflection angle due to the surface mass density of the lens gives rise to a deflection potential $\psi$ of the form $\boldsymbol \alpha = \nabla \psi$. Accordingly, another way of presenting the lens equation is in the form of 
+
+\begin{eqnarray}
+\label{eq:potential_dimensionless_lensing}
+\textbf{y} = \nabla \left(\frac{1}{2}\textbf{x}^2 - \psi(\textbf{x}) \right)
+\end{eqnarray}
+
+where $\textbf{x} \equiv \frac{\boldsymbol \xi}{\xi_0}$ and $\textbf{y} \equiv \frac{\boldsymbol \eta}{\eta_0}$ are dimensionless vectors, when $\xi_0$ and $\eta_0$ are length scales in the lens plane and the source plane, respectively. This form of expressing the lens equation leads to the formulation of Fermat's principle in gravitational lensing theory
+
+\begin{eqnarray}
+\nabla \phi(\textbf{x}, \textbf{y}) = 0
+\end{eqnarray}
+
+where $\phi$ is a scalar function as below
+
+\begin{eqnarray}
+\phi(\textbf{x}, \textbf{y}) = \frac{1}{2} (\textbf{x} - \textbf{y})^2 - \psi(\textbf{x})
+\end{eqnarray}
+
+Fermat's principle states that the light ray always chooses the path which takes the least \emph{time} to pass through. Therefore, it can be used to relate the time delay between two separate images of a single source to the considered cosmology and mass distribution of the lens.
+
+
+Light deflection is a propagation phenomenon, influencing only the shape of the light bundle from the source, and not the surface brightness. Therefore, for a monochromatic source, we have the received flux from the source as 
+
+\begin{eqnarray}
+S = I_{\nu} d\omega
+\end{eqnarray}
+
+where $d\omega$ is the differential solid angle, and $I_{\nu}$ is the monochromatic surface brightness. Since $I_{\nu}$ is not affected by gravitational deflection, the flux changes are merely mirrored in solid angle variation of the image. Hence, the \emph{magnification} due to gravitational lensing is defined as the solid angle ratio of the observed image to that of the non--lensed source
+
+\begin{eqnarray}
+\label{eq:mu_domegas}
+|\mu| \equiv \frac{d\omega}{d\omega_0}
+\end{eqnarray}
+
+On the other hand, the solid angle is related to the angular position of the image (source), via the dimensionless quantities \textbf{x} (\textbf{y}). Therefore, the magnification due to a circularly symmetric lens is given by 
+
+\begin{eqnarray}
+\label{eq:mu_beta_theta}
+|\mu| = \frac{\theta d\theta}{\beta d\beta}.
+\end{eqnarray}
+
+One of the most interesting and extreme cases of gravitational lensing is the Einstein ring. The lensing setup which gives rise to a complete Einstein ring consists of a point--like source, with a spherically symmetric lens, both of which are collinear with the observer, i.e. the lens is centered around the line of sight between the observer and the source. Therefore, the observer sees a ring--shaped image with an angular radius of $\theta_E$ which is called the angular Einstein radius. This radius, $\theta_E$ is obtained by substituting $\beta=0$ in equation \ref{eq:lens_equation} as:
+
+ \begin{eqnarray}
+ \theta_E = \sqrt{\frac{4GM}{c^2}\frac{D_{LS}}{D_LD_S}}.
+ \label{eq:lens}
+ \end{eqnarray}
+
+ Where $M$ represents the lens mass and $D_L$, $D_S$, and $D_\mathrm{LS}$ are the angular--diameter distances as in figure \ref{fig:config}. Moreover, as it is immediately concluded from equation \ref{eq:mu_beta_theta}, magnification $\mu$ diverges for the \emph{critical points} where $\beta=0$. The ``infinite'' theoretical magnification points can be mapped into the source plane which gives a set of \emph{caustic curves}. The number and relative positions of images of a single source change according to the position of the source with respect to such caustics in the source plane. (see figure \hyperref[fig:cusps]{2.2}).
+
+ \begin{figure}[ht]
+ \label{fig:cusps}
+ \centering
+ \includegraphics[width=1.0\textwidth]{figs/zack09_4}
+ \caption{Different configurations of a four-image lens: a) Fold, b) Cusp and c) Cross. The upper row shows the caustics and position of the source (star) in the source plane. The solid line indicates the inner caustic and the dashed line the outer caustic. A source positioned inside the inner caustic produces five images. A source positioned between the inner and outer caustic produces three images, whereas a source positioned outside the outer caustic will not be multiply imaged. In the case of multiple images, one of the images is usually highly de-magnified, so that only four- and two-image lens systems are observed, respectively. The lower row shows the corresponding critical lines and resulting observable images in the lens plane. The inner caustic maps on the outer critical line and vice versa. A close pair (A, B) and a close triplet (A, B, C) are produced in the fold (a) and cusp (b) configurations, respectively. (Figure and caption adopted from \citet{zackrisson09})}
+ \end{figure} 
+
+ \subsection{Strong and Weak Lensing}
+One observable result of gravitational lensing is magnified (or de-magnified) images of point sources, the other distortions in the images of extended objects. The extent of the lensing effect varies depending on the alignment of the source, the lens and the observer. The closer the center of the lens to the line of sight between the observer and the source, the more significant the image distortion. Therefore, gravitational lensing cases are categorized, according to the level of their magnifications, into two major regimes; \emph{strong} and \emph{weak} lensing. Strong lensing causes dramatic effects such as high magnifications, multiple images, luminous arcs and in some cases even complete Einstein rings. Although strong lensing is a rare effect, it is possible to be detected and studied individually for each case. Weak lensing, on the other hand, occurs when the center of the lens is further away from the observer's line of sight, i.e. $\theta > \theta_E$. Thus the images are weakly magnified or have small distortions. In contrast to strong lensing, weak lensing happens to be very common. Every line of sight is affected by weak lensing at some level hence this effect is detectable through statistical investigations of numerous objects. 
+
+\subsubsection{Strong Lensing}
+As pointed out in the previous section, the lens equation (equation \ref{eq:lens_equation}) can have multiple solutions. Moreover, when the ``thin lens approximation'' is valid, the surface mass density of the lens, i.e. the projected mass of the lens on the lens plane, determines the severity of the gravitational lensing case. Accordingly, one can introduce the constant \emph{critical surface mass density} $\Sigma_{\mathrm{crit}}$ such that for every $\theta$ in the lens equation \ref{eq:lens_equation}, we have $\beta = 0$.
+
+\begin{eqnarray}
+\label{eq:Sigma_crit}
+ \Sigma_c &=& \frac{c^2}{4 \pi G}\frac{D_{os}}{D_{ol} D_{ls}}.
+\end{eqnarray}
+
+In cases where $\Sigma > \Sigma_{\mathrm{crit}}$, multiple images from the background source are produced. Exceeding the critical surface mass density may happen only for a part of a specific foreground galaxy or galaxy cluster, the solid angle of which is then called the \emph{strong lensing cross section}. 
+
+On the other hand, the magnification of the image due to the presence of the lens which was defined by equation \ref{eq:mu_domegas}, can also be expressed with the following relation 
+
+ \begin{eqnarray}
+ \label{eq:mu_kappa_gamma}
+ \mu = \frac{1}{(1 - \kappa)^2 - |\vec{\gamma}|^2}
+ \end{eqnarray}
+
+ which is obtained by substituting the determinant of the Jacobian matrix for the lens equation. In this form, there are two quantities upon which the magnification is dependent, \emph{convergence} $\kappa$ and \emph{shear} vector $\vec{\gamma}$. Convergence, which describes the local isotropic magnification of the source, is a scalar quantity and is defined as the surface mass density of the lens in the unit of the critical surface density as below
+
+ \begin{eqnarray}
+ \label{eq:convergence}
+ \kappa &\equiv& \frac{\Sigma}{\Sigma_{\mathrm{crit}}}
+ \end{eqnarray}
+
+ Shear is the measurement of the distortion of the source image and is quantified along each position component on the lens plane, thus a vector. The magnification for point sources is a tensor, only dependent on $\kappa$ and $\vec{\gamma}$, however, for an extended source it is more complicated, depending on the internal surface brightness distribution of the source.
+
+\begin{SCfigure}
+  \centering
+  \label{fig:shear_convergence}
+  \includegraphics[width=0.3\columnwidth]{figs/shear_convergence}
+  \caption{from Wikipedia} %https://en.wikipedia.org/wiki/Gravitational_lensing_formalism
+\end{SCfigure}
+
+   \subsubsection{Strong Lensing Regime}
+Strong lensing cases are studied within sub--regimes differing by the angular separation of multiple images produced by each. The angular separation of gravitational lens systems producing multiple images is typically of the order of the Einstein radius of the lens $\theta_E$. Accordingly, the terminology used for various strong lensing separations is
+
+\begin{itemize} 
+\item \emph{Macrolensing} refers to cases with typical angular separations, Einstein radii, of the order of \emph{arcseconds}. Macrolensing can be thought as the combined effect of the dark and luminous matter of an isolated galaxy as well as the effect of galaxy clusters or multiple galaxies along the line of sight. 
+\item \emph{Millilensing} (sometimes called \emph{mesolensing}) effects, may be produced by satellite galaxies or their dark counterparts, dark matter subhalos, as well as small--scale objects such as intermediate--mass black holes (IMBHs), with typical multiple image separations in the order of \emph{milliarcseconds}. Therefore, lensing effects in this regime potentially address one of the small--scale issues of the CDM theory, the so--called "missing satellites problem" which is mainly the subject of chapter \ref{chap:missing_satellite_problem}. However, the compound effects due to this phenomenon could be in a much larger regime, depending on the mass function and spatial distribution of these substructures \citet{Treu10}.
+\item \emph{Microlensing} refers to Einstein radii of solar--mass lenses, i.e. the order of \emph{microarcseconds}. Unlike macrolensing and millilensing, microlensing is a transient effect such that it is observable through monitoring a source for a period of time and recording its light curve. The apparent brightness of the source varies over time as the alignment of the lens system changes due to the moving lens. This type of gravitational lensing is not considered in the present study.
+\end{itemize}
+
+Following the same convention, strong gravitational lensing cases with smaller angular separations are referred to as nanolensing ($\theta_E \sim 10^{-9}$ arcseconds), picolensing ($\theta_E \sim 10^{-12}$ arcseconds), femtolensing ($\theta_E \sim 10^{-15}$ arcseconds), etc. However, the terms above are what I mainly use in this thesis.
+
+ \subsubsection{Astrometric Perturbation}
+ The proximity of the projected image of a foreground massive object to a background source has effects on various angular scales. Among many, one is a change in the apparent position of the source. This effect which is usually accompanied by magnification or distortion effects is called the \emph{astrometric effect}. Astrometric effects are, therefore, detectable mostly in dynamic cases, such as microlensing cases, where the observer can actually follow the differences in the relative positions in the system. One of these cases stems from the presence of substructures in the main lens such that where the deflector consists of a parent halo with a distribution of subhalos inside. 
+ 
+  When it comes to the astrometric perturbation due to the substructure inside a halo, the macroimage gets shifted from its original position, under the influence of the subhalo. This effect is mostly sensitive to intermediate and high mass substructures \citet{moustakas09} and in clearly visible in the results of the present work (see figure \hyperref[fig:astrometric_perturbation]{2.3}).
+
+ \begin{figure}
+\label{fig:astrometric_perturbation}
+\centering
+\includegraphics[width=1.0\textwidth]{figs/astrometric_perturbation}
+\caption {Astrometric perturbations. a) One of the multiple sightlines towards a distant light source passes through a dark subhalo. b) The images of the macro--lensed source are observed at the positions of the gray source symbols. Modeling of the lens system with a smooth lens potential predicts the position of the upper image at the white source symbol. The subhalo close to the sightline of the image causes a deflection on the order of a few tens of milliarcseconds. (Figure and caption adopted from \citet{zackrisson09})}
+ \end{figure}
+ 
+ \subsubsection{Time Delay}
+ Each macroimage follows a different path to reach the observer, i.e. is subject to a different time delay. This time delay consists of two independent components; the geometrical and the gravitational component. The geometrical term comes from the difference in the light path length for each image. The gravitational component, also known as the \emph{Shapiro} effect, is a relativistic effect of retardation in strong gravitational fields. However, different time delays of various images cannot be observed if the source is not intrinsically variable, since this effect is manifested in the phase difference of the light curves of various images. When it comes to subhalo hunting, the perturbation to the time delays between macroimages predicted by a smooth lens model serves as an evidence for the presence of substructures within the main lens (see figure \hyperref[fig:time_delay]{2.4}). As \citet{Moustakas+2009} argue, such an effect is only sensitive to subhalos at the high--mass end of the mass function.
+ 
+ \begin{figure}[h]
+ \label{fig:time_delay}
+ \centering
+ \includegraphics[width=0.5\textwidth]{figs/time_delay}
+ \caption{A galaxy with a dark matter halo produces distinct macroimages of a background light source. If this source dis-- plays intrinsic variability, observable time delays between the different macroimages may occur. If one of the macroimages experiences further small--scale image splitting due to a sub-- halo along the line of sight, a light echo may be observable in the affected macroimage. This may serve as a signature of millilensing in cases where the small--scale images blend into one due to insufficient angular resolution of the observations. (Figure and caption adopted from \cite{zackrisson09})}
+ \end{figure}
+ 
+ Time delay is the only dimensional observable among gravitational lensing observables reflecting the fact that it does change with the length scale of the lensing setup. Given two lensing setups merely differing in angular--diameter distances, the only variable which breaks the degeneracy of the observables is time delays of various images.
+ 
+ \subsubsection{Flux Ratio Anomalies}
+ \label{subsec:Flux Ratio Anomalies}
+Gravitational lensing is a propagation phenomenon, thus it conserves the number of photons. On the other hand, the gravitational deflection influences the cross section of the light bundle differentially. Consequently, in order to conserve the flux, the area of the image(s) of the source changes. This leads to different magnifications for different macroimages, as explained in equation \ref{eq:mu_domegas}. However, mere determination of the flux of a single image does not provide any information if the intrinsic flux of the source is unknown. The observable quantities, are rather the flux ratio and positions of two separate macroimages of a single source.
 
 %----------------------------------------------------------------------------------------
 
