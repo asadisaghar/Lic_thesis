@@ -74,7 +74,8 @@
 \normalfont \normalsize 
 %\textsc{Dark Cosmology Center\\Copenhagen - Denmark} \\ [25pt] % Your university, school and/or department name(s)
 \horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
-\huge  Gravitational lensing and radio interferometers probe sub-galactic dark matter structure\\
+%\huge  Gravitational lensing and radio interferometers probe sub-galactic dark matter structure\\
+\huge  Probing dark matter substructure with gravitational lensing and radio interferometry\\
 \large (story of my life) % The assignment title
 \horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
 }
@@ -195,16 +196,33 @@ MOND was first introduced to solve the discrepancy with the flat rotation curves
 %----------------------------------------------------------------------------------------
 
 \newpage
-\section{$\Lambda$CDM model; strengths and challenges}
-Dark matter seems to be dominating the matter content of our Universe. Our understanding of DM is particles interacting only through gravity. Therefore, the simplest way to perform cosmological N--body simulations is to run them with pure dark matter. While DM contribution in the mass budget of the Universe is so much more than the baryonic matter that a pure DM simulations hardly counts as a real simplification, this approach simplifies the problem by far! As much as this happened to be a good solution for getting a handle on how the Universe works on large--scale, we keep facing systematic inconsistencies when it comes to small scales structure. The CDM--based cosmological simulations robustly predict the cosmic structure formation which does not seem to need any baryonic matter inclusion. We tend to assume that ``mass follows light'' therefore galaxies are considered as tracers of dark matter halos. Besides, since dark matter has --yet-- remained unobserved, this is a practical assumption to test our hypotheses. Turns out that the observed cosmic web and filaments are in good agreement with predictions from CDM--only simulations. However, to test the small--scale predictions, one needs to make detailed comparisons between maps of galaxies with certain characteristics and corresponding halos. There are certain aspects to this comparison, from which I will mention those that seem to be fundamentally troublesome.
-\begin{enumerate}
-\item Abundance matching (The missing--satellites problem)
-\item Central slope (The core--cusp problem)
-\item Normalization (The too--big--to--fail problem)
-\item Spatial distribution (The disk of satellites)
-\end{enumerate}
+%\section{Standars model of cosmology}
+%  \subsection{Dark energy or the cosmological constant $\Lambda$}
+%    \subsubsection{Expansion of the Universe}
+%    \subsubsection{The Hubble parameter}
+%    \subsubsection{The cosmic acceleration}
+%  \subsection{Dark matter}
+%    \subsubsection{Inflation}
+%    \subsubsection{Structure formation lead by CDM}
+%    \subsubsection{CDM halos}
+%      \paragraph{subhalos}
+%      \paragraph{Mass function}
+%      \paragraph{Density profile}
+%  \subsection{Baryonic matter}
+  
+\section{The standard model of cosmology; strengths and challenges}
+Dark matter seems to be dominating the matter content of our Universe. Our understanding of DM is as particles interacting mainly through gravity. Therefore, the structure formation is thought to be dominated by the behaviour of dark matter at large scale. The Baryonic matter is assumed to be only dominating the observable Universe at scales of galaxies and below where the energy content of hydrodynamical effects such as supernovae and black hole jets are significant enought to alter their environment. The most common way to perform cosmological N--body simulations has been to simulate a pure dark matter Universe without including the complex physics of the baryonic matter. Even though this approach has been proven to provide a consistent picture of our Universe at the large--scale, it keeps facing systematic inconsistencies when at scales of galaxies and below. The physics of baryonic processes such as active galactic nuclei, super novae, and galactic and stellar wind feedback are currectly active fields of research in astrophysics and there is no consensus on their implementation within cosmological simulations. CDM--only cosmological simulations robustly model the cosmic structure formation as observations suggest without including baryonic effects. The key assumption in matching observational data of galaxies and galaxy clusters in the Universe to simulations of a CDM--only universe is that ``mass follows light''. This implies that galaxies and galaxy clusters could be used as traces of dark matter, and the model hypothesis tested against observations. However, to test the small--scale predictions, one needs to make detailed comparisons between maps of galaxies with certain characteristics and corresponding halos. 
+
+In this section, I first briefly introduce the current state of the standard model of cosmology, the model parameters, assumptions and initial conditions in  section \ref{subsec:Model_parameters}. Then, I proceed to mention the triumphs of the $\Lambda$CDM model in describing and predicting observational data, and the current evidence for the model as opposed to the most important competing cosmological/dark matter models (section \ref{subsec:LCDM_triumphs}). In the of this chapter, I detail the aspects of $\Lambda$CDM model that has proven fundamentally challenging against the latest observational data (section \ref{subsec:LCDM_challenges}).
+%\begin{enumerate}
+%\item Abundance matching (The missing--satellites problem)
+%\item Central slope (The core--cusp problem)
+%\item Normalization (The too--big--to--fail problem)
+%\item Spatial distribution (The disk of satellites)
+%\end{enumerate}
 
 \subsection{Model parameters}
+\label{subsec:Model_parameters}
 The standar model of cosmology is based on a flat Universe with the Robertson--Walker geometry, dynamics of which is governed by Einstein's general relativity. Therefore, the Friedmann equation has the form:
 \begin{eqnarray}
 \Sigma_i \Omega_i + \Omega_\Lambda - 1 = \frac{k}{R^2H^2}
@@ -238,6 +256,7 @@ from which the parameters below are derived:
 %\end{enumerate}
 
 \subsection{Triumphs of the model, or what works}
+\label{subsec:LCDM_triumphs}
 \begin{itemize}
 \item CMB (3)
 \item The expansion history of the Universe using SNeIa (4)
@@ -246,6 +265,7 @@ from which the parameters below are derived:
 \end{itemize}
 
 \subsection{Challenges of the model, or what is bugging us!}
+\label{subsec:LCDM_challenges}
 One thing that most triumphs of the $\Lambda$CDM share with each other is the scale they apply! The CDM model simulations undoubyedly match observational data at scales down to galaxy clusters. However, at galaxy and sub--galactic scales both model predictions and observational data are followed by larger uncertainties and do not seem to give consistent results. There are three main methods using which astronomers attack the small--scale challenges of the CDM model regarding dark matter subhalos are 
 \begin{itemize}
 \item Dynamics in the galaxy; disk, globular clusters, streams
@@ -254,7 +274,7 @@ One thing that most triumphs of the $\Lambda$CDM share with each other is the sc
 \end{itemize}
 Considering baryonic astrophysical processes, star formation, enrichment, feedback, and environmental effects can potentially change the status of these challenge significantly. However, currently different baryonic physics codes predic different evolutionary detailes for galaxies give the same initial conditions, indicating that we yet have to learn more about the details of these processes. While structure formation at large scales is dominated by dark matter, this is not the case for small scales and this is why the CDM model fails to reproduce the observabke Universe at scales $\leq 10^{12} M_\odot$. Even though the transition point between the \emph{large--} and \emph{small--} scale is not yet clear in this context, the main principle is that bryonic processes affect the structure formation and the abundance matching at galaxy and sub--galactic scales need to take stellar and geseous components into account as dark matter is no longer the leading contributor.
 
-\subsubsection{Abundance matching}
+\subsubsection{Abundance matching (The missing--satellite problem)}
 Abundance matching is the method that matches the simulated halo mass function to the obsereved mass function. This assumes that the galaxy mass is a monotonic function of the host haloi mass, implying that all subhalos above a cetrain mass will form a galaxy inside, while it is more likely that the halo mass is altered by the formation of a galaxy inside the halo and the assumption that each galaxy form inside its own halo breaks down. 
 
 The first and simplest test for small--scale CDM--based simulations is comparing low--mass end of predicted dark matter mass function with the faint--end of luminosity function of observed galaxies. Connecting the dark halo mass function and dwarf galaxy luminosity function needs a linking assumption which lies at the heart of abundance--matching techniques; \emph{Galactic luminosity is a monotonic function of halo mass}. (Klypin et al. 1999, ?) show that the CDM predictions already fail at this test. Of course, this is an area where observations suffer from different kinds of biases. Therefore, the first potential solution to the mismatch is that the source of discrepancy is practical rather than physical. However, despite the corrections based on detection thresholds and incompleteness, beside further detections of 12 (?) ultrafaint dSphs of the MW in (2005 ?), the mismatch is still persisting within more than an order of magnitude. The more physical explanation could be due to baryonic physics. This is a much more complicated solution to investigate and several mechanisms has been suggested in relation to this solution all of which suppress star fomarion in low--mass CDM subhalos. Some of these mechanisms are following: ``inefficient cooling of atomic and molecular gas in halos of virial temperature $T_{vir} \leq 10^4$ K ($M_{vir} \leq 10^8 M_\odot$), loss of baryons to tidal and ram--pressure stripping and/or to photo--evaporation induced by cosmic reionization (Me: Doeen't Bullock et al. 2010 argue that there is more DM loss in tidal stripping processes than there is baryon loss?), and inefficient accretion of baryons due to supersonic relative velocity between baryons and dark matter shortly after recombination.'' Whatever the particular mechanism is, the star formation efficiency needs to be less than ``normal'' in low--mass CDM halos.
@@ -274,7 +294,7 @@ DISCUSSION ro bekhoon!(Penarrubia et al. 2012)
 
 In 2010, Bullock et al. wrote a paper on a potentially large population of low--luminosity dwarf galaxies within the halo of the MW. They argue that in case we impose a halo low--mass limit to the galaxy formation, only a handful of such dwarfs are expected in the halo of the galaxy. On the other hand, in the absence of such threshold in galaxy formation, the presence of these dwarfs, which are only different from the known ultrafaint dwarf galaxies is their slightly less--massive DM halos, implies that our common mass scale for MW dwarfs is merely an artifact of selection bias. 
  
-\subsubsection{Central slope}
+\subsubsection{Central slope (The core--cusp problem)}
 One of the long--standing systematic issues of CDM halos is their density profiles. Until recently (?), the main consensus was that the ``universal'' profile describing simulated dark matter halos was a two--parameter density profile, suggested by NFW 1997, where the central logarithmic density slope changes as $1/r$. The logarithmic slope of this profile gets less steep (?) with increasing $r$ and can be described as $\rho(r) \propto r^{-3}$ around the virial radius. Beside the halo mass, $M_{200}$, the second parameter is the \emph{concentration parameter} of the halo, $c \equiv r_{200}/r_s$, where $r_{200}$ is the virial radius and $r_s$ indicates the \emph{scale radius}, i.e. where the logarithmic slope is $-2$. The concentration parameter describes how the logarithmic slope changes. However, soon the dynamical measurements of stellar and gas content in the central kpc of dwarf galaxies (?) showed that these measurements favor a constant--density for these regions. While further, high--resolution measurements of this kind from various low--surface brightness dwarf galaxies and dark matter--dominated galactic rotation curves support the cored profiles, the higher resolution CDM simulations also tend to indicate more consistency with a three--parameter density profile rather than the traditional NFW ones. The extra parameter describing dark halo density profiles is the shape(?) index, $\alpha$, which gives the density profile more flexibility in shape (chetori tosif konam ino??). However, still fails to describe observed dark matter halos inhabiting baryonic matter. 
 
 On the other hand, even though the density profiles of simulated halos are universal, i.e. independent of the mass scale, the high--mass end of the halo mass function and luminous part of galaxy luminosity function do not indicate any discrepancies regarding the central DM slope. The reason is that there exist several independent methods to derive the luminous and dark matter content of luminous/massive galaxies in their central kpcs. Resolved stellar and gas dynamical measurements probe the baryonic component, and the X--ray temperature maps plus weak and strong gravitational lensing measurements can trace the mass in these galaxies. Therefore, it is easier to decide whether it is the dark matter or the stellar mass dominating the central kpcs of the galaxy. However, the challenging part is subtracting the dynamical mass contribution from stars and deriving the dark matter--only density profile, which needs precise modeling of stellar populations and mass function in the galaxy. ``Recent estimates of such combined measurements suggest that the \emph{total} density profiles of relaxed clusters are consistent with cusped CDM halos, while the DM--only contribution is significantly shallower near the center, in cores of $\sim 10$ kpc--sized.''
@@ -300,14 +320,14 @@ Another option for a three--parameter profile is the Einasto profile, inspired b
 \end{equation}
 where the \emph{Einasto index} $\alpha_\mathrm{Ein} = \frac{1}{n}$, and therefore the logarithmic slope becomes $\gamma = -\frac{b}{n}(\frac{r}{r_s})^\frac{1}{n}$. Best--fit density profiles to simulated dark matter halos of a variety of masses in the Aquarius project show inner slopes shallower than the original NFW \citep{Navarro+2010}. These halos are not self--similar, i.e. Einasto index changes with halo mass. \citet{Navarro+2004} find the Einasto index for halos in the mass range between dwarves and clusters to be 0.12--0.22, with an average value of 0.17. According to \citet{Hayashiandwhite2008, Gao+2008}, $\alpha_\mathrm{Ein}$ tends to increase with mass and redshift in halos of the Millennium simulation. From the gravitational lensing point of view, Einasto profiles are more demanding to work with as one cannot derive an analytical surface mass density as a function of $\alpha_\mathrm{Ein}$. Hence the lens equation needs to be solved numerically for each case.
 
-\begin{wrapfigure}{R}{0.6\textwidth}
+\begin{SCfigure}
 \centering
 \label{fig:profiles}
 \includegraphics[width=0.5\textwidth]{figs/profiles}
 \caption{Four different inner density profiles of dark matter halos; Singular isothermal sphere (SIS) shown in black, the pseudo-Jaffe profile in green, the standard CDM halo profile suggested by NFW in blue, and the three--parameter Einasto profile with different Einasto indices in shades of brown. All profiles are normalized to the virial subhalo mass $M_\mathrm{vir} = 10^8 M_\odot$ at $z = 0.5$.}
-\end{wrapfigure}
+\end{SCfigure}
 
-\subsection{Classical CDM subhalos (NFW)}
+\subsubsection*{Classical CDM subhalos (NFW)}
 \label{NFW}
 At $z=0$, the CDM scenario predicts the existence of dark matter halos with masses ranging from $\sim 10^{15}\ M_\odot$ down to the cutoff in the density fluctuation spectrum, which is set by the detailed properties of the CDM particles. For many types of WIMPs, this cut--off lies somewhere in the range $\sim 10^{-11}$--$10^{-3} M_\odot$ \cite{Bringmann}. However, alternative models involving superweakly interacting particles (superWIMPS) and MeV mass dark matter may place the cutoff as high as $\sim 10^3$--$10^8 \ M_\odot$ \cite{Hisano et al.,Hooper et al.}. 
 
@@ -333,7 +353,7 @@ To demonstrate that standard CDM subhalos do not provide a significant ``backgro
 
 To derive the $R_\mathrm{S}$ values of our NFW subhalo profiles, we adopt the mass--dependent concentration parameters $c=R_\mathrm{vir}/R_\mathrm{S}$ from either \cite{Bullock+2001?} or \cite{Maccio+1998?}, where $R_\mathrm{vir}$ is the virial radius of the halo. Since both of these recipes predict higher concentration parameters for low--mass halos, and since more centrally concentrated profiles (i.e. profiles with higher $c$) are more efficient in producing millilensing effects, we calculate the subhalo concentration parameters based on their current masses rather than the masses they had prior to becoming subhalos. Since nearly all subhalos have lost considerable amounts of material \cite[e.g.][]{Vale-Ostriker}, this also results in overly optimistic millilensing properties. 
 
-\subsubsection*{Three--parameter alternative CDM halo profile (Einasto)}
+\subsubsection*{Three--parameter halo profiles (gNFW and Einasto)}
 The more general variation of the NFW profile, gNFW relaxes the central logarithmic slope $\gamma$
 \begin{equation}
 \rho(r) = \frac{\rho_s}{(r / r_s)^\gamma(a + r/r_s)^{3-\gamma}},
@@ -357,14 +377,14 @@ where $\rho_0$ is a characteristic halo density, $r_s$ is a scale radius (the ra
 %\subsubsection*{Maximum circular velocity $V_{max}$ and that of the infall epoch $V_{infall}$}
 %\subsubsection*{Mass accretion history (MAH)}
 
-\subsubsection{Normalization}
+\subsubsection{Normalization (The too--big--to--fail problem)}
 Recently, (Boylan--Kolchin, Bullock and Kaplinghat, 2011) pointed out another discrepancy in the structural properties of DM subhalos and dSphs in the local group. While one would naively expect that the most luminous dwarf galaxies correspond to the most massive subhalos, high--resolution cosmological simulations persistently produce massive subhalos ($M_{vir} \geq 10^{10} M_\odot$) which are too concentrated in their central kpc to host any of the satellite galaxies around the Milky Way or Andromeda. (\cite{Boylan--Kolchin11}). The combination of measured effective (half--light) radius $R_e$ and velocity dispersion $\sigma$ of a dSph with simple dynamical arguments (chi daghighan? + ref.) can constrain the total mass of the dwarf within $R_e$. The Upper mass limits derived for the 8 most massive satellites of the MW, (excluding the Magellanic clouds), are systematically smaller than those of the 10 most massive subhalos in high--resolution cosmological simulations, within the same radii (Aquarius/Millennium/LV2 in this case?). Therefore, the most massive subhalos cannot host the most luminous dSphs of the MW. Consequently, unless MW halo is a very peculiar system, the most massive subhalos of the galaxy remain dark while the most luminous dSphs reside in less--massive dark matter halos. One naive explanation of this discrepancy could be that the halo of the MW is less massive than previously estimated and therefore, the local massive dSphs should be compared to simulated subhalos of a less--massive halo. However, ``the simplest formulation of the TBTF problem is as following: the mean densities inferred within the central few--hundred pc of the most luminous dSphs are systematically smaller than predicted in CDM simulation.'' Therefore, the problem is pointing to a more fundamental difference in simulated CDM halos and dSphs than the uncertainty in the MW halo mass.
 
 Another proposed solution to the problem is that one should be cautious about the infall redshift of the halos when make an analogous between the luminosity function of dSphs and the mass function of their inhabit dark halos. READ MORE!
 
 While the issue with the absence of density cusps in the center of faint galaxies, and the abundence of faint galaxies in the local Universe could be resolved by increasing the particle resolution of cosmological simuations and better adoption of baryonic feedback mechanisms, the too--big--to--fail (TBTF) issue is harder to explain. 
 
-\subsubsection{Spatial distribution}
+\subsubsection{Spatial distribution (The disk of satellites)}
 
 One major concern is the fact all these problems with the CDM paradigm arise on the same scale. (See ({Penarrubia et al. 2012}))
 
@@ -791,16 +811,24 @@ While the CLEANing process seems complete within the minor cycle, the major cycl
 %----------------------------------------------------------------------------------------
 
 \newpage
-\section{Project summary}
-\subsubsection*{The ``too--big--to--fail'' problem}
-My project addresses two main challenges of the standard cold dark matter (CDM) model on subgalactic scale. The two problems are usually referred to as \emph{the missing satellites problem} and \emph{the too--big--to--fail problem}. 
-\paragraph{The missing satellites problem:}
-The number count of satellite galaxies in the local Universe vastly differs from that of subhalos predicted by CDM simulations. Based on the standard structure formation recipe, the smooth component of massive halos are built up from tidal stripping material from smaller ones. However, as this process occurs over several billion years, many small halos are expected to temporarily survive in the form of subhalos which make up $\sim 10\%$ of the mass of a galaxy--sized halo at z=0. (\cite{Gao11, Maciejewski11}) On the other hand, dwarf galaxies are expected to form in low--mass field halos, which would result in a large expected number of satellite galaxies within the dark matter halo of the central galaxy. It is commonly argued that this discrepancy could be explained by including feedback processes suppressing star formation in low--mass halos (\cite{Maccio10, Font11}) meaning that a large population of substructures with very high mass--to--light ratios in the halos of galaxies has remained undiscovered.
-\paragraph{The too--big--to--fail problem:}
-One naively expects to find the most luminous dwarf galaxies in the most massive subhalos and high--resolution cosmological simulations persistently produce massive subhalos ($M_{vir} \geq 10^{10} M_\odot$) which are too concentrated in their central kpc to host any of the satellite galaxies around the Milky Way or Andromeda. (\cite{Boylan--Kolchin11}). Some models suggest that these satellite galaxies correspond to more massive subhalos at higher redshifts. Therefore, the discovery of very massive substructures in the halos of galaxies at higher redshifts could help resolving this concern.
+\section{Summary of included papers}
+  \subsection*{Paper I}
+Using simulations of strongly lensed quasar jets, we argue that very dense forms of halo substructure (intermediate-mass black holes and ultracompact minihalos) within the main lens may reveal itself through small-scale morphological distortions in the macroimages. Such distortions can be distinguished from intrinsic source features by obtaining data at multiple epochs. By mapping a handful of macrolensed jet systems at submilliarcsecond resolution, we argue that $\sim 10^3$--$10^6\ M_\odot$ intermediate-mass black holes can be detected or ruled out if they contribute a surface mass fraction of $f_\mathrm{IMBH}\gtrsim 0.01$ (depending on the  VLBI array and frequency used) to the dark matter of the main lens at the macroimage positions. Ultracompact minihalos in the $\sim 10^6$--$10^8\ M_\odot$ mass range may similarily produce detectable small-scale effects if such objects comprise $f_\mathrm{UCMH}\gtrsim 0.1$ of the dark matter. While standard CDM subhalos at masses of $\gtrsim 10^8\ M_\odot$ can in principle also produce milliarcsecond-scale distortions, provided that such objects are projected sufficiently close to the macroimages, the probability of this is too small ($P_\mathrm{milli}\sim 10^{-4}$) for sources of the type we consider.
 
-\paragraph{Role of gravitational lensing:}
-The fact that gravity treats dark and luminous mass the same gives gravitational lensing a unique opportunity to provide an independent test for the presence of halo substructures (\cite{Zackrisson09}). Strong lensing by a foreground object can produce multiple images of a background light source. Measurements on strong lensing systems provide us with information about mass distribution of both the lens and the source. All different types of massive objects such as galaxies or galaxy clusters can serve as lenses and bend the light from their background. However, in order to study the sub--galactic structure of dark matter we need to look at a particular type of lensing systems which involve a single lens galaxy only. The foreground galaxy produces multiple images of the background light source, which are $\sim1$ arcsec apart. One way to use such systems to probe dark matter on sub--galactic scales is to study the small--scale distortions that halo substructure is expected to introduce in the surface brightness distributions of extended macroimages. 
+  \subsection*{Paper II}
+We use simulations of strong galaxy--galaxy lensing systems with ALMA band 7, 8, and 9 in search of completely dark or high mass--to--light ratio subhalos through small--scale flux density perturbations in a single lensed image. We aim for lens perturbers of $M_\mathrm{sub} = 10^5 - 10^{10} M_\odot$ in a Milky Way--sized halo at $z\sim0.5$, the relevant mass range for dark subhalos. The lensed source, i.e. the sub--mm galaxy, is at $z\sim2.0$, a typical redshift for lensed SMGs. The analysis (comparison between the smooth and perturbed lens model) is done on simulated complex visibilities that are weighted differently so put emphasis on different angular scales of the flux density of the source. 
+
+We show that given a single perturber within the lens system is aligned with one of the images with $\mu \approx 10$, and the presence of at least one more magnified image in the system, 1) SIS perturbers more massive than $M_\mathrm{vir} \approx 3\times 10^7 M_\odot$, $M_\mathrm{vir} \approx 5\times 10^7 M_\odot$ and $M_\mathrm{vir} \approx 8\times 10^7 M_\odot$ will be detectable with 2hr observations using ALMA band 7, band 8, and band 9, respectively. More realistic CDM density profiles (NFW and Einasto), however, are only detectable when they are more massive than a few times $10^9 M_\odot$, placing them outside the interesting mass range of dark matter substructure. 2) While observations of this kind could in principle distinguish between a compact, singular isothermal, perturber and a halo with a shallower central density profile, as described by NFW or Einasto, this method cannot break the degeneracy between the mass and the shape parameter of the perturber.
+
+%\subsubsection*{The ``too--big--to--fail'' problem}
+%My project addresses two main challenges of the standard cold dark matter (CDM) model on subgalactic scale. The two problems are usually referred to as \emph{the missing satellites problem} and \emph{the too--big--to--fail problem}. 
+%\paragraph{The missing satellites problem:}
+%The number count of satellite galaxies in the local Universe vastly differs from that of subhalos predicted by CDM simulations. Based on the standard structure formation recipe, the smooth component of massive halos are built up from tidal stripping material from smaller ones. However, as this process occurs over several billion years, many small halos are expected to temporarily survive in the form of subhalos which make up $\sim 10\%$ of the mass of a galaxy--sized halo at z=0. (\cite{Gao11, Maciejewski11}) On the other hand, dwarf galaxies are expected to form in low--mass field halos, which would result in a large expected number of satellite galaxies within the dark matter halo of the central galaxy. It is commonly argued that this discrepancy could be explained by including feedback processes suppressing star formation in low--mass halos (\cite{Maccio10, Font11}) meaning that a large population of substructures with very high mass--to--light ratios in the halos of galaxies has remained undiscovered.
+%\paragraph{The too--big--to--fail problem:}
+%One naively expects to find the most luminous dwarf galaxies in the most massive subhalos and high--resolution cosmological simulations persistently produce massive subhalos ($M_{vir} \geq 10^{10} M_\odot$) which are too concentrated in their central kpc to host any of the satellite galaxies around the Milky Way or Andromeda. (\cite{Boylan--Kolchin11}). Some models suggest that these satellite galaxies correspond to more massive subhalos at higher redshifts. Therefore, the discovery of very massive substructures in the halos of galaxies at higher redshifts could help resolving this concern.
+
+%\paragraph{Role of gravitational lensing:}
+%The fact that gravity treats dark and luminous mass the same gives gravitational lensing a unique opportunity to provide an independent test for the presence of halo substructures (\cite{Zackrisson09}). Strong lensing by a foreground object can produce multiple images of a background light source. Measurements on strong lensing systems provide us with information about mass distribution of both the lens and the source. All different types of massive objects such as galaxies or galaxy clusters can serve as lenses and bend the light from their background. However, in order to study the sub--galactic structure of dark matter we need to look at a particular type of lensing systems which involve a single lens galaxy only. The foreground galaxy produces multiple images of the background light source, which are $\sim1$ arcsec apart. One way to use such systems to probe dark matter on sub--galactic scales is to study the small--scale distortions that halo substructure is expected to introduce in the surface brightness distributions of extended macroimages. 
 
 %----------------------------------------------------------------------------------------
 
