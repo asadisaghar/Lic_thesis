@@ -213,11 +213,13 @@ MOND was first introduced to solve the discrepancy with the flat rotation curves
 \section{The standard model of cosmology; strengths and challenges}
 Dark matter seems to be dominating the matter content of our Universe. Our understanding of DM is as particles interacting mainly through gravity. Therefore, the structure formation is thought to be dominated by the behaviour of dark matter at large scale. The Baryonic matter is assumed to be only dominating the observable Universe at scales of galaxies and below where the energy content of hydrodynamical effects such as supernovae and black hole jets are significant enought to alter their environment. The most common way to perform cosmological N--body simulations has been to simulate a pure dark matter Universe without including the complex physics of the baryonic matter. Even though this approach has been proven to provide a consistent picture of our Universe at the large--scale, it keeps facing systematic inconsistencies when at scales of galaxies and below. The physics of baryonic processes such as active galactic nuclei, super novae, and galactic and stellar wind feedback are currectly active fields of research in astrophysics and there is no consensus on their implementation within cosmological simulations. CDM--only cosmological simulations robustly model the cosmic structure formation as observations suggest without including baryonic effects. The key assumption in matching observational data of galaxies and galaxy clusters in the Universe to simulations of a CDM--only universe is that ``mass follows light''. This implies that galaxies and galaxy clusters could be used as traces of dark matter, and the model hypothesis tested against observations. However, to test the small--scale predictions, one needs to make detailed comparisons between maps of galaxies with certain characteristics and corresponding halos. 
 
-In this section, I first briefly introduce the current state of the standard model of cosmology, the model parameters, assumptions and initial conditions in  section \ref{subsec:Model_parameters}. Then, I proceed to mention the triumphs of the $\Lambda$CDM model in describing and predicting observational data, and the current evidence for the model as opposed to the most important competing cosmological/dark matter models (section \ref{subsec:LCDM_triumphs}). In the of this chapter, I detail the aspects of $\Lambda$CDM model that has proven fundamentally challenging against the latest observational data (section \ref{subsec:LCDM_challenges}).
+In this section, I first briefly introduce the current state of the standard model of cosmology, the model parameters, assumptions and initial conditions in  section \ref{subsec:Model_parameters}. Then, I detail the aspects of $\Lambda$CDM model that has proven fundamentally challenging against the latest observational data (section \ref{subsec:LCDM_challenges}).
+
+%In this section, I first briefly introduce the current state of the standard model of cosmology, the model parameters, assumptions and initial conditions in  section \ref{subsec:Model_parameters}. Then, I proceed to mention the triumphs of the $\Lambda$CDM model in describing and predicting observational data, and the current evidence for the model as opposed to the most important competing cosmological/dark matter models (section \ref{subsec:LCDM_triumphs}). In the of this chapter, I detail the aspects of $\Lambda$CDM model that has proven fundamentally challenging against the latest observational data (section \ref{subsec:LCDM_challenges}).
 
 \subsection{Model parameters}
 \label{subsec:Model_parameters}
-The standard model of cosmology is based on a flat adiabatic Universe with the Robertson--Walker geometry, dynamics of which is governed by Einstein's general relativity. The parameter sets used to present the model can vary depending on the means of measurements used in each work. \citet[][]{Planck2014} reports the six cosmological parameter values in table \ref{tab:LCDM_Planck15} for the base $\Lambda$CDM model. Many more familiar parameters are derived from the base model including the age of the Universe, the density parameters of the matter (CDM + baryons), and dark energy, the cosmic reionization redshift, and the Hubble constant. Various astrophysical observations probes one or more parameter to build and complete our picture of the Universe. The combination of redshift and apparent magnitude of supernovae type Ia probes the expansion rate of the Universe \citep[][]{SNeIa}, surveys such as the Two-degree-Field Galaxy Redshift Survey (2dFGRS) \citep[][]{2dFGRS} and the Sloan Digital Sky Survey (SDSS) \citep[][]{SDSS} probe the galaxy power spectrum leading to the developement of a theory of structure formation. Measurements of the angular powerspectrum of temperature variations in the CMB \citep[COBE, WMAP, Planck][]{} provides us with the nature of initial perturbations. All in all, complimentary information from different probes enable us to test the consistency of our cosmological model and parameter measurements. 
+The standard model of cosmology is usually assumed to be a flat adiabatic Universe with Gaussian initial perturbations dynamics of which governed by Einstein's general relativity are dominated on large scales with an invariant dark energy (the cosmological constant). The parameter sets used to present the model can vary depending on the means of measurements and the priors. Among the many astrophysical and cosmological probes of the model, the provides the most constraint on all model parameters. Assuming the flatness and curvature of the Universe, the base model parameters below are consistently constrained by studying the CMB using 9 years of the WMAP \citep[][]{} and two years of the Placnk satellite \citep[][]{}. The Hubble constant $H_0$, the matter density parameter $\Omega_m$ (presented usually as the physical density $\Omega_m h^2$ where $h$ is the Hubble parameter), the baryons density parameter $\Omega_b$, the curvature fluctuation amplitude $\Delta^2_R$, the scalar spectral index of density fluctuations $n_s$, and the reionization optical depth $\tau_\mathrm{re}$. \citet[][]{Planck2014} reports the six cosmological parameter values in table \ref{tab:LCDM_Planck15} for the base $\Lambda$CDM model. Many more familiar parameters are derived from the base model including the age of the Universe, the density parameters of different materials int he Universe (dark matter, neutrinos, radiation), the cosmic reionization redshift, and the sum of three neutrino masses. Various astrophysical observations probes one or more parameter to build and complete our picture of the Universe. The combination of redshift and apparent magnitude of supernovae type Ia probes the expansion rate of the Universe \citep[][]{SNeIa}, surveys such as the Two-degree-Field Galaxy Redshift Survey (2dFGRS) \citep[][]{2dFGRS} and the Sloan Digital Sky Survey (SDSS) \citep[][]{SDSS} probe the galaxy power spectrum leading to the developement of a theory of structure formation. Measurements of the angular power spectrum of temperature variations in the CMB \citep[COBE, WMAP, Planck][]{} provides us with the nature of initial perturbations. The consistency of all complementary probes and measurements point at the $\Lambda$CDM cosmological model as the best description of out present data. However, while the ever--increasing parameter precisions seem to confirm the concordance model as the best choice, some astrophysical dobservations of the galaxy and sub--galactic phenomena point at systematic discrepancies which need resolving.
 
 \begin{SCtable}
 \begin{tabular}{l{c}r}
@@ -232,18 +234,18 @@ $\tau$ & 0.097 $\pm$ 0.038\\
 n$_s$ & 0.9616 $\pm$ 0.0094\\
 ln(10$^{10}$A$_s$) & 3.098 $\pm$ 0.072
 \end{tabular}
-\caption[Table caption text]{Table values taken from  \citet[][]{Planck2014}}
+\caption[Table caption text]{Table reproduced from the values presented in \citet[][]{Planck2014}}
 \end{SCtable}
 
 
-\subsection{Triumphs of the model, or what works}
-\label{subsec:LCDM_triumphs}
-\begin{itemize}
-\item CMB (3)
-\item The expansion history of the Universe using SNeIa (4)
-\item galaxy cluster data (5-8)
-\item large--scale distirbution of galaxies (9, 10)
-\end{itemize}
+%\subsection{Triumphs of the model, or what works}
+%\label{subsec:LCDM_triumphs}
+%\begin{itemize}
+%\item CMB (3)
+%\item The expansion history of the Universe using SNeIa (4)
+%\item galaxy cluster data (5-8)
+%\item large--scale distirbution of galaxies (9, 10)
+%\end{itemize}
 
 \subsection{Challenges of the model, or what is bugging us!}
 \label{subsec:LCDM_challenges}
