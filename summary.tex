@@ -12,6 +12,7 @@
 \usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
 \usepackage[english]{babel} % English language/hyphenation
 \usepackage{amsmath,amsfonts,amsthm} % Math packages
+\usepackage{bm}
 \usepackage{hyperref}
 \makeatletter
 \newcommand\urlfootnote@[1]{\footnote{\url@{#1}}}
@@ -485,7 +486,7 @@ The deflection of light is a predictable phenomenon in the framework of Newtonia
 \alpha \simeq \frac{4GM}{v^2 \xi}.
 \end{eqnarray}
 
-In the case of a light beam, where $v = c$, passing very close to the surface of the Sun, the deflection angle turns out to be $\sim$ 0.85 arcseconds. This value coincides with what was obtained by Einstein prior to the final formulation of GR \citep[][]{Einstein1911}, provided space is considered Euclidean not affected by gravity of the Sun. However, the pre-relativistic predicted deflection angle is half the predicted angle by general relativity in its fully developed form. The factor added by general relativity represents the local spatial curvature produced by the mass and was proven to be consistent with observational results in 1919 for the first time. Several groups measured the angular shift of stars projected close to the solar limb during a total eclipse \citet{Eddington+1919}. This served as the second evidence in support of GR, after perihelion precession of Mercury. Based on the calculation using the generalization of this phenomenon for two distant stars, it was generally accepted that the separated images of a star due to the gravity of another star was impossible to detect with the technology of the day. A few years later, Fritz Zwicky suggested  \citep{Zwicky1937} that the effect of an extragalactic ``nebula'', i.e. a galaxy, rather than a foreground star is big enough and should have been observed by then. Even though his calculation was too optimistic due to overestimating the masses of galaxies at that time, the idea of utilizing this phenomenon as a ``natural telescope''  remained as a curiosity until 1979 when for the first time two identical quasars ($0957+561$ A \& B) were revealed in an observation \citep{Walsh+1979}. The similarity of the spectra of the two quasars with the same redshifts, $z \sim 1.41$, and 6 arcseconds angular separation were mostly accepted to be convincing evidence for the fact that the two objects are physically associated. Furthermore, finding a galaxy at a lower redshift close to the two images lent more support to the idea that this was another case of gravitational lensing. Several cases of gravitational lensing have been found and investigated ever since.
+In the case of a light beam, where $v = c$, passing very close to the surface of the Sun, the deflection angle turns out to be $\sim$ 0.85 arcseconds. This value coincides with what was obtained by Einstein prior to the final formulation of GR \citep[][]{Einstein1911}, provided space is considered Euclidean not affected by gravity of the Sun. However, the pre--relativistic predicted deflection angle is half the predicted angle by general relativity in its fully developed form. The factor added by general relativity represents the local spatial curvature produced by the mass and was proven to be consistent with observational results in 1919 for the first time. Several groups measured the angular shift of stars projected close to the solar limb during a total eclipse \citet{Eddington+1919}. This served as the second evidence in support of GR, after perihelion precession of Mercury. Based on the calculation using the generalization of this phenomenon for two distant stars, it was generally accepted that the separated images of a star due to the gravity of another star was impossible to detect with the technology of the day. A few years later, Fritz Zwicky suggested  \citep{Zwicky1937} that the effect of an extragalactic ``nebula'', i.e. a galaxy, rather than a foreground star is big enough and should have been observed by then. Even though his calculation was too optimistic due to overestimating the masses of galaxies at that time, the idea of utilizing this phenomenon as a ``natural telescope''  remained as a curiosity until 1979 when for the first time two identical quasars ($0957+561$ A \& B) were revealed in an observation \citep{Walsh+1979}. The similarity of the spectra of the two quasars with the same redshifts, $z \sim 1.41$, and 6 arcseconds angular separation were mostly accepted to be convincing evidence for the fact that the two objects are physically associated. Furthermore, finding a galaxy at a lower redshift close to the two images lent more support to the idea that this was another case of gravitational lensing. Several cases of gravitational lensing have been found and investigated ever since.
 
 \subsection{Mathematical Description}
 Here I strat with setting up the geometrical framework for the gravitational lensing assuming a point--like lens (the same calculations for an extended lens requires integrating over the projected lens area). Another simplifying factor is the ``thin lens approximation'', implying that the impact parameter of the lens is considerably small compared to the distances in the system, thus the extension of the lens along the line of sight is ignored.
@@ -511,14 +512,12 @@ The relation between the unlensed source position, $\boldsymbol \beta$, and the 
 \boldsymbol \eta = \frac{D_s}{D_d}\boldsymbol \xi - D_{ds}\hat{\boldsymbol \alpha}(\boldsymbol \xi)
 \end{eqnarray}
 
-\begin{figure}[][t]
+\begin{figure}
  \label{fig:config}
  \centering
-%\includegraphics[width=0.5\textwidth]{figs/setup}
-% \caption{The relation between angles and distances in a gravitational lensing setup as described by the lens equation. In this schematic figure, $O$ represents the position of the observer, $S$ is the source and the lens (deflector) is reduced to its projection on a plane perpendicular to the line of sight, as assumed in the ``thin lens approximation''. (Figure adopted from \citet{narayan_lectures_97}).}
-\includegraphics[width=0.5\textwidth]{figs/Gravitational-lensing-angles}
- \caption{The relation between angles and distances in a gravitational lensing setup as described by the lens equation. In this schematic figure, $O$ represents the position of the observer, $S$ is the source and the lens (deflector) is reduced to its projection on a plane perpendicular to the line of sight, as assumed in the ``thin lens approximation''. (Figure from Wikipedia}
- \end{figure}
+ \includegraphics[width=0.5\textwidth]{figs/Gravitational-lensing-angles}
+ \caption{The relation between angles and distances in a gravitational lensing setup as described by the lens equation. In this schematic figure, $O$ represents the position of the observer, $S$ is the source and the lens (deflector) is reduced to its projection on a plane perpendicular to the line of sight, as assumed in the ``thin lens approximation''. (Figure from Schneider)}
+\end{figure}
 
 Given a certain mass distribution and a fixed $\boldsymbol \xi$, the lens equation can have more than one solutions for $\boldsymbol \theta$; each of which corresponds to an image of the source in the sky.  Although obtaining the source position $\eta$ from a given image position $\xi$ using the lens equation is straightforward, finding a general analytical solution for the position of the image(s) of a source at a given position is not. Keeping in mind that the mapping of $\xi$ to $\eta$ is non--linear. There are, however, analytical models to solve this equation for simple matter distributions on the lens plane such as point--mass, axially symmetric, and elliptical lenses.
 
@@ -544,9 +543,10 @@ where $\phi$ is a scalar function as below
 Fermat's principle states that the light ray always chooses the path which takes the least \emph{time} to pass through. Therefore, it can be used to relate the time delay between two separate images of a single source to the considered cosmology and mass distribution of the lens.
 
 
-Light deflection is a propagation phenomenon, influencing only the shape of the light bundle from the source, and not the surface brightness {\bf ref. on surface brightness conservation when dealing with multiple images}. Therefore, for a monochromatic source, we have the received flux from the source as 
+Light deflection is a propagation phenomenon, influencing only the shape of the light bundle from the source, and not the surface brightness. Therefore, for a monochromatic source, we have the received flux from the source as 
 
 \begin{eqnarray}
+\label{eq:flux_to_SB}
 S = I_{\nu} d\omega
 \end{eqnarray}
 
@@ -564,14 +564,35 @@ On the other hand, the solid angle is related to the angular position of the ima
 |\mu| = \frac{\theta d\theta}{\beta d\beta}.
 \end{eqnarray}
 
-One of the most interesting and extreme cases of gravitational lensing is the Einstein ring. The lensing setup which gives rise to a complete Einstein ring consists of a point--like source, with a spherically symmetric lens, both of which are collinear with the observer, i.e. the lens is centered around the line of sight between the observer and the source. Therefore, the observer sees a ring--shaped image with an angular radius of $\theta_E$ which is called the angular Einstein radius. This radius, $\theta_E$ is obtained by substituting $\beta=0$ in equation \ref{eq:lens_equation} as:
+In case of extended sources, we need to solve the lens equation for all points within the source and derive the observed surface brightness distribution in the lens plane $I({\boldsymbol \theta})$ from the true surface brightness distribution in the source plane $I^s({\boldsymbol \beta(\boldsymbol \theta)})$. The lens mapping can be locally linearized and the image distortion written as a Jacobian matrix of 
+
+\begin{eqnarray}
+\label{eq:Jacobian}
+\mathcal{A}(\boldsymbol \theta) = \frac{\partial \boldsymbol \beta}{\partial \boldsymbol \theta}
+\end{eqnarray}
+
+The magnification tensor, -- locally -- mapping the source plane to the image plane for an extended source is then
+
+\begin{eqnarray}
+\label{eq:magnification_tensor}
+M(\boldsymbol \theta) = \mathcal{A}^{-1}
+\end{eqnarray}
+
+whose determinent corresponds to the magnification factor introduced in equation \ref{eq:mu_domegas}, and could be derived from the relative [integrated] fluxes of the images and the source.
+
+\begin{eqnarray}
+\label{eq:mu_extended}
+\mu = det(M) = \frac{1}{det(\mathcal{A})}
+\end{eqnarray}
+
+One of the most interesting and extreme cases of gravitational lensing is the Einstein ring. The lensing setup which gives rise to a complete Einstein ring consists of a point--like source, with a spherically symmetric lens, both of which are collinear with the observer, i.e. the lens is centered at the line of sight between the observer and the source. Therefore, the observer sees a ring--shaped image with an angular radius of $\theta_E$ which is called the angular Einstein radius. This radius, $\theta_E$ is obtained by substituting $\beta=0$ in equation \ref{eq:lens_equation} as:
 
  \begin{eqnarray}
- \theta_E = \sqrt{\frac{4GM}{c^2}\frac{D_{LS}}{D_LD_S}}.
+ \theta_E = \sqrt{\frac{4GM}{c^2}\frac{D_{ds}}{D_dD_s}}.
  \label{eq:lens}
  \end{eqnarray}
 
- Where $M$ represents the lens mass and $D_L$, $D_S$, and $D_\mathrm{LS}$ are the angular--diameter distances as in figure \ref{fig:config}. Moreover, as it is immediately concluded from equation \ref{eq:mu_beta_theta}, magnification $\mu$ diverges for the \emph{critical points} where $\beta=0$. The ``infinite'' theoretical magnification ({\bf explain why infinite magnification is only a theoretical concept}) points can be mapped into the source plane which gives a set of \emph{caustic curves}. The number and relative positions of images of a single source change according to the position of the source with respect to such caustics in the source plane. (see figure \hyperref[fig:cusps]{2.2}).
+ Where $M$ represents the lens mass and $D_d$, $D_s$, and $D_\mathrm{ds}$ are the angular--diameter distances as in figure \ref{fig:config}. Moreover, as it is immediately concluded from equation \ref{eq:mu_beta_theta}, magnification $\mu$ diverges for the \emph{critical points} where $\beta=0$. The ``infinite'' theoretical magnification points can be mapped into the source plane which gives a set of \emph{caustic curves}. This corresponds to the points where det$(\mathcal{A}) = 0$, and therefore equation \ref{eq:mu_extended} faces division by zero. In reality, however, the finite size of the source keeps the magnification from diverging. The number and relative positions of images of a single source change according to the position of the source with respect to such caustics in the source plane. (see figure \hyperref[fig:cusps]{2.2}).
 
  \begin{figure}[ht]
  \label{fig:cusps}
