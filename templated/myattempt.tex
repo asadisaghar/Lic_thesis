@@ -1,0 +1,710 @@
+\documentclass[a4wide,12pt]{book}
+
+\usepackage[swedish,english]{babel} % Use English and Swedish languages. English default. English hyphenation.
+\usepackage{txfonts}
+\usepackage{graphicx}
+\usepackage{natbib}
+\bibpunct{(}{)}{;}{a}{}{,}     %% natbib format like A&A and ApJ
+
+
+%\usepackage[latin1]{inputenc} % Unix users should include this package instead of ansinew or applemac for correct handling of diacritics.
+%\usepackage[T1]{fontenc}% Enables the use of 8-bit characters and Â, ‰, ˆ can be typed as Â, ‰, ˆ instead of the corresponding commands.
+% \usepackage[small]{caption}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+%Options: Sonny, Lenny, Glenn (CAPS), Conny (NO!), Rejne (CAPS IN BOX), Bjarne, Bjornstrup
+\usepackage[Lenny]{fncychap}
+
+\usepackage[font={small,it}]{caption}
+
+%\usepackage{pdfpages}  % used for attaching the PDF file in the end: does not work :(
+
+\makeatletter
+\def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
+\hbox{}
+%\vspace*{\fill}
+%\begin{center}
+%This page intentionally contains only this sentence.
+%\end{center}
+%\vspace{\fill}
+\thispagestyle{empty}
+\newpage
+\if@twocolumn\hbox{}\newpage\fi\fi\fi}
+\makeatother
+
+\pagenumbering{roman}
+
+
+\setlength{\hoffset}{-0.5cm}
+\setlength{\textwidth}{38pc}
+\setlength{\textheight}{52pc}
+\setlength{\oddsidemargin}{3.5mm}
+\setlength{\evensidemargin}{3.5mm}
+\setlength{\topmargin}{7mm}
+
+%Biblio
+\def\aj{AJ}%
+          % Astronomical Journal
+\def\araa{ARA\&A}%
+          % Annual Review of Astron and Astrophys
+\def\apj{ApJ}%
+          % Astrophysical Journal
+\def\apjl{ApJ}%
+          % Astrophysical Journal, Letters
+\def\apjs{ApJS}%
+          % Astrophysical Journal, Supplement
+\def\ao{Appl.~Opt.}%
+          % Applied Optics
+\def\apss{Ap\&SS}%
+          % Astrophysics and Space Science
+\def\pasp{PASP}%
+          % Publications of the ASP
+\def\aap{A\&A}%
+          % Astronomy and Astrophysics
+\def\aapr{A\&A~Rev.}%
+          % Astronomy and Astrophysics Reviews
+\def\aaps{A\&AS}%
+          % Astronomy and Astrophysics, Supplement
+\def\mnras{MNRAS}%
+          % Monthly Notices of the RAS
+\def\nat{Nature}%
+          % Nature
+
+\def\pasa{PASA}
+\newcommand{\msun}{$\mathrm{M}_{\odot}$}
+\newcommand{\ha}{H${\alpha}$}
+\newcommand{\lya}{Ly~${\alpha}$}
+\newcommand{\lyb}{Ly~${\beta}$}
+\newcommand{\lyg}{Ly~${\gamma}$}
+
+\begin{document}
+
+\titlepage
+\begin{center}
+
+\begin{figure}[!h]
+%\centering
+\vspace{-1.5cm}
+\includegraphics[width=0.15\textwidth]{SU-Logga.eps}
+\end{figure}
+\textit{\Large{Stockholm University}}\\
+
+\Large{Department of Astronomy}\\
+
+\vspace{1.5cm}
+\large{LICENTIATE THESIS}\\
+
+\vspace{0.1cm}
+
+{\bf \LARGE{Observations of neutral gas flows in nearby Lyman alpha emitting galaxies\\ \vspace{1.4cm} }}~\\
+\end{center}
+
+\vspace{-1.0cm}
+\begin{center}
+\large{{\it Author:}\\ Andreas Sandberg}\\
+\vspace{0.5cm}
+\small{\it Department of Astronomy,\\ The Oskar Klein Center,\\ Stockholm University,\\ AlbaNova,\\ 106 91 Stockholm,\\ Sweden}
+
+\vspace{1.5cm}
+\large{{\it Supervisor:}\\ G{\"o}ran {\"O}stlin}\\
+\vspace{0.5cm}
+\large{{\it Co-Supervisor:}\\ Lucia Guaita}\\
+\vspace{0.5cm}
+\end{center}
+
+\vspace{1.2cm}
+
+\begin{center}
+\large{Nov 14, 2012}\\
+\end{center}
+\thispagestyle{empty}
+\fancyhf{}
+\fancyhead{}
+\rule[1cm]{0cm}{0.0cm} \\
+\scriptsize{\emph{}\\
+\clearpage
+\normalsize
+\pagenumbering{arabic}
+\fancyhf{}
+\fancyhead{}
+
+\renewcommand{\chaptername}{}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\fancyhead[LO]{\it \textbf{\thechapter . \leftmark}}
+\renewcommand{\sectionmark}[1]{\markright{#1}{}}
+\fancyhead[RE]{\it \textbf{ }}
+%\fancyhead[RE]{\it \textbf{ \rightmark}}
+
+\fancyhead[LE]{\thepage}
+\fancyhead[RO]{\thepage}
+
+\renewcommand{\headrulewidth}{0.4pt}
+
+
+\chapter*{Abstract}
+\thispagestyle{empty}
+
+The Lyman alpha (\lya ) emission line has grown to become one of the most successful tools for finding galaxies at high redshift. At redshifts corresponding to the early cosmic times of reionization and primeval galaxy formation, the wavelength of \lya\ still remains accessible with current instrumentation. Unfortunately, \lya\ is a resonance line which undergoes a complicated radiative transfer process through the neutral gas inside galaxies which is still not fully understood. The precise distribution and kinematics of stars, gas and dust all seem to affect the amount of \lya\ that eventually escapes the galaxy. Studies of nearby \lya\ emitting galaxies are therefore an important key to understanding this process in detail. 
+
+From previous observations and simulations, it is evident that outflows of neutral gas can facilitate the escape of \lya\ photons, as the Doppler effect shifts the frequency out of resonance.
+In this thesis, we present a study of two known \lya\ emitters; Haro 11 and ESO 338-IG 04. We have attempted to measure the velocity of the neutral gas in front of the strongest \lya\ emitting and absorbing regions by using the Na D absorption feature as a tracer. By utilizing an integral field unit, we acquire both high spectral and spatial information of our targets. This comprises the first detailed observational study of Na D as a tracer of neutral gas in connection with the \lya\ radiative transfer process.
+
+Our results are unexpected; we find no strong correlation between the velocity of neutral gas and \lya\ escape, and low covering fractions of gas in all cases, also when \lya\ is absorbed. We discuss the possible complications and limitations of Na D as a tracer of the neutral gas, and conclude that the Na D we measure represents only the densest clumps in the ISM. Although we probe structures on a scale of only a few hundred pc, it is likely that the complexity of \lya\ emitting and absorbing structures continues on even smaller scales.
+
+\clearpage
+
+\begin{itemize}
+
+\thispagestyle{empty}
+
+\section*{List of papers}
+
+\item
+Sandberg, A., {\"O}stlin, G., Hayes, M., Fathi, K., Schaerer D., Mas-Hesse J.M., Rivera-Thorsen, T. submitted, {\it Neutral gas in Haro 11 and ESO 338-IG04 measured through sodium absorption}
+
+
+
+\subsection*{From the same author}
+
+\item
+{\bf Sandberg, A.}, \& Sollerman, J.\ 2009, \aap, 504, 525, {\it Optical and infrared observations of the Crab Pulsar and its nearby knot}
+
+\item
+Bj{\"o}rnsson, C.-I., {\bf Sandberg, A.}, \& Sollerman, J.\ 2010, \aap, 516, A65 {\it The location of the Crab pulsar emission region: restrictions on synchrotron emission models}
+
+
+
+\end{itemize}
+
+\tableofcontents
+
+\thispagestyle{empty}
+
+\chapter{Introduction}
+
+\pagenumbering{arabic}
+
+Hydrogen is the most abundant element in the Universe. In its neutral form, it consists of one positively charged proton and a negatively charged electron. This electron can only reside in a finite number of discrete energy levels, or states, while bound to the atom. The state with the lowest energy is called the ground state, and the other, higher energy states are called excited states. 
+
+When an electron binds to a proton and subsequently transitions from a higher energy state to a lower (which is known as {\em recombination}), it will emit light, which is an electromagnetic wave -- or a photon, if you will -- with an energy exactly matching that of the energy difference between the two states. The energy is linked to the frequency of the wave via Planck's constant, and the wavelength is of course related to the frequency via the wave speed, which in this case is the speed of light. 
+
+This basic physical principle is one of the cornerstones of modern observational astronomy. Since the energy levels have different spacings in different atoms, each element gives off light at specific wavelengths, unique to that particular element. In this way, the spectrum of the light emitted from a source can be used as a fingerprint, allowing us to identify the elements in the source. 
+
+In the case of hydrogen, the transitions from excited states to the ground state are called the Lyman series, after physicist Theodore Lyman who discovered the emission lines in a laboratory in the early 1900's. These lines are all in the ultraviolet part of the spectrum; they have a higher frequency than light that our eyes can see. 
+
+\begin{figure}
+   \centering
+   \includegraphics[width=14cm]{LymanSeries.eps}
+   \caption{The wavelengths of the emission lines in the Lyman series, which are formed from transitions from excited states to the ground state of hydrogen.}
+              \label{Fig:Lyman_states}
+    \end{figure}
+
+The transition from the first excited state to the ground state is called Lyman alpha (\lya) -- from the second, Lyman beta (\lyb) -- then, Lyman gamma etc. (see Figure~\ref{Fig:Lyman_states}). The states become gradually closer and closer to each other as the energy increases, and eventually we reach the so called Lyman limit, where the energy of the electron is large enough that it will leave the hydrogen atom completely. This is called {\em ionization}, and the electron will then leave an ionized atom behind (which in the case of hydrogen of course only consists of the proton). 
+
+This process also works in the opposite direction - an atom can be irradiated by light which will be absorbed and the electron will go to a higher energy level. If the energy of the incoming light exactly matches that needed for an electron to reach a higher level, the probability of that light being absorbed becomes very high. In the case of Lyman alpha (\lya), the energy difference between the ground state and first excited state is 10.2 eV, corresponding to a photon with a wavelength of 1215.67 $\AA$. 
+
+\section{The first attempts to use \lya\ for finding galaxies}
+It was suggested already by \citet{partridge-peebles1967} that the \lya\ emission line should be strong in star-forming galaxies. The idea is that all of the light with an energy above the ionization threshold of hydrogen ($> 13.6$ eV or $\lambda < 912 \AA$) is absorbed by the hydrogen gas in the galaxy, and a large portion of this light is then re-emitted as \lya\ (see Figure~\ref{Fig:PP67}). The electrons then recombine onto the protons, cascading down through the different energy levels. The first excited state in reality consists of several slightly separated states. There are two main modes through which an electron can reach the ground state; either through a 2s $\rightarrow$ 1s two-photon continuum emission, where the two photons combined energy is 10.2 eV, or through the 2p $\rightarrow$ 1s \lya\ emission. The probability that a \lya\ photon will be produced instead of two photons is roughly two thirds, and a total of 1/3 of all the ionizing energy is reprocessed into \lya . 
+
+\begin{figure}
+   \centering
+   \includegraphics[width=12cm]{PP67_Lya.eps}
+   \caption{Figure 3 from \citet{partridge-peebles1967}, which demonstrates how all of the blackbody emission shortwards of the Lyman break at 912 $\AA$ is reprocessed into the \lya\ emission line.}
+              \label{Fig:PP67}
+    \end{figure}
+
+It soon became clear that the assumptions made by \citet{partridge-peebles1967} were not realistic; for example, they assumed distant galaxies to have the same size as our Milky Way but with an average surface brightness equal to that of intense star formation. With the very low quantum efficiencies of the instrumentation of their time, they still concluded that it would only require a few minutes to detect very distant galaxies. With more realistic assumptions combined with modern instrumentation, this number is instead on the order of several hours. However, even with these assumptions taken into account, early surveys targeting the \lya\ line came up blank \citep{pritchet1994}. It was clear that there was still a large discrepancy between theory and observations. But what could cause such a discrepancy?
+
+
+%\subsection{Gas or dust?}
+The first candidate to be blamed for absorbing \lya\ photons before they could reach us was dust. Dust absorption is prominent in the ultraviolet, and early studies did show a tentative connection. \citet{meier-terlevich1981} used ultraviolet spectra from the International Ultraviolet Explorer (IUE) satellite to analyze three actively star forming galaxies with a redshift high enough to separate the \lya\ emission from geocoronal emission. They found that only the metal-poorest of the three objects showed any \lya\ emission. \footnote{Metallicity and dust content are naturally assumed to be well correlated}
+
+This relation remained under discussion for some time. \citet{kunth-1994} presented IUE spectra of the very low metallicity galaxy {\sc i} Zw 18 (with a metallicity $Z \lesssim \frac{1}{50} Z_{\odot}$), where \lya\ is strongly absorbed. Shortly after, \citet{lequeux-1995} found strong \lya\ emission emerging from the more metal-rich galaxy Haro 2. The conclusion was that the dust alone was not the decisive factor behind \lya\ escape. \citet{giavalisco-1996} neatly sums up the results, concluding that the radiation must be affected by multiple scatterings in neutral hydrogen, thus greatly increasing the path length for these photons. In some cases, this increases the chance of absorption, and in others it appears that \lya\ can scatter on neutral gas on the outside of clumps and escape more easily than continuum photons, as predicted by \citet{neufeld1991}. Much of the \lya\ will be re-emitted and finally escape only at large radii and at low surface brightness, which would then be missed when using smaller apertures. It thus became clear that the exact morphology of the neutral gas, as well as the velocity of the gas are important parameters for the \lya\ escape fraction. 
+
+It is this {\em resonance} nature of \lya\ (where a photon is very easily absorbed by neutral hydrogen gas and a new photon is almost instantly emitted in a new direction) that has greatly complicated studies of galaxies at high redshift, and made it the large and active field of research it is today. Modern simulations of the radiative transfer of \lya\ \citep[such as those of][, Duval et al. 2012 (submitted), see also Figure~\ref{Fig:verhamme2006static}]{verhamme-2006,garel-2012} take into account combinations of both the geometry and velocity of H {\sc i} gas and dust. 
+
+\section{The radiative transfer of \lya}
+
+If \lya\ photons are to escape a galaxy, they must scatter out to a region where the column density and optical depth is low enough for them to escape. The resonance effect is strongest in the line center, so that the optical depth decreases towards the wings, and emission in the wings of the line will thus more easily escape. This can be seen in a relatively simple simulation of \lya\ radiative transfer, in the case when an ionizing source is surrounded by neutral hydrogen gas without dust. The emergent \lya\ profile has two peaks on either side of the line center, corresponding to the red and blue wings of the intrinsic \lya\ line (see Figure~\ref{Fig:verhamme2006static}).
+
+
+\begin{figure}
+   \centering
+   \includegraphics[width=12cm]{verhamme2006static.eps}
+   \caption{Results from \citet{verhamme-2006}. Simulated radiative transfer of \lya\ reproduces the expected double-peaked profile from the analytical solution by \citet{neufeld1990}, for a static shell of H {\sc i} gas without dust.}
+              \label{Fig:verhamme2006static}
+    \end{figure}
+
+\subsection{The effect of kinematics on the \lya\ escape}\label{Sec:intro_kinematic_Lya}
+
+If the gas upon which the photon is about to scatter is in motion relative to the source of the photon, the photon will appear redshifted to the gas due to the Doppler effect. As a \lya\ photon is shifted away from the gas rest-frame wavelength, the probability of being absorbed becomes smaller. It is thus likely that more \lya\ photons will escape the galaxy if there is a strong motion in the neutral gas, as for example from an outflow created by stellar winds and supernovae (see also Section~\ref{Sec:abslines_lya}).
+
+\citet{kunth-1998} studied eight star forming galaxies in the ultraviolet regime with the Goddard High-Resolution Spectrograph (GHRS) aboard the Hubble Space Telescope (HST). Specifically, the study targeted \lya\ in combination with low ioniziation threshold absorption lines such as O {\sc i} ($\lambda 1302 \AA$) and Si {\sc ii} ($\lambda 1304 \AA$). These lines arise in cold neutral gas and can therefore be used for tracing its velocity. Four of the studied galaxies showed \lya\ in emission and the other four showed absorption. In each case, the \lya\ emitting galaxies show blueshifted absorption lines (compared to the systemic velocity) and asymmetric P Cygni\footnote{A P Cygni star is a blue luminous variable star with a gaseous envelope expanding away from it. Many of the emission lines therefore show a characteristic absorption feature on the blue side.}-like emission profiles, whereas the absorbing galaxies showed no velocity shift in the neutral gas. It thus seemed that in the presence of an outflow on the order of a few 100 km/s, \lya\ was able to escape\footnote{There are some newer measurements of some of the galaxies that do not agree with this original result; for example, \citet{schwartz-2006} measure a relatively strong outflow of several hundred km/s in a galaxy called Markarian 36, where \lya\ is only seen in absorption. Also, the measurements of Haro 11 presented in this thesis do not agree perfectly with their result, as we will come back to later. However, the basic principle that \lya\ does escape more easily in the presence of an outflow is undisputed.}.
+
+One of the galaxies studied by \citet{kunth-1998} was ESO 350-IG038, which is also known as Haro 11. This galaxy is also part of the study in this thesis and we will return to these results later.
+
+\section{Finding \lya\ emitters in modern surveys}
+
+Much has happened in the field of extragalactic exploration during the past two decades. Tentative evidence of \lya\ emitters started trickling in after the somewhat pessimistic review of \citet{pritchet1994}, but the real breakthrough came with the advent of the 10-meter class of telescopes. \citet{cowie-hu1998} presented a blank narrow-band survey using the Keck II 10 meter telescope on Hawaii, proving beyond any doubt that there is a substantial population of galaxies at a redshift $\sim 3.4$ that emit \lya . This also showed that the boundary for discovering these objects had previously only been just out of reach, and the field was wide open for finding galaxies at high redshifts. The narrow-band technique has since resulted in a plethora of successful studies of LAEs: for example at redshift $z \sim 0.3$ \citep[e.g.][]{deharveng-2008}, $z \sim 2$ \citep[e.g.][]{nilsson-2009,guaita-2011}, $z \sim 3$ \citep[e.g.][]{gawiser-2006,gronwall-2007,nilsson-2007_3,ono-2010_3}, $z \sim 4.5-5$ \citep[e.g.][]{malhotra-rhoads2002,finkelstein-2008,pirzkal-2007,yuma-2010} and $z \sim 6-7$ \citep[e.g.][]{ono-2010_6,ouchi-2010,shibuya-2012}. 
+This is about as far as the current deepest surveys go in redshift, and most surveys also appear to show a decline in the number of LAEs per cosmic volume at this cosmic time, but new surveys and exploratory efforts are constantly under way, fueled by new instrumentation and larger telescopes. 
+
+The apparent drop in the number densities of LAEs at high redshift may in part be due to the fact that the intergalactic medium (IGM) is expected to be neutral at high redshifts, and that this redshift may correspond to the end of the so called epoch of reionization. I will discuss this in more detail in Section~\ref{sec:reionization} below.
+
+Below I will briefly describe two of the most common techniques for finding galaxies at intermediate and high redshifts. 
+
+\subsection{LBGs and The Lyman Break technique}
+
+A common technique for finding candidates for high redshift galaxies is to use the Lyman break at 912 $\AA$. Since the spectrum of a galaxy usually drops sharply at this point, because most photons with lower wavelengths are absorbed and reprocessed into recombination lines, this creates a signature that can be traced with the "drop-out" technique. The idea is described in Figure~\ref{Fig:LBG}. In a photometric survey using broad filters and covering a large area, a galaxy should be visible in several filters until you reach the Lyman break at that particular redshift. For example, if an object is visible in the V and R filter but is then missing in an equally deep U-band image, this could be an indication that it is a galaxy at a redshift around $z \sim$ 2, where the Lyman break would appear around 4000 $\AA$. There could of course be a number of other reasons for such a break (for example the Balmer break around 4000 $\AA$ in the rest frame), but it is an efficient way of finding possible candidates that can later be confirmed with a spectroscopic follow-up, once the position of the candidate is known. Such a galaxy is then typically referred to as a Lyman Break Galaxy (LBG) because it was found using the spectral break.
+
+\begin{figure}
+   \centering
+   \includegraphics[width=12cm]{LBG.eps}
+   \caption{A simple demonstration of the Lyman Break technique. The galaxy spectrum falls of sharply where the Lyman break corresponds to a specific wavelength at that redshift, and the galaxy is no longer visible in the bluer filters. }
+              \label{Fig:LBG}
+    \end{figure}
+
+\subsection{LAEs and the narrow-band technique}
+
+Another technique which has gained popularity over the decades is instead to try and target the \lya\ line using a narrow-band filter. This was the principle used by \citet{cowie-hu1998} in the study of \lya\ emitting galaxies mentioned above. The idea is that if a galaxy at a specific redshift $z$ emits a strong line at $\lambda_\mathrm{em}$ which is observed by us at a wavelength $\lambda_\mathrm{obs} = \lambda_\mathrm{em} (z + 1)$, the galaxy will appear very bright in a narrow filter centered close to $\lambda_\mathrm{obs}$, but not as bright in a broad filter in the same wavelength regime. An example is shown in Figure~\ref{Fig:LAE}. By using a combination of filters, one can therefore scan through narrow redshift slices of space to find possible \lya\ emitting galaxies. Of course, one may have problems with interlopers where another combination of $z$ and $\lambda_\mathrm{em}$ yields the same $\lambda_\mathrm{obs}$, so the technique requires some additional information in order to eliminate these cases. Just as with the LBGs, spectroscopic follow-ups are needed to confirm that the candidates are truly galaxies at the expected redshift.
+A galaxy found using the \lya\ line in this way is usually referred to simply as a Lyman Alpha Emitter (LAE). 
+
+\begin{figure}
+   \centering
+   \includegraphics[width=12cm]{ouchi2008lae.eps}
+   \caption{An example of the narrow-band technique, from \citet{ouchi-2008}. The galaxies in this case are at a redshift of $z \sim 5.7$, which places the \lya\ line in the narrowband centered around 816 nm in this particular study. The right side shows the follow up spectra, where the exact redshift can be determined. }
+              \label{Fig:LAE}
+    \end{figure}
+
+\subsection{The connection between LAEs and LBGs}
+
+Of course, there is quite an overlap between these two populations since a galaxy with a strong Lyman break may well also show a \lya\ line in emission, but the connection between them is still under investigation \citep[see e.g.][and references therein]{dayal-ferrara2012}. \citet{shapley-2003} discuss a large sample of over 800 spectroscopically confirmed LBGs at $z\sim 3$. Their detailed study includes the low ionization state absorption features as well as the \lya\ line, and they find that blueshifted absorption features appear to be ubiquitous in the galaxies which show \lya\ in emission (see also Section~\ref{Sec:intro_kinematic_Lya}). The \lya\ flux is found to be anti-correlated with metallicity, but they also conclude that a stronger outflow results in a lower \lya\ equivalent width and a strong star formation rate means low \lya\ luminosity. This proves that \lya\ radiative transfer is very complex and depends on a combination of several processes. Many later surveys studying the morphology and kinematics of LBGs and LAEs at intermediate redshift indicate that more massive galaxies have slower and more inefficient outflows, and that outflows are more commonly seen in face-on galaxies \citep[see e.g.][and references therein]{kornei-2012,law-2012}. 
+
+\section{The reionization of the Universe}\label{sec:reionization}
+
+In the early Universe, some hundred million years after the Big Bang, the temperature became low enough for electrons to combine with protons for the first time. This is known as the epoch of recombination, although since it happened for the first time, the name is perhaps misleading. This left the gas in the Universe in an overall neutral state. In today's Universe, however, nearly all of the gas between the galaxies is fully ionized. There should in other words have been a moment in the history of the Universe when it started to become ionized again, and this is known as the epoch of reionization. The exact details of how this came to be are still not fully understood, but one strong candidate for causing this to happen is the formation of the very first stars and galaxies. In order for the ionizing Lyman continuum (Ly C) radiation to actually ionize the surrounding medium, it must first escape through the gas in the galaxy itself. Therefore, also nearby studies of e.g. blue compact galaxies \citep[like the Ly C leakage from Haro 11, see][]{leitet-2011} are interesting in this context. Exploring the reionization of the Universe has grown to become a large and important research field in modern astronomy, and many new projects are underway, based on predictions on the visibility of \lya\ emitters near the epoch of reionization \citep[e.g.][]{dayal-2011,jensen-2012}.
+
+\subsection{The Lyman alpha forest and the Gunn-Peterson trough}
+
+One of the strongest pieces of evidence for the increasing fraction of neutral gas in the IGM is the so called Gunn-Peterson trough. It is named from the study of \citet{gunn-peterson1965} in which the effect was first discussed. The idea comes from observations of distant supermassive black holes, known as a quasars, in which many narrow absorption features are usually seen. This is nicknamed the \lya\ forest, because it arises due to absorption in neutral gas clouds along the line of sight, where the strong continuum emission from the quasar happens to match the rest wavelength of \lya\ at the redshift of the cloud. In quasars at high redshifts, the absorption features appear broader and closer together, until finally a completely damped trough is observed, which would correspond to the IGM becoming completely neutral. Figure~\ref{Fig:beckerGP} shows an example from the first Gunn-Peterson discovered by \citet{becker-2001}. This figure shows how all features bluewards of the \lya\ line intrinsic to the quasar are almost completely absorbed. 
+
+\begin{figure}
+   \centering
+   \includegraphics[width=12cm]{beckerGP.eps}
+   \caption{The first Gunn-Peterson trough discovered in a quasar at $z = 6.28$, from \citet{becker-2001}. The top panel shows a quasar at slightly lower redshift, for reference.}
+              \label{Fig:beckerGP}
+    \end{figure}
+
+
+In order to explore the very first stars and galaxies, the \lya\ emission line remains one of the strongest tools for helping us probe these redshifts. As the IGM becomes gradually more and more neutral with redshift, we expect to see less and less galaxies as the neutral gas begins to block out the \lya\ line. Since \lya\ can be affected by neutral gas inside the galaxy where it is formed, it is crucial that we understand the nature of the \lya\ radiative transfer in this process. 
+
+
+
+
+
+\chapter{The kinematics of neutral gas in galaxies}
+
+The structure and kinematics of dark matter and the connection to large scale structure formation in the Universe is today relatively well understood and self-consistent. However, adding the astrophysics of baryonic matter and the feedback energy from star formation, supernovae and accretion onto supermassive black holes in active galactic nuclei (AGN), and the large-scale outflows of gas that should come with it, makes the picture much more complicated and there are still many unanswered questions. There are many astrophysical phenomena that appear to rely on the fact that this kind of feedback exists; for example why there are fewer low mass galaxies relative to the dark matter halo mass function predicted by $\Lambda$CDM cosmology, and why massive galaxies at high redshift can still have very low star formation rates. 
+
+Galactic scale outflows appear to be very common, if not ubiquitous, in star forming galaxies \citep[see e.g.][and references therein]{rupke-2002,rupke-2005,shapley-2003,martin2005,steidel-2010}. % rupke-2005 becomes rup????  - why is this broken?
+%However, in recent years the {\em infall} of cold gas has also sparked some interest. Streams of cold gas in clusters?
+%could explain LABs and "red and dead" galaxies at z2.5, but in galaxies outflows appear to be the rule. 
+In this section, I will give an overview of some of the different methods that exist for studying the kinematics of neutral gas observationally. 
+
+\section{Low ionization state absorption lines}\label{Sec:LIS}
+
+In ultraviolet, optical and near-infrared spectra, the information on the sctructure and kinematics of cold neutral gas is believed to be encoded in low ionization state (LIS) absorption features. This absorption arises as continuum light from a background source shines through a region of cold neutral gas, containing a mixture of gas and dust. Some of the metals contained in this material will have many of their electrons in low energy states, i.e. close to the ground state of the atom. The idea is that a line with a low ionization threshold will only be visible in the neutral medium, because the electron requires a relatively small amount of energy to be removed from that state. Ideally, one would want to match the ionization threshold energy of hydrogen (10.2 eV) as closely as possible. In this study, we use a well known feature in the spectrum of neutral sodium, the Fraunhofer D Na {\sc i} line ($\lambda \lambda 5889.95, 5895.92 \AA$) which has an ionization threshold of 5.14 eV. This means that the feature is likely only to exist in the cold, neutral medium but also that it must probably be shielded from photoionization by dust \citep{murray-2007}.
+
+In order to compare the velocity of the neutral gas with the systemic velocity of the galaxy, it is common to use strong nebular lines such as H$\alpha$, H$\beta$ or [O {\sc iii}]. These lines are not affected by resonant scattering, and depend on the locations and density of ionizing photons. They should therefore be a good tracer for the gravitationally bound galactic material. 
+
+\subsection{Quasars as background sources}
+
+The so called circumgalactic medium (CGM) is a term which is normally used to describe the matter in a radius roughly $\lesssim$ 300 kpc from a galaxy. It likely consists of outflowing, enriched material from baryonic feedback. Studying the CGM directly can be rather difficult, especially at large distances from the galaxy where the material is attenuated and faint. One way to investigate it is to use a bright quasar as a background source, and study the CGM in absorption. 
+
+\citet{adelberger-2005CIV} present an ambitious study of absorption features studied both against the light of quasars and galaxy-galaxy pairs (see below). By studying the C {\sc iv} absorption doublet ($\lambda \lambda 1548, 1551 \AA$) they are able to readily detect absorption features out to radii of $\sim$ 80 kpc. They also detect fainter absorption features out to distances of several hundred kpc. However, it is not clear whether or not this absorbing material at large distances is actually part of an outflow. 
+
+The advantage of this method is that the bright background quasar allows for high signal-to-noise spectra and good spectral resolution. 
+One of the large disadvantages of this method, however, is that you can only study galaxies that happen to be near the line of sight to quasars, which reduces the number of possible targets. Also, a quasar is usually very bright compared to the surface brightness of intermediate redshift galaxies, and the emission from galaxies, which is used to determine the systemic redshift, can be very hard to detect only a few arcseconds from such a bright source. Also, the detection of absorption features that happen to lie within approximately the same redshift range as a galaxy along the line of sight is not definitive proof that the two are connected. The exact matching between galaxies and absorption features in quasar spectra is therefore often ambiguous. 
+
+\subsection{Galaxy-galaxy pairs}
+
+Another method for studying absorbing gas around a galaxy is to instead use pairs of galaxies, projected onto the same region on the sky but residing at different redshifts. The principle is the same; the galaxy at higher redshift acts as a background source, while material in the outskirts of the foreground galaxy leaves signatures in the spectrum. The disadvantage with using another galaxy as a background source is the considerably lower surface brightness, which greatly reduces the achievable signal-to-noise and spectral resolution.  A small sample of galaxy-galaxy pairs was included in the study by \citet{adelberger-2005CIV}, which seemed to agree rather well with their quasar results.
+
+A considerably larger sample is discussed by \citet{steidel-2010}.  Unfortunately, the pairs are usually so faint that a detailed study is impossible. Only in one case were the pair bright enough to enable an individual study. The material in the foreground galaxy GWS-BM115 appears to be static as measured in the spectrum of the background galaxy, GWS-BX201, while the absorption features against only the foreground galaxy's own light indicate an outflow of gas at $\sim 200$ km/s.  This is unsurprising, since the material probed using the background source should extend equally to both sides of the foreground galaxy, so that the outflow is symmetric along the line of sight. The covering fraction calculated from the residual intensity of the Al {\sc ii} ($\lambda 1670 \AA$) and the C {\sc iv} features 
+%(see also Section~\ref{Sec:NaD} below) 
+is on the order of 50 percent. This may seem low, but in fact a covering fraction of cool outflowing material is commonly found to be around a similar value \citep[see e.g.][]{shapley-2003}.
+
+Although the rest of the galaxy-galaxy pairs studied by \citet{steidel-2010} are not as bright, with their large catalogue of rest-frame UV spectra of galaxies at redshifts $\sim 2-3$, they are able to divide their pairs into three bins based on the projected distance between the pairs. The spectra are then shifted to the inferred rest wavelength and stacked within each bin. The results agree well with the case above; the absorption features appear to be static as measured from the background galaxies, but outflowing at several hundred km/s when only seeing the absorption "in front of" the foreground galaxy. 
+
+\subsection{Using the galaxy itself as a background}
+
+As we have already touched upon in the discussion above, a more general way of measuring velocities of cold gas in front of galaxies is to use the galaxy itself as a background source. The advantage is of course that this can be used for any galaxy, regardless of what may be projected along the same line of sight on the sky. Also, it is clear that the absorption we see in this way must arise "in front of" the galaxy; i.e. towards the observers line of sight. It is therefore a good estimate of the projected outflow velocity. The disadvantage is that it is unclear exactly how far away from the galaxy the absorption takes place. The simplicity of the method makes it very commonly used, e.g. by studying the Mg {\sc ii} ($\lambda \lambda 2796,2803 \AA$) absorption doublet or, as in this study, the Na D absorption doublet (see Section~\ref{Sec:NaD} below).
+
+Large surveys of absorption features in galaxies are today relatively simple to construct. For example, \citet{chen-2010} compile measurements of the Na D doublet in a sample of several hundred thousand disk galaxies in the SDSS spectral catalogue. One of the interesting results of their study is the dependence on the outflow velocity and spectral line shape as a function of the inclination of the galaxy. Their results suggest that the neutral gas is predominantly directed into a bipolar outflow along the minor axis of the galaxy, so that the outflow velocities appear higher in face-on galaxies than in edge-on systems. This result agrees rather well with the findings of \citet{weiner-2009}, in which the face-on galaxies where found to have no systemic absorption components. It also agrees with the scenario of a hot superwind driving out material perpendicularly to the galactic disk, as proposed e.g. by \citet{heckman-2000}. 
+
+\section{Connecting kinematics of absorption lines to \lya }\label{Sec:abslines_lya}
+
+When comparing the neutral gas velocities in \lya\ emitting galaxies to the systemic velocity and the velocity of the \lya\ emission line, a clear trend is immediately obvious. The LIS absorption lines show a blueshift of several hundred km/s and the \lya\ line shows an even larger, redshifted velocity \citep[see Figure~\ref{Fig:steidel10hist} and][]{steidel-2010,pettini-2001}. This remains one of the strongest pieces of evidence that the escape of \lya\ photons is greatly facilitated by outflows of neutral gas (see also Section~\ref{Sec:intro_kinematic_Lya} above). 
+
+\begin{figure}
+   \centering
+   \includegraphics[width=9cm]{steidel10hist.eps}
+   \caption{Histogram of the observed velocities of \lya\ and low ionization state absorption lines of LAEs at $z \sim 2-3$, from \citet{steidel-2010}. }
+              \label{Fig:steidel10hist}
+    \end{figure}
+
+But what is causing the \lya\ feature to appear redshifted? The answer lies in the P Cygni-profile, which arises when only the blue side of the line is absorbed due to an outflow of neutral gas. Early simulations by \citet{tenorio-tagle1999} showed that the behaviour of the \lya\ line could be explained by the growth of a "super-bubble" -- an expanding region of hot ionized gas, created from the feedback of strong star formation, supernovae and possibly black hole accretion. This scenario for creating a P Cygni-profile because of an outflow of gas is also confirmed by modern simulations \citep[e.g.][]{verhamme-2006,garel-2012}. 
+
+
+%Steidel2010:
+%the structure of dark matter on large scales is relatively well understood, but the astrophysics of the feedback of energy from star formation, SNe, and AGN (accretion onto supermassive black holes) is not well constrained (well understood)
+%But there are many processes in modern astrophysics which we associate with this kind of feedback; for example why there are fewer low mass galaxies relative to the dark matter halo mass function predicted by $\Lambda$CDM cosmology and why massive galaxies at high redshift can have low star formation rates. 
+%IGM and CGM (circumgalactic medium, within about 300 kpc)
+%Galactic scale outflows of several 100 km/s appear ubiquitous in star forming galaxies (reference Steidel et al 1996, Franx et al. 1997; Pettini et al. 2000, 2001; Shapley et al. 2003; Martin 2005; Rupke et al. 2005; Tremonti et al. 2007; Weiner et al. 2009)
+%common to look at LIS versus nebular and stellar velocities. 
+%mention also pettini et al 2001 with reference to lya (?) 
+%can also see outflows in C IV absorption in quasars compared to host galaxies (?) (Adelberger et al 2003, 2005a)
+%
+%mention "local" rest-UV spectroscopy by Heckman et al. 1990; Lehnert & Heckman 1996; Martin 1999; Strickland et al. 2004; Schwartz et al. 2006; Grimes et al. 2009; Chen et al. 2010
+%
+%also mention cool inflow of gas, which can give red and dead gals at z2.5 and LABs due to cooling radiation
+%
+%spatial information not well known; almost all z>2 bright enough to be observed spectroscopically show evidence of outflows of at least several hundred km/s but exactly where this material is with respect to the galaxy and how far it will be expelled is not known. 
+%
+%Many attempts made with quasars as background, looking at HI or metals in absorption and comparing them to emitting galaxies near the line of sight to the quasar. (e.g., Bergeron & Boissé 1991; Steidel et al. 1994, 2002; Chen et al. 2001; Lanzetta et al. 1995; Danforth & Shull 2008; Bowen et al. 1995; Bouché et al. 2007; Kacprzak et al. 2010) very difficult, because even if abs and em agree rather well it may be difficult to associate one particular abs to any particular em. Also hard to see a faint galaxy only a few arcsec away from a bright quasar.
+%
+%"Finally, there is the controversial issue of whether metals seen near, but outside of, galaxies are a direct result of recent star formation or AGN activity, or are simply tracing out regions of the universe in which some galaxies, perhaps in the distant past, polluted the gas with metals (e.g., Madau et al. 2001; Scannapieco et al. 2002; Mori et al. 2002; Ferrara 2003; cf. Adelberger et al. 2003, 2005a)"
+%
+%Steidel2010 look at rest-frame UV of 1.9-2.6 in z, nearly 100 gals. 
+%
+%Go through what you see in UV, and explain why they want to know the galaxy's intrinsic z from other lines than the LIS, and lya is seen in about half their sample but is affected by resonant scattering so the velocity can't be used. 
+%Nebular lines (Ha, Hb, [O iii]) are also good approximations for the systemic velocity, Ha because no resonance and depends on ionizing radiation field and density, and should measure the "gravitationally induced motion" (ref to Pettini+2001, Erb+2006c). 
+%
+
+\chapter{Using Na D to probe neutral gas properties}
+\label{Sec:NaD}
+
+In order to study the velocities of neutral gas in galaxies, one would perhaps first think to look at the 21 cm line of hydrogen, which arises directly in neutral hydrogen and is due to a spin-flip process where the electron changes spin direction from parallel to anti-parallel to the proton.
+In order to map neutral hydrogen in these small, gas-poor galaxies, you need a high sensitivity. \citet{bergvall-2006} conclude that all attempts to detect Haro 11 using the Very Large Array (VLA), the Nan\c{c}ay Decimetric Radio Telescope (NRT) and the CSIRO Parkes radio telescope are only able to put an upper limit on the total gas mass of roughly $10^8$ \msun . Another difficulty is of course to attempt to connect the results of radio observations with those in the optical and ultraviolet regime. 
+
+Another approach is to go for low ionization state absorption lines in the ultraviolet (see Section~\ref{Sec:LIS}), which can be studied in the same spectrum as \lya\ so as to get a firm grip on the connection. Unfortunately, the UV is impossible to reach from the ground due to atmospheric absorption. The only option at present day is to use the Hubble Space Telescope (HST), which is currently equipped with two UV spectrographs: the Space Telescope Imaging Spectrograph (STIS) which has a limited spectral resolution and the Cosmic Origins Spectrograph (COS) which uses a relatively large circular aperture (i.e., any detailed spatial information is difficult to retrieve).
+
+If we want both high spectral resolution and good spatial information in order to connect it with the areas in the galaxy where \lya\ is escaping, it is therefore advantageous to use a ground-based instrument on a large telescope with an integral field spectrograph. Then you need to choose optical absorption lines which are reachable from the ground. The two obvious choices are the Mg {\sc ii} absorption doublet ($\lambda 2796, 2803 \AA$) \citep[e.g.][]{churchill-vogt2001,mshar-2007,martin-bouche2009,nestor-2011} or the Na {\sc i} D doublet ($\lambda \lambda 5889.95, 5895.92 \AA$) \citep[e.g.][]{heckman-2000,rupke-2002,martin2005,chen-2010}. Other options include the Ca {\sc ii} H \& K doublet ($\lambda \lambda 3933.7, 3968.5 \AA$), which is usually heavily contaminated by a strong stellar component, and K {\sc i} ($\lambda \lambda 7664.9, 7699.0 \AA $) which is similar to the Na D feature but is usually weaker due to lower abundance, and at the rest wavelength becomes mixed in with atmospheric $\mathrm{O}_2$ absorption features.
+
+In this study, we have chosen to look for Na D absorption. Never before has this absorption feature been used in connection with studying \lya\ emission of galaxies in spatial detail\footnote{There does exist an attempted measurement of the Na D velocity in ESO 338 based on UVES spectra \citep{ostlin-2007}, but the signal-to-noise is very low and the stellar contamination unknown}. Na D can be problematic to study at low redshift due to the very strong skylines, but with objects that exhibit some redshift (as in the case of our two galaxies) this is no longer a problem. It does however become problematic when estimating the stellar contribution to the observed Na D lines, as will be explained below.
+
+The Na D feature not only gives us a velocity estimate, but it also contains information on the optical thickness and the covering fraction of the gas where the absorption occurs. The relative strength of the two Na D lines is always 2:1 in the optically thin case; that is, the bluer line is twice as strong as the red. This is set by the quantum mechanical properties of the transitions involved. However, if the absorption takes place in an optically thick region, the ratio will be lower, and at an infinite optical depth the ratio is 1:1. \citet{spitzer1968} lists intermediate line ratios for varying optical depths of the Na D feature in his Table 2.1. By measuring the exact line ratio, we are thus able to estimate the optical thickness. 
+
+Another important property which can be probed by the Na D feature is the covering fraction, which will correspond to the residual intensity in the lines. If the background source is completely obscured (covering fraction 1), the lines will appear black in the spectrum, as all of the light is absorbed. There is of course a smearing effect in low resolution spectra, which might artificially fill in some of the light.  In our study, we deem this to be a small effect, as the lines are considerably broader than our spectral resolution. If the lines are optically thick, the covering fraction can directly be estimated as $f_C = 1 - I_{5890}$ where $I_{5890}$ is the residual intensity in the blue line. 
+
+\section{Stellar contamination of Na D}
+
+The Na D absorption doublet also arises in stellar atmospheres, mainly in relatively cool K- and M-dwarfs. In order to use the lines to measure the interstellar gas velocity, one must therefore also have a good estimate on the stellar contribution. 
+
+One of the most commonly used techniques for evaluating the strength of the stellar contribution is to use an absorption feature close to the Na D feature in wavelength, but which only arises in stellar atmospheres, and not in the ISM. The Mg {\sc i} b lines ($\lambda \lambda$ 5167.32, 5172.68, 5183.60 $\AA$) arise from higher energy levels, away from the ground state, and are therefore in principle only visible in stars. The ionization potential is very similar to that of Na D and the feature is also most often visible in the same kind of stars that show the strongest Na D, and they are of relatively comparable line strengths. 
+
+A large problem when examining the Na D feature in nearby stars is that the sky itself glows at this frequency, and with light pollution from common street lamps the problem is even worse. One must therefore often carefully fit and subtract the telluric emission component, or choose to look at objects with a slight doppler shifted frequency, where the spectral resolution of your instrument is high enough to separate the components. 
+
+Many studies have been made to attempt to determine how the stellar Mg b feature couples to the stellar Na D feature. 
+\citet{rupke-2002} compile measurements of Galactic globular clusters and mostly nonactive galaxies \citep{bica-alloin1986} together with measurements of nuclei of nearby galaxies \citep{heckman-1980} and find the equivalent widths of the purely stellar features to be correlated as $EW_{\rm Na D} \sim 0.5~EW_{\rm Mg~b}$, with a possible intrinsic scatter of $\gtrsim 25 \%$.
+\citet{heckman-2000} combine the same galactic nuclei data from \citet{heckman-1980} with stellar library data from \citet{jacoby-1984} and estimate $EW_{\rm Na D} \sim 0.75~EW_{\rm Mg~b}$, which seems to agree with what they measure from their own spectra of K giant stars to within 0.10 dex. 
+\citet{schwartz-martin2004} also make a fit to the stellar library data by \citet{jacoby-1984} and find $EW_{\rm Na D} = 0.40 \pm 0.05~EW_{\rm Mg~b}$. \citet{martin2005} analyze Keck II/ESI spectra of A, F, G and K dwarfs and giants and reach the result $EW_{\rm Na D} = 1/3~EW_{\rm Mg~b}$. They also comment that the stellar contribution to Na D was consistently less than 10~\% in their sample of 18 ULIRGs.  
+\citet{sato-2009} investigate Na D absorption in 493 spectra from the All-Wavelength Extended Groth Strip International Survey (AEGIS), and find $EW_{\rm Na D} = 0.40~EW_{\rm Mg~b}$ well describes the purely stellar boundary in their sample (see their Fig.~1).
+Finally, \citet{chen-2010} use Sloan Digital Sky Survey (SDSS) spectra from young disc galaxies and estimate that an average $\sim 80\%$ of the Na D absorption arises in stellar atmospheres. Their estimate of the stellar contribution is based on fitting and subtracting a stellar population synthesis model to the continuum and absorption features, and they emphasize that their spectral model sometimes shows stronger Na D absorption than the actual data. They conclude that the most likely explanation is that Na D is sometimes seen in emission in their data, predominantly from face-on galaxies with low dust attenuation. It is also possible that they are detecting re-emitted Na D due to the resonance nature of the line \citep[see][and Section~\ref{Sec:NaDresonance} below]{prochaska-2011}. 
+One would also expect a stronger stellar contamination in the spectra of these "normal" star-forming disk galaxies than in young stars, which is the dominant stellar population in the two galaxies that we present in this study.
+
+In conclusion, we expect the equivalent width ratio to behave approximately as $EW_{\rm Na D} \sim 0.40~EW_{\rm Mg~b}$, since this seems to agree with most of the data, but we adopt a ratio of 0.75 as a conservative guess when estimating the final contribution. 
+
+\section{The resonance nature of Na D}\label{Sec:NaDresonance}
+
+Since Na D is an absorption feature that involves a transition from the ground state, the excited sodium atom will almost immediately release a new Na D photon in a random direction. The Na D feature is therefore a resonance feature, much in the same way as \lya . One important difference is that we expect the sodium to be prevalent only in the very densest and dustiest regions, where destruction of the photon after repeated scatterings is very likely. 
+
+\citet{prochaska-2011} present models of the re-emitted light from resonance absorption features, with main focus on the Mg {\sc ii} ($\lambda \lambda 2796, 2803 \AA$) lines. Their model is relatively simple, and contains no dust destruction mechanism for photons, so they recover all of the re-emitted light in the end. They conclude that the light will be scattered into a large, diffuse halo which may well affect measurements with large apertures, so that part of the absorption feature is filled in with the re-emitted light. It is therefore possible that many previous measurements of Na D underestimate the strength of the lines, although there is very little observational evidence of emission in Na D. 
+
+In our study, we do not expect this to have an effect on our measurements, since we use only narrow slits and small apertures. The FLAMES effective aperture of about 1.5 arcsec corresponds to a size of only 0.6 kpc in Haro 11, and roughly half of that in ESO 338. 
+
+
+\chapter{Our sample of nearby \lya\ emitters} % and the connection to high redshift}
+
+Studying nearby galaxies allows us to look at the \lya\ escape process in detail. However, the galaxies in the nearby Universe have of course formed at a later era than objects at high redshift, and it is not clear just how analoguous nearby LAEs really are to the high-redshift objects. Specifically, the metallicities at higher redshift can be expected to be lower, since the enrichment by heavier elements depends on supernovae and can only increase with every new generation of stars born. 
+%\citet{I remember some comment about this discussion, was it Matthew mentioning Heckman?}
+
+Nevertheless, in this study the exact analogy to high redshift objects is not crucial, as the main purpose is to examine a purely physical mechanism related to \lya\ escape -- the effect of outflows of neutral gas on the observed \lya\ emission. In this section, I briefly describe the two galaxies studied in this thesis. I then summarize what is known of their ultraviolet properties. 
+
+\section{Haro 11}
+
+\begin{figure}
+   \centering
+   \includegraphics[width=14cm]{contir_lyargb.eps}
+   \caption{Haro 11 in different wavelengths. North is up and east is to the left. Left panel: Continuum filter image. Blue and green corresponds to HST filters F435W and F814W, and red is a VLT/NACO $\mathrm{K_s}$-band image (see Adamo et al. 2010). Right panel: \lya\ in blue, \ha\ in red and UV continuum in green.}
+              \label{Fig:Haro11_colour}
+    \end{figure}
+
+Haro 11 is a blue compact galaxy at a redshift of $z\sim0.02$, at coordinates $\alpha = 00^h 36^m 52^s,~\delta = -33^\circ 33' 17"$ (J2000). The name stems from it being the eleventh object in Guillermo Haro's catalogue of very blue objects close to the galactic poles \citep{haro1956}. It is also known by the modern catalogue name ESO 350-IG38 (from the same origin as ESO 338). Its morphology is dominated by three bright condensations or "knots", which are usually referred to as A, B and C \citep[as can be found in a footnote to Table 1 in][see also Figure~\ref{Fig:Slits} and Figure~\ref{Fig:Haro11_colour}]{vader-1993}. 
+
+Haro 11 was included in the spectroscopic survey made by \citet{kunth-1998} that was mentioned in the introduction. This survey included eight galaxies; four with \lya\ emission and four with absorption. The study found that an outflow of neutral gas, as measured by low ionization state absorption features, was always present in the galaxies which exhibit \lya\ in emission, where as a static neutral ISM was observed in the galaxies with \lya\ in absorption. Their HST/GHRS spectrum of the O {\sc i} and Si {\sc ii} lines is shown in Figure~\ref{Fig:Kunth98Haro11}. Note that the y-axis scale is incorrect, as it extends to negative flux values. It is clear that there are several absorption features overlaid in the spectrum, separated by several hundred km/s. Unfortunately, it is not clear exactly where in the galaxy the 1.7 $\times$ 1.7 arcsec aperture was pointed. The telescope made a series of small angular manoeuvres in order to find the peak in ultraviolet surface brightness. The information on these small movements is not available, and the UV morphology is too complex to reconstruct it. There is more \lya\ flux in an HST/ACS/F140LP image in an equivalent aperture centered on knot C than there is in the GHRS spectrum. It thus seems that the aperture caught some part of knot C, but most likely it was directed somewhere in between the three knots \citep[see discussion in][]{hayes-2007}. 
+
+\begin{figure}
+   \centering
+   \includegraphics[width=10cm]{Kunth98_abs.eps}
+   \caption{GHRS spectrum of the O {\sc i} and Si {\sc ii} absorption features in Haro 11, from \citet{kunth-1998}, their Figure 2.}
+              \label{Fig:Kunth98Haro11}
+    \end{figure}
+
+
+
+In Haro 11, knot C appears to be the brightest knot in the ultraviolet and it also shows Ly $\alpha$ in emission, while knot B is brightest in H$\alpha$, where Ly $\alpha$ is instead absorbed. These two knots are therefore of particular interest as we try to explain why Ly $\alpha$ is seen from one region but is absorbed in the other. 
+Some evidence suggests that Haro 11 might be the result of a merger of dwarf galaxies \citep{ostlin-2001}, particularly due to the irregular appearance, the high relative velocities, the broad emission lines, and the presence of a tidal arm structure 
+with a high redshifted velocity relative to the rest of the system ({\"O}stlin et al. 2012, in preparation). The H $\alpha$ line width is as high as $\sim$ 270 km/s (FWHM), and shows strong multi-component features.  
+
+\section{ESO 338-IG04}
+
+\begin{figure}
+   \centering
+   \includegraphics[width=14cm]{eso338lya_rgb.eps}
+   \caption{ESO 338 in different wavelengths. North is up and east is to the left. Left panel: Continuum image from HST/WFPC2 images \citep[see][]{ostlin-1998}. Right panel: \lya\ in blue, \ha\ in red and UV continuum in green.}
+              \label{Fig:ESO338_colour}
+    \end{figure}
+
+ESO 338-IG04 (or just ESO 338 as it will usually be referred to in this work) is also a blue compact galaxy, at a redshift of $z\sim0.009$, at coordinates $\alpha = 19^h 27^m 58^s,~\delta = -41^\circ 34' 31"$ (J2000). 
+
+It is riddled with a large number of super star clusters (SSCs), small bright knots of very intense star formation, and the galaxy has been an object of intense study ever since \citet{bergvall1985} devoted an entire paper to discussing its remarkable properties. It has subsequently been analyzed in detail by \citet{ostlin-1998,ostlin-2003} using HST/WFPC2 broadband images. With the addition of the ultraviolet F122M and F140LP filters, the \lya\ properties could be studied by \citet{hayes-2005} (see Figure~\ref{Fig:ESO338_colour}).
+
+The galaxy was likely involved in an interaction with the companion galaxy ESO 338-IG04b some time ago \citep[see][who show a bridge of H {\sc i} gas connects the two galaxies]{cannon-2004}, but the current starburst is much too young to have been triggered by this interaction directly. It is possible that it was triggered by some remnant gas from the previous interaction, or by a new interaction with another small galaxy. \citet{bergvall-ostlin2002} found the stellar metallicity of the host galaxy is higher than in the interstellar medium, which would support this conclusion.
+
+% Look at Hayes+2005 for more of a summary
+
+\section{The UV information obtained so far}
+%The HST UV imaging program from Kunth 2003 onwards, Ostlin 2005 and 7 ? Hayes 2005 and 2007!  
+The HST UV images mentioned above was acquired as part of an imaging program using the Solar Blind Channel (SBC) on the Advanced Camera for Surveys (ACS) instrument. The images were first presented in \citet{kunth-2003} for Haro 11. The idea used to produce a \lya\ image is to use the F122M, which contains the line. Unfortunately, the filter has a relatively low sensitivity, but at the time, it was still a factor of ten higher than any previous instrumentation available. The filter is rather broad and has a long red tail, and the F140LP filter was used for continuum subtraction. Figure~\ref{Fig:sbc_filts} shows the filter transmissivities along with an example of a \lya\ emission spectrum, to show where the emission line would end up. Note that the geocoronal \lya\ at rest wavelength contaminates the F122M filter.
+
+\begin{figure}
+   \centering
+   \includegraphics[width=12cm]{sbc_kunthLyafilts.eps}
+   \caption{The transmissivity curves for the F122M (solid) and F140LP (dashed) filters used for the ACS/SBC UV imaging program to which we owe our \lya\ images. An example of a \lya\ emission line spectrum at a small redshift is included for comparison in red. The location of the geocoronal \lya\ line at the rest wavelength is indicated by the vertical dash-dotted line.}
+              \label{Fig:sbc_filts}
+    \end{figure}
+    
+\begin{figure}
+   \centering
+   \includegraphics[width=14cm]{both_lyaprofs.eps}
+   \caption{Left: Lyman alpha line profile for Haro 11 from HST/GHRS aperture spectrum, from \citep{kunth-1998}, likely centered between the knots. Right: Lyman alpha line profile for ESO 338 based on HST/STIS long slit spectrum, from \citet{hayes-2005}, not optimized for knot A.}
+              \label{Fig:both_lyaprofs}
+    \end{figure}
+
+This imaging program forms the basis for very much of our study, both for Haro 11 and ESO 338. The \lya\ imaging of ESO 338 was first presented in \citet{hayes-2005}, and a final calibrated version of all images, including four other galaxies, was later released to the community \citep{ostlin-2009}. From the images, we can study \lya\ emission and absorption features in detail, and most of the references to the UV or \lya\ morphology in this thesis and in Paper {\sc i} are based on this information. Ideally, we would like to combine the imaging information with a detailed analysis of the \lya\ line profile, as this is an important tool for disentangling the radiative transfer process. The line profile can provide a lot of information about outflows and structures in the interstellar medium, when combined with simulations of radiative transfer \citep[see e.g.][]{verhamme-2008,noterdaeme-2012}.
+
+Unfortunately, in our two galaxies, the exact \lya\ line shape in the different regions is not well known. \citet{kunth-1998} present a HST/GHRS spectrum of the \lya\ line in Haro 11, but it is not clear where in the galaxy the aperture was pointed. \citet{hayes-2005} present a HST/STIS spectrum of ESO 338, but unfortunately the redshift to this galaxy is rather low, and the spectral resolution is not good enough to reliably separate the geocoronal \lya\ line from the spectrum. Also, the slit is very narrow (only 0.2 arcsec) and was not optimized to be centered exactly over knot A. The two spectra are here shown in Figure~\ref{Fig:both_lyaprofs}.
+
+
+\chapter{Data acquisition and reduction}
+
+At the Very Large Telescope, run by ESO at Cerro Paranal in Chile, there are four equally large telescopes, each equipped with an 8.2-meter primary mirror. One of these is known as "Kueyen" or simply as unit 2 (UT2). There are three instruments here, two of which have been used for this thesis. At the Cassegrain focus, a multi-wavelength spectrograph called X-Shooter is currently mounted. At one of the Nasmyth foci, we find the multi-object spectrograph called FLAMES. 
+
+In this chapter, I describe these two instruments in slightly more detail, with the main focus on FLAMES, in order to give some background for the data reduction steps that follow. 
+
+\section{The FLAMES/GIRAFFE/Argus integral field spectrograph}
+
+
+\begin{figure}
+   \centering
+   \includegraphics[width=14cm]{ArgusSetup.eps}
+   \caption{Arrangement of the fibers for the Argus integral field unit. The top figure shows the physical size and extent of the lenslets to which the fibers are attached. The lower figure shows an example of how the individual spaxels are mapped to the spectrograph. }
+              \label{Fig:ArgusSetup}
+    \end{figure}
+
+FLAMES stands for Fibre Large Array Multi Element Spectrograph. It supports many different observing modes, including the GIRAFFE instrument, which was used in this study. GIRAFFE has two echelle grisms for "low" and "high" resolution and is fed from one of three possible fibre setups; one of these is called ARGUS which is an integral field unit where the fibres are connected in a rectangular configuration of 14 $\times$ 22 lenslets (see Figure~\ref{Fig:ArgusSetup}). Two different scales are available; 0.3 or 0.52 arcsec / lenslet. We used the latter scale, which gives the slightly larger field of view of circa 7 $\times$ 11 arcsec. ARGUS also has 15 separate single sky fibres. 
+
+We used ARGUS in two "low resolution" modes called LR5 and LR6. The LR6 grating covers $\lambda 6438-7184 \AA$ with a resolution of $\mathcal{R} = 13700$, and this was used to target the \ha\ line in our two galaxies. The LR5 setup instead covers $\lambda 5741-6524 \AA$ at $\mathcal{R} = 11800$, which was used to capture the Na D feature. 
+
+The idea with an integral field unit is to get both spatial and spectral information at the same time. The output product after all reduction steps are complete is a three-dimensional data cube with two spatial and one spectral dimension (see Figure~\ref{Fig:ifu_design}). Since the lenslets, which focus the light into the fibres, are connected in a rectangular grid, a reconstructed image of the galaxy at all wavelengths probed by the spectrograph can be made. One can also choose to look at spectra only from specific regions, as we mostly do in this study. 
+
+\begin{figure}
+   \centering
+   \includegraphics[width=14cm]{ifu_design.eps}
+   \caption{The principle of integral field spectroscopy. The field of view is divided into spectral pixels or "spaxels", each corresponding to a small lens attached to a fibre. The light is lead through a slit in an ordinary echelle spectrograph, and the final data product becomes a reconstructed cube with both spatial and spectal information.}
+              \label{Fig:ifu_design}
+    \end{figure}
+
+\section{Reduction of the FLAMES data}
+
+The FLAMES/Argus data were reduced using recipes in the common pipeline library (CPL) package version 5.2.0, which is provided by ESO. The recipes were run using the command line \texttt{esorex} interface. First, the bias frames were median combined using the \texttt{gimasterbias} recipe. The resulting master bias is then used in all of the subsequent reduction steps. The next part is to use the \texttt{gimasterflat} recipe, which is used for calculating where on the CCD the light from each fibre will end up. The calibration frame is acquired by using a halogen lamp as a continuum source and feeding this light through the instrument. The recipe then fits polynomials to the shape and intensity of this spectrum which are used in the subsequent reduction steps. For each observing block that we reduced, we always used only the flat frames acquired in conjunction with those science observations. 
+
+The next step is to use the \texttt{giwavecalibration} recipe, which performs the wavelength calibration. This is used to map exactly where on the CCD a specific wavelength will appear. The calibration frame is acquired using a different lamp with known emission lines. The light will then pass through the echelle grism and produce points on the CCD whose positions are fitted by the recipe. The recipe requires an existing dispersion solution as a first order guess, which is then improved. A standard dispersion solution provided together with the raw data was used in each case for the initial guess, and the convergence of the wavelength calibration fitting was checked by using the output dispersion solution as an initial guess for a second run, making sure an identical solution was obtained. 
+
+The final step is then to apply all calibrations to the science frames using \texttt{giscience}. This recipe uses the flat and wavelength information to extract the science spectra, and create a data cube with the two spatial dimensions on the sky and one spectral dimension. 
+
+A complication in the data reduction process was that the data were acquired using a dithering pattern between each exposure. This meant that the first version of the reduced data were incorrectly combined, as a final step in the process, since the cubes were not aligned in the spatial direction. 
+The information on the size and direction of the dithering pattern was subsequently retrieved from the Phase II preparation files, and a python script was written to convert the RA and DEC movements to spaxel shifts and "manually" shift the data cubes before combining them. Each science exposure was thus reduced separately, resulting in one data cube with an accompanying uncertainty data cube from the pipeline. These products were then used to create a weighted average of the value at each spatial and spectral point in the final cube. 
+
+Since the dithering patterns were made with steps smaller than the 0.52 arcsec / lenslet scale of the integral field unit, one data product was also made where the exposures where drizzled onto a grid with 0.26 arcsec / spaxel resolution. This was however never used in the subsequent analysis, mainly because the Na D feature turned out to be so weak that the data had to be binned spatially and the extra spatial information would therefore be lost in any case. 
+
+\section{X-Shooter description and reductions}
+
+In our analysis, we have also used spectra from an instrument called X-Shooter, which I will here describe briefly. X-Shooter is a three-tiered spectrograph which uses beam splitters to divide the light into three different arms, using three different detectors sensitive at different wavelength ranges. There is one ultraviolet-blue (UVB) arm, operating at $\lambda 3000 - 5600 \AA$, one visible (VIS) arm, $\lambda 5500 - 10200 \AA$ and one near-infrared (NIR) arm, $\lambda 10000 - 24800 \AA$.
+
+In this study, we focus on the UVB and VIS arms, which contain the relevant Na D, Mg b and \ha\ features which we use to confirm the results of FLAMES as well as estimate the stellar contamination. In some cases, we are also able to see the K {\sc i} doublet ($\lambda \lambda 7664.91, 7698.97 \AA$), which is expected to behave similarly to the Na D lines.   
+
+The spectra were reduced with the X-Shooter pipeline v. 1.3.7 using \texttt{esorex} v. 3.9.0. Standard settings were used in the physical model mode, using the \texttt{xsh\_scired\_slit\_nod} recipe to perform reduction, sky subtraction and extraction of the science frames. 
+
+These data are also analyzed by \citet{guseva-2012}, but includes different reduction steps and the data from the NIR arm.
+
+
+\chapter{Results}
+
+Here the results of Paper I are briefly reiterated. 
+
+Due to the Na D feature being very weak in our spectra, we were forced to bin our FLAMES spectra in the spatial dimension. We are still able to investigate the most interesting \lya\ emitting and absorbing knots in the galaxy, since they also represent the places where the continuum and the absorption feature is strongest. We used 3 $\times$ 3 spaxel bins in the regions marked in Figure~\ref{Fig:Slits}. This figure also shows the positioning of the X-Shooter slits and the size of the entire field of view of FLAMES. 
+
+The main results, derived from the FLAMES spectra, are summarized in Table~\ref{Tab:NaD_ratios}. For Haro 11, we detect no measurable Na D absorption toward knot A. For knot B, we measure the velocity of Na D compared to the ionized gas to be blueshifted by 44 $\pm$ 12 km/s, while knot C instead shows a redshifted velocity of 32 $\pm$ 12 km/s. In ESO 338, the velocity toward knot A is blueshifted by 15 $\pm$ 16 km/s. In all cases where we are able to measure the Na D feature, we find low equivalent widths, and covering fractions of 5-10 \%. 
+
+\begin{table}
+\centering                          % used for centering table
+\begin{tabular}{c c c c}        % centered columns (4 columns)
+\hline\hline                 % inserts double horizontal lines
+Parameter & Haro 11B & Haro 11C & ESO 338-IG04 \\    % table heading 
+\hline                        % inserts single horizontal line
+  Na D doublet EW & $\sim -0.35 \AA$ & $\sim -0.4 \AA$ & $\sim -0.15 \AA$ \\
+   Na D 5890/5896 ratio & $1.15\pm0.22$ & $1.14\pm0.18$ & $0.94\pm0.47$ \\      
+   Na D optical depth & $6^{+\infty}_{-4}$ & $7^{+\infty}_{-5}$ & $\gtrsim 1.6$  \\
+   Na D mean shift (km/s) & $-44 \pm 12$  & $32 \pm 12$  & $-15 \pm 16$  \\
+   Nebular E(B-V) & 0.42$^{a}$ & 0.48$^{a}$ & $<0.1^{b}$ \\
+\hline                                   %inserts single line
+\end{tabular}
+\caption{Na D properties and dust extinction. References: a) \citet{hayes-2007}, b) \citet{bergvall-ostlin2002} }   \label{Tab:NaD_ratios}      % is used to refer this table in the text
+\end{table}
+
+   \begin{figure}
+   \centering
+   \includegraphics[width=14cm]{Paper1ArgusXSHFOV.eps}
+   \caption{Slit positions, field of view (FOV) and approximate aperture positions for Haro 11 (left) and ESO 338-IG04 (right), overlayed on HST/ACS F550M continuum images. The X-Shooter slits are 0.9 (or 1.0 for the UVB-arm, not marked in the figure) arcsec wide and 11 long and marked with solid lines. The FOV for the LR6 wavelength range (which includes H$\alpha$) is marked with dash-dotted lines while the shorter LR5 range (including Na D) is marked with dotted lines. The Argus binned "apertures" are 1.56 arcsec wide squares marked with dashed lines. The VLT/FLAMES FOV shown here shows the area for which we have full signal-to-noise after taking into account the dithering pattern. }
+              \label{Fig:Slits}
+    \end{figure}
+
+Figure~\ref{Fig:Argus_lines} shows the \ha , He {\sc i} ($\lambda 5875.6 \AA$) and Na D line profiles from FLAMES/Argus. Note that the fitted lines are not meant to perfectly reproduce the line shapes, but only to demonstrate what the best fitting gaussian looks like. The emission lines are clearly asymmetric, indicating multiple nebular components along the line of sight. 
+
+Figure~\ref{Fig_XSHLines} shows the same as Figure~\ref{Fig:Argus_lines}, but for the X-Shooter data, and also includes the K {\sc i} and Mg {\sc i} b absorption features. The signal-to-noise is considerably lower than for the FLAMES data, mainly due to a shorter exposure time. Note that the K {\sc i} feature appears to follow the velocity of the Na D feature, and also that the results agree very well between the observations. 
+
+\begin{figure}
+   \centering
+   \includegraphics[width=12cm]{Paper1NaDprof.eps}
+   \caption{H$\alpha$, He {\sc i} (5875.6) and Na D line profiles from the VLT/FLAMES data. The blue gaussians are a simple fit to the emission or absorption lines. The vertical lines show the systemic velocity as given by the H$\alpha$ gaussian fit. The y-axis is in arbitrary units, normalized to the continuum.}
+              \label{Fig:Argus_lines}
+    \end{figure}
+
+
+
+
+   \begin{figure}
+   \centering
+   \includegraphics[width=12cm]{Paper1XSHfig4.eps}
+   \caption{H$\alpha$, He {\sc i} (5875.6), Na D, K {\sc i} and Mg {\sc i} line profiles from the VLT/X-Shooter data. The blue gaussians are a simple fit to the emission or absorption lines. The vertical lines show the systemic velocity as given by the H$\alpha$ gaussian fit. The y-axis is in arbitrary units, normalized to the continuum. }
+              \label{Fig_XSHLines}
+    \end{figure}
+
+\chapter{Discussion}
+
+In this section, I provide a somewhat deeper discussion on some of the results of Paper I. Our results are surprising, and it has been difficult to interpret them in light of previous observations. Specifically, the covering fraction of neutral gas found by \citet{kunth-1998} in front of Haro 11 disagrees with our estimates, and the velocities and covering fractions that we measure are not what one would expect to see based on current predictions on \lya\ radiation transfer. I discuss these issues in more detail below.
+
+\section{The kinematics}
+
+The idea with this study was to measure the velocity of neutral gas in order to test the theory that an outflow was helping \lya\ to escape in these two galaxies. The expectation was that we would be able to map Na D across the entire bright continuum surface of the  galaxies, since they are both relatively well fitted within the field of view of Argus (see Figure~\ref{Fig:Slits}). Unfortunately, it turned out that the feature was unexpectedly weak and we had to spatially bin the data in order to detect the Na D at all. When we subsequently measured the velocities, it turned out that they too did not agree with what we expected. The strongest outflow is seen in knot B, which also shows the strongest \lya\ {\em absorption}. In knot C, we instead see infalling gas and in ESO 338's bright knot A the gas is almost static. 
+
+A strong confirmation of our results is the fact that we get the same results with both Argus and X-Shooter. Also, with the addition of X-Shooter, we can add the K {\sc i} and Mg {\sc i} lines, which also help to confirm that our kinematic measurements appear to be correct. The K {\sc i} lines are expected to be similar to the Na D lines, albeit slightly weaker, and they do appear to follow the same pattern. The Mg {\sc i} lines on the other hand, which are purely stellar, appear to follow the nebular velocity well, although the lines are very weak and we avoid reading too much kinematical information out of them. 
+
+\section{The different covering fractions}
+
+The one measurement that differs the most from previous data is the covering fractions of neutral gas in Haro 11. In all of our spectra, we see very weak Na D lines which all point to very low covering fractions, on the order of 10 \%. However, in the GHRS spectrum presented by \citet{kunth-1998}, the absorption lines of O {\sc i} and Si {\sc ii} are very strong, and appears almost black, which would mean a covering fraction close to unity. There may of course be some very narrow Na D components present in the spectra which are unresolved by the instrument, but even attempting to correct for this effect would very unlikely explain the entire difference. We do believe the measurement is real, but instead try to focus on the difference between the Na D covering fraction and optical depth versus the H {\sc i} covering fraction and optical depth. 
+
+In the paper, we present a simple back-of-the-envelope calculation where we show that our optical depth in Na D should correspond to an H {\sc i} column density where this absorption arises of over $N_{H \textsc{i}} > 10^{20} \mathrm{cm}^{-2}$. Since \lya\ is affected already at column densities around $10^{13} \mathrm{cm}^{-2}$, we conclude that the Na D that we measure must only be present in the very densest, coolest clumps in the ISM. Very likely, the majority of the ISM consists of regions where the H {\sc i} column density is somewhere in between these two extreme values. 
+
+Also, it is not clear exactly how the sodium and hydrogen are related in these galaxies. One possibility is that the relation between these elements is stronger in luminous and ultra-luminous infrared galaxies (LIRGs and ULIRGs), where the Na D lines have often been used. In these larger star forming systems, the elements in the gas has probably had longer time to mix properly, whereas both Haro 11 and ESO 338 appear to have undergone a recent merger which could have disrupted much of the "normal" abundances of elements one might expect to see in a dwarf galaxy. 
+
+One very important aspect when comparing the Na D absorption lines to those of O {\sc i} and Si {\sc ii} is the difference in photoionization energies. Na D requires only 5.14 eV to become ionized, which means that is must be shielded from photoionization by dust and therefore only survives in relatively cool clumps \citep[see discussion in][]{murray-2007}. The O {\sc i} and Si {\sc ii} both have photoionization energies closer to that of hydrogen (10.2 eV), which suggests that they would more accurately sample the covering fractions of neutral hydrogen. 
+
+In the case of ESO 338, we do not observe the same discrepancy. The O {\sc i} and Si {\sc ii} lines do appear quite weak \citep{schwartz-2006}, which then agrees with our interpretation of a low covering fraction of neutral gas. 
+
+\section{Ly C escape and the picket-fence model}
+
+The Lyman continuum (Ly C) is a term used to describe radiation with a wavelength shorter than 912 $\AA$, which is capable of ionizing hydrogen. In both of our galaxies, there is evidence that Ly C may be taking place. \citet{bergvall-2006} report on finding a residual signal of ionizing radiation from Haro 11 in FUSE spectra. FUSE stands for Far Ultraviolet Spectroscopic Explorer and it was a space telescope capable of acquiring spectra in a 30 $\times$ 30 arcsec aperture. \citet{grimes-2007} reanalyzed the data and found no compelling evidence for this signal, but \citet{leitet-2011} replied with an updated version of the CalFUSE reduction algorithm and did find a significant Ly C escape fraction of 3.3 $\pm$ 0.7 \%.
+
+ESO 338 is unfortunately at too low redshift to perform a direct measurement of the same kind, but the low covering fraction of LIS absorption lines in the UV makes the galaxy a strong candidate for Ly C escape. 
+
+In order for this ionizing radiation to escape, it must travel straight through the interstellar medium without encountering even relatively small column densities of neutral hydrogen. In other words, there must exist ionized channels or holes in the ISM which allows the radiation to escape directly. If such channels are indeed present in Haro 11 and ESO 338, the observed \lya\ emission is highly likely to escape through the same channels, and it would therefore be an interesting candidate for explaining the observed \lya\ escape. This partly ionized ISM scenario is often referred to as a picket-fence model, as photons are able to escape through holes between regions of neutral gas that do not fully cover the ionized regions. 
+
+\section{Are there still outflows in the \lya\ emitting regions?}
+
+In both cases where \lya\ appears to escape easily (ESO 338 knot A and Haro 11 knot C), there does exist tentative evidence that some form of outflow might still be taking place, even though the Na D measurements say otherwise.  
+
+In the case of ESO 338, there appears to be a bubble of ionized gas around knot A, which should be expanding. \citet{ostlin-2007} decompose the \ha\ and [O {\sc iii}] lines and see two narrower components in their UVES spectra of knot A, separated by $\sim$ 65 km/s. They see this as potentially coming from the two sides of the expanding bubble. If the emission on the blue side (pointing in our direction) dominates the total profile, it is possible that the average \ha\ velocity appears lower, which would result in us measuring a lower outflow velocity when comparing to \ha . However, the ionized gas appears to be optically thin, and the analysis by \citet{cumming-2008} of the stellar Ca triplet ($\lambda \lambda 8498, 8542, 8662 \AA$) suggests that the velocity of the stars follows the ionized gas velocity closely, which speaks against this scenario. 
+
+In the case of Haro 11 knot C we argue that there may still be an outflow present, perpendicular to our line of sight. This is of course possible, since our absorption measurements can only be used to measure velocity components along the direction of our line of sight, and only on the side of galaxy facing our way.
+
+The \lya\ morphology in images of knot C seems to show something like an hour-glass shape elongated in the north-south direction while there is a dust lane running east-west (see the right panel of Figure~\ref{Fig:Haro11_colour} and Figure 4 in Paper I). We interpret this as a possibility that there may be a north-south bipolar outflow of neutral gas. A possible problem with this scenario is that the \lya\ photons would preferentially escape along the direction of the outflow; i.e. also perpendicularly to the line of sight. In other words, in order for us to see these escaping \lya\ photons, they still have to scatter on the gas in order to travel in our direction. 
+
+
+\section{Outlook}
+
+It would be possible to say a lot about possible outflows or scattering processes, and to attempt to trace the history of the \lya\ photons, if we only had \lya\ spectra with high spatial and spectral resolution of these interesting regions. Unfortunately, the HST/GHRS spectrum of Haro 11 appears to have been centered somewhere in between the knots and the HST/STIS narrow long slit spectrum of ESO 338 was not optimized to study the \lya\ emission from knot A, as well as suffering from poor spectral resolution. A new, detailed UV analysis of these two galaxies, using several pointings and a combination of the available space telescope instrumentation would therefore be highly warranted.
+
+
+One aspect of the data that is outside the scope of this project, but which would be interesting in itself as a future study, is to look at the multiple components in the \ha\ emission line in detail, especially in Haro 11. Since the line is very strong it can also be explored out to rather large distances. This could give more insights into the three-dimensional structure and the kinematics of the two galaxies, possibly connecting it to the merger or interaction histories. Also, in Haro 11 knot C, \citet{guseva-2012} report that they are able to fit multiple components to the \ha\ line, one of which shows a P Cygni-like profile with a blueshifted absorption component. This would indicate the presence of luminous blue variable (LBV) stars, which usually have strong stellar winds which would give rise to such a spectral line shape. With our FLAMES data which is even deeper in \ha , one would be able to truly study this feature in detail, adding the spatial information.  
+
+Another aspect more related to the present project would be to study ionization structures, and specifically look for ionization cones in the interstellar medium. By comparing flux ratios of the same element in different ionization states, e.g. that of S {\sc iii} and S {\sc ii}, one can map the amount and extent of the ionization in different regions in the galaxy. If there is indeed Ly C escape in these galaxies, such ionized cones through the ISM are a strong candidate for explaining how the ionizing radiation is able to reach us. We already have the S {\sc ii} ($\lambda \lambda 6716.5, 6730.7 \AA$) lines visible in the FLAMES spectra presented here, and there exist also FLAMES data on the [S {\sc iii}] ($\lambda 9069 \AA$) line (e.g. \"{O}stlin et al. 2012, submitted). Unfortunately, in Haro 11 the [S {\sc ii}] feature in our spectra happens to fall on an atmospheric $\mathrm{O_2}$ absorption band, which may severely complicate such a study. 
+
+\clearpage
+
+\chapter*{List of acronyms}
+
+\begin{description}
+\item[CCD]
+Charged Coupled Device, a photosensitive detector commonly used in modern optical telescopes.
+\item[IUE]
+International Ultraviolet Explorer, satellite observatory capable of ultraviolet spectroscopy, active 1978-1996.
+\item[ACS] 
+Advanced Camera for Surveys, imaging instrument aboard the Hubble Space Telescope (HST).
+\item[WFPC2]
+Wide Field Planetary Camera 2, imaging instrument aboard the HST. Was replaced by the new Wide Field Camera 3 (WFC3) in 2009.
+\item[HST]
+Hubble Space Telescope, satellite observatory capable of imaging and spectroscopy in a range of wavelengths, including ultraviolet.
+\item[COS]
+Cosmic Origins Spectrograph, instrument aboard the HST capable of UV aperture spectroscopy.
+\item[STIS]
+Space Telescope Imaging Spectrograph, instrument aboard the HST capable of UV long slit spectroscopy.
+\item[GHRS] 
+Goddard High Resolution Spectrograph, one of the original spectrographs aboard the HST. Was removed in 1997.
+\item[NACO] 
+Nasmyth Adaptive Optics System (NAOS) Near infrared imager and camera (CONICA), near-IR instrument at the VLT.
+\item[VLT] 
+Very Large Telescope, a collection of four eight-meter telescopes in the Atacama desert, Chile, run by ESO. 
+\item[FLAMES]
+Fiber Large Array Multi Element Spectrograph, instrument at the VLT capable of several types of fiber spectroscopy, including multi-object and integral field spectroscopy. 
+\item[IFU]
+Integral Field Unit, a bundle of optical fibers arranged in a geometrical pattern, which allows for simultaneous spatial and spectral spectroscopy.
+\item[ESO] 
+European Southern Observatory, European astronomy organization, in charge of several large telescopes in Chile. 
+\item[FWHM] 
+Full Width at Half-Maximum, the width of a mathematical distribution or spectral line feature, defined as the full distance between two points on either side of the peak, corresponding to half the peak value.
+\item[LIS]
+Low Ionization State, in the context of this thesis usually referring to absorption lines formed in neutral gas, where the electrons in the absorbing material are in states of low energy.
+\item[(U)LIRG]
+(Ultra-) Luminous Infrared Galaxy, a strongly star-forming galaxy more luminous than $10^{11}$ ($10^{12}$ in the case of ULIRGs) solar luminosities in the far-infrared part of the spectrum. 
+\item[LAE] 
+Lyman Alpha Emitter, a \lya\ emitting galaxy, normally found using the narrow-band technique.
+\item[LBG] 
+Lyman Break Galaxy, a galaxy found using the Lyman Break technique. 
+\item[ISM] 
+Interstellar Medium, the material, often consisting of gas and dust, that lies between stars in galaxies.
+\item[IGM] 
+Intergalactic Medium, the material between galaxies.
+\item[CGM] 
+Circumgalactic Medium, the material surrounding galaxies, usually within 300 kpc. 
+
+\end{description}
+
+ \bibliographystyle{aa}  % style aa.bst
+ \bibliography{myattempt.bib}  % your references Yourfile.bib
+ 
+% attach the PDF to the paper here 
+%\includepdf[pages={-}]{sandbergetal2012.pdf}  % does not work :(
+ 
+ \end{document}
