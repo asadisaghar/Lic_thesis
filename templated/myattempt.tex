@@ -1,17 +1,29 @@
 \documentclass[a4wide,12pt]{book}
 
 \usepackage[swedish,english]{babel} % Use English and Swedish languages. English default. English hyphenation.
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+\usepackage{bm}
 \usepackage{txfonts}
 \usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{caption}
+\usepackage{sidecap}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{epstopdf}
+\usepackage{titlesec}
+\usepackage{verbatim}
+\usepackage{amssymb}
 \usepackage{natbib}
 \bibpunct{(}{)}{;}{a}{}{,}     %% natbib format like A&A and ApJ
-
+\usepackage{hyperref}
 
 %\usepackage[latin1]{inputenc} % Unix users should include this package instead of ansinew or applemac for correct handling of diacritics.
 %\usepackage[T1]{fontenc}% Enables the use of 8-bit characters and Â, ‰, ˆ can be typed as Â, ‰, ˆ instead of the corresponding commands.
 % \usepackage[small]{caption}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
+\usepackage{enumerate}
 %Options: Sonny, Lenny, Glenn (CAPS), Conny (NO!), Rejne (CAPS IN BOX), Bjarne, Bjornstrup
 \usepackage[Lenny]{fncychap}
 
@@ -71,11 +83,12 @@
           % Nature
 
 \def\pasa{PASA}
-\newcommand{\msun}{$\mathrm{M}_{\odot}$}
+\newcommand{\msun }{$\mathrm{M}_{\odot}$}
 \newcommand{\ha}{H${\alpha}$}
 \newcommand{\lya}{Ly~${\alpha}$}
 \newcommand{\lyb}{Ly~${\beta}$}
 \newcommand{\lyg}{Ly~${\gamma}$}
+\newcommand{\ignore}[1]{}
 
 \begin{document}
 
@@ -96,26 +109,26 @@
 
 \vspace{0.1cm}
 
-{\bf \LARGE{Observations of neutral gas flows in nearby Lyman alpha emitting galaxies\\ \vspace{1.4cm} }}~\\
+{\bf \LARGE{Gravitational lensing and radio interferometry as a probe of the small--scale structure of dark matter\\ \vspace{1.4cm} }}~\\
 \end{center}
 
 \vspace{-1.0cm}
 \begin{center}
-\large{{\it Author:}\\ Andreas Sandberg}\\
+\large{{\it Author:}\\ Saghar Asadi}\\
 \vspace{0.5cm}
 \small{\it Department of Astronomy,\\ The Oskar Klein Center,\\ Stockholm University,\\ AlbaNova,\\ 106 91 Stockholm,\\ Sweden}
 
 \vspace{1.5cm}
-\large{{\it Supervisor:}\\ G{\"o}ran {\"O}stlin}\\
+\large{{\it Supervisor:}\\ Erik Zackrisson}\\
 \vspace{0.5cm}
-\large{{\it Co-Supervisor:}\\ Lucia Guaita}\\
+\large{{\it Co-Supervisors:}\\ Emily Freeland\\ Garrelt Mellema}\\
 \vspace{0.5cm}
 \end{center}
 
 \vspace{1.2cm}
 
 \begin{center}
-\large{Nov 14, 2012}\\
+\large{Jan 11, 2016}\\
 \end{center}
 \thispagestyle{empty}
 \fancyhf{}
@@ -143,568 +156,763 @@
 
 \chapter*{Abstract}
 \thispagestyle{empty}
+Dark matter has been one of the great mysteries of physics since the early decades of the 20$^\mathrm{th}$ century. Despite numerous constraints on the properties of dark matter, the concordance model of cosmology -- accounting for dark matter as the second abundant component in the Universe -- has yet to describe the observed Universe at different scales simultaneously.
 
-The Lyman alpha (\lya ) emission line has grown to become one of the most successful tools for finding galaxies at high redshift. At redshifts corresponding to the early cosmic times of reionization and primeval galaxy formation, the wavelength of \lya\ still remains accessible with current instrumentation. Unfortunately, \lya\ is a resonance line which undergoes a complicated radiative transfer process through the neutral gas inside galaxies which is still not fully understood. The precise distribution and kinematics of stars, gas and dust all seem to affect the amount of \lya\ that eventually escapes the galaxy. Studies of nearby \lya\ emitting galaxies are therefore an important key to understanding this process in detail. 
+One property of gravity that has been known for a long time is the fact that it treats dark and luminous mass the same way. This gives gravitational lensing a unique advantage over many other observational methods to provide an independent test for the presence of dark structures of various size and mass. Strong lensing by a foreground object can produce multiple images of a background light source. Measurements of strong lens systems provide information about mass distribution of both the lens and the source. One way to study the structure inside dark matter halos of galaxies is to look at a particular type of lens system where the foreground galaxy produces multiple images of the background light source, and the halo substructure presents itself as a surface brightness perturbation in one of the lensed images.
 
-From previous observations and simulations, it is evident that outflows of neutral gas can facilitate the escape of \lya\ photons, as the Doppler effect shifts the frequency out of resonance.
-In this thesis, we present a study of two known \lya\ emitters; Haro 11 and ESO 338-IG 04. We have attempted to measure the velocity of the neutral gas in front of the strongest \lya\ emitting and absorbing regions by using the Na D absorption feature as a tracer. By utilizing an integral field unit, we acquire both high spectral and spatial information of our targets. This comprises the first detailed observational study of Na D as a tracer of neutral gas in connection with the \lya\ radiative transfer process.
+Revealing small--scale surface brightness perturbations requires high--resolution imaging of a lensed extended object, such as star--forming galaxies and radio jets. Radio interferometry is a technique that connects an array of radio antennae to essentially work as a single dish with the diameter as large as the maximum distance within the array. Arrays such as the VLBI network or ALMA, and different combinations of these arrays, make it possible to probe radio quasars and sub-mm galaxies with sub--milliarcsecond angular resolutions.
 
-Our results are unexpected; we find no strong correlation between the velocity of neutral gas and \lya\ escape, and low covering fractions of gas in all cases, also when \lya\ is absorbed. We discuss the possible complications and limitations of Na D as a tracer of the neutral gas, and conclude that the Na D we measure represents only the densest clumps in the ISM. Although we probe structures on a scale of only a few hundred pc, it is likely that the complexity of \lya\ emitting and absorbing structures continues on even smaller scales.
+In this thesis, we simulate observations of multiply--lensed sources (radio quasars and dusty star--forming galaxies) at $z \simeq 2$ with different (present and near--future) radio interferometers. These simulations are used to place constraints on various forms of suggested halo substructure within the lens halo. In {\bf paper I}, we derive the minimum  mass that subhalos with different internal density profiles need to have in order to produce detectable lensing effects on multiply--imaged quasars with three different radio arrays. Using the mass resolution of different forms of subhalos, %%huh?
+ we estimate constraints that observations of a number of such lens systems can place on the contribution of each form of substructure in the mass of the parent halo. {\bf Paper II} focuses on simulations of sub--mm galaxies using ALMA and the prospects for detecting standard cold dark matter (CDM) subhalos. In this paper, we show that standard CDM subhalos in the sub--galactic mass range are detectable using high--frequency observations with ALMA. In addition to probing the mass of the substructure such observations are able to discern the difference between the standard CDM subhalos and other dark compact objects.  This can place constraints on the contribution of CDM subhalos to the mass of their host halo -- a quantity directly comparable to cosmological simulations.
+
 
 \clearpage
-
-\begin{itemize}
 
 \thispagestyle{empty}
 
 \section*{List of papers}
-
-\item
-Sandberg, A., {\"O}stlin, G., Hayes, M., Fathi, K., Schaerer D., Mas-Hesse J.M., Rivera-Thorsen, T. submitted, {\it Neutral gas in Haro 11 and ESO 338-IG04 measured through sodium absorption}
-
-
-
-\subsection*{From the same author}
-
-\item
-{\bf Sandberg, A.}, \& Sollerman, J.\ 2009, \aap, 504, 525, {\it Optical and infrared observations of the Crab Pulsar and its nearby knot}
-
-\item
-Bj{\"o}rnsson, C.-I., {\bf Sandberg, A.}, \& Sollerman, J.\ 2010, \aap, 516, A65 {\it The location of the Crab pulsar emission region: restrictions on synchrotron emission models}
-
-
-
-\end{itemize}
+  \begin{enumerate}[I]
+    \subsection*{Included in this thesis}
+      \item Zackrisson, E.; {\bf Asadi, S.}; Wiik, K.; J{\"o}nsson, J.; Scott, P.; Datta, K.K.; Friedrich, M.M.; Jensen, H.; Johansson, J.; Rydberg, C--E.; Sandberg, A.;  Monthly Notices of the Royal Astronomical Society, Volume 431, Issue 3, p.2172-2183 \\{\it Hunting for dark halo substructure using submilliarcsecond-scale observations of macrolensed radio jets}
+      \item {\bf Asadi, S.}; Zackrisson, E.; Freeland, E.; submitted\\{\it Probing cold dark matter subhalos with simulated ALMA observations of macrolensed sub–mm galaxies}
+    \subsection*{Other papers}
+      \item Amanullah, R.; [28 co--authors]; {\bf Asadi, S.};  [9 co--authors]; Monthly Notices of the Royal Astronomical Society, Volume 453, Issue 3, p.3300-3328 \\{\it Diversity in extinction laws of Type Ia supernovae measured between 0.2 and 2 $\mu$m}
+      \item Zackrisson, E.; Calissendorff, P.; {\bf Asadi, S.}; Nyholm, A.; The Astrophysical Journal, Volume 810, Issue 1, article id. 23, 12 pp. (2015)\\{\it Extragalactic SETI: The Tully-Fisher Relation as a Probe of Dysonian Astroengineering in Disk Galaxies}
+      \item Zackrisson, E.; González, J.; Eriksson, S.; {\bf Asadi, S.}; Safranek--Shrader, C.; Trenti, M.; Inoue, A.K.; Monthly Notices of the Royal Astronomical Society, Volume 449, Issue 3, p.3057--3063\\{\it Primordial star clusters at extreme magnification}
+      \item Rydberg, C--E.; Zackrisson, E.; Zitrin, A.; Guaita, L.; Melinder, J.; {\bf Asadi, S.}; Gonzalez, J.; {\"O}stlin, G.; Str{\"o}m, T.; The Astrophysical Journal, Volume 804, Issue 1, article id. 13, 16 pp. (2015)\\{\it A Search for Population III Galaxies in CLASH. I. Singly--imaged Candidates at High Redshift}
+      \item Tilanus, R. et al.; White paper; eprint arXiv:1406.4650\\{\it Future mmVLBI Research with ALMA: A European vision}
+  \end{enumerate}
 
 \tableofcontents
 
 \thispagestyle{empty}
 
-\chapter{Introduction}
-
+%%  ------------------------  %%
+\chapter{Dark matter}
 \pagenumbering{arabic}
-
-Hydrogen is the most abundant element in the Universe. In its neutral form, it consists of one positively charged proton and a negatively charged electron. This electron can only reside in a finite number of discrete energy levels, or states, while bound to the atom. The state with the lowest energy is called the ground state, and the other, higher energy states are called excited states. 
-
-When an electron binds to a proton and subsequently transitions from a higher energy state to a lower (which is known as {\em recombination}), it will emit light, which is an electromagnetic wave -- or a photon, if you will -- with an energy exactly matching that of the energy difference between the two states. The energy is linked to the frequency of the wave via Planck's constant, and the wavelength is of course related to the frequency via the wave speed, which in this case is the speed of light. 
-
-This basic physical principle is one of the cornerstones of modern observational astronomy. Since the energy levels have different spacings in different atoms, each element gives off light at specific wavelengths, unique to that particular element. In this way, the spectrum of the light emitted from a source can be used as a fingerprint, allowing us to identify the elements in the source. 
-
-In the case of hydrogen, the transitions from excited states to the ground state are called the Lyman series, after physicist Theodore Lyman who discovered the emission lines in a laboratory in the early 1900's. These lines are all in the ultraviolet part of the spectrum; they have a higher frequency than light that our eyes can see. 
-
-\begin{figure}
-   \centering
-   \includegraphics[width=14cm]{LymanSeries.eps}
-   \caption{The wavelengths of the emission lines in the Lyman series, which are formed from transitions from excited states to the ground state of hydrogen.}
-              \label{Fig:Lyman_states}
-    \end{figure}
-
-The transition from the first excited state to the ground state is called Lyman alpha (\lya) -- from the second, Lyman beta (\lyb) -- then, Lyman gamma etc. (see Figure~\ref{Fig:Lyman_states}). The states become gradually closer and closer to each other as the energy increases, and eventually we reach the so called Lyman limit, where the energy of the electron is large enough that it will leave the hydrogen atom completely. This is called {\em ionization}, and the electron will then leave an ionized atom behind (which in the case of hydrogen of course only consists of the proton). 
-
-This process also works in the opposite direction - an atom can be irradiated by light which will be absorbed and the electron will go to a higher energy level. If the energy of the incoming light exactly matches that needed for an electron to reach a higher level, the probability of that light being absorbed becomes very high. In the case of Lyman alpha (\lya), the energy difference between the ground state and first excited state is 10.2 eV, corresponding to a photon with a wavelength of 1215.67 $\AA$. 
-
-\section{The first attempts to use \lya\ for finding galaxies}
-It was suggested already by \citet{partridge-peebles1967} that the \lya\ emission line should be strong in star-forming galaxies. The idea is that all of the light with an energy above the ionization threshold of hydrogen ($> 13.6$ eV or $\lambda < 912 \AA$) is absorbed by the hydrogen gas in the galaxy, and a large portion of this light is then re-emitted as \lya\ (see Figure~\ref{Fig:PP67}). The electrons then recombine onto the protons, cascading down through the different energy levels. The first excited state in reality consists of several slightly separated states. There are two main modes through which an electron can reach the ground state; either through a 2s $\rightarrow$ 1s two-photon continuum emission, where the two photons combined energy is 10.2 eV, or through the 2p $\rightarrow$ 1s \lya\ emission. The probability that a \lya\ photon will be produced instead of two photons is roughly two thirds, and a total of 1/3 of all the ionizing energy is reprocessed into \lya . 
-
-\begin{figure}
-   \centering
-   \includegraphics[width=12cm]{PP67_Lya.eps}
-   \caption{Figure 3 from \citet{partridge-peebles1967}, which demonstrates how all of the blackbody emission shortwards of the Lyman break at 912 $\AA$ is reprocessed into the \lya\ emission line.}
-              \label{Fig:PP67}
-    \end{figure}
-
-It soon became clear that the assumptions made by \citet{partridge-peebles1967} were not realistic; for example, they assumed distant galaxies to have the same size as our Milky Way but with an average surface brightness equal to that of intense star formation. With the very low quantum efficiencies of the instrumentation of their time, they still concluded that it would only require a few minutes to detect very distant galaxies. With more realistic assumptions combined with modern instrumentation, this number is instead on the order of several hours. However, even with these assumptions taken into account, early surveys targeting the \lya\ line came up blank \citep{pritchet1994}. It was clear that there was still a large discrepancy between theory and observations. But what could cause such a discrepancy?
-
-
-%\subsection{Gas or dust?}
-The first candidate to be blamed for absorbing \lya\ photons before they could reach us was dust. Dust absorption is prominent in the ultraviolet, and early studies did show a tentative connection. \citet{meier-terlevich1981} used ultraviolet spectra from the International Ultraviolet Explorer (IUE) satellite to analyze three actively star forming galaxies with a redshift high enough to separate the \lya\ emission from geocoronal emission. They found that only the metal-poorest of the three objects showed any \lya\ emission. \footnote{Metallicity and dust content are naturally assumed to be well correlated}
-
-This relation remained under discussion for some time. \citet{kunth-1994} presented IUE spectra of the very low metallicity galaxy {\sc i} Zw 18 (with a metallicity $Z \lesssim \frac{1}{50} Z_{\odot}$), where \lya\ is strongly absorbed. Shortly after, \citet{lequeux-1995} found strong \lya\ emission emerging from the more metal-rich galaxy Haro 2. The conclusion was that the dust alone was not the decisive factor behind \lya\ escape. \citet{giavalisco-1996} neatly sums up the results, concluding that the radiation must be affected by multiple scatterings in neutral hydrogen, thus greatly increasing the path length for these photons. In some cases, this increases the chance of absorption, and in others it appears that \lya\ can scatter on neutral gas on the outside of clumps and escape more easily than continuum photons, as predicted by \citet{neufeld1991}. Much of the \lya\ will be re-emitted and finally escape only at large radii and at low surface brightness, which would then be missed when using smaller apertures. It thus became clear that the exact morphology of the neutral gas, as well as the velocity of the gas are important parameters for the \lya\ escape fraction. 
-
-It is this {\em resonance} nature of \lya\ (where a photon is very easily absorbed by neutral hydrogen gas and a new photon is almost instantly emitted in a new direction) that has greatly complicated studies of galaxies at high redshift, and made it the large and active field of research it is today. Modern simulations of the radiative transfer of \lya\ \citep[such as those of][, Duval et al. 2012 (submitted), see also Figure~\ref{Fig:verhamme2006static}]{verhamme-2006,garel-2012} take into account combinations of both the geometry and velocity of H {\sc i} gas and dust. 
-
-\section{The radiative transfer of \lya}
-
-If \lya\ photons are to escape a galaxy, they must scatter out to a region where the column density and optical depth is low enough for them to escape. The resonance effect is strongest in the line center, so that the optical depth decreases towards the wings, and emission in the wings of the line will thus more easily escape. This can be seen in a relatively simple simulation of \lya\ radiative transfer, in the case when an ionizing source is surrounded by neutral hydrogen gas without dust. The emergent \lya\ profile has two peaks on either side of the line center, corresponding to the red and blue wings of the intrinsic \lya\ line (see Figure~\ref{Fig:verhamme2006static}).
-
-
-\begin{figure}
-   \centering
-   \includegraphics[width=12cm]{verhamme2006static.eps}
-   \caption{Results from \citet{verhamme-2006}. Simulated radiative transfer of \lya\ reproduces the expected double-peaked profile from the analytical solution by \citet{neufeld1990}, for a static shell of H {\sc i} gas without dust.}
-              \label{Fig:verhamme2006static}
-    \end{figure}
-
-\subsection{The effect of kinematics on the \lya\ escape}\label{Sec:intro_kinematic_Lya}
-
-If the gas upon which the photon is about to scatter is in motion relative to the source of the photon, the photon will appear redshifted to the gas due to the Doppler effect. As a \lya\ photon is shifted away from the gas rest-frame wavelength, the probability of being absorbed becomes smaller. It is thus likely that more \lya\ photons will escape the galaxy if there is a strong motion in the neutral gas, as for example from an outflow created by stellar winds and supernovae (see also Section~\ref{Sec:abslines_lya}).
-
-\citet{kunth-1998} studied eight star forming galaxies in the ultraviolet regime with the Goddard High-Resolution Spectrograph (GHRS) aboard the Hubble Space Telescope (HST). Specifically, the study targeted \lya\ in combination with low ioniziation threshold absorption lines such as O {\sc i} ($\lambda 1302 \AA$) and Si {\sc ii} ($\lambda 1304 \AA$). These lines arise in cold neutral gas and can therefore be used for tracing its velocity. Four of the studied galaxies showed \lya\ in emission and the other four showed absorption. In each case, the \lya\ emitting galaxies show blueshifted absorption lines (compared to the systemic velocity) and asymmetric P Cygni\footnote{A P Cygni star is a blue luminous variable star with a gaseous envelope expanding away from it. Many of the emission lines therefore show a characteristic absorption feature on the blue side.}-like emission profiles, whereas the absorbing galaxies showed no velocity shift in the neutral gas. It thus seemed that in the presence of an outflow on the order of a few 100 km/s, \lya\ was able to escape\footnote{There are some newer measurements of some of the galaxies that do not agree with this original result; for example, \citet{schwartz-2006} measure a relatively strong outflow of several hundred km/s in a galaxy called Markarian 36, where \lya\ is only seen in absorption. Also, the measurements of Haro 11 presented in this thesis do not agree perfectly with their result, as we will come back to later. However, the basic principle that \lya\ does escape more easily in the presence of an outflow is undisputed.}.
-
-One of the galaxies studied by \citet{kunth-1998} was ESO 350-IG038, which is also known as Haro 11. This galaxy is also part of the study in this thesis and we will return to these results later.
-
-\section{Finding \lya\ emitters in modern surveys}
-
-Much has happened in the field of extragalactic exploration during the past two decades. Tentative evidence of \lya\ emitters started trickling in after the somewhat pessimistic review of \citet{pritchet1994}, but the real breakthrough came with the advent of the 10-meter class of telescopes. \citet{cowie-hu1998} presented a blank narrow-band survey using the Keck II 10 meter telescope on Hawaii, proving beyond any doubt that there is a substantial population of galaxies at a redshift $\sim 3.4$ that emit \lya . This also showed that the boundary for discovering these objects had previously only been just out of reach, and the field was wide open for finding galaxies at high redshifts. The narrow-band technique has since resulted in a plethora of successful studies of LAEs: for example at redshift $z \sim 0.3$ \citep[e.g.][]{deharveng-2008}, $z \sim 2$ \citep[e.g.][]{nilsson-2009,guaita-2011}, $z \sim 3$ \citep[e.g.][]{gawiser-2006,gronwall-2007,nilsson-2007_3,ono-2010_3}, $z \sim 4.5-5$ \citep[e.g.][]{malhotra-rhoads2002,finkelstein-2008,pirzkal-2007,yuma-2010} and $z \sim 6-7$ \citep[e.g.][]{ono-2010_6,ouchi-2010,shibuya-2012}. 
-This is about as far as the current deepest surveys go in redshift, and most surveys also appear to show a decline in the number of LAEs per cosmic volume at this cosmic time, but new surveys and exploratory efforts are constantly under way, fueled by new instrumentation and larger telescopes. 
-
-The apparent drop in the number densities of LAEs at high redshift may in part be due to the fact that the intergalactic medium (IGM) is expected to be neutral at high redshifts, and that this redshift may correspond to the end of the so called epoch of reionization. I will discuss this in more detail in Section~\ref{sec:reionization} below.
-
-Below I will briefly describe two of the most common techniques for finding galaxies at intermediate and high redshifts. 
-
-\subsection{LBGs and The Lyman Break technique}
-
-A common technique for finding candidates for high redshift galaxies is to use the Lyman break at 912 $\AA$. Since the spectrum of a galaxy usually drops sharply at this point, because most photons with lower wavelengths are absorbed and reprocessed into recombination lines, this creates a signature that can be traced with the "drop-out" technique. The idea is described in Figure~\ref{Fig:LBG}. In a photometric survey using broad filters and covering a large area, a galaxy should be visible in several filters until you reach the Lyman break at that particular redshift. For example, if an object is visible in the V and R filter but is then missing in an equally deep U-band image, this could be an indication that it is a galaxy at a redshift around $z \sim$ 2, where the Lyman break would appear around 4000 $\AA$. There could of course be a number of other reasons for such a break (for example the Balmer break around 4000 $\AA$ in the rest frame), but it is an efficient way of finding possible candidates that can later be confirmed with a spectroscopic follow-up, once the position of the candidate is known. Such a galaxy is then typically referred to as a Lyman Break Galaxy (LBG) because it was found using the spectral break.
-
-\begin{figure}
-   \centering
-   \includegraphics[width=12cm]{LBG.eps}
-   \caption{A simple demonstration of the Lyman Break technique. The galaxy spectrum falls of sharply where the Lyman break corresponds to a specific wavelength at that redshift, and the galaxy is no longer visible in the bluer filters. }
-              \label{Fig:LBG}
-    \end{figure}
-
-\subsection{LAEs and the narrow-band technique}
-
-Another technique which has gained popularity over the decades is instead to try and target the \lya\ line using a narrow-band filter. This was the principle used by \citet{cowie-hu1998} in the study of \lya\ emitting galaxies mentioned above. The idea is that if a galaxy at a specific redshift $z$ emits a strong line at $\lambda_\mathrm{em}$ which is observed by us at a wavelength $\lambda_\mathrm{obs} = \lambda_\mathrm{em} (z + 1)$, the galaxy will appear very bright in a narrow filter centered close to $\lambda_\mathrm{obs}$, but not as bright in a broad filter in the same wavelength regime. An example is shown in Figure~\ref{Fig:LAE}. By using a combination of filters, one can therefore scan through narrow redshift slices of space to find possible \lya\ emitting galaxies. Of course, one may have problems with interlopers where another combination of $z$ and $\lambda_\mathrm{em}$ yields the same $\lambda_\mathrm{obs}$, so the technique requires some additional information in order to eliminate these cases. Just as with the LBGs, spectroscopic follow-ups are needed to confirm that the candidates are truly galaxies at the expected redshift.
-A galaxy found using the \lya\ line in this way is usually referred to simply as a Lyman Alpha Emitter (LAE). 
-
-\begin{figure}
-   \centering
-   \includegraphics[width=12cm]{ouchi2008lae.eps}
-   \caption{An example of the narrow-band technique, from \citet{ouchi-2008}. The galaxies in this case are at a redshift of $z \sim 5.7$, which places the \lya\ line in the narrowband centered around 816 nm in this particular study. The right side shows the follow up spectra, where the exact redshift can be determined. }
-              \label{Fig:LAE}
-    \end{figure}
-
-\subsection{The connection between LAEs and LBGs}
-
-Of course, there is quite an overlap between these two populations since a galaxy with a strong Lyman break may well also show a \lya\ line in emission, but the connection between them is still under investigation \citep[see e.g.][and references therein]{dayal-ferrara2012}. \citet{shapley-2003} discuss a large sample of over 800 spectroscopically confirmed LBGs at $z\sim 3$. Their detailed study includes the low ionization state absorption features as well as the \lya\ line, and they find that blueshifted absorption features appear to be ubiquitous in the galaxies which show \lya\ in emission (see also Section~\ref{Sec:intro_kinematic_Lya}). The \lya\ flux is found to be anti-correlated with metallicity, but they also conclude that a stronger outflow results in a lower \lya\ equivalent width and a strong star formation rate means low \lya\ luminosity. This proves that \lya\ radiative transfer is very complex and depends on a combination of several processes. Many later surveys studying the morphology and kinematics of LBGs and LAEs at intermediate redshift indicate that more massive galaxies have slower and more inefficient outflows, and that outflows are more commonly seen in face-on galaxies \citep[see e.g.][and references therein]{kornei-2012,law-2012}. 
-
-\section{The reionization of the Universe}\label{sec:reionization}
-
-In the early Universe, some hundred million years after the Big Bang, the temperature became low enough for electrons to combine with protons for the first time. This is known as the epoch of recombination, although since it happened for the first time, the name is perhaps misleading. This left the gas in the Universe in an overall neutral state. In today's Universe, however, nearly all of the gas between the galaxies is fully ionized. There should in other words have been a moment in the history of the Universe when it started to become ionized again, and this is known as the epoch of reionization. The exact details of how this came to be are still not fully understood, but one strong candidate for causing this to happen is the formation of the very first stars and galaxies. In order for the ionizing Lyman continuum (Ly C) radiation to actually ionize the surrounding medium, it must first escape through the gas in the galaxy itself. Therefore, also nearby studies of e.g. blue compact galaxies \citep[like the Ly C leakage from Haro 11, see][]{leitet-2011} are interesting in this context. Exploring the reionization of the Universe has grown to become a large and important research field in modern astronomy, and many new projects are underway, based on predictions on the visibility of \lya\ emitters near the epoch of reionization \citep[e.g.][]{dayal-2011,jensen-2012}.
-
-\subsection{The Lyman alpha forest and the Gunn-Peterson trough}
-
-One of the strongest pieces of evidence for the increasing fraction of neutral gas in the IGM is the so called Gunn-Peterson trough. It is named from the study of \citet{gunn-peterson1965} in which the effect was first discussed. The idea comes from observations of distant supermassive black holes, known as a quasars, in which many narrow absorption features are usually seen. This is nicknamed the \lya\ forest, because it arises due to absorption in neutral gas clouds along the line of sight, where the strong continuum emission from the quasar happens to match the rest wavelength of \lya\ at the redshift of the cloud. In quasars at high redshifts, the absorption features appear broader and closer together, until finally a completely damped trough is observed, which would correspond to the IGM becoming completely neutral. Figure~\ref{Fig:beckerGP} shows an example from the first Gunn-Peterson discovered by \citet{becker-2001}. This figure shows how all features bluewards of the \lya\ line intrinsic to the quasar are almost completely absorbed. 
-
-\begin{figure}
-   \centering
-   \includegraphics[width=12cm]{beckerGP.eps}
-   \caption{The first Gunn-Peterson trough discovered in a quasar at $z = 6.28$, from \citet{becker-2001}. The top panel shows a quasar at slightly lower redshift, for reference.}
-              \label{Fig:beckerGP}
-    \end{figure}
-
-
-In order to explore the very first stars and galaxies, the \lya\ emission line remains one of the strongest tools for helping us probe these redshifts. As the IGM becomes gradually more and more neutral with redshift, we expect to see less and less galaxies as the neutral gas begins to block out the \lya\ line. Since \lya\ can be affected by neutral gas inside the galaxy where it is formed, it is crucial that we understand the nature of the \lya\ radiative transfer in this process. 
-
-
-
-
-
-\chapter{The kinematics of neutral gas in galaxies}
-
-The structure and kinematics of dark matter and the connection to large scale structure formation in the Universe is today relatively well understood and self-consistent. However, adding the astrophysics of baryonic matter and the feedback energy from star formation, supernovae and accretion onto supermassive black holes in active galactic nuclei (AGN), and the large-scale outflows of gas that should come with it, makes the picture much more complicated and there are still many unanswered questions. There are many astrophysical phenomena that appear to rely on the fact that this kind of feedback exists; for example why there are fewer low mass galaxies relative to the dark matter halo mass function predicted by $\Lambda$CDM cosmology, and why massive galaxies at high redshift can still have very low star formation rates. 
-
-Galactic scale outflows appear to be very common, if not ubiquitous, in star forming galaxies \citep[see e.g.][and references therein]{rupke-2002,rupke-2005,shapley-2003,martin2005,steidel-2010}. % rupke-2005 becomes rup????  - why is this broken?
-%However, in recent years the {\em infall} of cold gas has also sparked some interest. Streams of cold gas in clusters?
-%could explain LABs and "red and dead" galaxies at z2.5, but in galaxies outflows appear to be the rule. 
-In this section, I will give an overview of some of the different methods that exist for studying the kinematics of neutral gas observationally. 
-
-\section{Low ionization state absorption lines}\label{Sec:LIS}
-
-In ultraviolet, optical and near-infrared spectra, the information on the sctructure and kinematics of cold neutral gas is believed to be encoded in low ionization state (LIS) absorption features. This absorption arises as continuum light from a background source shines through a region of cold neutral gas, containing a mixture of gas and dust. Some of the metals contained in this material will have many of their electrons in low energy states, i.e. close to the ground state of the atom. The idea is that a line with a low ionization threshold will only be visible in the neutral medium, because the electron requires a relatively small amount of energy to be removed from that state. Ideally, one would want to match the ionization threshold energy of hydrogen (10.2 eV) as closely as possible. In this study, we use a well known feature in the spectrum of neutral sodium, the Fraunhofer D Na {\sc i} line ($\lambda \lambda 5889.95, 5895.92 \AA$) which has an ionization threshold of 5.14 eV. This means that the feature is likely only to exist in the cold, neutral medium but also that it must probably be shielded from photoionization by dust \citep{murray-2007}.
-
-In order to compare the velocity of the neutral gas with the systemic velocity of the galaxy, it is common to use strong nebular lines such as H$\alpha$, H$\beta$ or [O {\sc iii}]. These lines are not affected by resonant scattering, and depend on the locations and density of ionizing photons. They should therefore be a good tracer for the gravitationally bound galactic material. 
-
-\subsection{Quasars as background sources}
-
-The so called circumgalactic medium (CGM) is a term which is normally used to describe the matter in a radius roughly $\lesssim$ 300 kpc from a galaxy. It likely consists of outflowing, enriched material from baryonic feedback. Studying the CGM directly can be rather difficult, especially at large distances from the galaxy where the material is attenuated and faint. One way to investigate it is to use a bright quasar as a background source, and study the CGM in absorption. 
-
-\citet{adelberger-2005CIV} present an ambitious study of absorption features studied both against the light of quasars and galaxy-galaxy pairs (see below). By studying the C {\sc iv} absorption doublet ($\lambda \lambda 1548, 1551 \AA$) they are able to readily detect absorption features out to radii of $\sim$ 80 kpc. They also detect fainter absorption features out to distances of several hundred kpc. However, it is not clear whether or not this absorbing material at large distances is actually part of an outflow. 
-
-The advantage of this method is that the bright background quasar allows for high signal-to-noise spectra and good spectral resolution. 
-One of the large disadvantages of this method, however, is that you can only study galaxies that happen to be near the line of sight to quasars, which reduces the number of possible targets. Also, a quasar is usually very bright compared to the surface brightness of intermediate redshift galaxies, and the emission from galaxies, which is used to determine the systemic redshift, can be very hard to detect only a few arcseconds from such a bright source. Also, the detection of absorption features that happen to lie within approximately the same redshift range as a galaxy along the line of sight is not definitive proof that the two are connected. The exact matching between galaxies and absorption features in quasar spectra is therefore often ambiguous. 
-
-\subsection{Galaxy-galaxy pairs}
-
-Another method for studying absorbing gas around a galaxy is to instead use pairs of galaxies, projected onto the same region on the sky but residing at different redshifts. The principle is the same; the galaxy at higher redshift acts as a background source, while material in the outskirts of the foreground galaxy leaves signatures in the spectrum. The disadvantage with using another galaxy as a background source is the considerably lower surface brightness, which greatly reduces the achievable signal-to-noise and spectral resolution.  A small sample of galaxy-galaxy pairs was included in the study by \citet{adelberger-2005CIV}, which seemed to agree rather well with their quasar results.
-
-A considerably larger sample is discussed by \citet{steidel-2010}.  Unfortunately, the pairs are usually so faint that a detailed study is impossible. Only in one case were the pair bright enough to enable an individual study. The material in the foreground galaxy GWS-BM115 appears to be static as measured in the spectrum of the background galaxy, GWS-BX201, while the absorption features against only the foreground galaxy's own light indicate an outflow of gas at $\sim 200$ km/s.  This is unsurprising, since the material probed using the background source should extend equally to both sides of the foreground galaxy, so that the outflow is symmetric along the line of sight. The covering fraction calculated from the residual intensity of the Al {\sc ii} ($\lambda 1670 \AA$) and the C {\sc iv} features 
-%(see also Section~\ref{Sec:NaD} below) 
-is on the order of 50 percent. This may seem low, but in fact a covering fraction of cool outflowing material is commonly found to be around a similar value \citep[see e.g.][]{shapley-2003}.
-
-Although the rest of the galaxy-galaxy pairs studied by \citet{steidel-2010} are not as bright, with their large catalogue of rest-frame UV spectra of galaxies at redshifts $\sim 2-3$, they are able to divide their pairs into three bins based on the projected distance between the pairs. The spectra are then shifted to the inferred rest wavelength and stacked within each bin. The results agree well with the case above; the absorption features appear to be static as measured from the background galaxies, but outflowing at several hundred km/s when only seeing the absorption "in front of" the foreground galaxy. 
-
-\subsection{Using the galaxy itself as a background}
-
-As we have already touched upon in the discussion above, a more general way of measuring velocities of cold gas in front of galaxies is to use the galaxy itself as a background source. The advantage is of course that this can be used for any galaxy, regardless of what may be projected along the same line of sight on the sky. Also, it is clear that the absorption we see in this way must arise "in front of" the galaxy; i.e. towards the observers line of sight. It is therefore a good estimate of the projected outflow velocity. The disadvantage is that it is unclear exactly how far away from the galaxy the absorption takes place. The simplicity of the method makes it very commonly used, e.g. by studying the Mg {\sc ii} ($\lambda \lambda 2796,2803 \AA$) absorption doublet or, as in this study, the Na D absorption doublet (see Section~\ref{Sec:NaD} below).
-
-Large surveys of absorption features in galaxies are today relatively simple to construct. For example, \citet{chen-2010} compile measurements of the Na D doublet in a sample of several hundred thousand disk galaxies in the SDSS spectral catalogue. One of the interesting results of their study is the dependence on the outflow velocity and spectral line shape as a function of the inclination of the galaxy. Their results suggest that the neutral gas is predominantly directed into a bipolar outflow along the minor axis of the galaxy, so that the outflow velocities appear higher in face-on galaxies than in edge-on systems. This result agrees rather well with the findings of \citet{weiner-2009}, in which the face-on galaxies where found to have no systemic absorption components. It also agrees with the scenario of a hot superwind driving out material perpendicularly to the galactic disk, as proposed e.g. by \citet{heckman-2000}. 
-
-\section{Connecting kinematics of absorption lines to \lya }\label{Sec:abslines_lya}
-
-When comparing the neutral gas velocities in \lya\ emitting galaxies to the systemic velocity and the velocity of the \lya\ emission line, a clear trend is immediately obvious. The LIS absorption lines show a blueshift of several hundred km/s and the \lya\ line shows an even larger, redshifted velocity \citep[see Figure~\ref{Fig:steidel10hist} and][]{steidel-2010,pettini-2001}. This remains one of the strongest pieces of evidence that the escape of \lya\ photons is greatly facilitated by outflows of neutral gas (see also Section~\ref{Sec:intro_kinematic_Lya} above). 
-
-\begin{figure}
-   \centering
-   \includegraphics[width=9cm]{steidel10hist.eps}
-   \caption{Histogram of the observed velocities of \lya\ and low ionization state absorption lines of LAEs at $z \sim 2-3$, from \citet{steidel-2010}. }
-              \label{Fig:steidel10hist}
-    \end{figure}
-
-But what is causing the \lya\ feature to appear redshifted? The answer lies in the P Cygni-profile, which arises when only the blue side of the line is absorbed due to an outflow of neutral gas. Early simulations by \citet{tenorio-tagle1999} showed that the behaviour of the \lya\ line could be explained by the growth of a "super-bubble" -- an expanding region of hot ionized gas, created from the feedback of strong star formation, supernovae and possibly black hole accretion. This scenario for creating a P Cygni-profile because of an outflow of gas is also confirmed by modern simulations \citep[e.g.][]{verhamme-2006,garel-2012}. 
-
-
-%Steidel2010:
-%the structure of dark matter on large scales is relatively well understood, but the astrophysics of the feedback of energy from star formation, SNe, and AGN (accretion onto supermassive black holes) is not well constrained (well understood)
-%But there are many processes in modern astrophysics which we associate with this kind of feedback; for example why there are fewer low mass galaxies relative to the dark matter halo mass function predicted by $\Lambda$CDM cosmology and why massive galaxies at high redshift can have low star formation rates. 
-%IGM and CGM (circumgalactic medium, within about 300 kpc)
-%Galactic scale outflows of several 100 km/s appear ubiquitous in star forming galaxies (reference Steidel et al 1996, Franx et al. 1997; Pettini et al. 2000, 2001; Shapley et al. 2003; Martin 2005; Rupke et al. 2005; Tremonti et al. 2007; Weiner et al. 2009)
-%common to look at LIS versus nebular and stellar velocities. 
-%mention also pettini et al 2001 with reference to lya (?) 
-%can also see outflows in C IV absorption in quasars compared to host galaxies (?) (Adelberger et al 2003, 2005a)
-%
-%mention "local" rest-UV spectroscopy by Heckman et al. 1990; Lehnert & Heckman 1996; Martin 1999; Strickland et al. 2004; Schwartz et al. 2006; Grimes et al. 2009; Chen et al. 2010
-%
-%also mention cool inflow of gas, which can give red and dead gals at z2.5 and LABs due to cooling radiation
-%
-%spatial information not well known; almost all z>2 bright enough to be observed spectroscopically show evidence of outflows of at least several hundred km/s but exactly where this material is with respect to the galaxy and how far it will be expelled is not known. 
-%
-%Many attempts made with quasars as background, looking at HI or metals in absorption and comparing them to emitting galaxies near the line of sight to the quasar. (e.g., Bergeron & Boissé 1991; Steidel et al. 1994, 2002; Chen et al. 2001; Lanzetta et al. 1995; Danforth & Shull 2008; Bowen et al. 1995; Bouché et al. 2007; Kacprzak et al. 2010) very difficult, because even if abs and em agree rather well it may be difficult to associate one particular abs to any particular em. Also hard to see a faint galaxy only a few arcsec away from a bright quasar.
-%
-%"Finally, there is the controversial issue of whether metals seen near, but outside of, galaxies are a direct result of recent star formation or AGN activity, or are simply tracing out regions of the universe in which some galaxies, perhaps in the distant past, polluted the gas with metals (e.g., Madau et al. 2001; Scannapieco et al. 2002; Mori et al. 2002; Ferrara 2003; cf. Adelberger et al. 2003, 2005a)"
-%
-%Steidel2010 look at rest-frame UV of 1.9-2.6 in z, nearly 100 gals. 
-%
-%Go through what you see in UV, and explain why they want to know the galaxy's intrinsic z from other lines than the LIS, and lya is seen in about half their sample but is affected by resonant scattering so the velocity can't be used. 
-%Nebular lines (Ha, Hb, [O iii]) are also good approximations for the systemic velocity, Ha because no resonance and depends on ionizing radiation field and density, and should measure the "gravitationally induced motion" (ref to Pettini+2001, Erb+2006c). 
-%
-
-\chapter{Using Na D to probe neutral gas properties}
-\label{Sec:NaD}
-
-In order to study the velocities of neutral gas in galaxies, one would perhaps first think to look at the 21 cm line of hydrogen, which arises directly in neutral hydrogen and is due to a spin-flip process where the electron changes spin direction from parallel to anti-parallel to the proton.
-In order to map neutral hydrogen in these small, gas-poor galaxies, you need a high sensitivity. \citet{bergvall-2006} conclude that all attempts to detect Haro 11 using the Very Large Array (VLA), the Nan\c{c}ay Decimetric Radio Telescope (NRT) and the CSIRO Parkes radio telescope are only able to put an upper limit on the total gas mass of roughly $10^8$ \msun . Another difficulty is of course to attempt to connect the results of radio observations with those in the optical and ultraviolet regime. 
-
-Another approach is to go for low ionization state absorption lines in the ultraviolet (see Section~\ref{Sec:LIS}), which can be studied in the same spectrum as \lya\ so as to get a firm grip on the connection. Unfortunately, the UV is impossible to reach from the ground due to atmospheric absorption. The only option at present day is to use the Hubble Space Telescope (HST), which is currently equipped with two UV spectrographs: the Space Telescope Imaging Spectrograph (STIS) which has a limited spectral resolution and the Cosmic Origins Spectrograph (COS) which uses a relatively large circular aperture (i.e., any detailed spatial information is difficult to retrieve).
-
-If we want both high spectral resolution and good spatial information in order to connect it with the areas in the galaxy where \lya\ is escaping, it is therefore advantageous to use a ground-based instrument on a large telescope with an integral field spectrograph. Then you need to choose optical absorption lines which are reachable from the ground. The two obvious choices are the Mg {\sc ii} absorption doublet ($\lambda 2796, 2803 \AA$) \citep[e.g.][]{churchill-vogt2001,mshar-2007,martin-bouche2009,nestor-2011} or the Na {\sc i} D doublet ($\lambda \lambda 5889.95, 5895.92 \AA$) \citep[e.g.][]{heckman-2000,rupke-2002,martin2005,chen-2010}. Other options include the Ca {\sc ii} H \& K doublet ($\lambda \lambda 3933.7, 3968.5 \AA$), which is usually heavily contaminated by a strong stellar component, and K {\sc i} ($\lambda \lambda 7664.9, 7699.0 \AA $) which is similar to the Na D feature but is usually weaker due to lower abundance, and at the rest wavelength becomes mixed in with atmospheric $\mathrm{O}_2$ absorption features.
-
-In this study, we have chosen to look for Na D absorption. Never before has this absorption feature been used in connection with studying \lya\ emission of galaxies in spatial detail\footnote{There does exist an attempted measurement of the Na D velocity in ESO 338 based on UVES spectra \citep{ostlin-2007}, but the signal-to-noise is very low and the stellar contamination unknown}. Na D can be problematic to study at low redshift due to the very strong skylines, but with objects that exhibit some redshift (as in the case of our two galaxies) this is no longer a problem. It does however become problematic when estimating the stellar contribution to the observed Na D lines, as will be explained below.
-
-The Na D feature not only gives us a velocity estimate, but it also contains information on the optical thickness and the covering fraction of the gas where the absorption occurs. The relative strength of the two Na D lines is always 2:1 in the optically thin case; that is, the bluer line is twice as strong as the red. This is set by the quantum mechanical properties of the transitions involved. However, if the absorption takes place in an optically thick region, the ratio will be lower, and at an infinite optical depth the ratio is 1:1. \citet{spitzer1968} lists intermediate line ratios for varying optical depths of the Na D feature in his Table 2.1. By measuring the exact line ratio, we are thus able to estimate the optical thickness. 
-
-Another important property which can be probed by the Na D feature is the covering fraction, which will correspond to the residual intensity in the lines. If the background source is completely obscured (covering fraction 1), the lines will appear black in the spectrum, as all of the light is absorbed. There is of course a smearing effect in low resolution spectra, which might artificially fill in some of the light.  In our study, we deem this to be a small effect, as the lines are considerably broader than our spectral resolution. If the lines are optically thick, the covering fraction can directly be estimated as $f_C = 1 - I_{5890}$ where $I_{5890}$ is the residual intensity in the blue line. 
-
-\section{Stellar contamination of Na D}
-
-The Na D absorption doublet also arises in stellar atmospheres, mainly in relatively cool K- and M-dwarfs. In order to use the lines to measure the interstellar gas velocity, one must therefore also have a good estimate on the stellar contribution. 
-
-One of the most commonly used techniques for evaluating the strength of the stellar contribution is to use an absorption feature close to the Na D feature in wavelength, but which only arises in stellar atmospheres, and not in the ISM. The Mg {\sc i} b lines ($\lambda \lambda$ 5167.32, 5172.68, 5183.60 $\AA$) arise from higher energy levels, away from the ground state, and are therefore in principle only visible in stars. The ionization potential is very similar to that of Na D and the feature is also most often visible in the same kind of stars that show the strongest Na D, and they are of relatively comparable line strengths. 
-
-A large problem when examining the Na D feature in nearby stars is that the sky itself glows at this frequency, and with light pollution from common street lamps the problem is even worse. One must therefore often carefully fit and subtract the telluric emission component, or choose to look at objects with a slight doppler shifted frequency, where the spectral resolution of your instrument is high enough to separate the components. 
-
-Many studies have been made to attempt to determine how the stellar Mg b feature couples to the stellar Na D feature. 
-\citet{rupke-2002} compile measurements of Galactic globular clusters and mostly nonactive galaxies \citep{bica-alloin1986} together with measurements of nuclei of nearby galaxies \citep{heckman-1980} and find the equivalent widths of the purely stellar features to be correlated as $EW_{\rm Na D} \sim 0.5~EW_{\rm Mg~b}$, with a possible intrinsic scatter of $\gtrsim 25 \%$.
-\citet{heckman-2000} combine the same galactic nuclei data from \citet{heckman-1980} with stellar library data from \citet{jacoby-1984} and estimate $EW_{\rm Na D} \sim 0.75~EW_{\rm Mg~b}$, which seems to agree with what they measure from their own spectra of K giant stars to within 0.10 dex. 
-\citet{schwartz-martin2004} also make a fit to the stellar library data by \citet{jacoby-1984} and find $EW_{\rm Na D} = 0.40 \pm 0.05~EW_{\rm Mg~b}$. \citet{martin2005} analyze Keck II/ESI spectra of A, F, G and K dwarfs and giants and reach the result $EW_{\rm Na D} = 1/3~EW_{\rm Mg~b}$. They also comment that the stellar contribution to Na D was consistently less than 10~\% in their sample of 18 ULIRGs.  
-\citet{sato-2009} investigate Na D absorption in 493 spectra from the All-Wavelength Extended Groth Strip International Survey (AEGIS), and find $EW_{\rm Na D} = 0.40~EW_{\rm Mg~b}$ well describes the purely stellar boundary in their sample (see their Fig.~1).
-Finally, \citet{chen-2010} use Sloan Digital Sky Survey (SDSS) spectra from young disc galaxies and estimate that an average $\sim 80\%$ of the Na D absorption arises in stellar atmospheres. Their estimate of the stellar contribution is based on fitting and subtracting a stellar population synthesis model to the continuum and absorption features, and they emphasize that their spectral model sometimes shows stronger Na D absorption than the actual data. They conclude that the most likely explanation is that Na D is sometimes seen in emission in their data, predominantly from face-on galaxies with low dust attenuation. It is also possible that they are detecting re-emitted Na D due to the resonance nature of the line \citep[see][and Section~\ref{Sec:NaDresonance} below]{prochaska-2011}. 
-One would also expect a stronger stellar contamination in the spectra of these "normal" star-forming disk galaxies than in young stars, which is the dominant stellar population in the two galaxies that we present in this study.
-
-In conclusion, we expect the equivalent width ratio to behave approximately as $EW_{\rm Na D} \sim 0.40~EW_{\rm Mg~b}$, since this seems to agree with most of the data, but we adopt a ratio of 0.75 as a conservative guess when estimating the final contribution. 
-
-\section{The resonance nature of Na D}\label{Sec:NaDresonance}
-
-Since Na D is an absorption feature that involves a transition from the ground state, the excited sodium atom will almost immediately release a new Na D photon in a random direction. The Na D feature is therefore a resonance feature, much in the same way as \lya . One important difference is that we expect the sodium to be prevalent only in the very densest and dustiest regions, where destruction of the photon after repeated scatterings is very likely. 
-
-\citet{prochaska-2011} present models of the re-emitted light from resonance absorption features, with main focus on the Mg {\sc ii} ($\lambda \lambda 2796, 2803 \AA$) lines. Their model is relatively simple, and contains no dust destruction mechanism for photons, so they recover all of the re-emitted light in the end. They conclude that the light will be scattered into a large, diffuse halo which may well affect measurements with large apertures, so that part of the absorption feature is filled in with the re-emitted light. It is therefore possible that many previous measurements of Na D underestimate the strength of the lines, although there is very little observational evidence of emission in Na D. 
-
-In our study, we do not expect this to have an effect on our measurements, since we use only narrow slits and small apertures. The FLAMES effective aperture of about 1.5 arcsec corresponds to a size of only 0.6 kpc in Haro 11, and roughly half of that in ESO 338. 
-
-
-\chapter{Our sample of nearby \lya\ emitters} % and the connection to high redshift}
-
-Studying nearby galaxies allows us to look at the \lya\ escape process in detail. However, the galaxies in the nearby Universe have of course formed at a later era than objects at high redshift, and it is not clear just how analoguous nearby LAEs really are to the high-redshift objects. Specifically, the metallicities at higher redshift can be expected to be lower, since the enrichment by heavier elements depends on supernovae and can only increase with every new generation of stars born. 
-%\citet{I remember some comment about this discussion, was it Matthew mentioning Heckman?}
-
-Nevertheless, in this study the exact analogy to high redshift objects is not crucial, as the main purpose is to examine a purely physical mechanism related to \lya\ escape -- the effect of outflows of neutral gas on the observed \lya\ emission. In this section, I briefly describe the two galaxies studied in this thesis. I then summarize what is known of their ultraviolet properties. 
-
-\section{Haro 11}
-
-\begin{figure}
-   \centering
-   \includegraphics[width=14cm]{contir_lyargb.eps}
-   \caption{Haro 11 in different wavelengths. North is up and east is to the left. Left panel: Continuum filter image. Blue and green corresponds to HST filters F435W and F814W, and red is a VLT/NACO $\mathrm{K_s}$-band image (see Adamo et al. 2010). Right panel: \lya\ in blue, \ha\ in red and UV continuum in green.}
-              \label{Fig:Haro11_colour}
-    \end{figure}
-
-Haro 11 is a blue compact galaxy at a redshift of $z\sim0.02$, at coordinates $\alpha = 00^h 36^m 52^s,~\delta = -33^\circ 33' 17"$ (J2000). The name stems from it being the eleventh object in Guillermo Haro's catalogue of very blue objects close to the galactic poles \citep{haro1956}. It is also known by the modern catalogue name ESO 350-IG38 (from the same origin as ESO 338). Its morphology is dominated by three bright condensations or "knots", which are usually referred to as A, B and C \citep[as can be found in a footnote to Table 1 in][see also Figure~\ref{Fig:Slits} and Figure~\ref{Fig:Haro11_colour}]{vader-1993}. 
-
-Haro 11 was included in the spectroscopic survey made by \citet{kunth-1998} that was mentioned in the introduction. This survey included eight galaxies; four with \lya\ emission and four with absorption. The study found that an outflow of neutral gas, as measured by low ionization state absorption features, was always present in the galaxies which exhibit \lya\ in emission, where as a static neutral ISM was observed in the galaxies with \lya\ in absorption. Their HST/GHRS spectrum of the O {\sc i} and Si {\sc ii} lines is shown in Figure~\ref{Fig:Kunth98Haro11}. Note that the y-axis scale is incorrect, as it extends to negative flux values. It is clear that there are several absorption features overlaid in the spectrum, separated by several hundred km/s. Unfortunately, it is not clear exactly where in the galaxy the 1.7 $\times$ 1.7 arcsec aperture was pointed. The telescope made a series of small angular manoeuvres in order to find the peak in ultraviolet surface brightness. The information on these small movements is not available, and the UV morphology is too complex to reconstruct it. There is more \lya\ flux in an HST/ACS/F140LP image in an equivalent aperture centered on knot C than there is in the GHRS spectrum. It thus seems that the aperture caught some part of knot C, but most likely it was directed somewhere in between the three knots \citep[see discussion in][]{hayes-2007}. 
-
-\begin{figure}
-   \centering
-   \includegraphics[width=10cm]{Kunth98_abs.eps}
-   \caption{GHRS spectrum of the O {\sc i} and Si {\sc ii} absorption features in Haro 11, from \citet{kunth-1998}, their Figure 2.}
-              \label{Fig:Kunth98Haro11}
-    \end{figure}
-
-
-
-In Haro 11, knot C appears to be the brightest knot in the ultraviolet and it also shows Ly $\alpha$ in emission, while knot B is brightest in H$\alpha$, where Ly $\alpha$ is instead absorbed. These two knots are therefore of particular interest as we try to explain why Ly $\alpha$ is seen from one region but is absorbed in the other. 
-Some evidence suggests that Haro 11 might be the result of a merger of dwarf galaxies \citep{ostlin-2001}, particularly due to the irregular appearance, the high relative velocities, the broad emission lines, and the presence of a tidal arm structure 
-with a high redshifted velocity relative to the rest of the system ({\"O}stlin et al. 2012, in preparation). The H $\alpha$ line width is as high as $\sim$ 270 km/s (FWHM), and shows strong multi-component features.  
-
-\section{ESO 338-IG04}
-
-\begin{figure}
-   \centering
-   \includegraphics[width=14cm]{eso338lya_rgb.eps}
-   \caption{ESO 338 in different wavelengths. North is up and east is to the left. Left panel: Continuum image from HST/WFPC2 images \citep[see][]{ostlin-1998}. Right panel: \lya\ in blue, \ha\ in red and UV continuum in green.}
-              \label{Fig:ESO338_colour}
-    \end{figure}
-
-ESO 338-IG04 (or just ESO 338 as it will usually be referred to in this work) is also a blue compact galaxy, at a redshift of $z\sim0.009$, at coordinates $\alpha = 19^h 27^m 58^s,~\delta = -41^\circ 34' 31"$ (J2000). 
-
-It is riddled with a large number of super star clusters (SSCs), small bright knots of very intense star formation, and the galaxy has been an object of intense study ever since \citet{bergvall1985} devoted an entire paper to discussing its remarkable properties. It has subsequently been analyzed in detail by \citet{ostlin-1998,ostlin-2003} using HST/WFPC2 broadband images. With the addition of the ultraviolet F122M and F140LP filters, the \lya\ properties could be studied by \citet{hayes-2005} (see Figure~\ref{Fig:ESO338_colour}).
-
-The galaxy was likely involved in an interaction with the companion galaxy ESO 338-IG04b some time ago \citep[see][who show a bridge of H {\sc i} gas connects the two galaxies]{cannon-2004}, but the current starburst is much too young to have been triggered by this interaction directly. It is possible that it was triggered by some remnant gas from the previous interaction, or by a new interaction with another small galaxy. \citet{bergvall-ostlin2002} found the stellar metallicity of the host galaxy is higher than in the interstellar medium, which would support this conclusion.
-
-% Look at Hayes+2005 for more of a summary
-
-\section{The UV information obtained so far}
-%The HST UV imaging program from Kunth 2003 onwards, Ostlin 2005 and 7 ? Hayes 2005 and 2007!  
-The HST UV images mentioned above was acquired as part of an imaging program using the Solar Blind Channel (SBC) on the Advanced Camera for Surveys (ACS) instrument. The images were first presented in \citet{kunth-2003} for Haro 11. The idea used to produce a \lya\ image is to use the F122M, which contains the line. Unfortunately, the filter has a relatively low sensitivity, but at the time, it was still a factor of ten higher than any previous instrumentation available. The filter is rather broad and has a long red tail, and the F140LP filter was used for continuum subtraction. Figure~\ref{Fig:sbc_filts} shows the filter transmissivities along with an example of a \lya\ emission spectrum, to show where the emission line would end up. Note that the geocoronal \lya\ at rest wavelength contaminates the F122M filter.
-
-\begin{figure}
-   \centering
-   \includegraphics[width=12cm]{sbc_kunthLyafilts.eps}
-   \caption{The transmissivity curves for the F122M (solid) and F140LP (dashed) filters used for the ACS/SBC UV imaging program to which we owe our \lya\ images. An example of a \lya\ emission line spectrum at a small redshift is included for comparison in red. The location of the geocoronal \lya\ line at the rest wavelength is indicated by the vertical dash-dotted line.}
-              \label{Fig:sbc_filts}
-    \end{figure}
-    
-\begin{figure}
-   \centering
-   \includegraphics[width=14cm]{both_lyaprofs.eps}
-   \caption{Left: Lyman alpha line profile for Haro 11 from HST/GHRS aperture spectrum, from \citep{kunth-1998}, likely centered between the knots. Right: Lyman alpha line profile for ESO 338 based on HST/STIS long slit spectrum, from \citet{hayes-2005}, not optimized for knot A.}
-              \label{Fig:both_lyaprofs}
-    \end{figure}
-
-This imaging program forms the basis for very much of our study, both for Haro 11 and ESO 338. The \lya\ imaging of ESO 338 was first presented in \citet{hayes-2005}, and a final calibrated version of all images, including four other galaxies, was later released to the community \citep{ostlin-2009}. From the images, we can study \lya\ emission and absorption features in detail, and most of the references to the UV or \lya\ morphology in this thesis and in Paper {\sc i} are based on this information. Ideally, we would like to combine the imaging information with a detailed analysis of the \lya\ line profile, as this is an important tool for disentangling the radiative transfer process. The line profile can provide a lot of information about outflows and structures in the interstellar medium, when combined with simulations of radiative transfer \citep[see e.g.][]{verhamme-2008,noterdaeme-2012}.
-
-Unfortunately, in our two galaxies, the exact \lya\ line shape in the different regions is not well known. \citet{kunth-1998} present a HST/GHRS spectrum of the \lya\ line in Haro 11, but it is not clear where in the galaxy the aperture was pointed. \citet{hayes-2005} present a HST/STIS spectrum of ESO 338, but unfortunately the redshift to this galaxy is rather low, and the spectral resolution is not good enough to reliably separate the geocoronal \lya\ line from the spectrum. Also, the slit is very narrow (only 0.2 arcsec) and was not optimized to be centered exactly over knot A. The two spectra are here shown in Figure~\ref{Fig:both_lyaprofs}.
-
-
-\chapter{Data acquisition and reduction}
-
-At the Very Large Telescope, run by ESO at Cerro Paranal in Chile, there are four equally large telescopes, each equipped with an 8.2-meter primary mirror. One of these is known as "Kueyen" or simply as unit 2 (UT2). There are three instruments here, two of which have been used for this thesis. At the Cassegrain focus, a multi-wavelength spectrograph called X-Shooter is currently mounted. At one of the Nasmyth foci, we find the multi-object spectrograph called FLAMES. 
-
-In this chapter, I describe these two instruments in slightly more detail, with the main focus on FLAMES, in order to give some background for the data reduction steps that follow. 
-
-\section{The FLAMES/GIRAFFE/Argus integral field spectrograph}
-
-
-\begin{figure}
-   \centering
-   \includegraphics[width=14cm]{ArgusSetup.eps}
-   \caption{Arrangement of the fibers for the Argus integral field unit. The top figure shows the physical size and extent of the lenslets to which the fibers are attached. The lower figure shows an example of how the individual spaxels are mapped to the spectrograph. }
-              \label{Fig:ArgusSetup}
-    \end{figure}
-
-FLAMES stands for Fibre Large Array Multi Element Spectrograph. It supports many different observing modes, including the GIRAFFE instrument, which was used in this study. GIRAFFE has two echelle grisms for "low" and "high" resolution and is fed from one of three possible fibre setups; one of these is called ARGUS which is an integral field unit where the fibres are connected in a rectangular configuration of 14 $\times$ 22 lenslets (see Figure~\ref{Fig:ArgusSetup}). Two different scales are available; 0.3 or 0.52 arcsec / lenslet. We used the latter scale, which gives the slightly larger field of view of circa 7 $\times$ 11 arcsec. ARGUS also has 15 separate single sky fibres. 
-
-We used ARGUS in two "low resolution" modes called LR5 and LR6. The LR6 grating covers $\lambda 6438-7184 \AA$ with a resolution of $\mathcal{R} = 13700$, and this was used to target the \ha\ line in our two galaxies. The LR5 setup instead covers $\lambda 5741-6524 \AA$ at $\mathcal{R} = 11800$, which was used to capture the Na D feature. 
-
-The idea with an integral field unit is to get both spatial and spectral information at the same time. The output product after all reduction steps are complete is a three-dimensional data cube with two spatial and one spectral dimension (see Figure~\ref{Fig:ifu_design}). Since the lenslets, which focus the light into the fibres, are connected in a rectangular grid, a reconstructed image of the galaxy at all wavelengths probed by the spectrograph can be made. One can also choose to look at spectra only from specific regions, as we mostly do in this study. 
-
-\begin{figure}
-   \centering
-   \includegraphics[width=14cm]{ifu_design.eps}
-   \caption{The principle of integral field spectroscopy. The field of view is divided into spectral pixels or "spaxels", each corresponding to a small lens attached to a fibre. The light is lead through a slit in an ordinary echelle spectrograph, and the final data product becomes a reconstructed cube with both spatial and spectal information.}
-              \label{Fig:ifu_design}
-    \end{figure}
-
-\section{Reduction of the FLAMES data}
-
-The FLAMES/Argus data were reduced using recipes in the common pipeline library (CPL) package version 5.2.0, which is provided by ESO. The recipes were run using the command line \texttt{esorex} interface. First, the bias frames were median combined using the \texttt{gimasterbias} recipe. The resulting master bias is then used in all of the subsequent reduction steps. The next part is to use the \texttt{gimasterflat} recipe, which is used for calculating where on the CCD the light from each fibre will end up. The calibration frame is acquired by using a halogen lamp as a continuum source and feeding this light through the instrument. The recipe then fits polynomials to the shape and intensity of this spectrum which are used in the subsequent reduction steps. For each observing block that we reduced, we always used only the flat frames acquired in conjunction with those science observations. 
-
-The next step is to use the \texttt{giwavecalibration} recipe, which performs the wavelength calibration. This is used to map exactly where on the CCD a specific wavelength will appear. The calibration frame is acquired using a different lamp with known emission lines. The light will then pass through the echelle grism and produce points on the CCD whose positions are fitted by the recipe. The recipe requires an existing dispersion solution as a first order guess, which is then improved. A standard dispersion solution provided together with the raw data was used in each case for the initial guess, and the convergence of the wavelength calibration fitting was checked by using the output dispersion solution as an initial guess for a second run, making sure an identical solution was obtained. 
-
-The final step is then to apply all calibrations to the science frames using \texttt{giscience}. This recipe uses the flat and wavelength information to extract the science spectra, and create a data cube with the two spatial dimensions on the sky and one spectral dimension. 
-
-A complication in the data reduction process was that the data were acquired using a dithering pattern between each exposure. This meant that the first version of the reduced data were incorrectly combined, as a final step in the process, since the cubes were not aligned in the spatial direction. 
-The information on the size and direction of the dithering pattern was subsequently retrieved from the Phase II preparation files, and a python script was written to convert the RA and DEC movements to spaxel shifts and "manually" shift the data cubes before combining them. Each science exposure was thus reduced separately, resulting in one data cube with an accompanying uncertainty data cube from the pipeline. These products were then used to create a weighted average of the value at each spatial and spectral point in the final cube. 
-
-Since the dithering patterns were made with steps smaller than the 0.52 arcsec / lenslet scale of the integral field unit, one data product was also made where the exposures where drizzled onto a grid with 0.26 arcsec / spaxel resolution. This was however never used in the subsequent analysis, mainly because the Na D feature turned out to be so weak that the data had to be binned spatially and the extra spatial information would therefore be lost in any case. 
-
-\section{X-Shooter description and reductions}
-
-In our analysis, we have also used spectra from an instrument called X-Shooter, which I will here describe briefly. X-Shooter is a three-tiered spectrograph which uses beam splitters to divide the light into three different arms, using three different detectors sensitive at different wavelength ranges. There is one ultraviolet-blue (UVB) arm, operating at $\lambda 3000 - 5600 \AA$, one visible (VIS) arm, $\lambda 5500 - 10200 \AA$ and one near-infrared (NIR) arm, $\lambda 10000 - 24800 \AA$.
-
-In this study, we focus on the UVB and VIS arms, which contain the relevant Na D, Mg b and \ha\ features which we use to confirm the results of FLAMES as well as estimate the stellar contamination. In some cases, we are also able to see the K {\sc i} doublet ($\lambda \lambda 7664.91, 7698.97 \AA$), which is expected to behave similarly to the Na D lines.   
-
-The spectra were reduced with the X-Shooter pipeline v. 1.3.7 using \texttt{esorex} v. 3.9.0. Standard settings were used in the physical model mode, using the \texttt{xsh\_scired\_slit\_nod} recipe to perform reduction, sky subtraction and extraction of the science frames. 
-
-These data are also analyzed by \citet{guseva-2012}, but includes different reduction steps and the data from the NIR arm.
-
-
-\chapter{Results}
-
-Here the results of Paper I are briefly reiterated. 
-
-Due to the Na D feature being very weak in our spectra, we were forced to bin our FLAMES spectra in the spatial dimension. We are still able to investigate the most interesting \lya\ emitting and absorbing knots in the galaxy, since they also represent the places where the continuum and the absorption feature is strongest. We used 3 $\times$ 3 spaxel bins in the regions marked in Figure~\ref{Fig:Slits}. This figure also shows the positioning of the X-Shooter slits and the size of the entire field of view of FLAMES. 
-
-The main results, derived from the FLAMES spectra, are summarized in Table~\ref{Tab:NaD_ratios}. For Haro 11, we detect no measurable Na D absorption toward knot A. For knot B, we measure the velocity of Na D compared to the ionized gas to be blueshifted by 44 $\pm$ 12 km/s, while knot C instead shows a redshifted velocity of 32 $\pm$ 12 km/s. In ESO 338, the velocity toward knot A is blueshifted by 15 $\pm$ 16 km/s. In all cases where we are able to measure the Na D feature, we find low equivalent widths, and covering fractions of 5-10 \%. 
-
-\begin{table}
-\centering                          % used for centering table
-\begin{tabular}{c c c c}        % centered columns (4 columns)
-\hline\hline                 % inserts double horizontal lines
-Parameter & Haro 11B & Haro 11C & ESO 338-IG04 \\    % table heading 
-\hline                        % inserts single horizontal line
-  Na D doublet EW & $\sim -0.35 \AA$ & $\sim -0.4 \AA$ & $\sim -0.15 \AA$ \\
-   Na D 5890/5896 ratio & $1.15\pm0.22$ & $1.14\pm0.18$ & $0.94\pm0.47$ \\      
-   Na D optical depth & $6^{+\infty}_{-4}$ & $7^{+\infty}_{-5}$ & $\gtrsim 1.6$  \\
-   Na D mean shift (km/s) & $-44 \pm 12$  & $32 \pm 12$  & $-15 \pm 16$  \\
-   Nebular E(B-V) & 0.42$^{a}$ & 0.48$^{a}$ & $<0.1^{b}$ \\
-\hline                                   %inserts single line
+Dark matter, the second dominant component of our Universe, is thought to be made of non--baryonic, cold (i.e. non--relativistic), weakly interacting massive particles (WIMPs). Some of these characteristics are inferred from cosmological evidence. For instance, observations of small--scale cosmic structure indicate that dark matter must be non--relativistic.  The measured abundance of light elements in the Universe, along with Big Bang Nucleosynthesis (BBN) results in dark matter being non--baryonic. This ``missing matter'' in the Universe has presented itself both locally, i.e. in the Galactic disk, and at the cosmic scale in the past century. Even though the problem has been approached from the particle--physics point of view in addition to the cosmological one, it is still considered as one of the biggest challenges of both!
+
+I start this chapter by describing independent cosmological evidences for the presence of dark matter (in order of decreasing physical scale which does not necessarily correspond to historical order) and what each of them tells us about the nature and characteristics of dark matter. The chapter is finished by a review of the current state of dark matter followed by the detection methods currently used to approach the issue.
+
+Modern data suggests an insignificant amount of dark matter in the Solar vicinity which is made of baryonic but not luminous matter such as faint stars or Jupiter--like objects. In short, according to our current understanding of the Universe, dark matter is the dominant matter component of the Universe.
+
+\section{Why do we need dark matter?}
+The amount of baryons in the Universe can be measured with five independent methods, all of which result in a fraction less than 5\% of the total content of the Universe. From the abundance of light elements in BBN, to anisotropies in the angular power spectrum of the cosmic microwave background, to the X--ray emission from galaxy clusters leading to an estimation of their baryon fractions, and the discrepancies between the dynamical mass and luminous mass of galaxies, the Universe seems to be full of discrepancies that can be resolved by adding the missing mass in a non--baryonic form. Although, it is worth mentioning that these observations can be interpreted differently, leading to alternative solutions that will not be covered in this thesis \citep[but see e.g. ][]{Clifton2006, Clifton+2012, Bloomfield2013}.
+
+\subsection{CMB temperature fluctuations}
+\label{subsec:CMB}
+Structures in the Universe are believed to have grown from small fluctuations in the primordial density field after the era of recombination. Density fluctuations are of the same order as temperature fluctuations\ignore{ ({\bf cite!}) \bf why? look back in the structure formation part!}, therefore measuring temperature fluctuations of the CMB reveals the order of magnitude of density fluctuations in the early Universe. However, taking only the baryonic matter into account, these fluctuations are too small to give rise to any structure formation in our expanding Universe. While the required amount of matter in the Universe, in units of the critical cosmological density, is $\Omega_m \equiv \rho/\rho_\mathrm{crit}\sim 0.3$ the estimated upper limit for the baryonic matter density parameter $\Omega_b$ is $ \sim 0.025$ \citep[][]{Planck2015} supporting the non--baryonic nature of dark matter. Moreover, if dark matter is non--baryonic, its density fluctuations can start growing already at the radiation--dominated era while the growth of baryonic matter is damped by radiation. After the decoupling of baryons and photons, baryons collapse into the local potential minima mainly generated by the dark matter perturbations and form cosmic structures. The importance of the CMB is that it may serve as a probe to the state of the Universe at the time of the last scattering, as well as the age and conditions of the Universe ever since.
+
+\subsection{Gravitational lensing}
+The mathematical framework of gravitational lensing has been a commonly accepted framework in astronomy for a long time. However, evidence for dark matter arose only after the general relativistic corrections to the Newtonian formalism of gravitational lensing. Gravitational lensing, as an accurate and reliable gravitational mass measurement of the lens, confirmed the discrepancy between the gravitational and luminous mass both on galactic and galaxy cluster scales. Gravitational lensing is now a common technique in astrophysics, and also widely used in my project. This makes it worth a section of its own: \S \ref{sec:Gravitational lensing}.
+
+\subsection{Masses of galaxy clusters}
+In the beginning of the 1930s, Zwicky was first to notice the order--of--magnitude difference between the dynamical mass of the Coma cluster and the mass in luminosities of individual galaxies \citep[][]{Zwicky1933}. The discrepancy was not recognized as an issue until after its persistence in various observations \citep[][]{Rubin.Ford1970, Einasto+1974, Ostriker+1974}. X--ray observations of hot gas in galaxy clusters confirmed that the hot gas reservoir cannot explain the missing mass. The X--ray data, additionally, provided new measurements of the velocity dispersions of galaxies in clusters, confirming the previous dynamical mass estimates\ignore{(Forman et al. 1972, Gursky et al. 1972, Kellogg et al. 1973)}. The previously unknown population of dark (or high mass--to--light ratio) matter was now accepted to dominate the mass budget of the Universe. The mean density of the matter was shown to be $\sim 0.2$ of the critical density of the Universe and different models for dark matter started appearing in the literature. Firstly, the missing matter was thought to be in faint stars or hot gas but both failed to explain the situation\ignore{cite and explain why! or maybe not as it's not really important now!!}. The first non--baryonic candidate for dark matter particles was the neutrino. However, simulations based on this model \citep[][]{Doroshkevich+1978} indicated that neutrino--dominated dark matter cannot give rise to small scale structure in the distribution of galaxies due to the cut--off of the power spectrum of these rapidly--moving particles. This also suggested that suitable candidates for dark matter particles not only need to be dissipationless, but are also required to be much more massive than neutrinos\ignore{(Blumenthal et al. 1982, Bond et al. 1982, Peebles, 1982)}. Therefore, the first numerical cosmological simulations based on cold dark matter CDM were performed by \citep[][]{Melott+1983} and these were able to represent the small structures of the Universe much more accurately.
+
+\subsection{Galactic rotation curves}
+The first galaxy that showed an increasing mass profile to very large radii was M31 \citep[][]{Rubin.Ford1970}. By the next decade, both optical\ignore{ (Rubin+1978, Rubin+1980)} and radio\ignore{ (Bosma 1978)} data had confirmed the flat rotational curves of disk galaxies at large radii. It was the deep and high resolution HI observations that proved the flat rotation curves of a large number of galaxies beyond the optical disk, providing important evidence for the presence of massive halos around galaxies. \citet[see e.g.][]{Bosma1981, Begeman1989}. 
+%Emily: i don't understand this : The flat rotation curve assumes that Newtonian dynamics applies to cosmological distances too, although there are ideas that argue against this assumption.
+
+\section{What do we know about dark matter?}
+\label{subsec:current state}
+The commonly--accepted class of DM particles are Weakly Interacting Massive Particles (WIMPs). The main characteristics of %(WIMP?)
+cold dark matter particles are listed below:
+  \begin{itemize}
+  \item {\bf Heavy} -- \ignore{The observational upper and lower bounds for dark matter particles come from different sources. }While the upper limit is placed by undetection of MACHOs (Massive Astrophysical Compact Halo Objects), the lower limit is far less constrained.\ignore{ Neither the Kepler satellite \citep[][]{Griest+2014}, nor microlensing surveys \citep[][]{Alcock+1998, Yoo+2004} did not detect MACHOs as predicted.} These limits expect the DM particle mass to be between $10^\mathrm{-31} GeV (= 9\times 10^\mathrm{-89}$\msun  $) < m < 2\times 10^\mathrm{48} GeV (= 2 \times 10^\mathrm{-9}$\msun ) \citep[\ignore{47 for lower bound}][\ignore{ and 42 \& 43 for the upper bound}]{Hu+2000, Alcock+1998, Yoo+2004}. Note the 80 orders of magnitude mass range. This is how much we know about the second most abundant component in our Universe!
+  \item {\bf Dissipationless and collisionless} -- The existence of dark matter halos around galaxies is evidence for the dark matter to be dissipationless. Being dissipationless means that dark matter cannot cool by emitting photons like baryons do. Therefore, while dark matter comes together and forms extended halos, baryonic matter falls into the gravitational well of these halos and cools down by emitting photons and then forms stars and galaxies at the halo center. Dark matter is also assumed to be collisionless, meaning that it does not interact with other dark matter particles. An upper limit on the cross section of dark matter comes from the famous case of the Bullet cluster \citep[][]{Clowe+2006}. The collisionless property of dark matter can alleviate two of the small--scale challenges to the CDM model that I discuss in the next section; the cusp--core problem \ref{subsec:core-cusp}, and the too--big--to--fail problem \ref{subsec:too-big-to-fail}.
+  \item {\bf Cold} -- the terms ``cold'', ``warm'', and ``hot'' dark matter refer to the mass of the dark matter particles which is the deciding factor in their velocity at the freeze--out epoch. This is the time when the temperature of the Universe decreased to $\sim 10^9$ K. At this temperature, hot DM particles that are light are relativistic. Therefore small density perturbations do not survive, i.e. the early structures that form in the Universe are superclusters. Smaller structures such as galaxy cluster, galaxies and dwarf galaxies form via fragmentation, but this does not match our observations. However, if dark matter particles are as described by cold DM or warm DM structure formation follows a bottom--up hierarchy where small scale structures (down to dwarf galaxies in case of WDM and even smaller fluctuations in case of CDM survive). These small structures then merge/fall into the potential wells of larger growing structures. 
+  \end{itemize}
+
+
+%%  ------------------------  %%
+\chapter{The standard model of cosmology; strengths and challenges}
+\label{sec:LCDM}
+Dark matter seems to be dominating the matter content of our Universe. Our best model for dark matter particles are WIMPs whose interaction with themselves or baryons are limited to gravity.  WIMPs do not cool by emitting photons as baryons do (see subsection \ref{subsec:current state}). Therefore, cosmic structure formation at large scales is thought to be dominated by the behavior of dark matter. {\bf Baryonic matter therefore only dominates the observable Universe at scales of galaxies and below where the energy content of hydrodynamical effects such as supernovae and black hole jets are significant enough to alter their environment.} The most common way to perform cosmological N--body simulations has been to simulate a pure dark matter Universe without including the complex physics of the baryonic matter.  Even though this approach provides a consistent picture of our Universe on large scales, it faces systematic inconsistencies when describing scales of galaxies and below. The physics of baryonic processes such as active galactic nuclei, supernovae, and galactic and stellar wind feedback are currently active fields of research in astrophysics and there is no consensus on their implementation within cosmological simulations. 
+
+The key assumption in matching observational data of galaxies and galaxy clusters in the Universe to simulations of a CDM--only universe is that ``mass follows light''. This implies that galaxies and galaxy clusters can be used as tracers of dark matter overdensities and the model hypothesis tested against observations. {\bf However, to test the small--scale predictions, one needs to make detailed comparisons between the distribution of galaxies with certain characteristics and corresponding halos.}
+%%Emily: i'm still not sure what your point is with this bold statement...  it is something about whether dark substructure will have a traceable baryonic component?
+
+In this chapter, I first briefly introduce the current state of the standard model of cosmology, the model parameters, assumptions and initial conditions in  \S \ref{subsec:Model_parameters}. Then, I detail the aspects of $\Lambda$CDM model that has proven fundamentally challenging against the latest observational data (\S \ref{subsec:LCDM_challenges}).
+
+\section{Model parameters}
+\label{subsec:Model_parameters}
+The standard model of cosmology is usually assumed to be a flat adiabatic Universe with Gaussian initial perturbations.  The dynamics of these perturbations, governed by Einstein's general relativity, are dominated at large scales by an invariant dark energy (the cosmological constant). The parameter sets used to present the model can vary depending on the means of measurements and the priors. Among the many astrophysical and cosmological probes of the model, the cosmic microwave background radiation may provide constraints on all model parameters, while others are used only to probe a subset of parameters. Assuming the flatness and curvature of the Universe {\bf that have already been independently confirmed to be consistent with the data}, the base model parameters in Table \ref{tab:LCDM_Planck15} are consistently constrained by studying the CMB using 9 years of WMAP \citep[][]{WMAP9} and {\bf two all--sky surveys} of the Planck satellite \citep[][]{Planck2015}. These parameters include the Hubble constant $H_0$, the matter density parameter $\Omega_m$ (presented usually as the physical density $\Omega_m h^2$ where $h$ is the Hubble parameter), the baryon density parameter $\Omega_b$, the curvature fluctuation amplitude $\Delta^2_R$, the scalar spectral index of density fluctuations $n_s$, and the reionization optical depth $\tau_\mathrm{re}$. \citet[][]{Planck2015} reports the six cosmological parameter values in Table \ref{tab:LCDM_Planck15} for the base $\Lambda$CDM model. Many more familiar parameters are derived from the base model including the age of the Universe, the density parameters of different materials in the Universe (dark matter, neutrinos, radiation), the cosmic reionization redshift, and the sum of three neutrino masses. Various astrophysical observations probe one or more parameters to build and complete our picture of the Universe.
+
+The combination of redshift and apparent magnitude of type Ia supernovae probes the expansion rate of the Universe \citep[][]{Riess+1998, Perlmutter+1999}, whereas surveys such as the Two-degree-Field Galaxy Redshift Survey (2dFGRS) \citep[][]{2dFGRS} and the Sloan Digital Sky Survey (SDSS) \citep[][]{SDSS} probe the galaxy power spectrum, i.e. putting constraints on parameters such as the amplitude of dark matter density fluctuations $\sigma_8$, their linear growth rate $f$, and the sum of the masses of neutrinos $m_\nu$. Measurements of the angular power spectrum of temperature variations in the CMB \citep[COBE, WMAP, Planck][]{} provides us with the nature of initial perturbations. The consistency of all complementary probes and measurements point at the $\Lambda$CDM cosmological model as the best description of our present data. However, some astrophysical observations of galaxy and sub--galactic phenomena point at systematic discrepancies which need to be resolved.
+\begin{SCtable}
+\begin{tabular}{l{c}r}
+\label{tab:LCDM_Planck15}
+Parameter & Planck 68$\%$ limit value \\
+\hline
+$H_0$ & 67.8$\pm$ 0.9 \\
+$\Omega_m$ & 0.308$\pm$ 0.012 \\
+$\Omega_b h^2$ & 0.0223$\pm$ 0.0002 \\
+$\Delta^2_R$ & 2.441$^{+0.088}_{-0.092} \times 10^{-9}$ \\
+n$_s$ & 0.968 $\pm$ 0.006\\
+$\tau$ & 0.066 $\pm$ 0.016\\
 \end{tabular}
-\caption{Na D properties and dust extinction. References: a) \citet{hayes-2007}, b) \citet{bergvall-ostlin2002} }   \label{Tab:NaD_ratios}      % is used to refer this table in the text
-\end{table}
+\caption[Table caption text]{Table reproduced from the values presented in \citet[][]{Planck2015}}
+\end{SCtable}
 
-   \begin{figure}
-   \centering
-   \includegraphics[width=14cm]{Paper1ArgusXSHFOV.eps}
-   \caption{Slit positions, field of view (FOV) and approximate aperture positions for Haro 11 (left) and ESO 338-IG04 (right), overlayed on HST/ACS F550M continuum images. The X-Shooter slits are 0.9 (or 1.0 for the UVB-arm, not marked in the figure) arcsec wide and 11 long and marked with solid lines. The FOV for the LR6 wavelength range (which includes H$\alpha$) is marked with dash-dotted lines while the shorter LR5 range (including Na D) is marked with dotted lines. The Argus binned "apertures" are 1.56 arcsec wide squares marked with dashed lines. The VLT/FLAMES FOV shown here shows the area for which we have full signal-to-noise after taking into account the dithering pattern. }
-              \label{Fig:Slits}
-    \end{figure}
+\section{Challenges of the model, or what is bugging us!}
+\label{subsec:LCDM_challenges}
+One thing that most triumphs of the $\Lambda$CDM share is the scale they are applied to. CDM model simulations match observational data at scales relevant to the CMB, the cosmic web and galaxy clusters (however, see e.g. \citet{Guo+2011} pointing out large--scale discrepancies in the $\Lambda$CDM model and arguing for detailed consideration of baryonic effects as the general solution to the challenges of our cosmological model at all scales). At galaxy and sub--galactic scales both model predictions and observational data are followed by large uncertainties and do not seem to give consistent results. There are {\bf different methods} which astronomers use to attack the small--scale challenges of the CDM model regarding dark matter subhalos; Dynamics in the Galaxy -- disk, globular clusters, streams, satellite counts, abundance matching, $M_* - V_\mathrm{mxa}$ relation, and strong gravitational effects on background objects. Baryonic astrophysical processes, star formation, enrichment, feedback, and environmental effects can potentially change the status of these challenge significantly. However, currently different baryonic physics codes predict different evolutionary details for galaxies given the same initial conditions. These discrepancies indicate that we yet have to learn more about the details of baryonic processes and the ways they alter dark matter in galaxies. While structure formation at large scales is dominated by dark matter, this is not the case for small scales and is why the CDM model fails to reproduce the observable Universe at scales $\leq 10^{12} $ \msun .{\bf Even though the transition point between the \emph{large--} and \emph{small--} scale is not clear, the main principle is that baryonic processes affect structure formation.  Abundance matching at galaxy and sub--galactic scales needs to take stellar and gaseous components into account as the energetics of baryonic processes are high enough to substantially influence the structure of dark matter.}
 
-Figure~\ref{Fig:Argus_lines} shows the \ha , He {\sc i} ($\lambda 5875.6 \AA$) and Na D line profiles from FLAMES/Argus. Note that the fitted lines are not meant to perfectly reproduce the line shapes, but only to demonstrate what the best fitting gaussian looks like. The emission lines are clearly asymmetric, indicating multiple nebular components along the line of sight. 
+\subsection{Abundance matching, or the missing--satellite problem}
+\label{subsec:missing-satellite}
+The first test for small--scale CDM--based simulations is comparing the low--mass end of the predicted dark matter mass function with the faint--end of galaxy luminosity function. Connecting the dark halo mass function and dwarf galaxy luminosity function needs a linking assumption which lies at the heart of abundance--matching techniques; \emph{galactic luminosity is a monotonic function of halo mass}. For the first time, \citet[][]{Klypin+1999, Moore+1999} show that the CDM predictions already fail this test. Of course, this is an area where observations suffer from different kinds of biases. Therefore, the first potential solution to the mismatch is that the source of discrepancy is practical rather than physical. However, despite corrections based on detection thresholds and incompleteness and regardless of further detections of ultrafaint dSphs of the MW, the mismatch persists to more than an order of magnitude \citep[See e.g.][]{Pawlowski+2015}. Different local and universal solutions have been proposed for resolving the discrepancy. The most attractive solution is that baryonic processes and feedback effects quench star formation inside dark matter halos of the mass range $M_h \leq 10^{10} $ \msun . This is a much more complicated solution to investigate and several mechanisms have been suggested to suppress star formation in low--mass CDM subhalos. However, consensus has not been reached on whether these mechanisms will cause sufficient loss of baryons in dark matter halos to be responsible for the absence of observed dwarf galaxies (See e.g. \citet{Brooks+2013, Sawala+2014, DelPopolo+2014, Sawala+2015} claiming to have found baryonic solutions to the problem, but also for opposite arguments see \citealt{Bullock+2010, Klypin+2015}).
+ 
+\subsection{Central slope, or the core--cusp problem}
+\label{subsec:core-cusp}
+One of the long--standing issues of CDM halos is their density profiles \citep[][]{Dubinski.Carlberg1991, Walker.Penarrubia2011}. For over a decade, the main consensus was that the ``universal'' profile describing simulated dark matter halos was a two--parameter density profile, suggested by \citet[][ hereafter NFW]{NFW}, where the central logarithmic density slope changes as $\rho \propto 1/r$. The logarithmic slope of this profile becomes less steep with increasing $r$ and can be described as $\rho(r) \propto r^{-3}$ around the virial radius. However, dynamical measurements of stellar and gas content in the central kpc of dwarf galaxies \citep[][]{} favor a constant--density for these regions. While further high--resolution measurements from low--surface brightness dwarf galaxies and dark matter--dominated galactic rotation curves support the cored profiles, the higher resolution CDM simulations are more consistent with a three--parameter density profile rather than the traditional NFW profile. The extra parameter describing dark halo density profiles is the shape index, $\alpha$, which gives the density profile more flexibility in shape. Even with the extra parameter, these DM profiles still fail to describe observed halos which contain baryonic matter. 
 
-Figure~\ref{Fig_XSHLines} shows the same as Figure~\ref{Fig:Argus_lines}, but for the X-Shooter data, and also includes the K {\sc i} and Mg {\sc i} b absorption features. The signal-to-noise is considerably lower than for the FLAMES data, mainly due to a shorter exposure time. Note that the K {\sc i} feature appears to follow the velocity of the Na D feature, and also that the results agree very well between the observations. 
+On the other hand, the high--mass end of the halo mass function and luminous part of galaxy luminosity function do not indicate any discrepancies regarding the central DM slope. The reason is that there are several independent methods to derive the luminous and dark matter content of massive galaxies in their central kpcs. Resolved stellar and gas dynamical measurements probe the baryonic component\ignore{ \citep[][]{}}, and the X--ray temperature maps combined with weak and strong gravitational lensing measurements can trace the mass in these galaxies\ignore{ \citep[][]{}}. Therefore, it is easier to decide whether the dark matter or the stellar mass dominates the central kpc of the galaxy. {\bf These measurements do indicate consistency with cusped CDM halos in the case of relaxed clusters, while the DM contribution seems to have cores that are stretched out to $r\sim 10$ kpc (clusters or galaxies?) \citep[][]{}.} %Emily: fix this ?
+ However, subtracting the dynamical mass contribution from stars and deriving the dark matter--only density profile needs precise modeling of stellar populations and the mass function in the galaxy. 
+
+\subsection*{Halo density profiles}
+The central slope of the density profiles of dark matter halos can be measured both from observational data and fits to halos in N--body simulations. In this regard, the single--parameter (cored) singular isothermal sphere (ellipsoid) profile provides an acceptable lens model for the mean dark matter halo of galaxies. On the other hand, the universal density profiles of field halos in CDM simulations can be reasonably well described by the NFW profile as below
+\begin{equation}
+\label{eq:NFW}
+\rho(r)=\frac{\rho_\mathrm{s}}{(r/r_s)(1+r/r_s)^{2}}
+\end{equation}
+
+where $r_s$ is the characteristic scale radius of the halo, i.e. the radius at which $\rho \propto 1/r^2$ (isothermal), and $\rho_s$ is the density at $r=r_s$. An extra parameter called the concentration parameter $c$ relates the scale density of the halo to its virial radius and is defined as $c\equiv r_s/r_\mathrm{vir}$. The virial radius $r_\mathrm{vir}$, in turn is commonly defined as the $r_{200}$, the radius beyond which the density of the halo drops below 200 times the critical density of the Universe at the redshift at which the halo is formed (more on this in subsection \ref{subsec:issues or systematic challenge}). The concentration parameter therefore, contains information about the formation and evolution of the halo and depends on the time of the collapse of the halo as well as its virial mass. Given the hierarchical formation of halos, the low--mass halos were formed at higher redshift where the mean density of the Universe was higher and so was the inner density of collapsed halos. This results in a weak $c-M_\mathrm{vir}$ correlation such that the concentration parameter decreases with increasing $M_\mathrm{vir}$
+  Additionally, low--mass subhalos gradually lose mass in tidal interaction with the parent halo which leads to a further increase of their $c_\mathrm{vir}$ over time \citep{Bullock+2001, Maccio2008}.
+
+Relaxing the central logarithmic slope $\gamma = \frac{d\ln(\rho/\rho_s)}{d\ln(r/r_s)}$ in the basic two--parameter form of NFW profile makes better fit to individual halos in CDM simulations \citep[][]{}. %cite
+ In this three--parameter form, the inner cusp slope becomes progressively shallower towards the center, eventually reaching inner slope of $\gamma\geq-1$. The generalized NFW profile (gNFW) is formulated as:
+
+\begin{equation}
+\rho(r) = \frac{\rho_s}{(r / r_s)^\gamma(1 + r/r_s)^{3-\gamma}}
+\end{equation}
+
+where $\gamma = 1$ gives the traditional NFW profile and $\gamma = 2$ is equivalent to a singular isothermal sphere (SIS). Another option for a three--parameter profile is the Einasto profile, inspired by the two--dimensional Sersic surface brightness profile of elliptical galaxies \citep[][]{Einasto1965}. There are various studies suggesting that simulated CDM halos are better described by a three--parameter model such as the Einasto profile than the standard NFW \citep[e.g.][]{Navarro+2004, Gao+2008, DiCintio+2014, Dutton.Maccio2014}. The extra parameter describing dark halo density profiles, $\alpha_\mathrm{Ein}$, gives the density profile more flexibility in shape, i.e. $\gamma(r)=-\frac{dln\rho}{dlnr}$. The three--dimensional Einasto profile takes the form:
+\begin{equation}
+\ln\left(\frac{\rho(r)}{\rho_s}\right) = -b\left[\left(\frac{r}{r_s}\right)^{\frac{1}{n}} - 1\right]
+\end{equation}
+where the Einasto index $\alpha_\mathrm{Ein} = \frac{1}{n}$, and therefore the logarithmic slope becomes $\gamma = -\frac{b}{n}(\frac{r}{r_s})^\frac{1}{n}$. The best--fit density profiles to simulated dark matter halos of a variety of masses in the Aquarius project show inner slopes shallower than the original NFW \citep{Navarro+2010}. These halos are not self--similar, i.e. Einasto index changes with halo mass. \citet{Navarro+2004} find the Einasto index for halos in the mass range between dwarves and clusters to be 0.12--0.22, with an average value of 0.17. According to \citet{Hayashi.White2008, Gao+2008}, $\alpha_\mathrm{Ein}$ tends to increase with mass and redshift in halos of the Millennium simulation. From the gravitational lensing point of view, Einasto profiles are more demanding to work with as one cannot derive an analytical surface mass density as a function of $\alpha_\mathrm{Ein}$. Hence the lens equation needs to be solved numerically for each case.
+
+\subsection{Normalization, or the too--big--to--fail problem}
+\label{subsec:too-big-to-fail}
+A more recent issue with the predictions of the cold dark matter model was brought up only a few years ago, pointing out another discrepancy in the structural properties of DM subhalos of MW--like simulated halos and dSph satellite galaxies of the MW. While one would naively expect that the most luminous dwarf galaxies correspond to the most massive subhalos, high--resolution cosmological simulations persistently produce massive subhalos ($M_{vir} \geq 10^{10} $ \msun ) which are too concentrated in their central kpc to host any of the satellite galaxies around the Milky Way or Andromeda (\cite{Boylan-Kolchin+2011, Boylan--Kolchin+2012}). The combination of measured effective (half--light) radius $R_e$ and velocity dispersion $\sigma$ of a dSph with simple dynamical arguments can constrain the total mass of the dwarf within $R_e$. The upper mass limits derived for the 8 most massive satellites of the MW (excluding the Magellanic clouds) are systematically smaller than those of the 10 most massive subhalos in high--resolution cosmological simulations, within the same radii. Therefore, the most massive subhalos cannot host the most luminous dSphs of the MW. Consequently, unless the MW halo is a very peculiar system, the most massive subhalos of the galaxy remain dark while the most luminous dSphs reside in intermediate--mass dark matter halos. 
+
+One suggested explanation for this mismatch is that the halo of the MW is less massive than previously estimated and therefore, the local massive dSphs should be compared to simulated subhalos of a less--massive halo \citep[][]{Boylan--Kolchin+2012, Wang+2012, Vera--Ciro+2013}. However, a similar discrepancy has been observed within the local group \citep[][]{Kirby+2014, Garrison--Kimmel+2014, Tollerud+2014}, and even field galaxies \citep[][]{Papastergis+2015} as well, which argues for a more global issue, in need of a more generic solution. 
+
+\subsection{Spatial distribution, or the satellite--planes problem}
+The issue with the spatial distribution of satellite galaxies of the MW was first argued to be challenging for $\Lambda$CDM by \citet[][]{Ktoupa+2005}. Even though the spatial distribution of the (then) 11 satellite dwarves of the MW was not a new discovery, the fact that this alignment proposes a challenge to the standard model of cosmology was new and in line with the rest of the small--scale issues proposed for this model. Upon the discovery of faint and ultra faint satellites of our galaxy in the SDSS survey, the presence of the satellite plane around the MW was confirmed \citep[][]{Metz+2009, Kroupa+2010}. The bonus argument made by \citet[][]{Metz+2009} uses not only the spatial distribution of dwarf satellites, but also their proper motions which is indicative of the majority of their sample orbiting within the vast plane of satellites (VPoS). A later work by \citet[][]{Pawlowski+2013} also confirms these results based on proper motion measurements. {\bf The first question coming to mind in such a situation is whether this is limited to the local group or this is the case outside the local group as well}. This question is addressed by various works ever since, both in the context of the (satellite and field) dwarf galaxies in our local group \citep[see e.g. ][]{Ibata+2013, Pawlowski+2013, Bellazzini+2013, Pawlowski.McGaugh2014a} and around more distant galaxies \citep[see e.g. ][]{Tully+2015, Muller+2015}. Even though the narrow dwarf galaxy plane of the MW is a widely--accepted feature in the data, the ubiquity of such planes in the rest of the Universe is under debate and needs further observational data with velocity measurements of satellite pairs in order confirm (or reject) them co--orbiting the host galaxy \citet[for opposite views on the matter see e.g. ][]{Phillips+2015, Cautun+2015}.
+
+
+%%  ------------------------  %%
+\chapter{Gravitational Lensing}
+\label{sec:Gravitational lensing}
+
+The deflection of light is a predictable phenomenon in the framework of Newtonian mechanics, serving as one of the major tests of general relativity by the famous 1919 solar eclipse experiment \citep[][]{Eddington+1919}. In the Newtonian description, light photons are treated as test particles being influenced by gravity of a massive object. Therefore, a test particle passing with velocity $v$ near a point-like massive object, $M$, with an impact parameter $\xi$, is deflected by an angle $\alpha$. Considering a very small deflection angle (the most likely case in cosmology), $\alpha$ is given by
+
+\begin{eqnarray}
+\label{eq:alpha}
+\alpha \simeq \frac{4GM}{v^2 \xi}.
+\end{eqnarray}
+
+In the case of a light beam, where $v = c$, passing very close to the surface of the Sun, the deflection angle turns out to be $\sim$ 0.85 arcseconds. This value coincides with what was obtained by Einstein prior to the final formulation of GR \citep[][in German!]{Einstein1911}. However, the pre-relativistic predicted deflection angle is half the predicted angle by general relativity in its fully developed form. The factor added by general relativity represents the local spatial curvature produced by the mass and was proven to be consistent with observational results in 1919 for the first time. Several groups measured the angular shift of stars projected close to the solar limb during a total eclipse \citet{Eddington+1919}. This served as the second evidence in support of GR, after the perihelion precession of Mercury. Based on the calculation using the generalization of this phenomenon for two distant stars, it was generally accepted that the separated images of a star due to the gravity of another star would be impossible to detect with the technology of the day. A few years later, Fritz Zwicky suggested  \citep{Zwicky1937} that the effect of an extragalactic ``nebula'', i.e. a galaxy, rather than a foreground star is big enough and should be observable. Even though his calculation was too optimistic due to overestimating the masses of galaxies at that time, the idea of utilizing this phenomenon as a ``natural telescope''  remained a curiosity until 1979 when for the first time two identical quasars ($0957+561$ A \& B) were revealed in an observation \citep{Walsh+1979}. The similarity of the spectra of the two quasars with the same redshifts, $z \sim 1.41$, and 6 arcseconds angular separation were mostly accepted to be convincing evidence for the fact that the two objects are physically associated. Furthermore, finding a galaxy at a lower redshift close to the two images lent more support to the idea that this was a case of gravitational lensing. Many cases of gravitational lensing have been found and investigated ever since.
+
+\section{Mathematical Description}
+Here I start with the geometrical framework for gravitational lensing assuming a point--like lens (the same calculation for an extended lens requires integrating over the projected lens area). Another simplifying factor is the ``thin lens approximation'', implying that the impact parameter of the lens is considerably small compared to the distances in the system, thus the extension of the lens along the line of sight is ignored.
+
+The relation between the unlensed source position, $\boldsymbol \beta$, and the position of the image(s), $\boldsymbol \theta$, is called the \emph{lens equation}. This equation can be derived geometrically from the setup displayed in Figure \ref{fig:config} and shown below:
+
+\begin{eqnarray}
+\label{eq:lens_eq_angle}
+\boldsymbol \beta = \boldsymbol \theta - \frac{D_{ds}}{D_s} \hat{\boldsymbol \alpha}(\boldsymbol \xi).
+\end{eqnarray}
+
+ where the image position is $\boldsymbol \theta = \frac{\boldsymbol \xi}{D_{d}}$. Hence, by substituting $\alpha$ with the expression found in equation \ref{eq:alpha}, we have
+
+\begin{eqnarray}
+\label{eq:lens_equation}
+\boldsymbol \beta = \boldsymbol \theta - \frac{D_{ds}}{D_s D_d} \frac{4GM}{c^2 \boldsymbol \theta}.
+\end{eqnarray}
+
+ Alternatively, using the distance from the source to the optical axis, in the source plane,  $\boldsymbol \eta = D_{s} \boldsymbol \beta$, the lens equation becomes
+
+\begin{eqnarray}
+\label{eq:lens_eq_distance}
+\boldsymbol \eta = \frac{D_s}{D_d}\boldsymbol \xi - D_{ds}\hat{\boldsymbol \alpha}(\boldsymbol \xi)
+\end{eqnarray}
 
 \begin{figure}
-   \centering
-   \includegraphics[width=12cm]{Paper1NaDprof.eps}
-   \caption{H$\alpha$, He {\sc i} (5875.6) and Na D line profiles from the VLT/FLAMES data. The blue gaussians are a simple fit to the emission or absorption lines. The vertical lines show the systemic velocity as given by the H$\alpha$ gaussian fit. The y-axis is in arbitrary units, normalized to the continuum.}
-              \label{Fig:Argus_lines}
-    \end{figure}
+\label{fig:config}
+\centering
+\includegraphics[width=0.5\textwidth]{/home/saas9842/PhD/Lic/figs/Gravitational-lensing-angles}
+\caption{The relation between angles and distances in a gravitational lensing setup as described by the lens equation. In this schematic figure, $\eta$ is the position vector of the source with respect to the optical axis of the system, and $\zeta$ is the position vector of the outer surface of the [spherically symmetric] lens (deflector). (Figure from Schneider)}
+\end{figure}
+
+Given a certain mass distribution and a fixed $\boldsymbol \xi$, the lens equation can have more than one solution for $\boldsymbol \theta$; each of which corresponds to an image of the source in the sky.  Although obtaining the source position $\eta$ from a given image position $\xi$ using the lens equation is straightforward, finding a general analytical solution for the position of the image(s) of a source at a given position is not. The mapping of $\xi$ to $\eta$ is non--linear. There are, however, analytical models to solve this equation for simple matter distributions on the lens plane such as point--mass, axially symmetric, and elliptical lenses.
+
+The deflection angle due to the surface mass density of the lens gives rise to a deflection potential $\psi$ of the form $\boldsymbol \alpha = \nabla \psi$. Accordingly, another way of presenting the lens equation is in the form of 
+
+\begin{eqnarray}
+\label{eq:potential_dimensionless_lensing}
+\textbf{y} = \nabla \left(\frac{1}{2}\textbf{x}^2 - \psi(\textbf{x}) \right)
+\end{eqnarray}
+
+where $\textbf{x} \equiv \frac{\boldsymbol \xi}{\xi_0}$ and $\textbf{y} \equiv \frac{\boldsymbol \eta}{\eta_0}$ are dimensionless vectors, when $\xi_0$ and $\eta_0$ are length scales in the lens plane and the source plane, respectively. This form of expressing the lens equation leads to the formulation of Fermat's principle in gravitational lensing theory
+
+\begin{eqnarray}
+\nabla \phi(\textbf{x}, \textbf{y}) = 0
+\end{eqnarray}
+
+where $\phi$ is a scalar function as below
+
+\begin{eqnarray}
+\phi(\textbf{x}, \textbf{y}) = \frac{1}{2} (\textbf{x} - \textbf{y})^2 - \psi(\textbf{x})
+\end{eqnarray}
+
+Fermat's principle states that the light ray always chooses the path which takes the least \emph{time} to pass through. Therefore, it can be used to relate the time delay between two separate images of a single source to the considered cosmology and mass distribution of the lens.
+
+Light deflection is a propagation phenomenon, influencing only the shape of the light bundle from the source, and not the surface brightness. Therefore, for a monochromatic source, we have the received flux from the source as 
+
+\begin{eqnarray}
+\label{eq:flux_to_SB}
+S = I_{\nu} d\omega
+\end{eqnarray}
+
+where $d\omega$ is the differential solid angle, and $I_{\nu}$ is the monochromatic surface brightness. Since $I_{\nu}$ is not affected by gravitational deflection, the flux changes are merely mirrored in solid angle variation of the image. Hence, the \emph{magnification} due to gravitational lensing is defined as the solid angle ratio of the observed image to that of the non--lensed source
+
+\begin{eqnarray}
+\label{eq:mu_domegas}
+|\mu| \equiv \frac{d\omega}{d\omega_0}
+\end{eqnarray}
+
+On the other hand, the solid angle is related to the angular position of the image (source), via the dimensionless quantities \textbf{x} (\textbf{y}). Therefore, the magnification due to a circularly symmetric lens is given by 
+
+\begin{eqnarray}
+\label{eq:mu_beta_theta}
+|\mu| = \frac{\theta d\theta}{\beta d\beta}.
+\end{eqnarray}
+
+In case of extended sources, we need to solve the lens equation for all points within the source and derive the observed surface brightness distribution in the lens plane $I({\boldsymbol \theta})$ from the true surface brightness distribution in the source plane $I^s({\boldsymbol \beta(\boldsymbol \theta)})$. The lens mapping can be locally linearized and the image distortion written as a Jacobian matrix of 
+
+\begin{eqnarray}
+\label{eq:Jacobian}
+\mathcal{A}(\boldsymbol \theta) = \frac{\partial \boldsymbol \beta}{\partial \boldsymbol \theta}
+\end{eqnarray}
+
+The magnification tensor, -- locally -- mapping the source plane to the image plane for an extended source is then
+
+\begin{eqnarray}
+\label{eq:magnification_tensor}
+M(\boldsymbol \theta) = \mathcal{A}^{-1}
+\end{eqnarray}
+
+whose determinent corresponds to the magnification factor introduced in equation \ref{eq:mu_domegas}, and could be derived from the relative [integrated] fluxes of the images and the source.
+
+\begin{eqnarray}
+\label{eq:mu_extended}
+\mu = det(M) = \frac{1}{det(\mathcal{A})}
+\end{eqnarray}
+
+One of the most interesting and extreme cases of gravitational lensing is the Einstein ring. The lensing setup which gives rise to a complete Einstein ring consists of a point--like source, with a spherically symmetric lens, both of which are collinear with the observer, i.e. the lens is centered at the line of sight between the observer and the source. Therefore, the observer sees a ring--shaped image with an angular radius of $\theta_E$ which is called the angular Einstein radius. This radius, $\theta_E$ is obtained by substituting $\beta=0$ in equation \ref{eq:lens_equation} as:
+
+\begin{eqnarray}
+\theta_E = \sqrt{\frac{4GM}{c^2}\frac{D_{ds}}{D_dD_s}}.
+\label{eq:lens}
+\end{eqnarray}
+
+%<<<<<<< HEAD
+ Where $M$ represents the lens mass and $D_d$, $D_s$, and $D_\mathrm{ds}$ are the angular--diameter distances as in figure \ref{fig:config}. Moreover, as it is immediately concluded from equation \ref{eq:mu_beta_theta}, magnification $\mu$ diverges for the \emph{critical points} where $\beta=0$. The ``infinite'' theoretical magnification points can be mapped into the source plane which gives a set of \emph{caustic curves}. This corresponds to the points where det$(\mathcal{A}) = 0$, and therefore equation \ref{eq:mu_extended} faces division by zero. In reality, however, the finite size of the source keeps the magnification from diverging. The number and relative positions of images of a single source change according to the position of the source with respect to such caustics in the source plane. %%(see figure \hyperref[fig:cusps]{2.2}).
+%=======
+% Where $M$ represents the lens mass and $D_L$, $D_S$, and $D_\mathrm{LS}$ are the angular--diameter distances as in figure \ref{fig:config}. Moreover, as it is immediately concluded from equation \ref{eq:mu_beta_theta}, magnification $\mu$ diverges for the \emph{critical points} where $\beta=0$. The ``infinite'' theoretical magnification %({\bf explain why infinite magnification is only a theoretical concept}) 
+%points can be mapped into the source plane which gives a set of \emph{caustic curves}. The number and relative positions of images of a single source change according to the position of the source with respect to such caustics in the source plane. (see figure \hyperref[fig:cusps]{2.2}).
+%>>>>>>> emily
+
+ %% \begin{figure}[ht]
+ %% \label{fig:cusps}
+ %% \centering
+ %% \includegraphics[width=1.0\textwidth]{figs/zack09_4}
+ %% \caption{Different configurations of a four-image lens: a) Fold, b) Cusp and c) Cross. The upper row shows the caustics and position of the source (star) in the source plane. The solid line indicates the inner caustic and the dashed line the outer caustic. A source positioned inside the inner caustic produces five images. A source positioned between the inner and outer caustic produces three images, whereas a source positioned outside the outer caustic will not be multiply imaged. In the case of multiple images, one of the images is usually highly de-magnified, so that only four- and two-image lens systems are observed, respectively. The lower row shows the corresponding critical lines and resulting observable images in the lens plane. The inner caustic maps on the outer critical line and vice versa. A close pair (A, B) and a close triplet (A, B, C) are produced in the fold (a) and cusp (b) configurations, respectively. (Figure and caption adopted from \citet{Zackrisson.Riehm2010})}
+ %% \end{figure} 
+
+\section{Strong and Weak Lensing}
+One observable result of gravitational lensing is magnified (or de-magnified) images of point sources, the other distortions in the images of extended objects. The extent of the lensing effect varies depending on the alignment of the source, the lens and the observer. The closer the center of the lens to the line of sight between the observer and the source, the more significant the image distortion. Therefore, gravitational lensing cases are categorized, according to the level of their magnifications, into two major regimes; \emph{strong} and \emph{weak} lensing. Strong lensing causes dramatic effects such as high magnifications, multiple images, luminous arcs and in some cases even complete Einstein rings. Although strong lensing is a rare effect, it is possible to be detected and studied individually for each case. Weak lensing, on the other hand, occurs when the center of the lens is further away from the observer's line of sight, i.e. $\theta > \theta_E$. Thus the images are weakly magnified or have small distortions. In contrast to strong lensing, weak lensing happens to be very common. Every line of sight is affected by weak lensing at some level hence this effect is detectable through statistical investigations of numerous objects. 
+
+\subsection{Strong Lensing}
+As pointed out in the previous section, the lens equation (equation \ref{eq:lens_equation}) can have multiple solutions. Moreover, when the ``thin lens approximation'' is valid, the surface mass density of the lens, i.e. the projected mass of the lens on the lens plane, determines the severity of the gravitational lensing case. Accordingly, one can introduce the constant \emph{critical surface mass density} $\Sigma_{\mathrm{crit}}$ such that for every $\theta$ in the lens equation \ref{eq:lens_equation}, we have $\beta = 0$.
+
+\begin{eqnarray}
+\label{eq:Sigma_crit}
+\Sigma_c &=& \frac{c^2}{4 \pi G}\frac{D_{os}}{D_{ol} D_{ls}}.
+\end{eqnarray}
+
+In cases where $\Sigma > \Sigma_{\mathrm{crit}}$, multiple images from the background source are produced. Exceeding the critical surface mass density may happen only for a part of a specific foreground galaxy or galaxy cluster, the solid angle of which is then called the \emph{strong lensing cross section}. 
+
+On the other hand, the magnification of the image due to the presence of the lens which was defined by equation \ref{eq:mu_domegas}, can also be expressed with the following relation 
+
+\begin{eqnarray}
+\label{eq:mu_kappa_gamma}
+\mu = \frac{1}{(1 - \kappa)^2 - |\vec{\gamma}|^2}
+\end{eqnarray}
+
+which is obtained by substituting the determinant of the Jacobian matrix for the lens equation. In this form, there are two quantities upon which the magnification is dependent, \emph{convergence} $\kappa$ and \emph{shear} vector $\vec{\gamma}$. Convergence, which describes the local isotropic magnification of the source, is a scalar quantity and is defined as the surface mass density of the lens in the unit of the critical surface density as below
+
+\begin{eqnarray}
+\label{eq:convergence}
+\kappa &\equiv& \frac{\Sigma}{\Sigma_{\mathrm{crit}}}
+\end{eqnarray}
+
+ Shear is the measurement of the distortion of the source image and is quantified along each position component on the lens plane, thus a vector. The magnification for point sources is a tensor, only dependent on $\kappa$ and $\vec{\gamma}$, however, for an extended source it is more complicated, depending on the internal surface brightness distribution of the source.
+
+%% \begin{SCfigure}
+%%   \centering
+%%   \label{fig:shear_convergence}
+%%   \includegraphics[width=0.3\columnwidth]{figs/shear_convergence}
+%%   \caption{from Wikipedia} %https://en.wikipedia.org/wiki/Gravitational_lensing_formalism
+%% \end{SCfigure}
+
+\subsection{Strong Lensing Regime}
+Strong lensing cases are studied within sub--regimes differing by the angular separation of multiple images produced by each. The angular separation of gravitational lens systems producing multiple images is typically of the order of the Einstein radius of the lens $\theta_E$. Accordingly, the terminology used for various strong lensing separations is
+
+\begin{itemize} 
+\item \emph{Macrolensing} refers to cases with typical angular separations, Einstein radii, of the order of \emph{arcseconds}. Macrolensing can be thought of as the combined effect of the dark and luminous matter of an isolated galaxy as well as the effect of galaxy clusters or multiple galaxies along the line of sight. 
+\item \emph{Millilensing} (sometimes called \emph{mesolensing}) effects may be produced by satellite galaxies or their dark counterparts, dark matter subhalos, as well as small--scale objects such as intermediate--mass black holes (IMBHs) with typical multiple image separations in the order of \emph{milliarcseconds}. Therefore, lensing effects in this regime potentially address one of the small--scale issues of the CDM theory, the so--called "missing satellites problem", which is mainly the subject of chapter \ref{chap:missing_satellite_problem}. However, the compound effects due to this phenomenon could be in a much larger regime depending on the mass function and spatial distribution of these substructures \citet{Treu10}.
+\item \emph{Microlensing} refers to Einstein radii of solar-- and planetary--mass lenses, i.e. the order of \emph{microarcseconds}. Unlike macrolensing and millilensing, microlensing is a transient effect such that it is observable through monitoring a source for a period of time and recording its light curve. The apparent brightness of the source varies over time as the alignment of the lens system changes due to the moving lens. This type of gravitational lensing is not considered in the present study.
+\end{itemize}
+
+Following the same convention, strong gravitational lensing cases with smaller angular separations are referred to as nanolensing ($\theta_E \sim 10^{-9}$ arcseconds), picolensing ($\theta_E \sim 10^{-12}$ arcseconds), femtolensing ($\theta_E \sim 10^{-15}$ arcseconds), etc. The terms discussed in the bullet points above are what I mainly use in this thesis.
+
+\subsection{Astrometric Perturbation}
+The proximity of the projected image of a foreground massive object to a background source has effects on various angular scales. One effect is a change in the apparent position of the source. This is called the \emph{astrometric effect} and is usually accompanied by magnification or distortion effect. Astrometric effects are, therefore, detectable mostly in dynamic cases, such as microlensing cases where the observer can actually follow the temporal differences in the relative positions in the system. One of these cases stems from the presence of substructures in the main lens such that the deflector consists of a parent halo with a distribution of subhalos inside. 
+ 
+When it comes to the astrometric perturbation due to the substructure inside a halo, the macroimage gets shifted, under the influence of the subhalo, from its original position. This effect is mostly sensitive to intermediate and high mass substructures \citet{Moustakas+2009} and is clearly visible in the results 
+%Emily: wait, are you saying you have results?  or you mean it's clearly visible in the modelling?  or just that it is observationally possible to see the effect with current techniques?
+ of the present work. %%(see Figure \hyperref[fig:astrometric_perturbation]{2.3}). %figure reference is wrong?
+
+%%  \begin{figure}
+%% \label{fig:astrometric_perturbation}
+%% \centering
+%% \includegraphics[width=1.0\textwidth]{figs/astrometric_perturbation}
+%% \caption {Astrometric perturbations. a) One of the multiple sightlines towards a distant light source passes through a dark subhalo. b) The images of the macro--lensed source are observed at the positions of the gray source symbols. Modeling of the lens system with a smooth lens potential predicts the position of the upper image at the white source symbol. The subhalo close to the sightline of the image causes a deflection on the order of a few tens of milliarcseconds. (Figure and caption adopted from \citet{Zackrisson.Riehm2010}).}
+%%  \end{figure}
+ 
+\subsection{Time Delay}
+Each macroimage follows a different path to reach the observer, i.e. is subject to a different time delay. This time delay consists of two independent components; the geometrical and the gravitational component. The geometrical term comes from the difference in the light path length for each image. The gravitational component, also known as the \emph{Shapiro} effect, is a relativistic effect of retardation in strong gravitational fields. However, different time delays of various images cannot be observed if the source is not intrinsically variable, since this effect is manifested in the phase difference of the light curves of various images. When it comes to subhalo hunting, the perturbation to the time delays between macroimages predicted by a smooth lens model serves as an evidence for the presence of substructures within the main lens (see Figure \hyperref[fig:time_delay]{2.4}). As \citet{Moustakas+2009} argue, such an effect is only sensitive to subhalos at the high--mass end of the mass function.
+ 
+ %% \begin{figure}[h]
+ %% \label{fig:time_delay}
+ %% \centering
+ %% \includegraphics[width=0.5\textwidth]{figs/time_delay}
+ %% \caption{A galaxy with a dark matter halo produces distinct macroimages of a background light source. If this source displays intrinsic variability then observable time delays between the different macroimages may occur. If one of the macroimages experiences further small--scale image splitting due to a sub--halo along the line of sight, a light echo may be observable in the affected macroimage. This may serve as a signature of millilensing in cases where the small--scale images blend into one due to insufficient angular resolution. (Figure and caption adopted from \cite{Zackrisson.Riehm2010}.)}
+ %% \end{figure}
+ 
+{\bf Time delay is the only gravitational lensing observable that changes with the length scale of the lensing setup.} Given two lensing setups which differ in angular--diameter distances, the only variable which breaks the degeneracy of the observables is the time delay of various images.
+ 
+\subsection{Flux Ratio Anomalies}
+\label{subsec:Flux Ratio Anomalies}
+Gravitational lensing is a propagation phenomenon, thus it conserves the number of photons. On the other hand, the gravitational deflection influences the cross section of the light bundle differentially. Consequently, in order to conserve the flux, the area of the image(s) of the source changes. This leads to different magnifications for different macroimages, as explained in equation \ref{eq:mu_domegas}. However, mere determination of the flux of a single image does not provide any information if the intrinsic flux of the source is unknown. The observable quantities, are rather the flux ratio and positions of two separate macroimages of a single source.
+
+%%  ------------------------  %%
+\chapter{Radio interferometry}
+In this section, I briefly explain the main principles based upon which radio interferometers work. I also try to put radio interferometry into the context of radio astronomy as well as observational astronomy, in general.
+
+\section{Radio telescopes}
+A radio telescope is usually made of two main parts:
+\begin{itemize}
+\item Reflector: The special shape of this reflector, i.e. a parabola, is advantageous compared to convex mirrors used in reflecting optical telescopes as the parabolic shape keeps all reflected radiation  in phase and as I will repeatedly mention in this section, coherence is of great importance in radio astronomy. Keeping the same principle in mind, current radio instruments use aperture arrays keeping the electromagnetic wave coherent at the receiver by exerting appropriate delays to the signal.
+\item Receiver: Unlike optical telescopes which scan different points of the focal plain with numerous receivers (pixels of a CCD), radio telescopes generally work with a single receiver at the focal point of their reflector. In other words, radio telescopes see the entire sky within a single pixel only!
+%Emily: this is true for dipole antennas but not for parabolic reflectors.  one of the main advantages (that you should also list above) is that parabolic antennas are sensitive to a very small area of sky - i.e. they have high "directivity".  (see the parabolic antenna wikipedia entry if you want.)  so an individual antenna does see everything in a single pixel but not the whole sky.
+
+Heterodyne receivers are the most common kind of receivers used in radio antennae today, and although in principle they could be arranged in 2--D arrays on the focal plane of the antenna to perform as a CCD in an optical system, the cross--talk among closely placed receivers makes the calibration of each receiver cumbersome and usually inefficient. A more practical approach would be to use several parabolic reflectors (aperture arrays) simultaneously to observe several pointing on the sky.
+% Emily: actually, the Westerbork interferometer has APERTIF which is a new focal plane array of receivers.  so maybe these issues are solved now?
+
+\end{itemize}
+Heterodyne receivers are the most common type of receivers at sub--mm wavelengths (and higher) and they are crucial to use if the signal modulation (both amplitude and phase of the signal) is needed for observations (the case in radio interferometers).\\
+%{\bf I do not really know the difference between a heterodyne and a bolometric receiver but I need to write *briefly* about them}
+% Emily: bolometers don't measure the phase of the EM radiation and they don't have good spectral resolution so they're only good for continuum.  for interferometry you need to know the phase because all of the sub-primary-beam information (the ability to make a map with a resolution that is less than that of the single-antenna beam size) comes from the phase information.
+
+In order to digitally record the electromagnetic wavefront reaching the receiver, the signal needs to be sampled with a frequency at least twice the frequency of the wave (Nyquist theorem). This is an electronically challenging task, and particularly impossible for frequencies in the order of 100 GHz and higher. Therefore, the arriving signal is first mixed with the signal from a stable local oscillator (LO) with a well--known frequency slightly lower than that of the original signal. The mixed signal then has two frequencies $f_\mathrm{sky} + f_\mathrm{LO}$ and $f_\mathrm{sky} - f_\mathrm{LO}$. Therefore, we can sample the low frequency signal with as fine resolution as desired, ignoring the higher frequency. The signal is then {\bf demixed} by exerting a phase difference and is recorded in two frequency windows below and above the LO frequency, namely the \emph{lower sideband} and the \emph{upper sideband}, by the receiver.
+
+\section{Observational limitations}
+Observational limitations of the recorded data may come from the source or, more commonly, from our instruments and can be classified into limitation in 
+\begin{itemize}
+\item resolution
+\item sensitivity
+\item dynamic range
+\end{itemize}
+As will be discussed further into the section, radio interferometry has brought significant improvements in the former two, although mostly at the cost of the latter.
+
+\subsection*{The convolution theorem}
+What a radio telescope records is not the direct image of the source at different points at the same time. Rather, a single radio telescope records signals from the primary beam the into a single ``pixel''.  Radio interferometry is based on \emph{the convolution theorem}. According to this theorem, it can be shown that convolving two functions in Fourier space (i.e. Fourier transform of their convolution) is equivalent to multiplying the Fourier transform of the two in the ordinary space.
+\begin{align} 
+\begin{split}
+\mathcal{F}(f*g) &= \mathcal{F}(f) \times \mathcal{F}(g)
+\end{split}                    
+\end{align}
+Where convolution of one function $f(t)$ with another function $g(t)$ means shifting the function $g$ consecutively from $t=-\infty$ to $t=+\infty$, while at each step the multiplication of the two functions (i.e. $f(t)g(t+\tau)$) is added to the convolved function $f*g$:
+\begin{align} 
+\begin{split}
+\mathcal (f*g)(\tau) &= \int_{-\infty}^{+\infty} f(t)g(t+\tau) dt
+\end{split}                    
+\end{align}
+No device can achieve infinite resolution due to its diffraction limit which results in spreading the light from a point source a.k.a. the point spread function (PSF) of the instrument. Anything observed with that instrument will be seen as the convolution of the true source structure with the PSF. Angular resolution of an instrument (i.e. FWHM of its PSF) scales with the size of the aperture and wavelength as $\Delta\theta \propto \lambda / D$. Therefore, the PSF itself scales with the square of the Fourier transform of the aperture which, according to the convolution theorem, equals the Fourier transform of the autocorrelation of the aperture. Therefore, in order to increase the resolving power of an instrument, one needs to either increase the aperture size or decrease the observing wavelength.  Interferometry effectively allows for an increase in the aperature size.   
+ 
+\section{Two-element interferometer}
+When we talk about interferometry, clarification is needed to distinguish between the common picture of Young's optical double--slit interferometer and the concepts and techniques used in radio interferometers. In the optical case, the fringe pattern made on the detector plane is a distribution of points with various intensities $I(x) = |E_1(x) + E_2(x)|^2$, and visibility is a real quantity between 0 and 1 defined as below:
+\begin{align} 
+\begin{split}
+V &= \frac{I_\mathrm{max} - I_\mathrm{min}}{I_\mathrm{max} + I_\mathrm{min}}
+\end{split}                    
+\end{align}
+Visibility in the case of radio interferometry, however, is a complex quantity describing the time correlation of the two signals reaching the two elements of the interferometer and can be expressed as below:
+\begin{align} 
+\begin{split}
+\label{eq:vis_def}
+V(\tau) &= <E_1(t)E_2^*(t+\tau)>
+\end{split}                    
+\end{align}
+with $\tau$ being the geometrical time delay between the two signals due to the different paths the wave needs to reach each antenna.
+\begin{align} 
+\begin{split}
+\tau &= \frac{\vec{B}.\vec{S}}{c}
+\end{split}                    
+\end{align}
+Where $\vec{B}$ is the three-dimensional distance vector between the two elements, a.k.a. \emph{baseline}, $\vec{S}$ is the source vector and $c$ is the speed of light.
+
+Practically, the time delay $\tau$ of one signal with respect to the other is added to the signal electronically to correct for this effect before sending the two signals to the correlator. Applying the geometrical time delay $\tau$ is equivalent to projecting the baseline connecting the two telescopes on the plane perpendicular to the direction of the source. Therefore, what matters in all math hereafter is the \emph{projected} baseline between the two antennas, rather than the actual baseline. 
+
+The correlated signal is a complex visibility describing the response of the interferometer to the two signals, both amplitude and phase, received from a point source which is a fringe pattern (on the sky) perpendicular to the projected baseline ($BL_\mathrm{proj}$) as seen from that point on the sky. What happens in radio interferometry is that we sample the visibility values on this plane depending on the position of the source, $BL_\mathrm{proj}$, and duration of observations. The interferometer's response to an extended source is simply the superposition of the response patterns of various point sources making up the extended source. In other words, the measured visibility is the integral of source structure multiplied by the response. Therefore,
+\begin{align} 
+\begin{split}
+V_\mathrm{observed} &= \int V^\text{point source}_\text{response} I(x, y) dx dy.
+\end{split}                    
+\end{align}
+Where $x$ and $y$ are celestial coordinates and $I(x, y)$ is the intensity distribution of the extended source.
+
+\subsection*{The van Cittert-Zernike theorem and the interferometer equation}
+As long as the source we are observing is far enough that the wavefronts from the source can be approximated as plane waves (i.e. Fraunhofer approximation applies), the complex visibility of the source only depends on the relative position of the two observed points, and the wavelength of the observations. The visibility function, then, is a measure of the spatial coherence of the wavefront of the source encoding the source structure in it.
+\begin{align} 
+\begin{split}
+\label{eq:vC-Z}
+V^\mathrm{AB} = <E_A \times E_B^*> = \mathcal{F}(\frac{\vec{R_A} - \vec{R_B}}{\lambda})
+\end{split}                    
+\end{align}
+The left hand side is, by definition, the complex visibility of the source, $\vec{R_A} - \vec{R_B}$ is the observing baseline, and $\mathcal{F}$ is the Fourier transform of the source structure $I(x, y)$. Therefore, rewriting the interferometer equation, one finds:
+\begin{align} 
+\begin{split}
+\label{eq:InterferometerEq}
+V(x,y,z) = \int_{x,y} I(x, y) e^{-\frac{-2\pi j}{\lambda}(ux+vy+wz)} \frac{dx dy}{z}
+\end{split}                    
+\end{align}
+where $z=\sqrt{1-x^2-y^2}$. If x and y are small enough so that the observing field can be approximated as flat, the $wz$ term becomes zero and the mere geometrical delay correction means that both receivers are probing the same coherent wavefront. This interferometry equation transforms the intensities on the source plane to visibilities on the image plane and their values depend on the coordinates of the observing baseline, projected on the source plane, as well as the structure of the source and the observing frequency. 
+
+\section{Aperture synthesis}
+Back to the definition of visibility in radio interferometry, one can directly conclude that a multi--element interferometer is only a combination of several two--element interferometers, sampling the (u, v) space in pairs, based on their projected baseline and the observing frequency, measuring the visibility at those sample points only. 
+
+\subsection*{Snapshot observations}
+Fourier transform is blind to the absolute baseline position, but as baseline is a vector, it does carry information about the direction of the baseline. This implies that in a multi--element interferometer, a [arbitrary] frame of reference is needed for combining the antenna pairs and calculating the transformation from the ordinary plane to the (u, v) plane. The (u, v) coverage in a snapshot is equal to the autocorrelation of the array configuration as seen by the source -- except for the central point which corresponds to the measurement with the hypothetical $BL = 0$, impossible to implement in practice.
+
+Since Fourier transform is a \emph{Hermitian} transformation, a single baseline corresponds to sampling not one, but two points on the visibility plane; one at (u, v), and the other at (-u, -v). Moreover, if I(x, y) is a real number, $V(u, v) = V^*(-u, -v)$. This means that each baseline gives two separate visibility measurements. This means that adding even one more antenna to the array has a significant effect on better sampling the (u, v) plane; one via increasing the number of baselines ($N_\mathrm{BL} = \frac{N_\mathrm{ant}(N_\mathrm{ant}-1)}{2}$), and the other, via double--sampling each baseline as mentioned above. Therefore, a monofrequency snapshot made by an interferometer with $N_\mathrm{ant}$ antennae makes $2N_\mathrm{BL}$ discrete visibility measurements where longer baselines in the (u, v) plane correspond to smaller scales on the image plane and vice--versa. Besides, as seen in equation \ref{eq:InterferometerEq}, the conversion between the (x, y) plane and (u, v) plane is scaled by the observing frequency. Therefore, a wider observing bandwidth results in a wider radial coverage of the (u, v) plane. As (u, v) coordinates are measured in wavelength one way of filling the Fourier space is to observe at multiple wavelengths simultaneously. The other way to increase the discrete sampling of (u, v) space, closer to a continuous sampling (in the tangential direction), is longer exposure time. In this mode, the Earth rotation leads to a continuous change in projected baselines of the array as seen by the source and hence more (u, v) coverage.
+
+Two extreme regions of the (u, v) plane are usually the most challenging to fill. Long baselines (corresponding to small scales on the image plane) are difficult to achieve for obvious practical reasons and therefore the longest baseline in the array sets the angular resolution of the reconstructed image and obviously the impossibility of infinite baselines make infinite resolution also impossible! On the other hand, short spacings on the (u, v) plane can also be challenging to achieve because of the minimum spacing forced by antenna sizes. This leads to a fundamental feature of any (u, v) sampling known as ``zero-spacing hole''. The lack of visibility measurements on this scale corresponds to missing any smooth large-scale structure of the source. In cases where an unrecovered diffuse component does exist in the original source, the integrated flux of the source measured using the interferometer would be smaller than the integrated flux of the target measured by a single-dish telescope. This is a tell--tale signature of the presence of a large unrecovered structure in the source and is known as ``the missing flux'' problem. The problem arises due to the poor (or lack of) sampling the short spacings on the (u, v) plane. Therefore, the intensity profile of an internally Gaussian source lacks data points in the center thus visibility interpolation tends to flatten out the peak. In many cases, sampling the short spacings with a more compact array or a single--dish telescope helps constrain the light profile of the source.
+
+\subsection*{Aperture synthesis and image reconstruction}
+Aperture synthesis is the technique of reconstructing an image from incomplete sampling of the Fourier space. The technique is based on modeling the visibility plane based on the existing samplings. Therefore, the more complete the (u, v) coverage the closer the model image to the real one seen by the array. However, there will always be holes in the sampled (u, v) plane limiting the fidelity and quality (i.e. $\text{dynamic range} = \frac{\text{peak}}{\text{RMS}}$ of the reconstructed image.)
+
+Fourier transform of the (u, v) coverage gives the so-called ``dirty beam'' (equivalent to the point spread function PSF) while the Fourier transform of the measured visibilities on the (u, v) plane results in the ``dirty image'' of the source, which is, as expected, the actual source structure convolved with the dirty beam. Now that we have images of both the beam and the source, we can deconvolve the beam from the image. Remember that deconvolution is non-linear and non-unique! (See \S \ref{sec:CLEAN} on the CLEAN algorithm.)
+
+Modeling is applied while working in the image plane. The process is such that the dirty beam and dirty image are calculated based on the (u, v) coverage and direct visibility measurements, respectively. For this purpose, the (u, v) plane is required to be gridded.\footnote{In fact, this is the issue one faces when using \emph{Fast} Fourier transform (FFT), while \emph{direct} Fourier transform does not require griding the (u, v) plane. One would expect the resulting image to be nearly the same as the model obtained by natural weighting. However, direct FT is so much slower that it is not worth practicing as long as the visibilities are sampled wisely!}. At this step, Nyquist sampling of the (u, v) plane introduces a limitation in the image space, i.e. grid size/cell size needs to  be chosen such that the final PSF includes at least 3 pixels in the image plane. The next step in image reconstruction is deconvolving the beam from the dirty image. The actual interpolation happens here! Deconvolution is not a unique process and hence requires not only griding the (u, v) plane but also making assumptions about the deconvolving beam. One assumption that needs to be made is how to weight the measured visibilities. This question, in turn, has two parts: How are the measured visibilities in one (u, v) pixel weighted? and what is the relative weight of various pixels on the (u, v) plane? Different choices at this step result in different angular resolution and dynamic range limitations in the model image.
+
+\paragraph*{Natural weighting} as it sounds is simply weighting visibilities inversely proportional to the variance of their distribution.
+Therefore, short--spacings in the (u, v) plane, with closer samplings, are weighted more than longer baselines which results in higher dynamic range in the modeled image at the cost of angular resolution. In other words, the dirty beam has larger FWHM but less prominent side lobes. Therefore, it is best for imaging faint and smooth sources.
+
+\paragraph*{Uniform weighting} is the same as natural weighting with an additional factor inversely proportional to the number of visibilities in each pixel. Therefore, it boosts the contribution from long--spacings by giving the same weight to visibilities at all (u, v) distances, even though those at long distances are sampled more coarsely. This property makes this approach more suitable for sources with rich and complicated structure. Although, the source needs to be bright enough for this approach to work best. This is because this weighting scheme results in a narrow(er than naturally--weighted) PSF with smaller side lobes and therefore, better angular resolution. However, the RMS of the residuals of this model tends are large(r than that of natural by at least an order of $\sim 2$), i.e. poorer sensitivity.
+
+\paragraph*{Briggs weighting} is a tunable combination of both approaches above. The tunability of Briggs' recipe is applied through the \emph{robust} parameter. This parameter changes in the range of -2 to +2 from uniform to natural weighting. Usually, robust=0.5 gives a good compromise between the two extreme approaches. Although it still depends on the preferences based on the scientific target.
+
+\paragraph*{(u, v) tapering} is useful when the observed source is extended and most of the information lies in short baselines. Therefore, in order to improve the SNR, we can overweight the measurements made using these baselines even further and decrease the weight of measurements where we have a lower signal, i.e. long baselines. This can be done via Gaussian circular tapers in the (u, v) plane. If the source has a very extended structure, which is remained unrecovered due to the short--spacing hole in the (u, v) coverage, even with natural weighting, then (u, v) tapering is the last resort to recover that diffused emission. 
+
+As a matter of fact, one might want to get rid of an extended emission they are not interested in, and focus more on the small--scale clumpy structure of their source. In which case, one only needs to apply an inverse Gaussian taper to the (u, v) plane.
+
+The method used in {\bf paper II} is based on combining different weightings of the same measurement set to put emphasis on features with different angular scales. 
+
+\subsection*{CLEAN algorithm and deconvolving the dirty beam}
+\label{sec:CLEAN}
+While interferometry data are incomplete due to lack of information on some spatial frequencies, we can interpolate the (u, v) plane by applying our prior information about the source structure as the criteria required to proceed with deconvolution. Clearly, the more our prior information about the source, the more reliable the model image is.
+
+The problem of deconvolving the dirty beam from the dirty image has non--unique solutions. An intuitive way to show this is to assume a source with non--zero visibilities everywhere but where we are making our measurements, i.e. our (u, v) coverage. This class of sources remain invisible to the interferometer, as long as the (u, v) coverage is the same. Now, one can add \emph{any} combination of these ``invisible'' sources to our reconstructed image without the measurement set changing. Improving the (u, v) coverage will decrease the number of these combinations and therefore, increase the image fidelity and yet \emph{high} fidelity is not the same as \emph{infinite} fidelity. Therefore, the reconstructed image always remains a model of our real data.
+
+CLEAN \citep[][]{Hogbom1974} is the oldest, fastest and best deconvolution algorithm practiced today for image reconstruction in radio interferometry. This algorithm starts at the maximum flux point in the image, subtracts the PSF at that point and adds a 2-D Gaussian component (with the same FWHM of the PSF and scaled flux) to the CLEAN image instead. The algorithm then repeats these three steps for the peak in the residual map until either of the criteria below is met: 
+\begin{itemize}
+\item Noise limit: If the peak in the residual map has a smaller value than $\alpha \sigma_\mathrm{RMS}$ % Emily: do you want an alpha here?  then you need to move the definition of alpha up to this bullet point. 
+\item Dynamic range limit: If the peak in the residual map has a smaller value than $\frac{1}{\alpha} \times f_\mathrm{max}$ of the dirty beam
+\\($\alpha$ is an arbitrary coefficient set by the scientific purpose of the image.)
+\item Maximum number of CLEAN cycles, which is an experimental (arbitrary) criterion.
+\end{itemize}
+
+% Emily: no (statistically-significant- peak remains in the dirty image.
+
+Finally, what the algorithm produces are three matrices below:
+\paragraph*{CLEAN model:} A set of point sources subtracted from the dirty image where flux peaks are located.
+\paragraph*{CLEAN beam:} The corresponding Gaussian to the dirty beam. In other words, the PSF model. If the dirty beam is elliptical, then the CLEAN beam is also a similarly--elliptical Gaussian.
+\paragraph*{CLEAN image:} It is simply the CLEAN model convolved with the CLEAN beam and is the final product of the image reconstruction procedure. 
 
 
+While different deconvolution algorithms apply different criteria to the source structure, the CLEAN algorithm's basic assumption is that the source is made of discrete Dirac delta functions, i.e. point sources. Therefore, it tends to convert smooth and diffused components into clumpy ones. While one does not loose real emission by not CLEANing it, it is possible to get artificial features by CLEANing noise!
 
+%Emily: developed a variant of the Clark algorithm whereby the major cycle subtracts `CLEAN' components from the un-gridded visibility data. Aliasing noise and griding errors can thus be removed if the inverse Fourier transform of the `CLEAN' components to each u,v sample is accurate enough. Two routes are used for the inverse transform:
 
-   \begin{figure}
-   \centering
-   \includegraphics[width=12cm]{Paper1XSHfig4.eps}
-   \caption{H$\alpha$, He {\sc i} (5875.6), Na D, K {\sc i} and Mg {\sc i} line profiles from the VLT/X-Shooter data. The blue gaussians are a simple fit to the emission or absorption lines. The vertical lines show the systemic velocity as given by the H$\alpha$ gaussian fit. The y-axis is in arbitrary units, normalized to the continuum. }
-              \label{Fig_XSHLines}
-    \end{figure}
+%    for small numbers of `CLEAN' components, a `direct Fourier transform' is performed so the accuracy is limited by the precision of the arithmetic;
+%    for a large number of `CLEAN' components, an FFT is used for efficiency, but inevitably some errors are introduced in interpolating from the grid to each u,v sample. High order Lagrangian interpolation is generally used. 
 
-\chapter{Discussion}
+The current commonly--used implementation of CLEAN is the Cotton--Schwab CLEAN which consists of two same--level, linked cycles.
+Start with a {\bf Minor cycle} as below:
+\begin{enumerate}
+\item Locate the peak intensity in the dirty image.
+\item\begin{enumerate}
+    \item Subtract a dirty beam centering at the point of the peak, from the dirty image.
+    \item Compute the residual image = image used in step (1) -- product of (2.a).
+    \item Scale down the flux density in residual image to {\bf g} times the image peak, where {\bf g} is the arbitrary CLEAN gain value.
+    \end{enumerate}
+\item\begin{enumerate}
+    \item Add a point--like component to the CLEAN model, at the position of the peak.
+    \item Set the flux density of the point in CLEAN model to the peak of the PSF.
+    \item Convolve the newly--added point of the CLEAN model with the CLEAN beam and add it to the CLEAN image
+    \end{enumerate}
+\item Use the product of step (2.b) in step (1). 
+\end{enumerate}
+A {\bf Major cycle}, then, follows the minor cycle as below:
+\begin{enumerate}
+\item Compute model visibilities corresponding to the CLEAN model made in the minor cycle.
+\item Compute the residual visibilities = observed visibilities -- model visibilities made in step(1).
+\item FFT the residual visibilities and feed it to the next minor cycle 
+\end{enumerate}
 
-In this section, I provide a somewhat deeper discussion on some of the results of Paper I. Our results are surprising, and it has been difficult to interpret them in light of previous observations. Specifically, the covering fraction of neutral gas found by \citet{kunth-1998} in front of Haro 11 disagrees with our estimates, and the velocities and covering fractions that we measure are not what one would expect to see based on current predictions on \lya\ radiation transfer. I discuss these issues in more detail below.
+While the CLEANing process seems complete within the minor cycle, the major cycle is needed because the algorithm (minor cycle only) cannot subtract anything from marginal parts of the image where we have no information about possible sources in those regions whose side lobes (only!) affect our dirty image.
 
-\section{The kinematics}
+%%  ------------------------  %%
+\chapter{Summary}
+With the fast improvement of observational facilities the required angular resolution and sensitivity for the discovery of compound lens systems is becoming available. Given all the uncertainties concerning the existence, abundance, mass function, and inner mass distribution of dark matter substructure, it is important to estimate the alignment probabilities of lens substructures combined with the detection limits. It is important to keep in mind that with a detailed picture of model expectations at hand even null detections provide constraints on the background model.
 
-The idea with this study was to measure the velocity of neutral gas in order to test the theory that an outflow was helping \lya\ to escape in these two galaxies. The expectation was that we would be able to map Na D across the entire bright continuum surface of the  galaxies, since they are both relatively well fitted within the field of view of Argus (see Figure~\ref{Fig:Slits}). Unfortunately, it turned out that the feature was unexpectedly weak and we had to spatially bin the data in order to detect the Na D at all. When we subsequently measured the velocities, it turned out that they too did not agree with what we expected. The strongest outflow is seen in knot B, which also shows the strongest \lya\ {\em absorption}. In knot C, we instead see infalling gas and in ESO 338's bright knot A the gas is almost static. 
+In {\bf Paper I} we use simulations of strongly lensed quasar jets as expected by three different VLBI configurations and receivers to probe dark matter substructure. The dark matter substructure in this paper is assumed to consist of intermediate--mass black holes (i.e. point--like) and ultracompact minihalos ($\rho \propto r^{-2.5}$) within the main lens at $z \simeq 0.5$. We demonstrate that small--scale morphological distortions in one of the macroimages -- that is not replicated in others in a large number of macrolensed jet systems with the expected (submilliarcsecond) resolution of the array is used to set constraints on detection limits of such substructures and their abundance. We argue that intermediate--mass black holes with $M_\mathrm{IMBH} \sim 10^3$--$10^6\ $ \msun  are detectable and therefore, non--detections of such distortions rule out their contribution in the surface mass fraction down to $f_\mathrm{IMBH}\gtrsim 0.01$ in the dark matter halo of the main lens at the position of the macroimage. The same investigation for ultracompact minihalos (that have a central density slope slightly steeper than the isothermal profile $\rho\sim r^{-2.5}$) places a constraint of $f_\mathrm{UCMH}\gtrsim 0.1$ on their contribution to the dark matter budget of the main lens. While we show that standard CDM halos (with NFW density profile) with $M_\mathrm{FNW} \simeq 10^8\ $ \msun  also produce detectable distortions due to the far shallower central density profile ($\rho \propto r^{-1}$), their effective lensing cross section is too small for the probability of successful alignments to be of any interest ($P_\mathrm{milli}\sim 10^{-4}$).
 
-A strong confirmation of our results is the fact that we get the same results with both Argus and X-Shooter. Also, with the addition of X-Shooter, we can add the K {\sc i} and Mg {\sc i} lines, which also help to confirm that our kinematic measurements appear to be correct. The K {\sc i} lines are expected to be similar to the Na D lines, albeit slightly weaker, and they do appear to follow the same pattern. The Mg {\sc i} lines on the other hand, which are purely stellar, appear to follow the nebular velocity well, although the lines are very weak and we avoid reading too much kinematical information out of them. 
+The extremely low probability of proper alignment for standard CDM subhalos presented in {\bf Paper I}, brings us to {\bf paper II} in which we adopt a similar approach to investigate small--scale perturbations using simulations of multiply--lensed sub--mm galaxies (SMGs).  These sources provide 10-100 times more coverage of the lens plane. This paper investigates simulations of compound lens systems where the lensed source is a dust starforming galaxy at $z = 2$ where ALMA band 7, 8, and 9 (with frequency coverage between 275 -- 720 GHz) probes the dust continuum emission of the source with submilliarcsecond angular resolution.  We aim for lens perturbers of $M_\mathrm{sub} = 10^5 - 10^{10} $ \msun  in a Milky Way--sized halo.  This is the relevant mass range for both the ``missing satellite problem'' \ref{subsec:missing-satellite} and the ``core--cusp problem'' \ref{subsec:core-cusp}. The analysis in this paper uses different weighting schemes for simulated complex visibilities and instrumental noise effects are taken into account. We use not only the local (small--scale) lens effects of substructures but also the astrometric shift of the main lens solution to place constraints on the presence, mass and central density slope of the lens perturber (substructure). In this paper, we demonstrate that SIS perturbers down to $M_\mathrm{vir} \approx 3\times 10^7 $ \msun  will be detectable with 2hr observations with the full ALMA array. Moreover, we argue that while these observations could, in principle, be used to tell the difference between the observational signature of a compact SIS and a lens subhalo with NFW (or Einasto) profile, the shape parameter ($\alpha_\mathrm{Ein}$ for Einasto or $\gamma$ in general NFW) remains highly degenerate with the subhalo mass. In the end of {\bf Paper II} we draw attention to different mass definitions used in lens modelings ($M_\mathrm{einstein}$, the projected mass within the Einstein radius of the lens) and cosmological simulations ($M_\mathrm{tidal}$, the 3D tidally--truncated mass of a subhalo that is being dissolved (?!) in the parent halo) to argue that the conversion between the two strongly depends on the assumptions made in the process of deprojection. 
 
-\section{The different covering fractions}
-
-The one measurement that differs the most from previous data is the covering fractions of neutral gas in Haro 11. In all of our spectra, we see very weak Na D lines which all point to very low covering fractions, on the order of 10 \%. However, in the GHRS spectrum presented by \citet{kunth-1998}, the absorption lines of O {\sc i} and Si {\sc ii} are very strong, and appears almost black, which would mean a covering fraction close to unity. There may of course be some very narrow Na D components present in the spectra which are unresolved by the instrument, but even attempting to correct for this effect would very unlikely explain the entire difference. We do believe the measurement is real, but instead try to focus on the difference between the Na D covering fraction and optical depth versus the H {\sc i} covering fraction and optical depth. 
-
-In the paper, we present a simple back-of-the-envelope calculation where we show that our optical depth in Na D should correspond to an H {\sc i} column density where this absorption arises of over $N_{H \textsc{i}} > 10^{20} \mathrm{cm}^{-2}$. Since \lya\ is affected already at column densities around $10^{13} \mathrm{cm}^{-2}$, we conclude that the Na D that we measure must only be present in the very densest, coolest clumps in the ISM. Very likely, the majority of the ISM consists of regions where the H {\sc i} column density is somewhere in between these two extreme values. 
-
-Also, it is not clear exactly how the sodium and hydrogen are related in these galaxies. One possibility is that the relation between these elements is stronger in luminous and ultra-luminous infrared galaxies (LIRGs and ULIRGs), where the Na D lines have often been used. In these larger star forming systems, the elements in the gas has probably had longer time to mix properly, whereas both Haro 11 and ESO 338 appear to have undergone a recent merger which could have disrupted much of the "normal" abundances of elements one might expect to see in a dwarf galaxy. 
-
-One very important aspect when comparing the Na D absorption lines to those of O {\sc i} and Si {\sc ii} is the difference in photoionization energies. Na D requires only 5.14 eV to become ionized, which means that is must be shielded from photoionization by dust and therefore only survives in relatively cool clumps \citep[see discussion in][]{murray-2007}. The O {\sc i} and Si {\sc ii} both have photoionization energies closer to that of hydrogen (10.2 eV), which suggests that they would more accurately sample the covering fractions of neutral hydrogen. 
-
-In the case of ESO 338, we do not observe the same discrepancy. The O {\sc i} and Si {\sc ii} lines do appear quite weak \citep{schwartz-2006}, which then agrees with our interpretation of a low covering fraction of neutral gas. 
-
-\section{Ly C escape and the picket-fence model}
-
-The Lyman continuum (Ly C) is a term used to describe radiation with a wavelength shorter than 912 $\AA$, which is capable of ionizing hydrogen. In both of our galaxies, there is evidence that Ly C may be taking place. \citet{bergvall-2006} report on finding a residual signal of ionizing radiation from Haro 11 in FUSE spectra. FUSE stands for Far Ultraviolet Spectroscopic Explorer and it was a space telescope capable of acquiring spectra in a 30 $\times$ 30 arcsec aperture. \citet{grimes-2007} reanalyzed the data and found no compelling evidence for this signal, but \citet{leitet-2011} replied with an updated version of the CalFUSE reduction algorithm and did find a significant Ly C escape fraction of 3.3 $\pm$ 0.7 \%.
-
-ESO 338 is unfortunately at too low redshift to perform a direct measurement of the same kind, but the low covering fraction of LIS absorption lines in the UV makes the galaxy a strong candidate for Ly C escape. 
-
-In order for this ionizing radiation to escape, it must travel straight through the interstellar medium without encountering even relatively small column densities of neutral hydrogen. In other words, there must exist ionized channels or holes in the ISM which allows the radiation to escape directly. If such channels are indeed present in Haro 11 and ESO 338, the observed \lya\ emission is highly likely to escape through the same channels, and it would therefore be an interesting candidate for explaining the observed \lya\ escape. This partly ionized ISM scenario is often referred to as a picket-fence model, as photons are able to escape through holes between regions of neutral gas that do not fully cover the ionized regions. 
-
-\section{Are there still outflows in the \lya\ emitting regions?}
-
-In both cases where \lya\ appears to escape easily (ESO 338 knot A and Haro 11 knot C), there does exist tentative evidence that some form of outflow might still be taking place, even though the Na D measurements say otherwise.  
-
-In the case of ESO 338, there appears to be a bubble of ionized gas around knot A, which should be expanding. \citet{ostlin-2007} decompose the \ha\ and [O {\sc iii}] lines and see two narrower components in their UVES spectra of knot A, separated by $\sim$ 65 km/s. They see this as potentially coming from the two sides of the expanding bubble. If the emission on the blue side (pointing in our direction) dominates the total profile, it is possible that the average \ha\ velocity appears lower, which would result in us measuring a lower outflow velocity when comparing to \ha . However, the ionized gas appears to be optically thin, and the analysis by \citet{cumming-2008} of the stellar Ca triplet ($\lambda \lambda 8498, 8542, 8662 \AA$) suggests that the velocity of the stars follows the ionized gas velocity closely, which speaks against this scenario. 
-
-In the case of Haro 11 knot C we argue that there may still be an outflow present, perpendicular to our line of sight. This is of course possible, since our absorption measurements can only be used to measure velocity components along the direction of our line of sight, and only on the side of galaxy facing our way.
-
-The \lya\ morphology in images of knot C seems to show something like an hour-glass shape elongated in the north-south direction while there is a dust lane running east-west (see the right panel of Figure~\ref{Fig:Haro11_colour} and Figure 4 in Paper I). We interpret this as a possibility that there may be a north-south bipolar outflow of neutral gas. A possible problem with this scenario is that the \lya\ photons would preferentially escape along the direction of the outflow; i.e. also perpendicularly to the line of sight. In other words, in order for us to see these escaping \lya\ photons, they still have to scatter on the gas in order to travel in our direction. 
-
-
-\section{Outlook}
-
-It would be possible to say a lot about possible outflows or scattering processes, and to attempt to trace the history of the \lya\ photons, if we only had \lya\ spectra with high spatial and spectral resolution of these interesting regions. Unfortunately, the HST/GHRS spectrum of Haro 11 appears to have been centered somewhere in between the knots and the HST/STIS narrow long slit spectrum of ESO 338 was not optimized to study the \lya\ emission from knot A, as well as suffering from poor spectral resolution. A new, detailed UV analysis of these two galaxies, using several pointings and a combination of the available space telescope instrumentation would therefore be highly warranted.
-
-
-One aspect of the data that is outside the scope of this project, but which would be interesting in itself as a future study, is to look at the multiple components in the \ha\ emission line in detail, especially in Haro 11. Since the line is very strong it can also be explored out to rather large distances. This could give more insights into the three-dimensional structure and the kinematics of the two galaxies, possibly connecting it to the merger or interaction histories. Also, in Haro 11 knot C, \citet{guseva-2012} report that they are able to fit multiple components to the \ha\ line, one of which shows a P Cygni-like profile with a blueshifted absorption component. This would indicate the presence of luminous blue variable (LBV) stars, which usually have strong stellar winds which would give rise to such a spectral line shape. With our FLAMES data which is even deeper in \ha , one would be able to truly study this feature in detail, adding the spatial information.  
-
-Another aspect more related to the present project would be to study ionization structures, and specifically look for ionization cones in the interstellar medium. By comparing flux ratios of the same element in different ionization states, e.g. that of S {\sc iii} and S {\sc ii}, one can map the amount and extent of the ionization in different regions in the galaxy. If there is indeed Ly C escape in these galaxies, such ionized cones through the ISM are a strong candidate for explaining how the ionizing radiation is able to reach us. We already have the S {\sc ii} ($\lambda \lambda 6716.5, 6730.7 \AA$) lines visible in the FLAMES spectra presented here, and there exist also FLAMES data on the [S {\sc iii}] ($\lambda 9069 \AA$) line (e.g. \"{O}stlin et al. 2012, submitted). Unfortunately, in Haro 11 the [S {\sc ii}] feature in our spectra happens to fall on an atmospheric $\mathrm{O_2}$ absorption band, which may severely complicate such a study. 
 
 \clearpage
 
 \chapter*{List of acronyms}
 
 \begin{description}
-\item[CCD]
-Charged Coupled Device, a photosensitive detector commonly used in modern optical telescopes.
-\item[IUE]
-International Ultraviolet Explorer, satellite observatory capable of ultraviolet spectroscopy, active 1978-1996.
-\item[ACS] 
-Advanced Camera for Surveys, imaging instrument aboard the Hubble Space Telescope (HST).
-\item[WFPC2]
-Wide Field Planetary Camera 2, imaging instrument aboard the HST. Was replaced by the new Wide Field Camera 3 (WFC3) in 2009.
-\item[HST]
-Hubble Space Telescope, satellite observatory capable of imaging and spectroscopy in a range of wavelengths, including ultraviolet.
-\item[COS]
-Cosmic Origins Spectrograph, instrument aboard the HST capable of UV aperture spectroscopy.
-\item[STIS]
-Space Telescope Imaging Spectrograph, instrument aboard the HST capable of UV long slit spectroscopy.
-\item[GHRS] 
-Goddard High Resolution Spectrograph, one of the original spectrographs aboard the HST. Was removed in 1997.
-\item[NACO] 
-Nasmyth Adaptive Optics System (NAOS) Near infrared imager and camera (CONICA), near-IR instrument at the VLT.
-\item[VLT] 
-Very Large Telescope, a collection of four eight-meter telescopes in the Atacama desert, Chile, run by ESO. 
-\item[FLAMES]
-Fiber Large Array Multi Element Spectrograph, instrument at the VLT capable of several types of fiber spectroscopy, including multi-object and integral field spectroscopy. 
-\item[IFU]
-Integral Field Unit, a bundle of optical fibers arranged in a geometrical pattern, which allows for simultaneous spatial and spectral spectroscopy.
-\item[ESO] 
-European Southern Observatory, European astronomy organization, in charge of several large telescopes in Chile. 
-\item[FWHM] 
-Full Width at Half-Maximum, the width of a mathematical distribution or spectral line feature, defined as the full distance between two points on either side of the peak, corresponding to half the peak value.
-\item[LIS]
-Low Ionization State, in the context of this thesis usually referring to absorption lines formed in neutral gas, where the electrons in the absorbing material are in states of low energy.
-\item[(U)LIRG]
-(Ultra-) Luminous Infrared Galaxy, a strongly star-forming galaxy more luminous than $10^{11}$ ($10^{12}$ in the case of ULIRGs) solar luminosities in the far-infrared part of the spectrum. 
-\item[LAE] 
-Lyman Alpha Emitter, a \lya\ emitting galaxy, normally found using the narrow-band technique.
-\item[LBG] 
-Lyman Break Galaxy, a galaxy found using the Lyman Break technique. 
-\item[ISM] 
-Interstellar Medium, the material, often consisting of gas and dust, that lies between stars in galaxies.
-\item[IGM] 
-Intergalactic Medium, the material between galaxies.
-\item[CGM] 
-Circumgalactic Medium, the material surrounding galaxies, usually within 300 kpc. 
-
+\item[DM]
+Dark Matter
+\item[CDM]
+Cold Dark Matter
+\item[WIMP]
+Weakly--Interacting Massive Particle
+\item[VLBI]
+Very Long Baseline Interferometry
+\item[ALMA]
+Atacama Large Millimeter/sub--millimeter Array
+\item[EVN]
+European VLBI Network
+\item[CASA]
+Common Astronomy Software Applications
 \end{description}
 
- \bibliographystyle{aa}  % style aa.bst
- \bibliography{myattempt.bib}  % your references Yourfile.bib
+% \bibliographystyle{aa}  % style aa.bst
+% \bibliography{myattempt.bib}  % your references Yourfile.bib
  
 % attach the PDF to the paper here 
 %\includepdf[pages={-}]{sandbergetal2012.pdf}  % does not work :(
- 
- \end{document}
+
+\begin{thebibliography}{}
+\bibitem[\protect\citeauthoryear{Alcock et al.}{1998}]{Alcock+1998} 
+Alcock C., et al., 1998, ApJ, 499, L9 
+\bibitem[\protect\citeauthoryear{Angulo 
+\& White}{2010}]{Angulo.White2010} Angulo R.~E., White S.~D.~M., 2010, MNRAS, 405, 143 
+\bibitem[\protect\citeauthoryear{Angulo 
+\& White}{2010}]{Angulo.White2010} Angulo R.~E., White S.~D.~M., 2010, MNRAS, 401, 1796 
+\bibitem[\protect\citeauthoryear{B{\oe}hm et 
+al.}{2014}]{Boem+2014} B{\oe}hm C., Schewtschenko J.~A., 
+Wilkinson R.~J., Baugh C.~M., Pascoli S., 2014, MNRAS, 445, L31 
+\bibitem[\protect\citeauthoryear{Begeman}{1989}]{Begeman1989} Begeman K.~G., 1989, A\&A, 223, 47 
+\bibitem[\protect\citeauthoryear{Bekenstein}{2004}]{Bekenstein2004} 
+Bekenstein J.~D., 2004, PhRvD, 70, 083509 
+\bibitem[\protect\citeauthoryear{Bellazzini et 
+al.}{2013}]{Bellazzini+2013} Bellazzini M., Oosterloo T., Fraternali F., Beccari G., 2013, A\&A, 559, L11 
+\bibitem[\protect\citeauthoryear{Bennett et 
+al.}{2013}]{WMAP9} Bennett C.~L., et al., 2013, ApJS, 208, 20 
+\bibitem[\protect\citeauthoryear{Bergstr{\"o}m}{2013}]{Bergstrom2013} 
+Bergstr{\"o}m L., 2013, PhST, 158, 014014 
+\bibitem[\protect\citeauthoryear{Bosma}{1981}]{Bosma1981} Bosma 
+A., 1981, AJ, 86, 1825 
+\bibitem[\protect\citeauthoryear{Boylan-Kolchin, Bullock, 
+\& Kaplinghat}{2012}]{Boylan-Kolchin+2012} Boylan-Kolchin M., Bullock J.~S., Kaplinghat M., 2012, MNRAS, 422, 1203 
+\bibitem[\protect\citeauthoryear{Boylan-Kolchin, Bullock, 
+\& Kaplinghat}{2011}]{Boylan-Kolchin+2011} Boylan-Kolchin M., Bullock J.~S., Kaplinghat M., 2011, MNRAS, 415, L40 
+\bibitem[\protect\citeauthoryear{Bringmann}{2009}]{Bringmann2009} 
+Bringmann T., 2009, NJPh, 11, 105027 
+\bibitem[\protect\citeauthoryear{Brooks et al.}{2013}]{Brooks+2013} 
+Brooks A.~M., Kuhlen M., Zolotov A., Hooper D., 2013, ApJ, 765, 22 
+\bibitem[\protect\citeauthoryear{Bullock et 
+al.}{2001}]{Bullock+2001} Bullock J.~S., Kolatt T.~S., Sigad Y., 
+Somerville R.~S., Kravtsov A.~V., Klypin A.~A., Primack J.~R., Dekel A., 
+2001, MNRAS, 321, 559 
+\bibitem[\protect\citeauthoryear{Bullock, Kravtsov, 
+\& Weinberg}{2000}]{Bullock+2000} Bullock J.~S., Kravtsov A.~V., Weinberg D.~H., 2000, ApJ, 539, 517 
+\bibitem[\protect\citeauthoryear{Bullock et 
+al.}{2010}]{Bullock+2010} Bullock J.~S., Stewart K.~R., Kaplinghat 
+M., Tollerud E.~J., Wolf J., 2010, ApJ, 717, 1043 
+\bibitem[\protect\citeauthoryear{Cautun et al.}{2015}]{Cautun+2015} 
+Cautun M., Wang W., Frenk C.~S., Sawala T., 2015, MNRAS, 449, 2576 
+\bibitem[\protect\citeauthoryear{Clowe et al.}{2006}]{Clowe+2006} 
+Clowe D., Brada{\v c} M., Gonzalez A.~H., Markevitch M., Randall S.~W., 
+Jones C., Zaritsky D., 2006, ApJ, 648, L109
+\bibitem[\protect\citeauthoryear{Del Popolo et 
+al.}{2014}]{DelPopolo+2014} Del Popolo A., Lima J.~A.~S., Fabris 
+J.~C., Rodrigues D.~C., 2014, JCAP, 4, 021 
+\bibitem[\protect\citeauthoryear{Del Popolo}{2014}]{DelPopolo2014} 
+Del Popolo A., 2014, IJMPD, 23, 1430005  
+\bibitem[\protect\citeauthoryear{Di Cintio et 
+al.}{2014}]{DiCintio+2014} Di Cintio A., Brook C.~B., Dutton A.~A., 
+Macci{\`o} A.~V., Stinson G.~S., Knebe A., 2014, MNRAS, 441, 2986 
+\bibitem[\protect\citeauthoryear{Doroshkevich, Shandarin, 
+\& Saar}{1978}]{Doroshkevich+1978} Doroshkevich A.~G., Shandarin S.~F., Saar E., 1978, MNRAS, 184, 643 
+\bibitem[\protect\citeauthoryear{Dubinski 
+\& Carlberg}{1991}]{Dubinski.Carlberg1991} Dubinski J., Carlberg R.~G., 1991, ApJ, 378, 496 
+\bibitem[\protect\citeauthoryear{Dutton 
+\& Macci{\`o}}{2014}]{Dutton.Maccio2014} Dutton A.~A., Macci{\`o} A.~V., 2014, MNRAS, 441, 3359 
+\bibitem[\protect\citeauthoryear{Eddington}{1919}]{Eddington1919} 
+Eddington A.~S., 1919, Natur, 104, 372
+\bibitem[\protect\citeauthoryear{Einasto}{1965}]{Einasto1965} 
+Einasto J., 1965, TrAlm, 5, 87
+\bibitem[\protect\citeauthoryear{Einasto et 
+al.}{1974}]{Einasto+1974} Einasto J., Saar E., Kaasik A., Chernin 
+A.~D., 1974, Natur, 252, 111 
+\bibitem[\protect\citeauthoryear{Einstein}{1911}]{Einstein1911} 
+Einstein A., 1911, AnP, 340, 898 
+\bibitem[\protect\citeauthoryear{Famaey}{2015}]{Famaey2015} Famaey 
+B., 2015, arXiv, arXiv:1501.01788 
+\bibitem[\protect\citeauthoryear{Famaey 
+\& McGaugh}{2012}]{Famaey.McGaugh2012} Famaey B., McGaugh S.~S., 2012, LRR, 15, 10 
+\bibitem[\protect\citeauthoryear{Ferrero et 
+al.}{2012}]{Ferrero+2012} Ferrero I., Abadi M.~G., Navarro J.~F., 
+Sales L.~V., Gurovich S., 2012, MNRAS, 425, 2817
+\bibitem[\protect\citeauthoryear{Gao et al.}{2008}]{Gao+2008} 
+Gao L., Navarro J.~F., Cole S., Frenk C.~S., White S.~D.~M., Springel V., 
+Jenkins A., Neto A.~F., 2008, MNRAS, 387, 536
+\bibitem[\protect\citeauthoryear{Garrison-Kimmel et 
+al.}{2014}]{Garrison-Kimmel+2014} Garrison-Kimmel S., Boylan-Kolchin M., 
+Bullock J.~S., Kirby E.~N., 2014, MNRAS, 444, 222  
+\bibitem[\protect\citeauthoryear{Gelmini}{2015}]{TASI2014} 
+Gelmini G.~B., 2015, arXiv, arXiv:1502.01320
+\bibitem[\protect\citeauthoryear{Gil-Mar{\'{\i}}n et 
+al.}{2015}]{SDSS} Gil-Mar{\'{\i}}n H., et al., 2015, MNRAS, 
+452, 1914  
+\bibitem[\protect\citeauthoryear{Griest, Cieplak, 
+\& Lehner}{2014}]{Griest+2014} Griest K., Cieplak A.~M., Lehner M.~J., 2014, ApJ, 786, 158
+\bibitem[\protect\citeauthoryear{Guo et al.}{2011}]{Guo+2011} 
+Guo Q., et al., 2011, MNRAS, 413, 101 
+\bibitem[\protect\citeauthoryear{H{\"o}gbom}{1974}]{Hogbom1974} H{\"o}gbom J.~A., 1974, A\&AS, 15, 417  
+\bibitem[\protect\citeauthoryear{Hannestad}{2004}]{Hannestad2004} 
+Hannestad S., 2004, PhRvD, 70, 043506 
+\bibitem[\protect\citeauthoryear{Hayashi 
+\& White}{2008}]{Hayashi.White2008} Hayashi E., White S.~D.~M., 2008, MNRAS, 388, 2 
+\bibitem[\protect\citeauthoryear{Hu, Barkana, 
+\& Gruzinov}{2000}]{Hu+2000} Hu W., Barkana R., Gruzinov A., 2000, PhRvL, 85, 1158 
+\bibitem[\protect\citeauthoryear{Ibata et al.}{2013}]{Ibata+2013} 
+Ibata R.~A., et al., 2013, Natur, 493, 62
+\bibitem[\protect\citeauthoryear{Kirby et al.}{2014}]{Kirby+2014} 
+Kirby E.~N., Bullock J.~S., Boylan-Kolchin M., Kaplinghat M., Cohen J.~G., 
+2014, MNRAS, 439, 1015  
+\bibitem[\protect\citeauthoryear{Klypin et al.}{2015}]{Klypin+2015} 
+Klypin A., Karachentsev I., Makarov D., Nasonova O., 2015, MNRAS, 454, 1798 
+\bibitem[\protect\citeauthoryear{Klypin et al.}{1999}]{Klypin+1999} 
+Klypin A., Kravtsov A.~V., Valenzuela O., Prada F., 1999, ApJ, 522, 82 
+\bibitem[\protect\citeauthoryear{Kroupa et 
+al.}{2010}]{Kroupa+2010} Kroupa P., et al., 2010, A\&A, 523, A32 
+\bibitem[\protect\citeauthoryear{Kroupa, Theis, 
+\& Boily}{2005}]{Kroupa+2005} Kroupa P., Theis C., Boily C.~M., 2005, A\&A, 431, 517 
+\bibitem[\protect\citeauthoryear{Kuhlen, Vogelsberger, 
+\& Angulo}{2012}]{Kuhlen+2012} Kuhlen M., Vogelsberger M., Angulo R., 2012, PDU, 1, 50 
+\bibitem[\protect\citeauthoryear{M{\"u}ller, Jerjen, 
+\& Binggeli}{2015}]{Muller+2015} M{\"u}ller O., Jerjen H., Binggeli B., 2015, A\&A, 583, A79 
+\bibitem[\protect\citeauthoryear{Macci{\`o}, Dutton, 
+\& van den Bosch}{2008}]{Maccio+2008} Macci{\`o} A.~V., Dutton A.~A., van den Bosch F.~C., 2008, MNRAS, 391, 1940 
+\bibitem[\protect\citeauthoryear{McGaugh}{2015}]{McGaugh2015} 
+McGaugh S.~S., 2015, CaJPh, 93, 250 
+\bibitem[\protect\citeauthoryear{Melott et al.}{1983}]{Melott+1983} 
+Melott A.~L., Einasto J., Saar E., Suisalu I., Klypin A.~A., Shandarin 
+S.~F., 1983, PhRvL, 51, 935 
+\bibitem[\protect\citeauthoryear{Metz, Kroupa, 
+\& Jerjen}{2009}]{Metz+2009} Metz M., Kroupa P., Jerjen H., 2009, MNRAS, 394, 2223 
+\bibitem[\protect\citeauthoryear{Milgrom}{1983}]{Milgrom1983} 
+Milgrom M., 1983, ApJ, 270, 365 
+\bibitem[\protect\citeauthoryear{Moore et al.}{1999}]{Moore+1999} 
+Moore B., Ghigna S., Governato F., Lake G., Quinn T., Stadel J., Tozzi P., 
+1999, ApJ, 524, L19 
+\bibitem[\protect\citeauthoryear{Moustakas et 
+al.}{2009}]{Moustakas+2009} Moustakas L.~A., et al., 2009, astro, 
+2010, 214 
+\bibitem[\protect\citeauthoryear{Navarro et 
+al.}{2004}]{Navarro+2004} Navarro J.~F., et al., 2004, MNRAS, 349, 
+1039
+\bibitem[\protect\citeauthoryear{Navarro, Frenk, 
+\& White}{1997}]{NFW} Navarro J.~F., Frenk C.~S., White S.~D.~M., 1997, ApJ, 490, 493
+\bibitem[\protect\citeauthoryear{Navarro, Frenk, 
+\& White}{1996}]{NFW96} Navarro J.~F., Frenk C.~S., White S.~D.~M., 1996, ApJ, 462, 563 
+\bibitem[\protect\citeauthoryear{Navarro et 
+al.}{2010}]{Navarro+2010} Navarro J.~F., et al., 2010, MNRAS, 402, 
+21
+\bibitem[\protect\citeauthoryear{Ostriker, Peebles, 
+\& Yahil}{1974}]{Ostriker+1974} Ostriker J.~P., Peebles P.~J.~E., Yahil A., 1974, ApJ, 193, L1 
+\bibitem[\protect\citeauthoryear{Papastergis et 
+al.}{2015}]{Papastergis+2015} Papastergis E., Giovanelli R., Haynes M.~P., Shankar F., 2015, A\&A, 574, A113 
+\bibitem[\protect\citeauthoryear{Pawlowski, Kroupa, 
+\& Jerjen}{2013}]{Pawlowski+2013} Pawlowski M.~S., Kroupa P., Jerjen H., 2013, MNRAS, 435, 1928 
+\bibitem[\protect\citeauthoryear{Pawlowski 
+\& McGaugh}{2014}]{Pawlowski.McGaugh2014} Pawlowski M.~S., McGaugh S.~S., 2014, MNRAS, 440, 908 
+\bibitem[\protect\citeauthoryear{Pawlowski, McGaugh, 
+\& Jerjen}{2015}]{Pawlowski+2015} Pawlowski M.~S., McGaugh S.~S., Jerjen H., 2015, MNRAS, 453, 1047 
+\bibitem[\protect\citeauthoryear{Percival et 
+al.}{2002}]{2dFGRS} Percival W.~J., et al., 2002, MNRAS, 337, 
+1068 
+\bibitem[\protect\citeauthoryear{Perlmutter et 
+al.}{1999}]{Perlmutter+1999} Perlmutter S., et al., 1999, ApJ, 517, 565 
+\bibitem[\protect\citeauthoryear{Phillips et 
+al.}{2015}]{Phillips+2015} Phillips J.~I., Cooper M.~C., Bullock 
+J.~S., Boylan-Kolchin M., 2015, MNRAS, 453, 3839 
+\bibitem[\protect\citeauthoryear{Planck Collaboration et 
+al.}{2015}]{Planck2015} Planck Collaboration, et al., 2015, arXiv, 
+arXiv:1502.01589 
+\bibitem[\protect\citeauthoryear{Riess et al.}{1998}]{Riess+1998} 
+Riess A.~G., et al., 1998, AJ, 116, 1009 
+\bibitem[\protect\citeauthoryear{Rubin 
+\& Ford}{1970}]{Rubin.Ford1970} Rubin V.~C., Ford W.~K., Jr., 1970, IAUS, 38, 61
+\bibitem[\protect\citeauthoryear{Rubin, Thonnard, 
+\& Ford}{1978}]{Rubin+1978} Rubin V.~C., Thonnard N., Ford W.~K., Jr., 1978, ApJ, 225, L107 
+\bibitem[\protect\citeauthoryear{Sawala et al.}{2015}]{Sawala+2015} 
+Sawala T., et al., 2015, arXiv, arXiv:1511.01098 
+\bibitem[\protect\citeauthoryear{Sawala et al.}{2014}]{Sawala+2014} 
+Sawala T., et al., 2014, arXiv, arXiv:1412.2748 
+\bibitem[\protect\citeauthoryear{Tollerud, Boylan-Kolchin, 
+\& Bullock}{2014}]{Tollerud+2014} Tollerud E.~J., Boylan-Kolchin M., Bullock J.~S., 2014, MNRAS, 440, 3511 
+\bibitem[\protect\citeauthoryear{Treu}{2010}]{Treu2010} Treu T., 2010, ARA\&A, 48, 87 
+\bibitem[\protect\citeauthoryear{Tully et al.}{2015}]{Tully+2015} 
+Tully R.~B., Libeskind N.~I., Karachentsev I.~D., Karachentseva V.~E., 
+Rizzi L., Shaya E.~J., 2015, ApJ, 802, L25
+\bibitem[\protect\citeauthoryear{Vera-Ciro et 
+al.}{2013}]{Vera-Ciro+2013} Vera-Ciro C.~A., Helmi A., Starkenburg E., 
+Breddels M.~A., 2013, MNRAS, 428, 1696 
+\bibitem[\protect\citeauthoryear{Walker 
+\& Pe{\~n}arrubia}{2011}]{Walker.Penarrubia2011} Walker M.~G., Pe{\~n}arrubia J., 2011, ApJ, 742, 20  
+\bibitem[\protect\citeauthoryear{Walsh, Carswell, 
+\& Weymann}{1979}]{Walsh+1979} Walsh D., Carswell R.~F., Weymann R.~J., 1979, Natur, 279, 381 
+\bibitem[\protect\citeauthoryear{Yoo, Chanam{\'e}, 
+\& Gould}{2004}]{Yoo+2004} Yoo J., Chanam{\'e} J., Gould A., 2004, ApJ, 601, 311 
+\bibitem[\protect\citeauthoryear{Zackrisson 
+\& Riehm}{2010}]{Zackrisson.Riehm2010} Zackrisson E., Riehm T., 2010, AdAst, 2010, 478910 
+\bibitem[\protect\citeauthoryear{Zwicky}{1937}]{Zwicky1937} Zwicky 
+F., 1937, ApJ, 86, 217 
+\bibitem[\protect\citeauthoryear{Zwicky}{1933}]{Zwicky1933} Zwicky 
+F., 1933, AcHPh, 6, 110
+\end{thebibliography}
+\end{document}
