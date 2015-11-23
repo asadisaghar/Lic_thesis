@@ -16,36 +16,21 @@
 \usepackage{amssymb}
 \usepackage{natbib}
 \bibpunct{(}{)}{;}{a}{}{,}     %% natbib format like A&A and ApJ
-\usepackage{hyperref}
-
-%\usepackage[latin1]{inputenc} % Unix users should include this package instead of ansinew or applemac for correct handling of diacritics.
-%\usepackage[T1]{fontenc}% Enables the use of 8-bit characters and Â, ‰, ˆ can be typed as Â, ‰, ˆ instead of the corresponding commands.
-% \usepackage[small]{caption}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \usepackage{enumerate}
-%Options: Sonny, Lenny, Glenn (CAPS), Conny (NO!), Rejne (CAPS IN BOX), Bjarne, Bjornstrup
 \usepackage[Lenny]{fncychap}
-
 \usepackage[font={small,it}]{caption}
-
-%\usepackage{pdfpages}  % used for attaching the PDF file in the end: does not work :(
 
 \makeatletter
 \def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
 \hbox{}
-%\vspace*{\fill}
-%\begin{center}
-%This page intentionally contains only this sentence.
-%\end{center}
-%\vspace{\fill}
 \thispagestyle{empty}
 \newpage
 \if@twocolumn\hbox{}\newpage\fi\fi\fi}
 \makeatother
 
 \pagenumbering{roman}
-
 
 \setlength{\hoffset}{-0.5cm}
 \setlength{\textwidth}{38pc}
@@ -84,10 +69,6 @@
 
 \def\pasa{PASA}
 \newcommand{\msun }{$\mathrm{M}_{\odot}$}
-\newcommand{\ha}{H${\alpha}$}
-\newcommand{\lya}{Ly~${\alpha}$}
-\newcommand{\lyb}{Ly~${\beta}$}
-\newcommand{\lyg}{Ly~${\gamma}$}
 \newcommand{\ignore}[1]{}
 
 \begin{document}
@@ -96,7 +77,6 @@
 \begin{center}
 
 \begin{figure}[!h]
-%\centering
 \vspace{-1.5cm}
 \includegraphics[width=0.15\textwidth]{SU-Logga.eps}
 \end{figure}
@@ -118,7 +98,7 @@
 \vspace{0.5cm}
 \small{\it Department of Astronomy,\\ The Oskar Klein Center,\\ Stockholm University,\\ AlbaNova,\\ 106 91 Stockholm,\\ Sweden}
 
-\vspace{1.5cm}
+\vspace{1.0cm}
 \large{{\it Supervisor:}\\ Erik Zackrisson}\\
 \vspace{0.5cm}
 \large{{\it Co-Supervisors:}\\ Emily Freeland\\ Garrelt Mellema}\\
@@ -146,7 +126,6 @@
 \fancyhead[LO]{\it \textbf{\thechapter . \leftmark}}
 \renewcommand{\sectionmark}[1]{\markright{#1}{}}
 \fancyhead[RE]{\it \textbf{ }}
-%\fancyhead[RE]{\it \textbf{ \rightmark}}
 
 \fancyhead[LE]{\thepage}
 \fancyhead[RO]{\thepage}
@@ -154,16 +133,56 @@
 \renewcommand{\headrulewidth}{0.4pt}
 
 
+
+\chapter*{List of acronyms}
+
+\begin{description}
+\item[SMG]
+Sub--Millimeter Galaxy
+\item[BL]
+Base Line
+\item[GL]
+Gravitational lensing
+\item[DM]
+Dark Matter
+\item[CDM]
+Cold Dark Matter
+\item[WIMP]
+Weakly--Interacting Massive Particle
+\item[VLBI]
+Very Long Baseline Interferometry
+\item[ALMA]
+Atacama Large Millimeter/sub--millimeter Array
+\item[EVN]
+European VLBI Network
+\item[CASA]
+Common Astronomy Software Applications
+\item[IMBH]
+Intermediate--Mass Black Hole
+\item[UCMH]
+UltraCompact MiniHalo
+\item[NFW]
+Navarro--Frenck--White -- the Universal density profiles of simulated CDM halos, first introduced by \citet{NFW}
+\end{description}
+
+\clearpage
+
 \chapter*{Abstract}
 \thispagestyle{empty}
-Dark matter has been one of the great mysteries of physics since the early decades of the 20$^\mathrm{th}$ century. Despite numerous constraints on the properties of dark matter, the concordance model of cosmology -- accounting for dark matter as the second abundant component in the Universe -- has yet to describe the observed Universe at different scales simultaneously.
+\emph{Gravitational lensing} has been used to study otherwise faint and unresolved objects for about a century.The fact that gravity treats dark and luminous mass the same way, gives GL a unique advantage over many other observational methods to provide an independent test for the presence of dark structures of various size and mass. Strong lensing by a foreground object can produce multiple images of a background light source, known as \emph{macroimages}. Measurements of strong lens systems provide information about mass distribution of both the lens and the source. On the other hand, the concordance model of cosmology\ignore{ -- accounting for dark matter as the second abundant component in the Universe --} has yet to describe the observed Universe at different scales simultaneously. one way to probe the small--scale structures in dark matter is to look at a particular type of lens system where the foreground galaxy produces multiple images of the background light source, and the halo substructure presents itself as a surface brightness perturbation in one of the macroimages.
 
-One property of gravity that has been known for a long time is the fact that it treats dark and luminous mass the same way. This gives gravitational lensing a unique advantage over many other observational methods to provide an independent test for the presence of dark structures of various size and mass. Strong lensing by a foreground object can produce multiple images of a background light source. Measurements of strong lens systems provide information about mass distribution of both the lens and the source. One way to study the structure inside dark matter halos of galaxies is to look at a particular type of lens system where the foreground galaxy produces multiple images of the background light source, and the halo substructure presents itself as a surface brightness perturbation in one of the lensed images.
+Revealing small--scale surface brightness perturbations requires high--resolution imaging of lensed extended sources. Radio interferometry is a technique that connects an array of radio antennae to essentially work as a single dish with the diameter as large as the maximum distance within the array. Arrays such as the VLBI network or ALMA, or combinations of these, make it possible to probe radio quasars and SMGs with sub--milliarcsecond angular resolutions.
 
-Revealing small--scale surface brightness perturbations requires high--resolution imaging of a lensed extended object, such as star--forming galaxies and radio jets. Radio interferometry is a technique that connects an array of radio antennae to essentially work as a single dish with the diameter as large as the maximum distance within the array. Arrays such as the VLBI network or ALMA, and different combinations of these arrays, make it possible to probe radio quasars and sub-mm galaxies with sub--milliarcsecond angular resolutions.
+In this thesis, we simulate observations of multiply--lensed sources (radio quasars and dusty star--forming galaxies) at $z \simeq 2$ with different (present and near--future) radio interferometers. These simulations are used to place constraints on various forms of suggested halo substructures within the lens halo. In {\bf Paper I}, we derive the minimum  mass that subhalos with different internal density profiles need to have in order to produce detectable lensing effects on multiply--imaged quasars using three different radio arrays. Using the derived minimum detectable mass of different forms of subhalos, we estimate constraints that observations of a number of such lens systems can place on the contribution of each form of substructure in the mass of the parent halo. {\bf Paper II} focuses on simulations of SMGs using ALMA and the prospects for detecting standard CDM subhalos. In this paper, we show that standard CDM subhalos in the sub--galactic mass range are detectable using high--frequency observations with ALMA. In addition to probing the mass of the substructure such observations are able to discern the difference between the standard CDM subhalos and other dark compact objects.  This can place constraints on the contribution of CDM subhalos to the mass of their host halo -- a quantity directly comparable to cosmological simulations.
 
-In this thesis, we simulate observations of multiply--lensed sources (radio quasars and dusty star--forming galaxies) at $z \simeq 2$ with different (present and near--future) radio interferometers. These simulations are used to place constraints on various forms of suggested halo substructure within the lens halo. In {\bf paper I}, we derive the minimum  mass that subhalos with different internal density profiles need to have in order to produce detectable lensing effects on multiply--imaged quasars with three different radio arrays. Using the mass resolution of different forms of subhalos, %%huh?
- we estimate constraints that observations of a number of such lens systems can place on the contribution of each form of substructure in the mass of the parent halo. {\bf Paper II} focuses on simulations of sub--mm galaxies using ALMA and the prospects for detecting standard cold dark matter (CDM) subhalos. In this paper, we show that standard CDM subhalos in the sub--galactic mass range are detectable using high--frequency observations with ALMA. In addition to probing the mass of the substructure such observations are able to discern the difference between the standard CDM subhalos and other dark compact objects.  This can place constraints on the contribution of CDM subhalos to the mass of their host halo -- a quantity directly comparable to cosmological simulations.
+
+%Dark matter has been one of the great mysteries of physics for several decades now. Despite numerous constraints on the properties of dark matter, the concordance model of cosmology\ignore{ -- accounting for dark matter as the second abundant component in the Universe --} has yet to describe the observed Universe at different scales simultaneously.
+
+%One property of gravity that has been known and used for a long time is \emph{gravitational lensing}. The fact that gravity treats dark and luminous mass the same way, gives GL a unique advantage over many other observational methods to provide an independent test for the presence of dark structures of various size and mass. Strong lensing by a foreground object can produce multiple images of a background light source, known as \emph{macroimages}. Measurements of strong lens systems provide information about mass distribution of both the lens and the source. One way to study the structure inside dark matter halos of galaxies is to look at a particular type of lens system where the foreground galaxy produces multiple images of the background light source, and the halo substructure presents itself as a surface brightness perturbation in one of the macroimages.
+
+%Revealing small--scale surface brightness perturbations requires high--resolution imaging of a lensed extended object, such as star--forming galaxies and radio jets. Radio interferometry is a technique that connects an array of radio antennae to essentially work as a single dish with the diameter as large as the maximum distance within the array. Arrays such as the VLBI network or ALMA, and different combinations of these arrays, make it possible to probe radio quasars and sub--mm galaxies with sub--milliarcsecond angular resolutions.
+
+%In this thesis, we simulate observations of multiply--lensed sources (radio quasars and dusty star--forming galaxies) at $z \simeq 2$ with different (present and near--future) radio interferometers. These simulations are used to place constraints on various forms of suggested halo substructures within the lens halo. In {\bf Paper I}, we derive the minimum  mass that subhalos with different internal density profiles need to have in order to produce detectable lensing effects on multiply--imaged quasars using three different radio arrays. Using the derived minimum detectable mass of different forms of subhalos, we estimate constraints that observations of a number of such lens systems can place on the contribution of each form of substructure in the mass of the parent halo. {\bf Paper II} focuses on simulations of SMGs using ALMA and the prospects for detecting standard CDM subhalos. In this paper, we show that standard CDM subhalos in the sub--galactic mass range are detectable using high--frequency observations with ALMA. In addition to probing the mass of the substructure such observations are able to discern the difference between the standard CDM subhalos and other dark compact objects.  This can place constraints on the contribution of CDM subhalos to the mass of their host halo -- a quantity directly comparable to cosmological simulations.
 
 
 \clearpage
@@ -494,7 +513,7 @@ When it comes to the astrometric perturbation due to the substructure inside a h
 %%  \end{figure}
  
 \subsection{Time Delay}
-Each macroimage follows a different path to reach the observer, i.e. is subject to a different time delay. This time delay consists of two independent components; the geometrical and the gravitational component. The geometrical term comes from the difference in the light path length for each image. The gravitational component, also known as the \emph{Shapiro} effect, is a relativistic effect of retardation in strong gravitational fields. However, different time delays of various images cannot be observed if the source is not intrinsically variable, since this effect is manifested in the phase difference of the light curves of various images. When it comes to subhalo hunting, the perturbation to the time delays between macroimages predicted by a smooth lens model serves as an evidence for the presence of substructures within the main lens (see Figure \hyperref[fig:time_delay]{2.4}). As \citet{Moustakas+2009} argue, such an effect is only sensitive to subhalos at the high--mass end of the mass function.
+Each macroimage follows a different path to reach the observer, i.e. is subject to a different time delay. This time delay consists of two independent components; the geometrical and the gravitational component. The geometrical term comes from the difference in the light path length for each image. The gravitational component, also known as the \emph{Shapiro} effect, is a relativistic effect of retardation in strong gravitational fields. However, different time delays of various images cannot be observed if the source is not intrinsically variable, since this effect is manifested in the phase difference of the light curves of various images. When it comes to subhalo hunting, the perturbation to the time delays between macroimages predicted by a smooth lens model serves as an evidence for the presence of substructures within the main lens\ignore{ (see Figure \hyperref[fig:time_delay]{2.4})}. As \citet{Moustakas+2009} argue, such an effect is only sensitive to subhalos at the high--mass end of the mass function.
  
  %% \begin{figure}[h]
  %% \label{fig:time_delay}
@@ -631,7 +650,7 @@ Therefore, short--spacings in the (u, v) plane, with closer samplings, are weigh
 
 As a matter of fact, one might want to get rid of an extended emission they are not interested in, and focus more on the small--scale clumpy structure of their source. In which case, one only needs to apply an inverse Gaussian taper to the (u, v) plane.
 
-The method used in {\bf paper II} is based on combining different weightings of the same measurement set to put emphasis on features with different angular scales. 
+The method used in {\bf Paper II} is based on combining different weightings of the same measurement set to put emphasis on features with different angular scales. 
 
 \subsection*{CLEAN algorithm and deconvolving the dirty beam}
 \label{sec:CLEAN}
@@ -691,31 +710,11 @@ While the CLEANing process seems complete within the minor cycle, the major cycl
 \chapter{Summary}
 With the fast improvement of observational facilities the required angular resolution and sensitivity for the discovery of compound lens systems is becoming available. Given all the uncertainties concerning the existence, abundance, mass function, and inner mass distribution of dark matter substructure, it is important to estimate the alignment probabilities of lens substructures combined with the detection limits. It is important to keep in mind that with a detailed picture of model expectations at hand even null detections provide constraints on the background model.
 
-In {\bf Paper I} we use simulations of strongly lensed quasar jets as expected by three different VLBI configurations and receivers to probe dark matter substructure. The dark matter substructure in this paper is assumed to consist of intermediate--mass black holes (i.e. point--like) and ultracompact minihalos ($\rho \propto r^{-2.5}$) within the main lens at $z \simeq 0.5$. We demonstrate that small--scale morphological distortions in one of the macroimages -- that is not replicated in others in a large number of macrolensed jet systems with the expected (submilliarcsecond) resolution of the array is used to set constraints on detection limits of such substructures and their abundance. We argue that intermediate--mass black holes with $M_\mathrm{IMBH} \sim 10^3$--$10^6\ $ \msun  are detectable and therefore, non--detections of such distortions rule out their contribution in the surface mass fraction down to $f_\mathrm{IMBH}\gtrsim 0.01$ in the dark matter halo of the main lens at the position of the macroimage. The same investigation for ultracompact minihalos (that have a central density slope slightly steeper than the isothermal profile $\rho\sim r^{-2.5}$) places a constraint of $f_\mathrm{UCMH}\gtrsim 0.1$ on their contribution to the dark matter budget of the main lens. While we show that standard CDM halos (with NFW density profile) with $M_\mathrm{FNW} \simeq 10^8\ $ \msun  also produce detectable distortions due to the far shallower central density profile ($\rho \propto r^{-1}$), their effective lensing cross section is too small for the probability of successful alignments to be of any interest ($P_\mathrm{milli}\sim 10^{-4}$).
+In {\bf Paper I} we use simulations of strongly lensed quasar jets as expected by three different VLBI configurations and receivers to probe dark matter substructure. The dark matter substructure in this Paper Is assumed to consist of intermediate--mass black holes (i.e. point--like) and ultracompact minihalos ($\rho \propto r^{-2.5}$) within the main lens at $z \simeq 0.5$. We demonstrate that small--scale morphological distortions in one of the macroimages -- that is not replicated in others in a large number of macrolensed jet systems with the expected (submilliarcsecond) resolution of the array is used to set constraints on detection limits of such substructures and their abundance. We argue that intermediate--mass black holes with $M_\mathrm{IMBH} \sim 10^3$--$10^6\ $ \msun  are detectable and therefore, non--detections of such distortions rule out their contribution in the surface mass fraction down to $f_\mathrm{IMBH}\gtrsim 0.01$ in the dark matter halo of the main lens at the position of the macroimage. The same investigation for ultracompact minihalos (that have a central density slope slightly steeper than the isothermal profile $\rho\sim r^{-2.5}$) places a constraint of $f_\mathrm{UCMH}\gtrsim 0.1$ on their contribution to the dark matter budget of the main lens. While we show that standard CDM halos (with NFW density profile) with $M_\mathrm{FNW} \simeq 10^8\ $ \msun  also produce detectable distortions due to the far shallower central density profile ($\rho \propto r^{-1}$), their effective lensing cross section is too small for the probability of successful alignments to be of any interest ($P_\mathrm{milli}\sim 10^{-4}$).
 
-The extremely low probability of proper alignment for standard CDM subhalos presented in {\bf Paper I}, brings us to {\bf paper II} in which we adopt a similar approach to investigate small--scale perturbations using simulations of multiply--lensed sub--mm galaxies (SMGs).  These sources provide 10-100 times more coverage of the lens plane. This paper investigates simulations of compound lens systems where the lensed source is a dust starforming galaxy at $z = 2$ where ALMA band 7, 8, and 9 (with frequency coverage between 275 -- 720 GHz) probes the dust continuum emission of the source with submilliarcsecond angular resolution.  We aim for lens perturbers of $M_\mathrm{sub} = 10^5 - 10^{10} $ \msun  in a Milky Way--sized halo.  This is the relevant mass range for both the ``missing satellite problem'' \ref{subsec:missing-satellite} and the ``core--cusp problem'' \ref{subsec:core-cusp}. The analysis in this paper uses different weighting schemes for simulated complex visibilities and instrumental noise effects are taken into account. We use not only the local (small--scale) lens effects of substructures but also the astrometric shift of the main lens solution to place constraints on the presence, mass and central density slope of the lens perturber (substructure). In this paper, we demonstrate that SIS perturbers down to $M_\mathrm{vir} \approx 3\times 10^7 $ \msun  will be detectable with 2hr observations with the full ALMA array. Moreover, we argue that while these observations could, in principle, be used to tell the difference between the observational signature of a compact SIS and a lens subhalo with NFW (or Einasto) profile, the shape parameter ($\alpha_\mathrm{Ein}$ for Einasto or $\gamma$ in general NFW) remains highly degenerate with the subhalo mass. In the end of {\bf Paper II} we draw attention to different mass definitions used in lens modelings ($M_\mathrm{einstein}$, the projected mass within the Einstein radius of the lens) and cosmological simulations ($M_\mathrm{tidal}$, the 3D tidally--truncated mass of a subhalo that is being dissolved (?!) in the parent halo) to argue that the conversion between the two strongly depends on the assumptions made in the process of deprojection. 
+The extremely low probability of proper alignment for standard CDM subhalos presented in {\bf Paper I}, brings us to {\bf Paper II} in which we adopt a similar approach to investigate small--scale perturbations using simulations of multiply--lensed sub--mm galaxies (SMGs).  These sources provide 10-100 times more coverage of the lens plane. This Paper Investigates simulations of compound lens systems where the lensed source is a dust starforming galaxy at $z = 2$ where ALMA band 7, 8, and 9 (with frequency coverage between 275 -- 720 GHz) probes the dust continuum emission of the source with submilliarcsecond angular resolution.  We aim for lens perturbers of $M_\mathrm{sub} = 10^5 - 10^{10} $ \msun  in a Milky Way--sized halo.  This is the relevant mass range for both the ``missing satellite problem'' \ref{subsec:missing-satellite} and the ``core--cusp problem'' \ref{subsec:core-cusp}. The analysis in this paper uses different weighting schemes for simulated complex visibilities and instrumental noise effects are taken into account. We use not only the local (small--scale) lens effects of substructures but also the astrometric shift of the main lens solution to place constraints on the presence, mass and central density slope of the lens perturber (substructure). In this paper, we demonstrate that SIS perturbers down to $M_\mathrm{vir} \approx 3\times 10^7 $ \msun  will be detectable with 2hr observations with the full ALMA array. Moreover, we argue that while these observations could, in principle, be used to tell the difference between the observational signature of a compact SIS and a lens subhalo with NFW (or Einasto) profile, the shape parameter ($\alpha_\mathrm{Ein}$ for Einasto or $\gamma$ in general NFW) remains highly degenerate with the subhalo mass. In the end of {\bf Paper II} we draw attention to different mass definitions used in lens modelings ($M_\mathrm{einstein}$, the projected mass within the Einstein radius of the lens) and cosmological simulations ($M_\mathrm{tidal}$, the 3D tidally--truncated mass of a subhalo that is being dissolved (?!) in the parent halo) to argue that the conversion between the two strongly depends on the assumptions made in the process of deprojection. 
 
 
-\clearpage
-
-\chapter*{List of acronyms}
-
-\begin{description}
-\item[DM]
-Dark Matter
-\item[CDM]
-Cold Dark Matter
-\item[WIMP]
-Weakly--Interacting Massive Particle
-\item[VLBI]
-Very Long Baseline Interferometry
-\item[ALMA]
-Atacama Large Millimeter/sub--millimeter Array
-\item[EVN]
-European VLBI Network
-\item[CASA]
-Common Astronomy Software Applications
-\end{description}
 
 % \bibliographystyle{aa}  % style aa.bst
 % \bibliography{myattempt.bib}  % your references Yourfile.bib
