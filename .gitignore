@@ -7,6 +7,9 @@
 *.cls
 *.ps
 *.pdf
+**/pdf.bash
+**/*.swp
+**/*.gz
 **/*.aux
 **/*.dvi
 **/*.ps
