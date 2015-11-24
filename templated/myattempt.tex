@@ -1,15 +1,18 @@
 \documentclass[a4wide,12pt]{book}
 
 \usepackage[swedish,english]{babel} % Use English and Swedish languages. English default. English hyphenation.
+%\usepackage{chngcntr}
+%\counterwithout{figure}{chapter}
+%\counterwithin{figure}{chapter}
 \usepackage{amsmath,amsfonts,amsthm} % Math packages
 \usepackage{bm}
 \usepackage{txfonts}
 \usepackage{graphicx}
-\usepackage{wrapfig}
+%\usepackage{wrapfig}
 \usepackage{caption}
-\usepackage{sidecap}
-\usepackage{subcaption}
-\usepackage{float}
+%\usepackage{sidecap}
+%\usepackage{subcaption}
+%\usepackage{float}
 \usepackage{epstopdf}
 \usepackage{titlesec}
 \usepackage{verbatim}
@@ -134,9 +137,10 @@
 
 \renewcommand{\headrulewidth}{0.4pt}
 
+\thispagestyle{empty}
+\clearpage
 
 \chapter*{List of acronyms}
-
 \begin{description}
 \item[ALMA]
 Atacama Large Millimeter/sub--millimeter Array
@@ -269,23 +273,24 @@ The commonly--accepted class of DM particles are Weakly Interacting Massive Part
   \begin{itemize}
   \item {\bf Heavy} -- \ignore{The observational upper and lower bounds for dark matter particles come from different sources. }While the upper limit is placed by undetection of MACHOs (Massive Astrophysical Compact Halo Objects), the lower limit is far less constrained.\ignore{ Neither the Kepler satellite \citep[][]{Griest+2014}, nor microlensing surveys \citep[][]{Alcock+1998, Yoo+2004} did not detect MACHOs as predicted.} These limits expect the DM particle mass to be between $10^\mathrm{-31} GeV (= 9\times 10^\mathrm{-89}$\msun  $) < m < 2\times 10^\mathrm{48} GeV (= 2 \times 10^\mathrm{-9}$\msun ) \citep[\ignore{47 for lower bound}][\ignore{ and 42 \& 43 for the upper bound}]{Hu+2000, Alcock+1998, Yoo+2004}. Note the 80 orders of magnitude mass range. This is how much we know about the second most abundant component in our Universe!
   \item {\bf Dissipationless and collisionless} -- The existence of dark matter halos around galaxies is evidence for the dark matter to be dissipationless. Being dissipationless means that dark matter cannot cool by emitting photons like baryons do. Therefore, while dark matter comes together and forms extended halos, baryonic matter falls into the gravitational well of these halos and cools down by emitting photons and then forms stars and galaxies at the halo center. Dark matter is also assumed to be collisionless, meaning that it does not interact with other dark matter particles. An upper limit on the cross section of dark matter comes from the famous case of the Bullet cluster \citep[][]{Clowe+2006}. The collisionless property of dark matter can alleviate two of the small--scale challenges to the CDM model that I discuss in the next chapter; the cusp--core problem \ref{subsec:core-cusp}, and the too--big--to--fail problem \ref{subsec:too-big-to-fail}.
-  \item {\bf Cold} -- the terms ``cold'', ``warm'', and ``hot'' dark matter refer to the mass of the dark matter particles which is the deciding factor in their velocity at the freeze--out epoch. This is the time when the temperature of the Universe decreased to $\sim 10^9$ K. At this temperature, hot DM particles that are light are relativistic. Therefore small density perturbations do not survive, i.e. the early structures that form in the Universe are superclusters. Smaller structures such as galaxy cluster, galaxies and dwarf galaxies form via fragmentation, but this does not match our observations. However, if dark matter particles are as described by cold DM or warm DM structure formation follows a bottom--up hierarchy where small scale structures (down to dwarf galaxies in case of WDM and even smaller fluctuations in case of CDM survive). These small structures then merge/fall into the potential wells of larger growing structures. Cosmological simulations give a clear image of the subhalo abundance depending on the mass of DM particles.% (see Figures \ref{fig:CDM_WDM_PS}).%% and \ref{fig:CDM_WDM_halo}).
+  \item {\bf Cold} -- the terms ``cold'', ``warm'', and ``hot'' dark matter refer to the mass of the dark matter particles which is the deciding factor in their velocity at the freeze--out epoch. This is the time when the temperature of the Universe decreased to $\sim 10^9$ K. At this temperature, hot DM particles that are light are relativistic. Therefore small density perturbations do not survive, i.e. the early structures that form in the Universe are superclusters. Smaller structures such as galaxy cluster, galaxies and dwarf galaxies form via fragmentation, but this does not match our observations. However, if dark matter particles are as described by cold DM or warm DM structure formation follows a bottom--up hierarchy where small scale structures (down to dwarf galaxies in case of WDM and even smaller fluctuations in case of CDM survive). These small structures then merge/fall into the potential wells of larger growing structures. Cosmological simulations give a clear image of the subhalo abundance depending on the mass of DM particles.{\bf temp! (see Figures \ref{fig:CDM_WDM_PS} and \ref{fig:CDM_WDM_halo}).}
   \end{itemize}
 
-
-%\begin{SCfigure}
-%\label{fig:CDM_WDM_PS}
-%\centering
+\begin{figure}
+\centering
+\includegraphics[width=0.15\textwidth]{SU-Logga.eps}
 %\includegraphics[width=0.5\textwidth]{/home/saas9842/PhD/Lic/figs/PowerSpectra.pdf} %%from Kennedy+2014
-%\caption{Linear power spectra of DM models with different particle masses. The thick black line corresponds to CDM and the colored lines show WDM models of %various particle mass. The damping scale $\alpha$ is also shown for each model with the corresponding color. (Figure from \citealt[][]{Kennedy+2014}}
-%\end{SCfigure}
+\caption{Linear power spectra of DM models with different particle masses. The thick black line corresponds to CDM and the colored lines show WDM models of various particle mass. The damping scale $\alpha$ is also shown for each model with the corresponding color.}% (Figure from \citealt[][]{Kennedy+2014}}
+\label{fig:CDM_WDM_PS}
+\end{figure}
 
-%\begin{SCfigure}
-%\label{fig:CDM_WDM_halo}
-%\centering
+\begin{figure}
+\centering
+\includegraphics[width=0.15\textwidth]{SU-Logga.eps}
 %\includegraphics[width=0.6\textwidth]{/home/saas9842/PhD/Lic/figs/CDM_WDM_halos.pdf} %%froom Lovell+2012
-%\caption{CDM vs. WDM simulated halos from \citealt[][]{Lovell+2012}}
-%\end{SCfigure}
+\caption{CDM vs. WDM simulated halos from}% \citealt[][]{Lovell+2012}}
+\label{fig:CDM_WDM_halo}
+\end{figure}
 
 %%  ------------------------  %%
 \chapter{The standard model of cosmology; strengths and challenges}
@@ -301,7 +306,7 @@ In this chapter, I first briefly introduce the current state of the standard mod
 The standard model of cosmology is usually assumed to be a flat adiabatic Universe with Gaussian initial perturbations.  The dynamics of these perturbations, governed by Einstein's general relativity, are dominated at large scales by an invariant dark energy (the cosmological constant). The parameter sets used to present the model can vary depending on the means of measurements and the priors. Among the many astrophysical and cosmological probes of the model, the cosmic microwave background radiation may provide constraints on all model parameters, while others are used only to probe a subset of parameters. Assuming the flatness and curvature of the Universe that have been independently confirmed to be consistent with the data, the base model parameters in Table \ref{tab:LCDM_Planck15} are consistently constrained by studying the CMB using 9 years of WMAP \citep[][]{WMAP9} and two all--sky surveys of the Planck satellite \citep[][]{Planck2015}. These parameters include the Hubble constant $H_0$, the matter density parameter $\Omega_m$ (presented usually as the physical density $\Omega_m h^2$ where $h$ is the Hubble parameter), the baryon density parameter $\Omega_b$, the curvature fluctuation amplitude $\Delta^2_R$, the scalar spectral index of density fluctuations $n_s$, and the reionization optical depth $\tau_\mathrm{re}$. \citet[][]{Planck2015} reports the six cosmological parameter values in Table \ref{tab:LCDM_Planck15} for the base $\Lambda$CDM model. Many more familiar parameters are derived from the base model including the age of the Universe, the density parameters of different materials in the Universe (dark matter, neutrinos, radiation), the cosmic reionization redshift, and the sum of three neutrino masses. Various astrophysical observations probe one or more parameters to build and complete our picture of the Universe.
 
 The combination of redshift and apparent magnitude of type Ia supernovae probes the expansion rate of the Universe \citep[][]{Riess+1998, Perlmutter+1999}, whereas surveys such as the Two-degree-Field Galaxy Redshift Survey (2dFGRS) \citep[][]{2dFGRS} and the Sloan Digital Sky Survey (SDSS) \citep[][]{SDSS} probe the galaxy power spectrum, i.e. putting constraints on parameters such as the amplitude of dark matter density fluctuations $\sigma_8$, their linear growth rate $f$, and the sum of the masses of neutrinos $m_\nu$. Measurements of the angular power spectrum of temperature variations in the CMB \citep[COBE, WMAP, Planck][]{} provides us with the nature of initial perturbations. The consistency of all complementary probes and measurements point at the $\Lambda$CDM cosmological model as the best description of our present data. However, some astrophysical observations of galaxy and sub--galactic phenomena point at systematic discrepancies which need to be resolved.
-\begin{SCtable}
+\begin{table}
 \begin{tabular}{l{c}r}
 \label{tab:LCDM_Planck15}
 Parameter & Planck 68$\%$ limit value \\
@@ -314,7 +319,7 @@ n$_s$ & 0.968 $\pm$ 0.006\\
 $\tau$ & 0.066 $\pm$ 0.016\\
 \end{tabular}
 \caption[Table caption text]{Table reproduced from the values presented in \citet[][]{Planck2015}}
-\end{SCtable}
+\end{table}
 
 \section{Challenges of the model, or what is bugging us!}
 \label{subsec:LCDM_challenges}
@@ -327,7 +332,7 @@ The first test for small--scale CDM--based simulations is comparing the low--mas
  
 \subsection{Central slope, or the core--cusp problem}
 \label{subsec:core-cusp}
-One of the long--standing issues of CDM halos is their density profiles \citep[][]{Dubinski.Carlberg1991, Walker.Penarrubia2011}. For over a decade, the main consensus was that the ``universal'' profile describing simulated dark matter halos was a two--parameter density profile, suggested by \citet[][ hereafter NFW]{NFW}, where the central logarithmic density slope changes as $\rho \propto 1/r$. The logarithmic slope of this profile becomes less steep with increasing $r$ and can be described as $\rho(r) \propto r^{-3}$ around the virial radius. However, dynamical measurements of stellar and gas content in the central kpc of dwarf galaxies \citep[][]{} favor a constant--density for these regions. While further high--resolution measurements from low--surface brightness dwarf galaxies and dark matter--dominated galactic rotation curves support the cored profiles, the higher resolution CDM simulations are more consistent with a three--parameter density profile rather than the traditional NFW profile. The extra parameter describing dark halo density profiles is the shape index, $\alpha$, which gives the density profile more flexibility in shape. Even with the extra parameter, these DM profiles still fail to describe observed halos which contain baryonic matter. 
+One of the long--standing issues of CDM halos is their density profiles \citep[][]{Dubinski.Carlberg1991, Walker.Penarrubia2011}. For over a decade, the main consensus was that the ``universal'' profile describing simulated dark matter halos was a two--parameter density profile, suggested by \citet[][ hereafter NFW]{NFW}, where the central logarithmic density slope changes as $\rho \propto 1/r$. The logarithmic slope of this profile becomes less steep with increasing $r$ and can be described as $\rho(r) \propto r^{-3}$ around the virial radius. However, dynamical measurements of stellar and gas content in the central kpc of dwarf galaxies \citep[][]{Oh+2011} favor a constant--density for these regions. While further high--resolution measurements from low--surface brightness dwarf galaxies and dark matter--dominated galactic rotation curves support the cored profiles, the higher resolution CDM simulations are more consistent with a three--parameter density profile rather than the traditional NFW profile. The extra parameter describing dark halo density profiles is the shape index, $\alpha$, which gives the density profile more flexibility in shape. Even with the extra parameter, these DM profiles still fail to describe observed halos which contain baryonic matter (see Figure \ref{fig:core_cusp}).
 
 On the other hand, the high--mass end of the halo mass function and luminous part of galaxy luminosity function do not indicate any discrepancies regarding the central DM slope. The reason is that there are several independent methods to derive the luminous and dark matter content of massive galaxies in their central kpcs. Resolved stellar and gas dynamical measurements probe the baryonic component\ignore{ \citep[][]{}}, and the X--ray temperature maps combined with weak and strong gravitational lensing measurements can trace the mass in these galaxies\ignore{ \citep[][]{}}. Therefore, it is easier to decide whether the dark matter or the stellar mass dominates the central kpc of the galaxy. 
 %{\bf These measurements do indicate consistency with cusped CDM halos in the case of relaxed clusters, while the DM contribution seems to have cores that are stretched out to $r\sim 10$ kpc (clusters or galaxies?) \citep[][]{}.} %Emily: fix this ?
@@ -344,10 +349,12 @@ where $r_s$ is the characteristic scale radius of the halo, i.e. the radius at w
   Additionally, low--mass subhalos gradually lose mass in tidal interaction with the parent halo which leads to a further increase of their $c_\mathrm{vir}$ over time \citep{Bullock+2001, Maccio+2008}.
 
 \begin{figure}
-\label{fig:CDM_WDM_halo}
+
 \centering
-\includegraphics[width=0.55\textwidth]{/home/saas9842/PhD/Lic/figs/core_cusp.pdf} %%froom Oh+2011
+%\includegraphics[width=0.15\textwidth]{SU-Logga.eps}
+\includegraphics[width=0.55\textwidth]{/home/saas9842/PhD/Lic/figs/core_cusp.pdf} %%from Oh+2011
 \caption{Comparison between dark matter density profiles inferred from observations of low surface brightness galaxies and theoretical density profiles. Dta points show dark matter density profiles of a sample of THINGS dwarf galaxies derives from their neutral hydrogen rotation curves. The NFW density profiles ($\alpha\sim -1$) favoured by CDM--based cosmological simulations are plotted with black dotted lines, and pseudo--isothermal halo models ($\alpha\sim 0$) iwth dashed red lines. While the NFW density profiles continue rising toward the center of the halo, profiles inferred from galaxies tend to form a core with a constant central density. (Figure from \citealt[][]{Oh+2011})}
+\label{fig:core_cusp}
 \end{figure}
 
 
@@ -371,22 +378,23 @@ A more recent issue with the predictions of the cold dark matter model was broug
 One suggested explanation for this mismatch is that the halo of the MW is less massive than previously estimated and therefore, the local massive dSphs should be compared to simulated subhalos of a less--massive halo \citep[][]{Boylan-Kolchin+2012, Vera-Ciro+2013}. However, a similar discrepancy has been observed within the local group \citep[][]{Kirby+2014, Garrison-Kimmel+2014, Tollerud+2014}, and even field galaxies \citep[][]{Papastergis+2015} as well, which argues for a more global issue, in need of a more generic solution. 
 
 \begin{figure}
-\label{fig:TBTF}
 \centering
 \includegraphics[width=0.5\textwidth]{/home/saas9842/PhD/Lic/figs/TBTF.pdf}
+%\includegraphics[width=0.15\textwidth]{SU-Logga.eps}
 \caption{An Illustration of the TBTF problem. Shaded colored regions in this plot show the rotation curve corresponding to NFW subhalos with $V_\mathrm{max}$ between 12 km/s and 40 km/s, and the data points (labeled) correspond to nin brightes dSphs of the MW (the thickness of each data is representative of the luminosity of the satellite galaxy). While MW--sized halos in Aquarius simulations have on average 10 satellites with $V_\mathrm{max} \geq 30$ km/s, all luminous MW satellites show $V_\mathrm{max} < 24$, and only Draco (the least luminous dSph in the presented sample) shows consistency with a CDM subhalo of $V_\mathrm{max} \approx 40$ km/s (Figure from \citealt[][]{Boylan-Kolchin+2012}).}
+\label{fig:TBTF}
 \end{figure}
 
 
 \subsection{Spatial distribution, or the satellite--planes problem}
-The issue with the spatial distribution of satellite galaxies of the MW was first argued to be challenging for $\Lambda$CDM by \citet[][]{Kroupa+2005}. Even though the spatial distribution of the (then) 11 satellite dwarves of the MW was not a new discovery, the fact that this alignment proposes a challenge to the standard model of cosmology was new and in line with the rest of the small--scale issues proposed for this model. Upon the discovery of faint and ultra faint satellites of our galaxy in the SDSS survey, the presence of the satellite plane around the MW was confirmed \citep[][]{Metz+2009, Kroupa+2010}. The bonus argument made by \citet[][]{Metz+2009} uses not only the spatial distribution of dwarf satellites, but also their proper motions which is indicative of the majority of their sample orbiting within the vast plane of satellites (VPoS). A later work by \citet[][]{Pawlowski+2013} also confirms these results based on proper motion measurements. The first question coming to mind in such a situation is whether this is limited to the local group or this is the case outside the local group as well. This question is addressed by various works ever since, both in the context of the (satellite and field) dwarf galaxies in our local group \citep[see e.g. ][]{Ibata+2013, Pawlowski+2013, Bellazzini+2013, Pawlowski.McGaugh2014} and around more distant galaxies \citep[see e.g. ][]{Tully+2015, Muller+2015}. Even though the narrow dwarf galaxy plane of the MW is a widely--accepted feature in the data, the ubiquity of such planes in the rest of the Universe is under debate and needs further observational data with velocity measurements of satellite pairs in order confirm (or reject) them co--orbiting the host galaxy (for opposite views on the matter see e.g. \citealt[][]{Phillips+2015, Cautun+2015}).
+The issue with the spatial distribution of satellite galaxies of the MW was first argued to be challenging for $\Lambda$CDM by \citet[][]{Kroupa+2005}. Even though the spatial distribution of the (then) 11 satellite dwarves of the MW was not a new discovery, the fact that this alignment proposes a challenge to the standard model of cosmology was new and in line with the rest of the small--scale issues proposed for this model (see Figure \ref{fig:sat_plane}). Upon the discovery of faint and ultra faint satellites of our galaxy in the SDSS survey, the presence of the satellite plane around the MW was confirmed \citep[][]{Metz+2009, Kroupa+2010}. The bonus argument made by \citet[][]{Metz+2009} uses not only the spatial distribution of dwarf satellites, but also their proper motions which is indicative of the majority of their sample orbiting within the vast plane of satellites (VPoS). A later work by \citet[][]{Pawlowski+2013} also confirms these results based on proper motion measurements. The first question coming to mind in such a situation is whether this is limited to the local group or this is the case outside the local group as well. This question is addressed by various works ever since, both in the context of the (satellite and field) dwarf galaxies in our local group \citep[see e.g. ][]{Ibata+2013, Pawlowski+2013, Bellazzini+2013, Pawlowski.McGaugh2014} and around more distant galaxies \citep[see e.g. ][]{Tully+2015, Muller+2015}. Even though the narrow dwarf galaxy plane of the MW is a widely--accepted feature in the data, the ubiquity of such planes in the rest of the Universe is under debate and needs further observational data with velocity measurements of satellite pairs in order confirm (or reject) them co--orbiting the host galaxy (for opposite views on the matter see e.g. \citealt[][]{Phillips+2015, Cautun+2015}).
 
-%\begin{figure}
-%\label{fig:TBTF}
-%\centering
-%\includegraphics[width=1.0\textwidth]{/home/saas9842/PhD/Lic/figs/sat_plane} %%from Ibata+2013
-%\caption{Positions of a sample of 27 satellites as seen from the Andromeda galaxy with it disk aling the equator.(Figure from \citealt[][]{Ibata+2013}).}
-%\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=1.0\textwidth]{/home/saas9842/PhD/Lic/figs/sat_plane} %%from Ibata+2013
+\caption{Positions of a sample of 27 satellites as seen from the Andromeda galaxy with it disk along the equator.(Figure from \citealt[][]{Ibata+2013}).}
+\label{fig:sat_plane}
+\end{figure}
 
 %%  ------------------------  %%
 \chapter{Gravitational Lensing}
@@ -426,10 +434,10 @@ The relation between the unlensed source position, $\boldsymbol \beta$, and the 
 \end{eqnarray}
 
 \begin{figure}
-\label{fig:config}
 \centering
 \includegraphics[width=0.6\textwidth]{/home/saas9842/PhD/Lic/figs/Gravitational-lensing-angles}
 \caption{The general setting of a gravitational leng system. The relation between angular distances and luminosity distances is described by the lens equation. In this schematic figure, $\eta$ is the position vector of the source with respect to the optical axis of the system, and $\zeta$ is the position vector of the outer surface of the [spherically symmetric] deflector. (Figure from \citealt[][]{GLbook})}
+\label{fig:config}
 \end{figure}
 
 Given a certain mass distribution and a fixed $\boldsymbol \xi$, the lens equation can have more than one solution for $\boldsymbol \theta$; each of which corresponds to an image of the source in the sky.  Although obtaining the source position $\eta$ from a given image position $\xi$ using the lens equation is straightforward, finding a general analytical solution for the position of the image(s) of a source at a given position is not. The mapping of $\xi$ to $\eta$ is non--linear. There are, however, analytical models to solve this equation for simple matter distributions on the lens plane such as point--mass, axially symmetric, and elliptical lenses.
@@ -504,19 +512,7 @@ One of the most interesting and extreme cases of gravitational lensing is the Ei
 \label{eq:lens}
 \end{eqnarray}
 
-%<<<<<<< HEAD
- Where $M$ represents the lens mass and $D_d$, $D_s$, and $D_\mathrm{ds}$ are the angular--diameter distances as in Figure \ref{fig:config}. Moreover, as it is immediately concluded from equation \ref{eq:mu_beta_theta}, magnification $\mu$ diverges for the \emph{critical points} where $\beta=0$. The ``infinite'' theoretical magnification points can be mapped into the source plane which gives a set of \emph{caustic curves}. This corresponds to the points where det$(\mathcal{A}) = 0$, and therefore equation \ref{eq:mu_extended} faces division by zero. In reality, however, the finite size of the source keeps the magnification from diverging. The number and relative positions of images of a single source change according to the position of the source with respect to such caustics in the source plane. %%(see figure \hyperref[fig:cusps]{2.2}).
-%=======
-% Where $M$ represents the lens mass and $D_L$, $D_S$, and $D_\mathrm{LS}$ are the angular--diameter distances as in figure \ref{fig:config}. Moreover, as it is immediately concluded from equation \ref{eq:mu_beta_theta}, magnification $\mu$ diverges for the \emph{critical points} where $\beta=0$. The ``infinite'' theoretical magnification %({\bf explain why infinite magnification is only a theoretical concept}) 
-%points can be mapped into the source plane which gives a set of \emph{caustic curves}. The number and relative positions of images of a single source change according to the position of the source with respect to such caustics in the source plane. (see figure \hyperref[fig:cusps]{2.2}).
-%>>>>>>> emily
-
- %% \begin{figure}[ht]
- %% \label{fig:cusps}
- %% \centering
- %% \includegraphics[width=1.0\textwidth]{figs/zack09_4}
- %% \caption{Different configurations of a four-image lens: a) Fold, b) Cusp and c) Cross. The upper row shows the caustics and position of the source (star) in the source plane. The solid line indicates the inner caustic and the dashed line the outer caustic. A source positioned inside the inner caustic produces five images. A source positioned between the inner and outer caustic produces three images, whereas a source positioned outside the outer caustic will not be multiply imaged. In the case of multiple images, one of the images is usually highly de-magnified, so that only four- and two-image lens systems are observed, respectively. The lower row shows the corresponding critical lines and resulting observable images in the lens plane. The inner caustic maps on the outer critical line and vice versa. A close pair (A, B) and a close triplet (A, B, C) are produced in the fold (a) and cusp (b) configurations, respectively. (Figure and caption adopted from \citet{Zackrisson.Riehm2010})}
- %% \end{figure} 
+ Where $M$ represents the lens mass and $D_d$, $D_s$, and $D_\mathrm{ds}$ are the angular--diameter distances as in Figure \ref{fig:config}. Moreover, as it is immediately concluded from equation \ref{eq:mu_beta_theta}, magnification $\mu$ diverges for the \emph{critical points} where $\beta=0$. The ``infinite'' theoretical magnification points can be mapped into the source plane which gives a set of \emph{caustic curves}. This corresponds to the points where det$(\mathcal{A}) = 0$, and therefore equation \ref{eq:mu_extended} faces division by zero. In reality, however, the finite size of the source keeps the magnification from diverging. The number and relative positions of images of a single source change according to the position of the source with respect to such caustics in the source plane.
 
 \section{Strong Lensing}
 One observable result of gravitational lensing is magnified (or de--magnified) images of point sources, the other distortions in the images of extended objects. The extent of the lensing effect varies depending on the alignment of the source, the lens and the observer. The closer the center of the lens to the line of sight between the observer and the source, the more significant the image distortion. Therefore, gravitational lensing cases are categorized, according to the level of their magnifications, into two major regimes; \emph{strong} and \emph{weak} lensing. Strong lensing causes dramatic effects such as high magnifications, multiple images, luminous arcs and in some cases even complete Einstein rings. Although strong lensing is a rare effect, it is possible to be detected and studied individually for each case. Weak lensing, on the other hand, occurs when the center of the lens is further away from the observer's line of sight, i.e. $\theta > \theta_E$. Thus the images are weakly magnified or have small distortions. In contrast to strong lensing, weak lensing happens to be very common. Every line of sight is affected by weak lensing at some level hence this effect is detectable through statistical investigations of numerous objects. 
