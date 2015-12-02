@@ -1,0 +1,56 @@
+\documentclass[a4wide,12pt]{book}
+
+\usepackage[swedish,english]{babel} % Use English and Swedish languages. English default. English hyphenation.
+%\usepackage{chngcntr}
+%\counterwithout{figure}{chapter}
+%\counterwithin{figure}{chapter}
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+\usepackage{bm}
+\usepackage{txfonts}
+\usepackage{graphicx}
+%\usepackage{wrapfig}
+\usepackage{caption}
+\usepackage{sidecap}
+%\usepackage{subcaption}
+%\usepackage{float}
+\usepackage{epstopdf}
+\usepackage{titlesec}
+\usepackage{verbatim}
+\usepackage{amssymb}
+\usepackage{natbib}
+\bibpunct{(}{)}{;}{a}{}{,}     %% natbib format like A&A and ApJ
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{enumerate}
+\usepackage[Lenny]{fncychap}
+\usepackage[font={small,it}]{caption}
+\usepackage{footnote}
+\usepackage{url}
+
+\makeatletter
+\def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
+\hbox{}
+\thispagestyle{empty}
+\newpage
+\if@twocolumn\hbox{}\newpage\fi\fi\fi}
+\makeatother
+
+\pagenumbering{roman}
+
+\setlength{\hoffset}{-0.5cm}
+\setlength{\textwidth}{38pc}
+\setlength{\textheight}{52pc}
+\setlength{\oddsidemargin}{3.5mm}
+\setlength{\evensidemargin}{3.5mm}
+\setlength{\topmargin}{7mm}
+
+\def\pasa{PASA}
+
+\begin{document}
+
+\newpage
+\thispagestyle{empty}
+\Huge{\bf Paper I}\\
+\clearpage
+
+\end{document}
