@@ -26,6 +26,13 @@
 \usepackage[font={small,it}]{caption}
 \usepackage{footnote}
 \usepackage{url}
+\usepackage{afterpage}
+
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{page}{-1}%
+    \newpage}
 
 \makeatletter
 \def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
@@ -52,5 +59,6 @@
 \thispagestyle{empty}
 \Huge{\bf Paper II}\\
 \clearpage
+\afterpage{\blankpage}
 
 \end{document}
