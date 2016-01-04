@@ -1,0 +1,1147 @@
+%I need 12000 words~27 pages of introduction to my Licentiate as the literature review part, I think the space budget can go (roughly) like this:
+
+%1%. Theory of structure formation 
+% 5 pages (2 pages done)
+%2%. Dark matter problem in general (including what particle physics has to say about DM particles)
+% 5 pages
+%3%. Small--scale dark matter in the context of LCDM vs. observations 
+% 7 pages (~3 pages done)
+%4%. Gravitational lensing formalism
+% 3 pages
+%5%. Optical vs. radio data in the context of our work + Radio interferometry
+% 3 pages
+%6%. Quasars vs. SMGs in the context of our work
+% 3 pages
+
+
+%%	Questions	%%
+%%%%%%%%%%%%%%%%%%
+%%% Why are we expecting DM halos in the low--mass end of the spectrum to be dark? Are they baryon--less or is there an explanation for the baryonic part to be dark (non--star forming)? I know that they are not (were not) massive enough to attract a sufficient amount of baryons to start star formation in the center, but I need a more accurate relation. Feldman & Spoylar 2013 say that "they are hard to detect because they are devoid of gas and stars as a result of the increase in the thermal Jeans mass following reionization." How's that?
+
+%----------------------------------------------------------------------------------------
+%    PACKAGES AND OTHER DOCUMENT CONFIGUratioS
+%----------------------------------------------------------------------------------------
+
+\documentclass[paper=a4, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+\oddsidemargin=-0.54cm
+\evensidemargin=-0.54cm
+\topmargin=-1.2cm
+\textwidth=17cm
+\textheight=25cm
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+
+%\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+
+%\usepackage{sectsty} % Allows customizing section commands
+%\allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
+
+\usepackage{hyperref}
+\makeatletter
+\newcommand\urlfootnote@[1]{\footnote{\url@{#1}}}
+\DeclareRobustCommand{\urlfootnote}{\hyper@normalise\urlfootnote@}
+\makeatother
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{epstopdf}
+\usepackage{titlesec}
+\usepackage{verbatim}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+\makeatletter
+\@addtoreset{section}{part}
+\makeatother
+%\titleformat{\part}[display]
+%{\normalfont\LARGE\bfseries\centering}{}{0pt}{}
+
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+
+%----------------------------------------------------------------------------------------
+%    TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+\newcommand{\ignore}[1]{}
+
+\title{    
+\normalfont \normalsize 
+%\textsc{Dark Cosmology Center\\Copenhagen - Denmark} \\ [25pt] % Your university, school and/or department name(s)
+\horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+\huge  Gravitational lensing and radio interferometers probe sub-galactic dark matter structure\\
+\large (story of my life) % The assignment title
+\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{Saghar Asadi} % Your name
+
+\date{\normalsize 2012--2014 \\ Department of Astronomy \\ Stockholm University} % Today's date or a custom date
+
+\pagestyle{empty}
+
+\begin{document}
+
+\maketitle % Print the title
+\newpage
+\tableofcontents
+\newpage
+
+\begin{abstract}
+%Dark halo substructure may reveal itself through secondary, small--scale gravitational lensing effects on light sources that are macrolensed by a foreground galaxy. Here, we explore the prospects of using Very Long Baseline Interferometry (VLBI) observations of multiply--imaged quasar jets to search for submilliarcsecond--scale image distortions produced by various forms of dark substructures in the $10^3$---$10^{8}\ M_\odot$ mass range. We present lensing simulations relevant for the angular resolutions attainable with the existing European VLBI Network (EVN), the global VLBI array, and an upcoming observing mode in which the Atacama Large Millimeter Array (ALMA) is connected to the global VLBI array. While observations of this type would not be sensitive to standard cold dark matter subhalos, they can be used to detect more compact forms of halo substructure predicted in alternative structure formation scenarios. By mapping $\approx 5$ strongly lensed systems, it should be possible to detect or robustly rule out primordial black holes in the $10^3$----$10^6\ M_\odot$ mass range if they constitute $\gtrsim 1\%$ of the dark matter in these lenses. Ultracompact minihalos are harder to detect using this technique, but $10^6$----$10^8\ M_\odot$ ultracompact minihalos could in principle be detected if they constitute $\gtrsim 10\%$ of the dark matter.
+\end{abstract}
+
+\newpage
+\section{Structure formation}
+\label{sec:structure formation}
+{\bf This section needs a HARD polishing! If for no other reason, then simply because it's prone to plagiarism as I'm adopting the framework from this reference of mine and have not changed it much yet!!}
+
+Things I need to be able to make the conversion back and forth (by heart!):
+\begin{itemize}
+\item $v_{circ} - M_{vir}$
+\item $M_{vir} - M_{Ein}$ for my redshift combinations and density profile (at least relatively/roughly)
+\item $r (pc) - r (arcsec)$ in both source and lens plane
+\end{itemize}
+\subsection{Concordance model}
+%based on (arXiv: 1208.5931v2)
+The concordance model of cosmology is a special case of the FLRW world model currently accepted by most astronomers as the theoretical framework of cosmology, where gravity is the dominant interaction in our Universe which is homogeneous and isotropic on ``large enough'', i.e., $>\sim 100$ Mpc,  scales (cosmological principle). These models have been on the heart of modern cosmology from the beginning of the 20$^\mathrm{th}$ century, when the cosmological principle was mainly backed up with philosophical arguments such as the \emph{Copernican principle} stating that we do not occupy a special place in the Universe, rather than detailed observational evidence. As opposed to a few decades later when cosmic isotropy was confirmed by the cosmic microwave background, first by satellite COBE (ref?) and then WMAP (ref?), and very recently PLANCK(ref?). Besides, the homogeneity of the Universe is now backed up by large surveys such as the 2--degree field galaxy redshift survey (2dfGRS), and the Sloan digital sky survey (SDSS).
+
+Here I can go through the RW metric and its terms, but this is not important in the case of my project, so I'll skip it altogether and just talk about its physical interpretation instead!
+
+Dark matter as the currently second dominant energy contribution of the Universe is thought to be non--baryonic, cold (i.e. non--relativistic), very (?!) weakly interacting massive particle (WIMP). Some of these characteristics are inferred from cosmological evidence. For instance, observation of small--scale cosmic structure implies the DM to be non--relativistic, while the theory of cosmic nucleosynthesis results in the DM being non--baryonic. (elaborate and cite!!)
+
+\subsection{Newtonian theory of structure formation}
+Our Universe is neither homogeneous nor isotropic on scales smaller than 100 Mpc. Galaxies and galaxy clusters are huge overdens regions with respect to the mean matter density. They make up the cosmic web consisting of sheets and filaments. Even though the detailed account of structure formation is only possible in the framework of general relativity, the Newtonian approach is sufficient to give a simple analytical description of most of the processes. This section describes the Newtonian theory of structure formation (within our horizon) in the framework of the Concordance model, i.e. a flat geometry.
+
+The current large--scale structure in the Universe grew (by gravitational instability) from small perturbations in the homogeneous FLRW model. In order to solve perturbed hydrodynamic equations, we keep the first perturbed terms only (linear perturbation), and treat it in the framework of Newtonian theory implying (explain how exactly!) the following assumptions:
+\begin{itemize}
+\item The scale of perturbations is small compared to the horizon ($\ell \ll ct_0$)
+\item The flow is non--relativistic ($|v| \ll c$) and ($p \ll \rho c^2$) 
+\end{itemize}
+
+Moreover, we assume that the Universe is filled with an inhomogeneous, dissipationless ($p$ is very small!), and ideal fluid. (me: Therefore, we are basically dealing with DM particles as they are currently understood, and not baryons which are clearly dissipative!). Moreover, we are assuming what arises is adiabatic perturbations, meaning that the relative number density of flows remain constant. It also implies that different flows do not transfer energy and the conservation of energy is satisfied by each flow independently, $\rho_I \propto a_I^{--3}$
+
+Friedmann equations can be solved for various flows as long as they do not interact beyond gravity. This is the case for different fluids in the structure formation (i.e. post--inflation) era. The matter density, velocity field, pressure, gravitational potential, and entropy per unit mass of the fluid are shown as $\rho(t, {\bf r})$, ${\bf v}(t, {\bf r})$, $p(t, {\bf r})$, $\Phi(t, {\bf r})$, and $S(t, {\bf r})$, respectively. where $t$ is the cosmic time and ${\bf r}$ denotes the physical (not comoving!) coordinates. 
+Therefore, we can write the equation of mass conservation (\emph{continuity equation}):
+\begin{equation}
+\label{continuity}
+\frac{\partial \rho}{\partial t} + {\bf \nabla}.(\rho {\bf v}) = 0,
+\end{equation}
+the \emph{Euler equation}
+\begin{equation}
+\label{Euler}
+\frac{\partial {\bf v}}{\partial t} + {\bf (v .\nabla) v} = -\frac{{\bf \nabla} P}{\rho} - {\bf \nabla \Phi},
+\end{equation}
+the \emph{Poisson equation}
+\begin{equation}
+\label{Poisson}
+\nabla ^2 \Phi = 4\pi G \rho,
+\end{equation}
+and the conservation of entropy
+\begin{equation}
+\label{entropy}
+\frac{\partial S}{\partial t} + {\bf (v .\nabla)}S = 0,
+\end{equation}
+and an equation of state $P = P(\rho, S)$.
+Now, we add the perturbation term to each solution. Therefore we have:
+\begin{equation}
+\rho(t, {\bf r}) = \bar{\rho}(t) + \delta\rho(t, {\bf r})\nonumber
+\end{equation}
+\begin{equation}
+{\bf v}(t, {\bf r}) = \bar{{\bf v}}(t, {\bf r}) + \delta{\bf v}(t, {\bf r})\nonumber 
+\end{equation}
+\begin{equation}
+p(t, {\bf r}) = \bar{p}(t) + \delta p(t, {\bf r})\nonumber 
+\end{equation}
+\begin{equation}
+\Phi(t, {\bf r}) = \bar{\Phi}(t, {\bf r}) + \delta\Phi(t, {\bf r})\nonumber 
+\end{equation}
+\begin{equation}
+S(t, {\bf r}) = \bar{S}(t) + \delta S(t, {\bf r})\nonumber 
+\end{equation}
+The velocity field is homogeneous in the comoving coordinate system (and not the physical system we are working on)(are we assuming that? is it the direct consequence of homogeneity and isotropy?, else where does it come from?). The the comoving distance $D(t)$ is related to the proper distance as $D(t) = \frac{D_{prop}(t)}{a(t)}$. Moreover, $H^2 = (\frac{\dot{a}}{a})^2$ by definition(?). Therefore, the homogeneous velocity field is given by the Hubble Law as
+\begin{equation}
+\label{Hubble}
+\bar{\bf v}(t, {\bf r}) = H(t){\bf r} 
+\end{equation}
+The continuity equation for the homogeneous background becomes then
+\begin{equation}
+\dot{\bar{\rho}} + 3\bar{\rho}H(t) = 0 \nonumber 
+\end{equation}
+and the divergence of Euler equation, combined with the Poisson equation gives
+\begin{equation}
+\dot{H} + H^2 = -\frac{4\pi G\bar{\rho}}{3} \nonumber
+\end{equation}
+Now, we substitute perturbed fluid equations to hydrodynamic equations \ref{continuity}, \ref{Euler}, \ref{Poisson}, and \ref{entropy} and keep only the linear terms.
+\begin{equation}
+\label{continuity_pert}
+\frac{\partial \delta\rho}{\partial t} + \bar{\rho}{\bf \nabla}.\delta {\bf v}  + {\bf \nabla}.(\delta \rho {\bar{\bf v}}) = 0
+\end{equation}
+\begin{equation}
+\label{Euler_pert}
+\frac{\partial\delta{\bf v}}{\partial t} + (\delta{\bf v .\nabla}){\bf \bar{v}} +({\bf \bar{v} . \nabla})\delta{\bf v}  = -\frac{{\bf \nabla }}{\bar{\rho}}(c_s^2 \;\delta\rho + \sigma \;\delta S) - {\bf \nabla} \delta{\bf\Phi} 
+\end{equation}
+\begin{equation}
+\label{Poisson_pert}
+\nabla ^2 \delta\Phi = 4\pi G \delta\rho
+\end{equation}
+\begin{equation}
+\label{entropy_pert}
+\frac{\partial \delta S}{\partial t} + {\bf (\bar{v} .\nabla)}\delta S = 0
+\end{equation}
+In the case of the Euler equation we use
+\begin{equation}
+\frac{1}{(\bar{\rho}+\delta\rho)} \simeq \frac{1}{\bar{\rho}} + \frac{\delta\rho}{\bar{\rho}^2}+ \dots \nonumber \\
+\end{equation}
+Moreover, we substituted the perturbed EoS at the first order with $\delta P = c_s^2 \; \delta\rho + \sigma \; \delta S$, where $c_s^2 = (\partial \bar{P}/\partial \bar{\rho})_{\bar{S}}$ is the square of the sound speed and $\sigma = (\partial \bar{P}/\partial \bar{S})_{\bar{\rho}}$. Note that the EoS of an ideal gas is given by $P = \frac{\Re_*}{\mu} \rho T$, where T is related to S with the speed of sound, c. (how?). In other words, EoS of an ideal gas is given by P =  
+Now, by going from physical coordinate system $(t, {\bf r})$, to comoving $(t, {\bf x})$ defined as $x = r/a(t)$ and the proper time $d\tau = dt/a(t)$, we can simplify our hydrodynamic equation set by using transformations below.
+\begin{eqnarray}
+{\bf r} &\rightarrow& a(t) {\bf x}  \nonumber \\
+%\Rightarrow \left\{
+%	\begin{array}{1 1}
+{\bf \nabla_r} &\rightarrow& \frac{1}{a(t)}{\bf \nabla_x} \nonumber \\
+\left.\frac{\partial}{\partial t}\right |_{\bf r} &\rightarrow& \left.\frac{\partial}{\partial \tau}\right |_{\bf x} - \frac{1}{a(t)} {\bf \bar{v}}.{\bf \nabla_x} \nonumber
+%	\end{array}
+\end{eqnarray}
+According to \ref{Hubble}, one can substitute $\bar{\bf v}$ with $H{\bf r}$ in the physical coordinate system and therefore $\dot{a}{\bf x}$ in the comoving system of coordinates. Therefore,
+\begin{equation}
+{\bf \nabla . \bar{v}} = 3H
+\end{equation}
+and
+\begin{equation}
+(\delta{\bf v.\nabla})\bar{\bf v}/a = \delta{\bf v}H 
+\end{equation}
+Then the linearized hydrodynamic equations become:
+\begin{equation}
+\label{continuity_1}
+\delta\dot{\rho} - \frac{1}{a}v.\nabla \delta\rho + \frac{\bar{\rho}}{a}\nabla . \delta v + \frac{1}{a} 3\delta\rho H = 0
+\end{equation}
+\begin{equation}
+\label{Euler_1}
+\delta \dot{v} - \frac{1}{a}v.\nabla \delta v + \delta vH + \frac{1}{a}(v.\nabla)\delta v = - \frac{\nabla}{a\bar{\rho}}(c_s^2\delta\rho + \sigma\delta S) - \frac{1}{a}\nabla \delta\Phi
+\end{equation}
+\begin{equation}
+\label{Poisson_1}
+\frac{1}{a^2}\nabla^2\delta\Phi = 4\pi G\delta\rho
+\end{equation}
+\begin{equation}
+\label{entropy_1}
+\delta\dot{S} - \frac{1}{a}v.\nabla \delta S + \frac{1}{a} (v.\nabla) \delta S = 0
+\end{equation}
+
+Now, this guy takes the FT of the above equation set with respect to the comoving coordinates, to obtain them for a given mode ${\bf k}$, but I do not understand why!(beginning of page 32 in his manuscript!), then discusses three individual perturbation modes (one entropy mode, two vortical modes and two adiabatic modes) individually and concludes that the only interesting mode for structure formation in an expanding Universe would be the adiabatic modes, while the most general solution is a superposition of all these five!
+
+{\bf I leave the structure formation here now and go through halo discussions first, then come back to this later!}
+
+%\subsection{Hierarchical structure formation}
+%Right after recombination ($z=1100$ and assuming $T = 3000$K), the Jeans mass is $M_J \sim 2 \times 10^6 M_\odot$, i.e. just about the mass of a dwarf galaxy. Meaning, anything smaller than this could not collapse, and anything larger would, but on the other hand, more massive objects are less dense, and therefore take longer to collapse. Formal Jeans equation does not really apply to developing larger structures, rather ensembles of smaller objects fall together to form the larger structure.
+\label{sec:structure formation}
+
+\newpage
+\section{Dark matter}
+The ``missing matter" in the Universe has represented itself both locally, i.e. in the galactic disk and around the Sun, and globally in the past century and even though the problem has been approached from the particle--physics point of view in addition to the cosmological one, it is still considered as one of the biggest challenges of both! On the one hand, modern data suggests an insignificant amount of dark matter in the Solar vicinity which is made of baryonic but not luminous matter such as faint stars or Jupiter--like objects. In short, according to our current understanding of the Universe, dark matter is the dominant matter component of the Universe.
+
+\subsection{Cosmological evidence}
+%http://www.quantumdiaries.org/2013/06/26/does-dark-matter-really-exist/
+\subsubsection{Masses of galaxy clusters}
+In the beginning of 1930s, Zwicky ({\bf cite!}) was first to notice the order--of--magnitude difference in dynamical mass of the Coma cluster with the mass derived from luminosities of individual galaxies. The discrepancy was not recognized as an issue until after its persistence in various cases ({\bf cite!})\ignore{cite Kahn \& Woltjer 1959 about the Andromeda's negative redshift and masses of galaxy groups Holmberg 1937! or rather just focus on rotational curve discrepancies whose agreement needs a new population of stars tenfold the regular ones in the galaxy with very large M/L  Einasto et al. 1974 ans Ostriker et al. 1974}. The previously--unknown population of dark (or high mass--to--light--ratio) matter was proven to dominate the mass budget of the Universe. The mean density of the matter was shown to be $\sim 0.2$ of the critical density of the Universe and different models for the dark matter started appearing in the literature. Firstly, the missing matter was thought to be in faint stars or hot gas but both failed to explain the situation\ignore{cite and explain why! or maybe not as it's not really important now!!}.
+
+**Since (non--baryonic) dark matter is needed for the gravitational clustering and structure formation in the Universe as well as resolving the controversy ({\bf what controversy?}) about Big Bang nucleosynthesis, essential information about the nature of dark matter comes from studying the cosmic web and CMB.
+
+\subsubsection{Galactic rotation curves}
+In the end of the 20$^\mathrm{th}$ century, both optical(Rubin et al. 1978, 1980) and radio(Bosma 1978) data confirmed the flat rotational curves of galaxies at large radii providing important evidence for the presence of massive halos around galaxies. This was followed by new X--ray observations of hot gas in galaxy clusters confirming that the hot gas reservoir cannot explain the missing mass either. The X--ray data, additionally, provided new measurements of the velocity dispersions of galaxies in clusters, confirming the previous dynamical mass estimates(Forman et al. 1972, Gursky et al. 1972, Kellogg et al. 1973). Another independent probe for mass of galaxy clusters was gravitational lensing, which served as yet another support for the presence of a dark massive component.({\bf cite!})
+
+\subsubsection{Gravitational lensing}
+The mathematical framework of gravitational lensing is a commonly--accepted framework in astronomy for a long time. However, only after the general relativistic corrections to the Newtonian formalism of gravitational lensing, the dark matter problem arose in this context. Gravitational lensing, as an accurate and reliable gravitational mass measurement of the lens, confirmed the discrepancy between the gravitational and luminous mass both on galactic and galaxy cluster scales.
+
+\subsubsection{CMB temperature fluctuations}
+As discussed in section \ref{sec:structure formation}, structures in the Universe are believed to have grown from small fluctuations in the density field of the Universe after the era of recombination. Density fluctuations are of the same order as temperature fluctuations ({\bf cite!})\ignore{\bf why? look back in the structure formation part!}, therefore measuring temperature fluctuations of the CMB reveals the order of magnitude of density fluctuations in the early Universe. However, taking only the baryonic matter into account, these fluctuations are two small to give rise to any structure formation in our expanding Universe. While the required amount of matter in the Universe is $\sim 0.2 - 0.3$ in units of the critical cosmological density ({\bf cite?}), the big bang nucleosynthesis puts an upper limit of $\sim 0.04$ on the amount of baryonic matter ({\bf cite!}) supporting the non--baryonic nature of dark matter. Moreover, if dark matter is non--baryonic, its density fluctuations can start growing already at the radiation--dominated era while the growth of baryonic matter is damped by radiation, therefore this could explain small density fluctuations of the CMB.
+The first non--baryonic candidate for dark matter particles was neutrino. However, simulations based on this model (Doroshkevich \& Shandarin 1978) indicated that neutrino--dominated dark matter cannot give rise to small--scale structure in the distribution of galaxies, due to the cut--off at the power--spectrum of these rapidly--moving particles. This also suggested that suitable candidates for dark matter particles not only need to be dissipationless, but also required to be much more massive than neutrinos (Blumenthal et al. 1982, Bond et al. 1982, Peebles, 1982). Therefore, the first numerical cosmological simulations based on cold dark matter (CDM) was performed by (Melott et al. 1983) which could represent the small structures of the Universe much more accurately.
+
+%Despite all the effort for direct detection of dark matter particles, the nature of these particles is still unknown. However, there are recent claims of a double--peak gamma--ray spectrum detections with the Fermi satellite (LAT), both in the center of our galaxy and nearby galaxy clusters (Weniger 2012, Tempel et al. 2012a, Hektor et al, 2013) which is interpreted as a signal of dark matter annihilation. ({\bf consider elaborating more on this and self--annihilating dark matter in general!})
+
+The discrepancy between the expected amplitude of temperature fluctuations in the CMB data based on structure formation (density/temperature fluctuations of the order of $10^{-3}$) cannot be explained without a large amount of non--baryonic matter in the radiation--dominated era. Another strong argument supporting the presence of some matter in addition to the baryonic matter in the Universe is also coming from the CMB. ({\bf the first peak in baryonic acoustic oscillations})
+
+%Einasto 2013 -- Profumo 2012 -- Popolo 2013 -- Profumo 2013
+
+\subsection{Detection methods}
+%%TASI lectures on astrophysical probes of dark matter
+\subsubsection*{Indirect detection of DM particles}
+Actually, there is a category of methods, this author calls ``very indirect'' methods for detecting dark matter and all cosmological/astrophysical effects induced by dark matter is included in this category. On the other hand, gamma--rays and neutrinos are ``not--so--indirect'' probes of dark matter in his book.
+
+3 main processes to study, (a) \emph{pair--annihilation}, (b) \emph{decay of DM particles into SM ones}, (c) \emph{elastic scattering between DM and SM particles}, where SM means standard model particles, i.e. baryons!
+Observing the rate of SM particle production places constraints on DM particles via processes (a) and (b).
+Momentum (mass) of DM particles is set by observing energy scale of SM ``messengers'' via (c).
+The type of SM particles produced in (a) is strongly dependent on details of DM particle model.
+
+In the very early Universe, when matter and radiation was coupled, at those high temperatures, the particle interaction ($\Gamma$) rate was larger than the Hubble expansion rate (H), we call the point in time/temperature where $\Gamma \sim H$, ``freeze--out''. After this point, particle species just ``redshift'' whatever momentum and number density they had at this point. This point differs for various particle species, with different number densities and interaction cross sections. If the particle species freeze out while they are relativistic, they are called \emph{hot relics}, otherwise they are \emph{cold relics} because the freeze--out temperature is much lower than the mass of the particle. The details of DM particle model puts an upper limit as well as a lower limit to the mass of \emph{cold} dark matter particles. This lower limit corresponds to the mass of first structures that gravitationally collapsed in the Universe, and for a typical WIMP model is $\sim M_\oplus \simeq 10^{-6} M_\odot$ ({\bf cite!}). However, this cut--off limit changes significantly in various models with substantial consequences for the dark matter predictions on small scales! 
+
+\subsubsection*{self--annihilating dark matter and gamma--ray emission}
+Despite all the effort for direct detection of dark matter particles, the nature of these particles is still unknown. However, there are recent claims of a double--peak gamma--ray spectrum detections with the Fermi satellite (LAT), both in the center of our galaxy and nearby galaxy clusters (Weniger 2012, Tempel et al. 2012a, Hektor et al, 2013) which is interpreted as a signal of dark matter annihilation. ({\bf consider elaborating more on this and self--annihilating dark matter in general!})
+
+Apart from gamma--ray hints of DM from the galactic center, the diffuse isotropic gamma--ray background (IGRB) at the new Fermi IGRB measurements could also place constraints on $M_\mathrm{min}$ of dark matter halos. ``A more detailed analysis of the IGRB, with new Fermi IGRB measurements and modeling of astrophysical backgrounds, may be able to probe values of $M_\mathrm{min}$ up to $\sim 1 M_\odot$; for the 130 GeV candidate and $\sim 10^{-6} M_\odot$; for the light DM candidates. Increasing the substructure content of halos by a reasonable amount would further improve these constraints.'' %\bibitem[Ng et al.(2014)]{2014PhRvD..89h3001N} Ng, K.~C.~Y., Laha, R., Campbell, S., et al.\ 2014, \prd, 89, 083001 
+
+
+
+\subsubsection*{Modified theories of gravity}
+%IAC Talk (Dark matter in galaxies)
+The relativistic modification of gravity came around after the Newtonian theory of gravity failed to predict correct position of Mercury in its orbit. A few decades later, and not even general relativity could estimate the correct dynamics for the galaxies without including a large amount of a mysterious invisible matter, soon called the ``dark matter''. Even today, around 80 years after Zwicky first mentioned the discrepancy, we have no clue what dark matter is and if this is the right approach at all, in comparison to further modification in our theory of gravity. 
+%%%%%%%%%%
+Therefor, another appealing idea, suggested by (Milgrom \& Bekenstein 1987) was questioning the validity of the Newtonian law of gravity in large distances. This theory which is now know as modified Newtonian dynamics (MOND) has been able to explain a number of observational data without any dark matter. However, there are still a number of observational evidence in favor of non--baryonic dark matter which is inexplicable with MOND. 
+
+
+
+%The observations of the cosmic microwave background radiation (CMB) and the large--scale structure of galaxies (for instance using the Sloan Digital Sky Survey, SDSS, or the 2--degree survey) supported the existence of dark matter, however the questions about its nature remained inconclusive. 
+%/////
+
+\newpage
+\section{Small--scale $\Lambda$CDM vs. observational evidence}
+Dark matter seems to be dominating the matter content of our Universe. Our understanding of DM is particles interacting only through gravity. Therefore, the simplest way to perform cosmological N--body simulations is to run them with pure dark matter. While DM contribution in the mass budget of the Universe is so much more than the baryonic matter that a pure DM simulations hardly counts as a real simplification, this approach simplifies the problem by far! As much as this happened to be a good solution for getting a handle on how the Universe works on large--scale, we keep facing systematic inconsistencies when it comes to small scales structure. The CDM--based cosmological simulations robustly predict the cosmic structure formation which does not seem to need any baryonic matter inclusion. We tend to assume that ``mass follows light'' therefore galaxies are considered as tracers of dark matter halos. Besides, since dark matter has --yet-- remained unobserved, this is a practical assumption to test our hypotheses. Turns out that the observed cosmic web and filaments are in good agreement with predictions from CDM--only simulations. However, to test the small--scale predictions, one needs to make detailed comparisons between maps of galaxies with certain characteristics and corresponding halos. There are certain aspects to this comparison, from which I will mention those that seem to be fundamentally troublesome.
+\begin{enumerate}
+\item Abundance matching (The missing--satellites problem)
+\item Central slope (The core--cusp problem)
+\item Normalization (The too--big--to--fail problem)
+\item Spatial distribution (The disk of satellites)
+\end{enumerate}
+\subsection{Abundance matching}
+The first and simplest test for small--scale CDM--based simulations is comparing low--mass end of predicted dark matter mass function with the faint--end of luminosity function of observed galaxies. Connecting the dark halo mass function and dwarf galaxy luminosity function needs a linking assumption which lies at the heart of abundance--matching techniques; \emph{Galactic luminosity is a monotonic function of halo mass}. (Klypin et al. 1999, ?) show that the CDM predictions already fail at this test. Of course, this is an area where observations suffer from different kinds of biases. Therefore, the first potential solution to the mismatch is that the source of discrepancy is practical rather than physical. However, despite the corrections based on detection thresholds and incompleteness, beside further detections of 12 (?) ultrafaint dSphs of the MW in (2005 ?), the mismatch is still persisting within more than an order of magnitude. The more physical explanation could be due to baryonic physics. This is a much more complicated solution to investigate and several mechanisms has been suggested in relation to this solution all of which suppress star fomarion in low--mass CDM subhalos. Some of these mechanisms are following: ``inefficient cooling of atomic and molecular gas in halos of virial temperature $T_{vir} \leq 10^4$ K ($M_{vir} \leq 10^8 M_\odot$), loss of baryons to tidal and ram--pressure stripping and/or to photo--evaporation induced by cosmic reionization (Me: Doeen't Bullock et al. 2010 argue that there is more DM loss in tidal stripping processes than there is baryon loss?), and inefficient accretion of baryons due to supersonic relative velocity between baryons and dark matter shortly after recombination.'' Whatever the particular mechanism is, the star formation efficiency needs to be less than ``normal'' in low--mass CDM halos.
+
+\subsection{Central slope}
+One of the long--standing systematic issues of CDM halos is their density profiles. Until recently (?), the main consensus was that the ``universal'' profile describing simulated dark matter halos was a two--parameter density profile, suggested by NFW 1997, where the central logarithmic density slope changes as $1/r$. The logarithmic slope of this profile gets less steep (?) with increasing $r$ and can be described as $\rho(r) \propto r^{-3}$ around the virial radius. Beside the halo mass, $M_{200}$, the second parameter is the \emph{concentration parameter} of the halo, $c \equiv r_{200}/r_s$, where $r_{200}$ is the virial radius and $r_s$ indicates the \emph{scale radius}, i.e. where the logarithmic slope is $-2$. The concentration parameter describes how the logarithmic slope changes. However, soon the dynamical measurements of stellar and gas content in the central kpc of dwarf galaxies (?) showed that these measurements favor a constant--density for these regions. While further, high--resolution measurements of this kind from various low--surface brightness dwarf galaxies and dark matter--dominated galactic rotation curves support the cored profiles, the higher resolution CDM simulations also tend to indicate more consistency with a three--parameter density profile rather than the traditional NFW ones. The extra parameter describing dark halo density profiles is the shape(?) index, $\alpha$, which gives the density profile more flexibility in shape (chetori tosif konam ino??). However, still fails to describe observed dark matter halos inhabiting baryonic matter. 
+
+On the other hand, even though the density profiles of simulated halos are universal, i.e. independent of the mass scale, the high--mass end of the halo mass function and luminous part of galaxy luminosity function do not indicate any discrepancies regarding the central DM slope. The reason is that there exist several independent methods to derive the luminous and dark matter content of luminous/massive galaxies in their central kpcs. Resolved stellar and gas dynamical measurements probe the baryonic component, and the X--ray temperature maps plus weak and strong gravitational lensing measurements can trace the mass in these galaxies. Therefore, it is easier to decide whether it is the dark matter or the stellar mass dominating the central kpcs of the galaxy. However, the challenging part is subtracting the dynamical mass contribution from stars and deriving the dark matter--only density profile, which needs precise modeling of stellar populations and mass function in the galaxy. ``Recent estimates of such combined measurements suggest that the \emph{total} density profiles of relaxed clusters are consistent with cusped CDM halos, while the DM--only contribution is significantly shallower near the center, in cores of $\sim 10$ kpc--sized.''
+%Sand, D. J., Treu, T., Smith, G. P., and Ellis, R. S. The Dark Matter Distribution in the Central Regions of Galaxy Clusters: Implications for Cold Dark Matter. Astrophysical Journal 604, 88–107, March (2004). \& Newman, A. B., Treu, T., Ellis, R. S., Sand, D. J., Nipoti, C., Richard, J., and Jullo, E. The Density Profiles of Massive, Relaxed Galaxy Clusters. I. The Total Density Over Three Decades in Radius. Astrophysical Journal 765, 24, March (2013).
+
+\subsection{Normalization}
+Recently, (Boylan--Kolchin, Bullock and Kaplinghat, 2011) pointed out another discrepancy in the structural properties of DM subhalos and dSphs in the local group. While one would naively expect that the most luminous dwarf galaxies correspond to the most massive subhalos, high--resolution cosmological simulations persistently produce massive subhalos ($M_{vir} \geq 10^{10} M_\odot$) which are too concentrated in their central kpc to host any of the satellite galaxies around the Milky Way or Andromeda. (\cite{Boylan--Kolchin11}). The combination of measured effective (half--light) radius $R_e$ and velocity dispersion $\sigma$ of a dSph with simple dynamical arguments (chi daghighan? + ref.) can constrain the total mass of the dwarf within $R_e$. The Upper mass limits derived for the 8 most massive satellites of the MW, (excluding the Magellanic clouds), are systematically smaller than those of the 10 most massive subhalos in high--resolution cosmological simulations, within the same radii (Aquarius/Millennium/LV2 in this case?). Therefore, the most massive subhalos cannot host the most luminous dSphs of the MW. Consequently, unless MW halo is a very peculiar system, the most massive subhalos of the galaxy remain dark while the most luminous dSphs reside in less--massive dark matter halos. One naive explanation of this discrepancy could be that the halo of the MW is less massive than previously estimated and therefore, the local massive dSphs should be compared to simulated subhalos of a less--massive halo. However, ``the simplest formulation of the TBTF problem is as following: the mean densities inferred within the central few--hundred pc of the most luminous dSphs are systematically smaller than predicted in CDM simulation.'' Therefore, the problem is pointing to a more fundamental difference in simulated CDM halos and dSphs than the uncertainty in the MW halo mass.
+
+Another proposed solution to the problem is that one should be cautious about the infall redshift of the halos when make an analogous between the luminosity function of dSphs and the mass function of their inhabit dark halos. READ MORE!
+
+\subsection{Spatial distribution}
+
+
+
+
+
+One major concern is the fact all these problems with the CDM paradigm arise on the same scale. (See ({Penarrubia et al. 2012}))
+\subsubsection*{The ``missing satellite'' and ``core/cusp'' problems}
+Collision--less dark matter simulation, do not contain baryons and therefore the most massive subhalos in these simulations are associated to the most luminous satellites. DM subhalo mass function is divergent on the low--mass scale, meaning for a consistent abundance match between satellite galaxies and DM subhalos, a strong suppression of star formation in low--mass (i.e. $M<10^{10} M_\odot$) subhalos is required. 
+The abundance of collapsed CDM subhalos increase exponentially toward small scales as $dn/dM_{vir} \propto M_{vir}^{-1.9}$.
+N--body simulations including pure $\Lambda$CDM, assume the gravitational interaction between WIMPs to be dominating the structure formation. As a result, one would expect galaxies to form within dark matter halos distributed in a mass function of the form $dn/dM_{vir} \propto M_{vir}^{-1.9}$, diverging in the low--mass end (Springel et al. 2008). Moreover, these halos form in a universal density profile centrally diverging as $\rho \propto r^{-1}$ , while the logarithmic slope decreases in larger radii, i.e. $\rho \propto r^{-3}$ for $r>r_s$ ({Navarro et al. 1996}). On the other hand, dwarf and low--surface--brightness galaxies show flat mass--density profiles in the center ({Oh et al. 2011}) as well as a much flatter mass function than the one predicted by the simulations ({Klypin et al. 1999, Moore et al. 1999}). Either non--CDM models or non--gravitational interactions (like DM annihilation and such?) suggest solutions to these problems. However, there is not yet a single prescription resolving both discrepancies simultaneously. One proposed solution to the core/cusp problem lies in supernova gas flows, transferring energy to the dark matter component and flattening central density profiles. There are a number of proposed solutions to the suppression of galaxy formation in low--mass halos, e.g. ``SN feedback, inefficient cooling of ISM, cosmic reionization, UV radiation, and acoustic oscillations'' (e.g. Tassis et al. 2008, Bovill \& Riccotti 2009, Sawala et al. 2010, Bovy \& Dvorkin 2012). However, non has been successful to mark the discrepancy solved, moreover, the provided explanations do not work in coupling the missing satellite problem to the core--cusp issue. According to their model, ``the (minimum) star formation efficiency required to form DM cores in dSphs leads to an over--abundance of luminous satellites!''. Finally they conclude that the high--z core--formation cannot actually resolves the tension of opposite demands on star--formation efficiency \emph{on the same mass scales}, but only shifts it to lower luminosities.
+
+The problem arises when no M(total halo mass)--L relation can be found in the faint--end of galaxy luminosity function from observations of ultrafaint dSphs. Two possible explanations: The physical one is that the scatter in L at fixed $V_{max}$ is very large and is due to ``photoionization or suppression below the atomic cooling limit''. In other words (my interpretation), the total baryonic content is so low that once a small population of stars form within the halo they photoionize the rest of the baryons and there is not enough matter for efficient cooling (there only exists atomic cooling processes which doesn't offer sufficient cooling for the star formation cycle to continue), therefore, even though the halo is quite massive, the luminosity remain really low. The other possible explanation, on the other hand, is the product of a selection bias, as ``most ultrafaint galaxies inhabit halos with $M_{300}\leq 10^7 M_\odot$, but they are too diffused to have been discovered.'' 
+CONCLUSIONS AND DISCUSSION ro bekhun! (Bullock et al. 2010)
+
+
+
+DISCUSSION ro bekhoon!(Penarrubia et al. 2012)
+({Penarrubia et al. 2012}) make an estimate of the amount of energy required for cusp removal in the case of two massive MW dwarf spheroidal with relatively large observed cores (the dark halo core extends well--beyond the luminous radius of the dwarf!). They rule out the NFW profile for the halos of these galaxies with high confidence levels. They show that to reconstruct the observed large cores in thesw dwarf spheriodals from the cuspy DM profiles of the same $M_{vir}$, $\sim 10^{53} -- 10^{55}$ erg energy is required. Assuming the SNeII as the unique sorce of exerting such amount of kinematic energy to the gas in the central kpc of the dwarf, the model requires either (i) very efficient (close to $100\%$) SNeII energy transfer (into kinetic energy of the gas). This value, however, would be in disagreement with the relation between metallicity and luminosity of dSphs which suggests a value of $\sim 0.5\%$ instead (Governato et al. 2010) (ii) star--formation history peaking at very high redshifts (z$\geq$6) (why??) (iii) a very top--heavy IMF, therefore large number of SNe with less efficiency in energy transfer, (iv) ``substantial satellite disruption or other stochastic effects to ease the substructure abundance constraints'' (what??), otherwise keeps the low--mass end of galaxy mass functions cuspy. These small galaxies lack enough star formation, therefore SN--driven gas flow is insignificant. However, this requires high star formation efficiency in dwarf spheroidals with $M_{vir} \leq 10^{10}M_\odot$ (for them to show ``cored'' density profiles), while the missing satellite problem (flatter observed galaxy mass function than the predicted halo mass function diverging with $dn/dM_{vir} \propto M_{vir}^{-1.9}$ at the low--mass end),  strong suppression of star formation in order for these low--mass halos (on the same mass--scale) to remain dark (Penarrubia et al. 2012). They also argue that cusps must be removed in very high redshifts ($z > 6$) which is inconsistent with stellar ages of the two studied MW dSphs.
+
+In 2010, Bullock et al. wrote a paper on a potentially large population of low--luminosity dwarf galaxies within the halo of the MW. They argue that in case we impose a halo low--mass limit to the galaxy formation, only a handful of such dwarfs are expected in the halo of the galaxy. On the other hand, in the absence of such threshold in galaxy formation, the presence of these dwarfs, which are only different from the known ultrafaint dwarf galaxies is their slightly less--massive DM halos, implies that our common mass scale for MW dwarfs is merely an artifact of selection bias. 
+ 
+
+\subsubsection*{Halo density profiles}
+2--parameter NFW or 3--parameter Einasto ?
+\subsection{Classical CDM subhalos (NFW)}
+\label{NFW}
+At $z=0$, the CDM scenario predicts the existence of dark matter halos with masses ranging from $\sim 10^{15}\ M_\odot$ down to the cutoff in the density fluctuation spectrum, which is set by the detailed properties of the CDM particles. For many types of WIMPs, this cut--off lies somewhere in the range $\sim 10^{-11}$--$10^{-3} M_\odot$ \cite{Bringmann}. However, alternative models involving superweakly interacting particles (superWIMPS) and MeV mass dark matter may place the cutoff as high as $\sim 10^3$--$10^8 \ M_\odot$ \cite{Hisano et al.,Hooper et al.}. 
+
+As these low--mass halos merge to form more massive ones, some temporarily survive in the form of subhalos within the larger halos. N--body simulations indicate that the subhalos within a galaxy--sized CDM halo should follow a mass function of the type:
+\begin{equation}
+\frac{\mathrm{d}N}{\mathrm{d}M_\mathrm{sub}}\propto M_\mathrm{sub}^{-\alpha},
+\label{subhalo mass function}
+\end{equation}
+with $\alpha\approx 1.9$ \cite{Springel et al.,Gao et al.}. The relative contribution from subhalos with mass $M\gtrsim 10^5\ M_\odot$ to the dark matter surface mass density at the typical location of macroimages in a galaxy--mass lens is $f_\mathrm{sub}\approx 0.002$ \cite{Xu et al. b}, albeit with a large scatter \cite{Chen et al.}. 
+
+The density profiles of isolated field halos in CDM simulations can be reasonably well described by Navarro, Frenk \& White (\cite{NFW}; hereafter NFW) profiles:
+\begin{equation}
+\rho(R)=\frac{\rho_\mathrm{i}}{(R/R_\mathrm{S})(1+R/R_\mathrm{S})^{2}}, 
+\label{NFW}
+\end{equation}
+where $R_\mathrm{S}$ is the characteristic scale radius of the halo. The slope of the inner density cusp ($\beta = \mathrm{d}\ln \rho /\mathrm{d}\ln r $) in this profile is $\beta = -1$, and this makes it difficult for NFW halos in the dwarf--galaxy mass range to produce millilensing effects of the type we are considering in this paper. Typically, cusp slopes obeying $\beta\lesssim -1.5$ would be required \cite{Zackrisson et al.}. Later work has shown that models with inner cusp slopes that become progressively shallower towards the center provide even better fits to isolated halos in CDM simulations, eventually reaching inner slopes of $\beta \geq -1$ \cite[e.g.][]{Navarro et al. 10}. In the context of detecting millilensing effects from low--mass halos, this just makes matters worse, since the central density is reduced.
+
+Traditional universal NFW profile for dark matter halos, is a 2--parameter model which describes the mass--density of the halo by the its mass, and concentration parameter. The halo concentration parameter is defined as $c \equiv r_{vir}/r_s$, where $r_s$ is the scale radius (the radius at which $\rho \propto 1/r^2$). The mass and concentration parameter are correlated, through a shallow slope. Besides, concentration parameter also is correlated with redshift. The is, however, not a single recipe for the detailed dependencies (see Bullock et al. 2011, others? for different opinions!). 
+
+Once a halo falls into the potential well of a larger halo and becomes a subhalo, it is stripped of material -- primarily from its outskirts -- due to interactions with its host halo and with other subhalos. This alters the density profile of the subhalo compared to an isolated halo of the same mass \cite[e.g.][]{Hayashi et al.,Kazantzidis et al.}, but these modifications tend to diminish rather than enhance the ability of a CDM subhalo to produce detectable millilensing effects \cite{Zackrisson et al.}. 
+
+To demonstrate that standard CDM subhalos do not provide a significant ``background'' of millilensing events in the observational situation that we consider, we have therefore adopted NFW profiles for these objects, since this results in an overoptimistic estimate on the millilensing effects that standard CDM subhalos are likely to produce. Even then, the chances of detecting millilensing effects from these objects turn out to be negligible in the observational situations we are considering. 
+
+To derive the $R_\mathrm{S}$ values of our NFW subhalo profiles, we adopt the mass--dependent concentration parameters $c=R_\mathrm{vir}/R_\mathrm{S}$ from either \cite{Bullock et al.} or \cite{Maccio et al. a}, where $R_\mathrm{vir}$ is the virial radius of the halo. Since both of these recipes predict higher concentration parameters for low--mass halos, and since more centrally concentrated profiles (i.e. profiles with higher $c$) are more efficient in producing millilensing effects, we calculate the subhalo concentration parameters based on their current masses rather than the masses they had prior to becoming subhalos. Since nearly all subhalos have lost considerable amounts of material \cite[e.g.][]{Vale \& Ostriker}, this also results in overly optimistic millilensing properties. 
+
+\subsection{Three--parameter alternative CDM halo profile (Einasto)}
+The more general variation of the NFW profile, gNFW relaxes the central logarithmic slope $\gamma$
+\begin{equation}
+\rho(r) = \frac{\rho_s}{(r / r_s)^\gamma(a + r/r_s)^{3-\gamma}},
+\end{equation}
+where $\gamma = 1$ gives the traditional NFW profile and $\gamma = 2$ is equivalent to a singular isothermal sphere (SIS).
+Another 3--parameter profile is the Einasto profile, the tree dimensional version of the Sersic profile for surface brightness of elliptical galaxies. Both high-resolution measurements of central stellar and gas content of low surface brightness dwarf galaxies, and high--resolution CDM simulations, tend to indicate more consistency with a three--parameter density profile rather than the traditional NFW ones. There are various studies confirming that CDM halos are better described by the Einasto profile, than the NFW one (e.g Dutton \& Maccio 2014, others!). The extra parameter describing dark halo density profiles is the shape(?) index, $\alpha$, which gives the density profile more flexibility in shape, i.e. $\gamma(r) = -dln\rho/dlnr \simeq 1/r$. 
+
+Navarro et al. 2004 found the Einasto index for halos in the mass range between dwarves and clusters is between 0.12 and 0.22, with an average value of 0.17. According to Hayashi \& White 2008 and Gao et al. 2008, $\alpha_E$ tends to increase with mass and redshift in halos of the Millennium simulation (Springer et al. 2005). From gravitational lensing point of view, Einasto profiles are more demanding to work with as for general $\alpha_E$ values, there is no analytical form for the surface mass density of these halos. Therefore, the lens equation needs to be solved numerically each time.
+
+However, Einasto profile still fails to describe observed dark matter halos inhabiting baryonic matter.   
+
+\subsubsection*{Halo concentration parameter $c$}
+Halo concentration is another parameter, in addition to the inner density slope that takes part in telling different halo models apart. The halo concentration parameter is defined as $c \equiv r_{vir}/r_s$, where $r_s$ is the scale radius (the radius at which $\rho \propto 1/r^2$). Halo virial radius as a function of redshift is calculated by ({Bullock et al. 2001}), while the concentration parameter follows a relation proposed by ({Maccio et al. 2007}).
+
+A cosmologically--motivated halo density profile is
+\begin{equation}
+\rho(r) = \frac{\rho_0 r_s^3}{(r_c + r)(r_s + r)^2},
+\end{equation}
+where $\rho_0$ is a characteristic halo density, $r_s$ is a scale radius (the radius at which $\rho \propto 1/r^2$), and $r_c$ is the core radius. 
+
+\subsubsection*{Maximum circular velocity $V_{max}$ and that of the infall epoch $V_{infall}$}
+\subsubsection*{Mass accretion history (MAH)}
+
+
+
+%\subsubsection*{The ``too--big--to--fail'' problem}
+%My project addresses two main challenges of the standard cold dark matter (CDM) model on subgalactic scale. The two problems are usually referred to as \emph{the missing satellites problem} and \emph{the too--big--to--fail problem}. 
+%\paragraph{The missing satellites problem:}
+%The number count of satellite galaxies in the local Universe vastly differs from that of subhalos predicted by CDM simulations. Based on the standard structure formation recipe, the smooth component of massive halos are built up from tidal stripping material from smaller ones. However, as this process occurs over several billion years, many small halos are expected to temporarily survive in the form of subhalos which make up $\sim 10\%$ of the mass of a galaxy--sized halo at z=0. (\cite{Gao11, Maciejewski11}) On the other hand, dwarf galaxies are expected to form in low--mass field halos, which would result in a large expected number of satellite galaxies within the dark matter halo of the central galaxy. It is commonly argued that this discrepancy could be explained by including feedback processes suppressing star formation in low--mass halos (\cite{Maccio10, Font11}) meaning that a large population of substructures with very high mass--to--light ratios in the halos of galaxies has remained undiscovered.
+%\paragraph{The too--big--to--fail problem:}
+%One naively expects to find the most luminous dwarf galaxies in the most massive subhalos and high--resolution cosmological simulations persistently produce massive subhalos ($M_{vir} \geq 10^{10} M_\odot$) which are too concentrated in their central kpc to host any of the satellite galaxies around the Milky Way or Andromeda. (\cite{Boylan--Kolchin11}). Some models suggest that these satellite galaxies correspond to more massive subhalos at higher redshifts. Therefore, the discovery of very massive substructures in the halos of galaxies at higher redshifts could help resolving this concern.
+
+%\paragraph{Role of gravitational lensing:}
+%The fact that gravity treats dark and luminous mass the same gives gravitational lensing a unique opportunity to provide an independent test for the presence of halo substructures (\cite{Zackrisson09}). Strong lensing by a foreground object can produce multiple images of a background light source. Measurements on strong lensing systems provide us with information about mass distribution of both the lens and the source. All different types of massive objects such as galaxies or galaxy clusters can serve as lenses and bend the light from their background. However, in order to study the sub--galactic structure of dark matter we need to look at a particular type of lensing systems which involve a single lens galaxy only. The foreground galaxy produces multiple images of the background light source, which are $\sim1$ arcsec apart. One way to use such systems to probe dark matter on sub--galactic scales is to study the small--scale distortions that halo substructure is expected to introduce in the surface brightness distributions of extended macroimages. 
+
+
+
+%Halos 2013 -- White_1
+Issues:\\
+1) Inner density profiles; NFW or the bulk of mass -- Central cusps (nature of DM)\\
+SPH simulations by Zolotov et al. (2012) suggest dynamics associated with star formation may flatten cores in more massive dwarfs\\
+2) Shapes as predicted: shapes from lensing (individual clusters or stacked galaxies) -- Orbits of the streams in the MW or M31 halos\\
+3) Substructure as predicted: Effects on disks? GCs? Streams? -- {\bf Effects on strongly lensed BG object} -- Satellite counts; abundances, $M_*$ vs. $V_{max}$ relations\\
+Gaps in the Pal5 star stream (at $> 99\%$ confidence) may be induced by $> 1000$ substructures within 30 kpc with $V_{max} > 1$ km/s, consistent with $\Lambda$CDM predictions, discussed in Carlberg, Grillmair $\&$ Hetherington 2013\\
+4) Correspondence of halo/subhalos to galaxies\\
+Galaxies form by cooling and condensation of gas in halo cores, they are associated with subhalos, not halos. Not all subhalos may have a galaxy. Not all galaxies may have a subhalo in a DM--only simulation -- Springel et al. (2001)\\
+Subhalo abundance matching is sensitive to numerical resolution (Guo $\&$ White 2013)\\
+%Halos 2013 -- Navarro_10
+CDM halos are formed inside--out.\\
+Substructure contributes less than $\sim 10\%$ of the total mass.\\
+CDM halo substructure appear to be self--similar. i.e. halos of different mass, properly scales, look alike.\\
+The --scaled-- subhalo mass function is independent of the host halo mass (Zheng et al. 2005 -- Lravtsov et al. 2004)\\
+Typically, halos have only one subhalo more massive than $\sim 3\%$ of the host halo Virial mass. (Wang et al. 2012)\\
+Only 3 MW satellites appear to inhabit halos more massive than $V_{max} \sim 30$ km/s, while --on average-- 10 subhalos more massive than this are present in Aquarius halos (Boylan--Kolchin et al. 2012)\\
+The spatial distribution of subhalos is independent of halo mass. Most subhalos populate the outer regions os the halo.\\
+The shape of the mass profile of the DM halos is roughly independent of halo mass and cosmological parameters.\\
+Density profiles are {\bf cuspy} and clearly differ from power laws.\\
+Usually parameterized by a mass, $M_{200}$, and concentration, $c \equiv r_{200}/r_s$\\
+Models to predict the mass and redshift dependence of the concentration (eg. Bullokc et al 2001, Eke et al 2001, Neto et al 2007, Gao et al. 2008)\\
+%Recent analysis indicates a puzzling upturn in the concentration of rare, massive halos, which is clearly inconsistent with a formation redshift interpretn for the concentration. (Prada et al. 2010)\\
+The mass profile of CDM halos deviates slightly but systematically from universality in very high--resolution simulations. Therefore, a third parameter seems needed to describe the mass profile in detail, as in the Einasto profile ($\alpha = 0.17$ resembles the NFW profile). (Navarro et al. 2004)\\
+Based on the Millennium simulations: The concentration depends systematically but {\bf weakly} on halo mass. This relation, and its dependence on redshift have proved very difficult to reproduce. Models that use the halo accretion history rather than a formation redshift seem to work best (Wechsler 2002, Zhao et al. 2003). At a given mass, average halos are NFS--like, outliers are not. (Ludlow et al. 2013)\\
+The origin of the concentration and shape parameters: The concentration measures the characteristic density of a halo ans is assumed to trace the formation redshift of the halo, although the definition of the latter has been unclear! Mass profile and accretion history are closely related (Lu et al. 2006, Wu et al. 2013)\\
+The shape of the mass profile resembles that of the accretion history. Both are well approximated by the NFW shape. Similarity of mass profiles is due to similarity of mass accretion histories. \\
+Generally, there is good agreement between the mass profiles of galaxy clusters and those of CDM simulations. Only some tension remains regarding the concentration of strong--lensing clusters AND the slope of the inner density cusp. The slightly higher concentration of strong--lensing clusters is thought to reflect projection effects of highly aspherical clusters.\\
+%One thing I'm gonna need to remember is the regime where strong lensing can meaningfully probe density profiles. I think this rather famous plot is for galaxy clusters but it shows that it's only in a range between 10 and 100 kpc that multiple images technique is a good probe for the density profile. For smaller radii, kinematics dominate and for the larger radii, weak lensing is what's probing the density profile. I do not know why, especially when there is no baryons... (Newman et al. 2013)
+cusp vs. core problems highlights for dwarf galaxies remain inconclusive. Do we really need baryons to modify substantially the dark matter halo??\\
+
+%Halos 2013 -- Koopmans_2
+Dark matter on scales of $< 1$ kpc: Is there CDM substructure? Methods: flux ratio and surface brightness anomalies
+In a galaxy--galaxy lensing system, the Einstein radius of the system is much larger than can be explained by stars alone for any reasonable IMF, lens or dynamical model.
+
+Dark matter on scales of 1--10 kpc: What is the DM fraction inside $R_{eff}$, $R_{Ein}$?
+How is DM distributed (slope/concentration)?
+Can DM explained by dark stars? IMF??
+
+DM on scales of 10--100 kpc: Extended DM halos through combined strong and weak lensing
+
+%What's not matching is the luminosity function of galaxies in the dwarf galaxy mass range to to mass function of dark matter halos as predicted by N--body simulations
+ 
+%%	Ludlow et al. 2013	%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Proposed methods to detect such substructures around th eMW rely on gamma--ray emission from the annihilation of dark matter, or on the gravitational scattering of stars in the tidal streams of satellite galaxies.\\
+There is this new method proposed by Feldmann \& Spoylar on 2013, based on the substructures gravitational pull on stars of the MW disk.\\
+The number density of dark matter halos encodes invaluable information about the primordial power spectrum, the physics of early universe and the nature of dark matter. (Moore et al. 1999, Bullock, Kravtsov \& Weinberg 2000, Kuhlen, Vogelsberger \& Angulo 2012)\\
+in WDM models, a competitor of the CDM paradigm, structure formation is suppressed below the free--streaming scale of the dark matter particle, resulting in a deficit in substructure with masses below $\sim 10^9 M_\odot$ (Zentner \& Bullock 2003)\\
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+A spatially unresolved measurement of the flux density from a lensed source is a factor of order $\mu$ brighter than for an unlensed source, while spatially resolved measurements can provide a factor of $\sqrt(\mu)$ higher resolution. (Schneider et al. 1992)
+
+\newpage
+\section{Gravitational Lensing}
+``Dedicated optical and radio surveys to find and study strong galaxy--galaxy lens systems: Sloan Lens ACS survey (Bolton et al. 2006), SQLS (Oguri et al. 2006), Strong Lens Legacy Survey (More et al. 2012; Ruff et al. 2011), and the BOSS Emission Line Lens Survey (Brownstein et al. 2012) in the optical and the Cosmic Lens All Sky Survey (CLASS; Browne et al. 2003).'' (From Wardlow et al. 2013)
+\newpage
+\section{Radio interferometry}
+In this report, I briefly explain the main principles based upon which radio interferometers work. I, also, try to put radio interferometry into the context of radio astronomy as well as observational astronomy, in general, by comparing radio interferometry with optical interferometry and the advantages and disadvantages of observations in either frequency regime with respect to the other.
+
+%\subsection{Basic hardware and electronics of radio telescopes}
+\subsection{Radio telescopes}
+A radio telescope is usually made of two main parts:
+\begin{itemize}
+\item Reflector: The special shape of this reflector, i.e. a parabola, is advantageous compared to convex mirrors used in reflecting optical telescopes as the parabolic shape keeps all reflected radiation  in phase and as I will repeatedly mention in the report, coherence is of great importance in radio astronomy. Keeping the same principle in mind, current radio instruments use aperture arrays keeping the electromagnetic wave coherent at the receiver by exerting appropriate delays to the signal.
+\item Receiver: Unlike optical telescopes which scan different points of the focal plain with numerous receivers (pixels of a CCD), radio telescopes generally work with a single receiver at the focal point of their reflector. In other words, radio telescopes see the entire sky within a single pixel only!
+
+Heterodyne receivers are the most common kind of receivers used in radio antennae today, and although in principle they could be arranged in 2-D arrays on the focal plane of the antenna to perform as a CCD in an optical system, the cross-talk among closely placed receivers make the calibration of each receiver cumbersome and usually inefficient. A more practical approach would be to use several parabolic reflectors (aperture arrays) simultaneously to observe several pointing on the sky.
+\end{itemize}
+Heterodyne receivers are the most common type of receivers at sub--mm wavelengths (and higher) and they are crucial to use if the signal modulation (both amplitude and phase of the signal) is needed for observations (the case in radio interferometers)\\
+%{\bf I do not really know the difference between a heterodyne and a bolometric receiver but I need to write *briefly* about them}
+
+
+In order to digitally record the electromagnetic wavefront reaching the receiver, the signal needs to be sampled with a frequency at least twice the frequency of the wave (Nyquist theorem). This is an electronically challenging task, and particularly impossible for frequencies in the order of 100 GHz and higher. Therefore, the arriving signal is first mixed with the signal from a stable local oscillator (LO) with a well--known frequency slightly lower than that of the original signal. The mixed signal then has two frequencies $f_\mathrm{sky} + f_\mathrm{LO}$ and $f_\mathrm{sky} - f_\mathrm{LO}$. Therefore, we can sample the low--frequency signal with as fine resolution as desired, ignoring the higher frequency. The signal is then demixed by exerting a phase difference and is recorded in two frequency windows below and above the LO frequency, namely the \emph{lower sideband} and the \emph{upper sideband}, by the receiver.
+
+\subsection{Observational limitations}
+Observational limitations of the recorded data may come from the source or, more commonly, from our instruments and can be classified into limitation in 
+\begin{itemize}
+\item resolution
+\item sensitivity
+\item dynamic range
+\end{itemize}
+As will be discussed further into the report, radio interferometry has brought significant improvements in the former two, although mostly at the cost of the latter.
+
+\subsubsection*{The convolution theorem}
+As previously mentioned, what a radio telescope records is not the direct image of the source at different points at the same time, a radio telescope rather records signals from the entire sky into a single ``pixel'' and so does an array of radio antennae. Radio interferometry is based on \emph{the convolution theorem}. According to this theorem, it can be shown that convolving two functions in Fourier space (i.e. Fourier transform of their convolution) is equivalent to multiplying the Fourier transform of the two in the ordinary space.
+\begin{align} 
+\begin{split}
+\mathcal{F}(f*g) &= \mathcal{F}(f) \times \mathcal{F}(g)
+\end{split}                    
+\end{align}
+Where convolution of one function $f(t)$ with another function $g(t)$ means shifting the function $g$ consecutively from $t=-\infty$ to $t=+\infty$, while at each step the multiplication of the two functions (i.e. $f(t)g(t+\tau)$) is added to the convolved function $f*g$:
+\begin{align} 
+\begin{split}
+\mathcal (f*g)(\tau) &= \int_{-\infty}^{+\infty} f(t)g(t+\tau) dt
+\end{split}                    
+\end{align}
+No device can achieve infinite resolution due to its diffraction limit, which results in spreading the light from a point source into its surrounding pixels, aka. point spread function (PSF) of the instrument. Therefore, anything observed with that instrument will be seen as the convolution of the true source structure with the PSF. Angular resolution of an instrument (i.e. FWHM of its PSF) scales with the size of the aperture and wavelength as $\Delta\theta \propto \lambda / D$. Therefore, the PSF itself scales with the square of the Fourier transform of the aperture which, according to the convolution theorem, equals consequently the Fourier transform of the autocorrelation of the aperture. Therefore, in order to increase the resolving power of an instrument, one needs to either increase the aperture size or decrease the observing wavelength. While the former solution might not be possible to arbitrary large extent due to different physical emission mechanisms, the former is in the heart of using the interferometry technique.    
+ 
+\subsection{Two-element interferometer}
+When we talk about interferometry, clarification is needed to distinguish between the common picture of Young's optical double--slit interferometer and the concepts and techniques used in radio interferometers. In the optical case, the fring pattern made on the detector plane is a distribution of points with various intensities $I(x) = |E_1(x) + E_2(x)|^2$, and visibility is a real quantity between 0 and 1 defined as below:
+\begin{align} 
+\begin{split}
+V &= \frac{I_\mathrm{max} - I_\mathrm{min}}{I_\mathrm{max} + I_\mathrm{min}}
+\end{split}                    
+\end{align}
+Visibility in the case of radio interferometry, however, is a complex quantity describing the time correlation of the two signals reaching the two elements of the interferometer and can be expressed as below:
+\begin{align} 
+\begin{split}
+\label{eq:vis_def}
+V(\tau) &= <E_1(t)E_2^*(t+\tau)>
+\end{split}                    
+\end{align}
+with $\tau$ being the geometrical time delay between the two signals due to the different paths the wave needs to reach each antenna.
+\begin{align} 
+\begin{split}
+\tau &= \frac{\vec{B}.\vec{S}}{c}
+\end{split}                    
+\end{align}
+Where $\vec{B}$ is the three-dimensional distance vector between the two elements, aka. \emph{baseline}, $\vec{S}$ is the source vector and $c$ is the speed of light.
+
+
+
+Practically, the time delay $\tau$ of one signal with respect to the other is added to the signal electronically to correct for this effect before sending the two signals to the correlator. Applying the geometrical time delay $\tau$ is equivalent to projecting the baseline connecting the two telescopes on the plane perpendicular to the direction of the source. Therefore, what matters in all math hereafter is the \emph{projected} baseline between the two antenna, rather than the actual baseline. 
+
+
+
+The correlated signal is a complex visibility describing the response of the interferometer to the two signals, both amplitude and phase, received from a point source which is a fringe pattern (on the sky) perpendicular to the projected baseline ($BL_\mathrm{proj}$) as seen from that point on the sky. What happens in radio interferometry is that we sample the visibility values on this plane depending on the position of the source, $BL_\mathrm{proj}$, and duration of observations. The interferometer response to an extended source is simply the superposition of the response patterns of various point sources making up the extended source. In other words, the measured visibility is the integral of source structure multiplied by the response. Therefore,
+\begin{align} 
+\begin{split}
+V_\mathrm{observed} &= \int V^\text{point source}_\text{response} I(x,y) dx dy.
+\end{split}                    
+\end{align}
+Where $x$ and $y$ are celestial coordinates and $I(x,y)$ is the intensity distribution of the extended source.
+
+\subsubsection*{The van Cittert-Zernike theorem and the interferometer equation}
+As long as the source we are observing is far enough that the wavefronts from the source can be approximated as plane waves (i.e. Fraunhofer approximation applies), the complex visibility of the source only depends on the relative position of the two observed points, and the wavelength the observations are made at The visibility function then is a measure of the spatial coherence of the wavefront of the source encoding the source structure in it.
+\begin{align} 
+\begin{split}
+\label{eq:vC-Z}
+V^\mathrm{AB} = <E_A \times E_B^*> = \mathcal{F}(\frac{\vec{R_A} - \vec{R_B}}{\lambda})
+\end{split}                    
+\end{align}
+The left hand side is, by definition, the complex visibility of the source, $\vec{R_A} - \vec{R_B}$ is the observing baseline, and $\mathcal{F}$ is the Fourier transform of the source structure $I(x,y)$. Therefore, rewriting {\bf (from what?)} the interferometer equation, one finds:
+\begin{align} 
+\begin{split}
+\label{eq:InterferometerEq}
+V(x,y,z) = \int_{x,y} I(x,y) e^{-\frac{-2\pi j}{\lambda}(ux+vy+wz)} \frac{dx dy}{z}
+\end{split}                    
+\end{align}
+where $z=\sqrt{1-x^2-y^2}$. If x and y are small enough so that the observing field can be approximated as flat, the wz term becomes zero and the mere geometrical delay correction means that both receivers are probing the same coherent wavefront. This interferometry equation transforms the intensities on the source plane to visibilities on the image plane and their values depend on the coordinates of the observing baseline, projected on the source plane, as well as the structure of the source and the observing frequency. 
+
+
+\subsection{Aperture synthesis}
+%\subsection{Multi-element interferometers and aperture synthesis}
+Back to the definition of visibility in radio interferometry, one can directly conclude that a multi-element interferometer is only a combination of several two--element interferometers, sampling the (u,v) space in pairs, based on their projected baseline and the observing frequency, measuring the visibility at those sample points only. 
+
+\subsubsection*{Snapshot observations}
+Fourier transform is blind to the absolute baseline position, but as baseline is a vector, it does carry information about the direction of the baseline. This implies that in a multi--element interferometer, a (arbitrary) frame of reference is needed for combining the antenna pairs and calculating the transformation from the ordinary plane to the (u,v) plane. The (u,v) coverage in a snapshot is equal to the autocorrelation of the array configuration as seen by the source --except for the central point which corresponds to the measurement with the hypothetical $BL = 0$, impossible to implement in practice.
+
+
+
+Since Fourier transform is a Hermitian transformation, a single baseline corresponds to sampling not one, but two points on the visibility plane; one at (u,v), and the other at (-u,-v). Moreover, if I(x,y) is a real number, $V(u,v) = V^*(-u,-v)$. This means that each baseline gives two separate visibility measurements. This means that adding even one more antenna to the array has a significant effect on better sampling the (u,v) plane. One through the increase in the number of baselines ($N_\mathrm{BL} = \frac{N_\mathrm{ant}(N_\mathrm{ant}-1)}{2}$), and one through the double--sampling of each baseline as mentioned above. Therefore, a monofrequency snapshot made by an interferometer with $N_\mathrm{ant}$ antennae makes $2N_\mathrm{BL}$ discrete visibility measurements where longer baselines in the (u,v) plane correspond to smaller scales on the image plane and vice versa. Besides, as seen in equation \ref{eq:InterferometerEq}, the conversion between the (x,y) plane and (u,v) plane is scaled by the observing frequency. Therefore, a wider observing bandwidth would result in a wider radial coverage of the (u,v) plane. (As (u,v) coordinates are measured in wavelength, one way of filling the Fourier space is to observe at multiple wavelengths simultaneously) 
+
+The other way to upgrade the discrete sampling of (u,v) space to --closer-- continuous sampling (in the tangential direction), is longer exposure time. In this mode, the Earth rotation would lead to (continuous) change in projected baselines of the array as seen by the source and hence more (u,v) coverage.
+
+
+
+Two extreme regions of the (u,v) plane are usually the most challenging to fill. Long baselines (corresponding to small scales on the image plane) are difficult to achieve for obvious reasons and therefore the longest baseline in the array sets the angular resolution of the reconstructed image and obviously the impossibility of infinite baselines make the infinite resolution also impossible! On the other hand, short spacings on the (u,v) plane could also be challenging to achieve because of the minimum spacing forced by antenna sizes. This leads to a fundamental feature of any (u,v) sampling known as ``zero-spacing hole''. The lack of visibility measurements on this scale corresponds to missing out on any possible (smooth) large-scale structure on the source such as diffused emission. In cases where an unrecovered diffused component does exist in the original source, the integrated flux of the source measured using the interferometer would be smaller than the integrated flux of the target measured by a single-dish telescope. This is a tell--tale signature of the presence of a large unrecovered structure in the source and is known as ``the missing flux'' problem. The problem arises due to the poor (or lack of) sampling the short spacings on the (u,v) plane. Therefore, the intensity profile of an internally Gaussian source, lacks data points in the center thus visibility interpolation tends to flatten out the peak. In many cases, sampling the short spacings with a more compact array or a single--dish telescope helps constrain a better fit to the light profile of the source.
+
+\subsubsection*{Aperture synthesis and image reconstruction}
+Aperture synthesis is the technique of reconstructing an image from incomplete sampling of the Fourier space. The technique is based on modeling the visibility plane based on the existing samplings. Therefore, the more complete the (u,v) coverage, the closer the model image to the real one seen by the antennae. However, there will always be holes in the sampled (u,v) plane limiting the fidelity and quality (i.e. $\text{dynamic range} = \frac{\text{peak}}{\text{RMS}}$ of the reconstructed image.)
+
+
+
+Fourier transform of the (u,v) coverage gives the so-called ``dirty beam'' (equivalent to the point spread function, PSF), while the Fourier transform of the measured visibilities on the (u,v) plane results in the ``dirty image'' of the source, which is, as expected, the actual source structure convolved with the dirty beam. Now that we have images of both the beam and the source, we can deconvolve the beam from the image. Remember that deconvolution is non-linear and non-unique! (See section \ref{sec:CLEAN} CLEAN algorithm)
+
+
+
+Despite what it looks like, modeling is actually applied while working in the image plane. The process is such that the dirty beam and dirty image are calculated based on the (u,v) coverage and direct visibility measurements, respectively. For this purpose, the (u,v) plane is required to be gridded\footnote{In fact, this is the issue one faces when using \emph{Fast} Fourier transform (FFT), while \emph{direct} Fourier transform does not require griding the (u,v) plane. One would expect the resulting image to be nearly the same as the model obtained by natural weighting. However, direct FT is so much slower that it is not worth practicing as far as the visibilities are sampled wisely!}. At this step, Nyquist sampling of the (u,v) plane introduces a limitation in the image space, i.e. grid size/cell size needs to  be chosen such that the final PSF includes at least 3 pixels in the image plane. The next step in image reconstruction is deconvolving the beam from the dirty image. The actual interpolation happens here! Deconvolution is not a unique process, hence requires not only griding the (u,v) plane but also making assumptions about the deconvolving beam. One assumption need to be made is how to weight the measured visibilities. This question, in turn, has two parts: How are the measured visibilities in one (u,v) pixel weighted? and what is the relative weight of various pixels on the (u,v) plane? Different choices at this step result in different angular resolution and dynamic range limitations in the model image.
+
+\paragraph*{Natural weighting} as it sounds is simply weighting visibilities inversely proportional to the variance of their distribution.
+Therefore, short--spacings in the (u,v) plane , with closer samplings, are weighted more than longer baselines which results in higher dynamic range in the modeled image at the cost of a coarser angular resolution. In other words, the dirty beam has larger FWHM, but less prominent side lobes. Therefore, it is best for imaging faint and smooth sources.
+
+\paragraph*{Uniform weighting} is the same as natural weighting with an additional factor inversely proportional to the number of visibilities in each pixel. Therefore, it boosts the contribution from long--spacings by giving the same weight to visibilities at all (u,v) distances, even though those at long distances are sampled more coarsely. This property makes this approach more suitable for sources with rich and complicated structure. Although, the source needs to be bright enough for this approach to work best. This is because, the described weighting scheme results in a narrow(er than naturally--weighted) PSF, with smaller side lobes and therefore, better angular resolution. However, the RMS of the residuals of this model tends to be large(r than that of natural by at least an order of $\sim 2$), i.e. poorer sensitivity.
+
+\paragraph*{Briggs weighting} is a tunable combination of both approaches above. The tunability of Briggs' recipe is applied through the \emph{robust} parameter. This parameter changes in the range of -2 to +2 from uniform to natural weighting. Usually, robust=0.5 gives a good compromise between the two extreme approaches. Although it still depends on the preferences based on the scientific target and come on, this is part of the charm of the method!
+
+\paragraph*{(u,v) tapering} is useful when the observed source is extended and most of the information lies in short baselines. Therefore, in order to improve the SNR, we can overweight the measurements made using these baselines even further and decrease the weight of measurements where we have a lower signal, i.e. long baselines. This can be done via Gaussian circular tapers in the (u,v) plane. If the source has a very extended structure, which is remained unrecovered due to the short--spacing hole in the (u,v) coverage, even with natural weighting, then (u,v) tapering is the last resort to recover that diffused emission. 
+
+
+
+As a matter of fact, one might want to get rid of an extended emission they are not interested in, and focus more on the small--scale clumpy structure of their source. In which case, one only needs to apply an inverse Gaussian taper to the (u,v) plane.
+
+\subsubsection*{Deconvolving the dirty beam and CLEAN algorithm}
+\label{sec:CLEAN}
+While interferometry data are incomplete due to lack of information on --most of-- spatial frequencies, we can interpolate the (u,v) plane by applying our prior information about the source structure as the criteria required to proceed with deconvolution. Clearly, the more our prior information about the source, the more reliable the model image is.
+ 
+
+
+The problem of deconvolving dirty beam from the dirty image has non--unique solutions. An intuitive way to show it is assuming a source with non--zero visibilities everywhere but where we are making our measurements, i.e. our (u,v) coverage. This class of sources remain invisible to the interferometer, as long as the (u,v) coverage is the same. Now, one can add \emph{any} combination of these ``invisible'' sources to our reconstructed image without the measurement set changing. Improving the (u,v) coverage will decrease the number of these combinations and therefore, increase the image fidelity, and yet \emph{high} fidelity is not the same as \emph{infinite} fidelity. Therefore, the reconstructed image always remains a model of our real data. I know that I have brought this up several times by now but this is in the heart of the subject and I cannot emphasize it too much!
+
+
+
+CLEAN is the oldest, fastest and best deconvolution algorithm practiced to day for image reconstruction in radio interferometry :)) Talking very briefly (and naively), what this algorithm does is to start at the maximum flux point in the image, subtract the PSF at that point and add a 2-D Gaussian component (with the same FWHM of the PSF and scaled flux) to the CLEAN image instead then repeat these three steps for the peak in the residual map until either of the criteria below is met: 
+\begin{itemize}
+\item Noise limit: If the peak in the residual map has a smaller value than $\alpha \sigma_\mathrm{RMS}$ 
+\item Dynamic range limit: If the peak in the residual map has a smaller value than $\frac{1}{\alpha} \times f_\mathrm{max}$. of the dirty beam
+\\($\alpha$ is an arbitrary coefficient set by the scientific purpose of the image.)
+\item Maximum number of CLEAN cycles: This is an arbitrary criterion!
+\end{itemize}
+
+%no (statistically-significant- peak remains in the dirty image.
+
+Finally, what the algorithm produces are three matrices below:
+\paragraph*{CLEAN model:} A set of point sources subtracted from the dirty image, where flux peaks located.
+\paragraph*{CLEAN beam:} The corresponding Gaussian to the dirty beam. In other words, the PSF model. If the dirty beam is elliptical, then the CLEAN beam is also a similarly--elliptical Gaussian.
+\paragraph*{CLEAN image:} It is simply the CLEAN model convolved with the CLEAN beam and is the final product of the image reconstruction procedure. 
+
+
+While different deconvolution algorithms apply different criteria to the source structure, the CLEAN algorithm's basic assumption is that the source is made of discrete Dirac delta functions, i.e. point sources. Therefore, it tends to convert smooth and diffused components into clumpy ones. While one does not loose real emission by not CLEANing it, it is possible to get artificial features by CLEAning noise!
+
+%developed a variant of the Clark algorithm whereby the major cycle subtracts `CLEAN' components from the un-gridded visibility data. Aliasing noise and griding errors can thus be removed if the inverse Fourier transform of the `CLEAN' components to each u,v sample is accurate enough. Two routes are used for the inverse transform:
+
+%    for small numbers of `CLEAN' components, a `direct Fourier transform' is performed so the accuracy is limited by the precision of the arithmetic;
+%    for a large number of `CLEAN' components, an FFT is used for efficiency, but inevitably some errors are introduced in interpolating from the grid to each u,v sample. High order Lagrangian interpolation is generally used. 
+
+The current commonly--used implementation of CLEAN is the Cotton--Schwab CLEAN, consisting two same--level, linked cycles.
+% \emph{Major cycle}s, each looping over a number of \emph{Minor cycle}s as below:
+Start with a {\bf Minor cycle} as below:
+\begin{enumerate}
+\item Locate the peak intensity in the dirty image.
+\item\begin{enumerate}
+    \item Subtract a dirty beam centering at the point of the peak, from the dirty image.
+    \item Compute the residual image = image used in step (1) -- product of (2.a).
+    \item Scale down the flux density in residual image to {\bf g} times the image peak, where {\bf g} is the arbitrary CLEAN gain value.
+    \end{enumerate}
+\item\begin{enumerate}
+    \item Add a point--like component to the CLEAN model, at the position of the peak.
+    \item Set the flux density of the point in CLEAN model to the peak of the PSF.
+    \item Convolve the newly--added point of the CLEAN model with the CLEAN beam and add it to the CLEAN image
+    \end{enumerate}
+\item Use the product of step (2.b) in step (1). 
+\end{enumerate}
+A {\bf Major cycle}, then, follows the minor cycle as below:
+\begin{enumerate}
+\item Compute model visibilities corresponding to the CLEAN model made in the minor cycle.
+\item Compute the residual visibilities = observed visibilities -- model visibilities made in step(1).
+\item FFT the residual visibilities and feed it to the next minor cycle 
+\end{enumerate}
+%{\bf Q: Which one do we feed the minor cycle with? output of the major cycle or output of the previous minor one? If latter, why do we bother with the major cycle then??}\\
+
+While the CLEANing process seems complete within the minor cycle, the major cycle is needed because the algorithm (minor cycle only) cannot subtract anything from marginal parts of the image, where we have no information about possible sources in those regions whose side lobes (only!) affect our dirty image.
+
+\newpage
+\section{Sources: quasars vs. SMGs}
+
+\subsection{Quasars}
+
+\subsection{sub--mm galaxies (8/28)}
+SMGs are a population of high--redshift (redshift distribution peaking at $z = 2.2$ and $\sigma_z = 1.3$ (see e.g. Chapman et al. 2003, \& 2005 as well as Figure 3 Swinbank et al. 2006)), massive, star--forming and gas--rich galaxies (Ivison et al. 2000, Smail et al. 2002). They show properties expected from progenitors of luminous Ellipticals, although other ideas such as SMGs being dusty QSOs or even more mundane galaxies are also out there. Besides, Swinbank et al. 2006 show that SMGs could explain the formation of the brightest local ellipticals although semi--analytical galaxy formation models (e.g. Durham GALFORM+GRASIL dust modeling code) did not predict SMGs. Swinbank et al. 2006's model of SMG produce the radio emission via two mechanisms: (i) thermal bremsstrahlung from $H_{II}$ regions and (ii) synchrotron radiation powered by acceleration of relativistic electrons in SN remnants. Figure 2 in Swinbank et al. 2006 indicates the cumulative number counts/deg$^2$ of observed SMGs with various surveys with SCUBA on the JCMT at 850 $\mu m$ as a function of sub--mm flux density, overlayed with the model predictions. As confirmed by the observational data, their model suggests that the surface density of SMGs with radio flux densities above 30 $\mu Jy$ is 75\%.
+
+Swinbank et al. 2008 show that ``the predicted far--IR properties of model galaxies with $S_{850} > 5$ mJy and $S_{1.4} > 30$ $\mu$Jy are in good agreement with observations.'' They also show that ``the predicted redshift distribution of sub--mm galaxies provides a reasonable fit to the observational data with a median redshift $z=2.0$. The radio selected subset of sub--mm galaxies are predicted to make up approximately 75\% of the population and peak at $z=1.7$, in a reasonable agreement with the observed radio detected fraction and redshift distribution.''
+
+Typical masses of SMGs are $\sim 4\times10^{11} M_\odot$ within $\sim 20 kpc$. Gas fractions are $>25\%$ within central $\sim 4$ kpc, stars contribute another 25--50\% (depending upon M/L)
+
+Space density of SMGs is $5\times 10^{-5} Mpc^{-3}$ (Swinbank et al. 2008)
+
+The SMGs used in this work follow Swinbank et al. 2008 estimation of $S_{850\mu m = 352.7 GHz} = 5 mJy$ (I adopt the unlensed source to have $S_{336.5 GHz} = 5 mJy$) at $z=2$. As Swinbank et al. 2008 (and probably other, but cite!) show, sizes of these galaxies are ``poorly constrained and usually taken to be 4-8 kpc (which is approximately the size seen in HST observations and in resolved spectroscopic imaging)'' 
+
+Looking at the rest frame spectral energy distribution of galaxies in a broad range, one expects a peak in flux density at $\sim$3000 GHz, lying within ALMA band 10 receiver's coverage for a galaxy at $z=2$. The source then is expected to appear $\sim$ 4 times brighter in band 9, than in band 7. This, however, is not taken into account. (add the plot with the effect of galaxy flux density!)
+%Figure 5 in Negrello et al. 2013 shows spectral energy distributions of 5 lensed SMGs in the H-ATLAS/SDP survey. It can be clearly seen that all sources at $z\simeq 2-3$ show a peak at flux density at (observed) wavelengths about a few hundred $\mu$m.
+
+The ``unusual (negative) sub--mm K--correction'': Beyond a redshift of $\simeq 1$, as the redshift of a dusty galaxy increases, its characteristic spectral energy distribution ensures that the effect of the increasing luminosity--distance on its observed flux density is balanced by the increasing rest--frame luminosity of the galaxy. The consequence is that the galaxy's flux density is approximately independent of redshift.
+
+
+%A generic prediction of the standard cold dark matter (CDM) scenario is that a substantial fraction of the total mass of galaxy--sized dark matter halos \cite[$\sim 10\%$; ][]{Gao et al.,Maciejewski et al.} should be in the form of bound substructures (a.k.a. subhalos or subclumps) left over from the process of hierarchical assembly. The fact that the number of substructures seen in CDM simulations greatly outnumber the satellite galaxies detected in the vicinity of the Milky Way and Andromeda constitutes the so--called ``missing satellite problem'' \cite{Klypin et al.,Moore et al.}. While it has been argued that astrophysical processes that quench star formation in low--mass halos may explain this discrepancy \cite[e.g.][]{Maccio et al. b,Font et al.}, this implies that a vast population of extremely faint or completely dark substructures should be awaiting discovery in the halos of galaxies. Provided that CDM is in the form of Weakly Interacting Massive Particles (WIMPs), these subhalos are in principle detectable by the Fermi Gamma--ray Space Telescope because of their annihilation fluxes. However, Fermi has so far failed to detect any unambiguous signal from such objects \cite[e.g.][ but see \cite{Bringmann et al. b} and \cite{Su & Finkbeiner} for a different view]{Belikov et al.,Zechlin et al.,Hooper & Linden}.
+
+%Gravitational lensing may provide an independent test for the presence of dark halo substructures \cite[for a review, see][]{Zackrisson & Riehm}. A foreground galaxy that happens to be aligned with a background light source can produce multiple images of the background object, with a typical image separation of $\sim 1\arcsec$ (an effect known as strong lensing or macrolensing). While simple, smooth models of galaxy lenses are usually able to reproduce the positions of these macroimages, their observed flux ratios are more difficult to explain. Such flux--ratio violations have been interpreted as evidence of substantial small--scale structure within the main lens
+%\cite[e.g.][]{Mao & Schneider,Chiba,Keeton et al.,Kochanek & Dalal}. A notable problem with this picture is that current CDM simulations predict too little substructure to explain many of these flux--ratio violations (e.g. \cite{Maccio & Miranda,Xu et al. a,Chen et al.} --- but see \cite{Metcalf & Amara}), possibly pointing to a considerable contribution from low--mass halos elsewhere along the line of sight \cite{Xu et al. b} or some additional form of substructure (dark or luminous) within the lens. 
+
+%A slightly different lensing approach exploits the small--scale distortions that halo substructure is expected to introduce in the morphologies of extended macroimages.  Substructures of mass $\gtrsim 10^8\ M_\odot$ can perturb gravitational arcs and Einstein rings on scales resolvable with the {\it Hubble Space Telescope} \cite[][]{Vegetti & Koopmans a,Vegetti & Koopmans b} and  detections of $\sim 10^9$---$10^{10}\ M_\odot$ objects have already been made this way \cite{Vegetti et al. a,Vegetti et al. b,Vegetti et al. c}. In line with the flux ratio anomaly results, these observations seem to suggest a subhalo mass fraction that is significantly higher than predicted by standard CDM, and possibly also a flatter subhalo mass function slope \cite{Vegetti et al. b, Vegetti et al. c}. 
+
+%By mapping extended macrolensed sources with milliarcsecond or sub--milliarcsecond resolution using Very Long Baseline Interferometry (VLBI) techniques at radio wavelengths, substructures at even lower masses can in principle be detected. Such objects may introduce kinks and bends in multiply--imaged quasar jets \cite{Wambsganss & Paczynski,Metcalf & Madau} and one detection of a $\sim 10^5$---$10^7 M_\odot$ object has already been claimed using this technique \cite{Metcalf}. In this situation, the lensing effects produced by halo substructures can be separated from intrinsic morphological features in jets, since the latter would be reproduced in all macroimages whereas dark matter clumps in the halo of the lens would affect each macroimage differently. Similar methods for exploiting the lensing effects produced by halo substructures on mili-- and submiliarcsecond scales have also been explored by \cite{Yonehara et al.,Inoue & Chiba a,Inoue & Chiba b,Inoue & Chiba c, Hisano et al.,Ohashi et al.} and \cite{Riehm et al.}. However, effects of this type tend to be sensitive to the density profiles of substructures, and may be undetectable for all but the very densest, most extreme forms of substructure \cite{Zackrisson et al.}.
+
+%Here, we use lensing simulations to explore the prospects of using macrolensed quasar jets observed at sub--milliarcsecond resolution, in searches for standard CDM subhalos, ultracompact minihalos and primordial black holes within the main lens. These different forms of substructure are described, along with previous constraints on such objects, in Sect.~\ref{substructures}. The details of our simulations and assumptions are covered in Sect.~\ref{simulations}. In Sect.~\ref{results}, we present our results and in Sect.~\ref{discussion} we discuss some lingering issues with the adopted technique. Sect.~\ref{summary} summarizes our findings.
+
+%\section{Different forms of halo substructure}
+%\label{substructures}
+%\subsection{Standard CDM subhalos}
+%\label{standard CDM}
+%At $z=0$, the CDM scenario predicts the existence of dark matter halos with masses ranging from $\sim 10^{15}\ M_\odot$ down to the cutoff in the density fluctuation spectrum, which is set by the detailed properties of the CDM particles. For many types of WIMPs, this cut--off lies somewhere in the range $\sim 10^{--11}$---$10^{-3} M_\odot$ \cite{Bringmann}. However, alternative models involving superweakly interacting particles (superWIMPS) and MeV mass dark matter may place the cutoff as high as $\sim 10^3$---$10^8 \ M_\odot$ \cite{Hisano et al.,Hooper et al.}. 
+
+%As these low--mass halos merge to form more massive ones, some temporarily survive in the form of subhalos within the larger halos. N--body simulations indicate that the subhalos within a galaxy--sized CDM halo should follow a mass function of the type:
+%\begin{equation}
+%\frac{\mathrm{d}N}{\mathrm{d}M_\mathrm{sub}}\propto M_\mathrm{sub}^{-\alpha},
+%\label{subhalo mass function}
+%\end{equation}
+%with $\alpha\approx 1.9$ \cite{Springel et al.,Gao et al.}. The relative contribution from subhalos with mass $M\gtrsim 10^5\ M_\odot$ to the dark matter surface mass density at the typical location of macroimages in a galaxy--mass lens is $f_\mathrm{sub}\approx 0.002$ \cite{Xu et al. b}, albeit with a large scatter \cite{Chen et al.}. 
+
+%The density profiles of isolated field halos in CDM simulations can be reasonably well described by Navarro, Frenk \& White (\cite{NFW}; hereafter NFW) profiles:
+%\begin{equation}
+%\rho(R)=\frac{\rho_\mathrm{i}}{(R/R_\mathrm{S})(1+R/R_\mathrm{S})^{2}}, 
+%\label{NFW}
+%\end{equation}
+%where $R_\mathrm{S}$ is the characteristic scale radius of the halo. The slope of the inner density cusp ($\beta = \mathrm{d}\ln \rho /\mathrm{d}\ln r $) in this profile is $\beta = --1$, and this makes it difficult for NFW halos in the dwarf--galaxy mass range to produce millilensing effects of the type we are considering in this paper. Typically, cusp slopes obeying $\beta\lesssim --1.5$ would be required \cite{Zackrisson et al.}. Later work has shown that models with inner cusp slopes that become progressively shallower towards the centre provide even better fits to isolated halos in CDM simulations, eventually reaching inner slopes of $\beta \geq --1$ \cite[e.g.][]{Navarro et al. 10}. In the context of detecting millilensing effects from low--mass halos, this just makes matters worse, since the central density is reduced.
+
+%Once a halo falls into the potential well of a larger halo and becomes a subhalo, it is stripped of material --- primarily from its outskirts --- due to interactions with its host halo and with other subhalos. This alters the density profile of the subhalo compared to an isolated halo of the same mass \cite[e.g.][]{Hayashi et al.,Kazantzidis et al.}, but these modifications tend to diminish rather than enhance the ability of a CDM subhalo to produce detectable millilensing effects \cite{Zackrisson et al.}. 
+
+%To demonstrate that standard CDM subhalos do not provide a significant ``background'' of millilensing events in the observational situation that we consider, we have therfore adopted NFW profiles for these objects, since this results in an overoptimistic estimate on the millilensing effects that standard CDM subhalos are likely to produce. Even then, the chances of detecting millilensing effects from these objects turn out to be negligible in the observational situations we are considering. 
+
+%To derive the $R_\mathrm{S}$ values of our NFW subhalo profiles, we adopt the mass--dependent concentration parameters $c=R_\mathrm{vir}/R_\mathrm{S}$ from either \cite{Bullock et al.} or \cite{Maccio et al. a}, where $R_\mathrm{vir}$ is the virial radius of the halo. Since both of these recipes predict higher concentration parameters for low--mass halos, and since more centrally concentrated profiles (i.e. profiles with higher $c$) are more efficient in producing millilensing effects, we calculate the subhalo concentration parameters based on their current masses rather than the masses they had prior to becoming subhalos. Since nearly all subhalos have lost considerable amounts of material \cite[e.g.][]{Vale & Ostriker}, this also results in overly optimistic millilensing properties. 
+
+%\subsection{Intermediate--mass black holes}
+%Intermediate--mass black holes (IMBHs; here assumed to have masses $\sim 10^{3}$---$10^6\ M_\odot$) may either form primordially (typically when the Universe is $\ll 1$ s old), or due to the collapse of baryonic objects later on. The primordial variety could in principle comprise a substantial fraction of the dark matter, although a host of observational constraints makes this seem unlikely \cite[for a recent compilation, see][]{Carr et al.}.
+
+%The strongest upper limits on the cosmological density of primordial black holes in the $10^{3}$---$10^5\ M_\odot$ mass range come from the effect that accretion onto these objects would have on the cosmic microwave background radiation \cite{Ricotti et al.}. Primordial black holes with masses $\sim 10^3$---$10^4\ M_\odot$ are also strongly constrained by the effects of gravity waves on pulsar timing measurements \cite{Saito & Yokoyama,Carr et al.}, and at $M\gtrsim 10^4\ M_\odot$ by dynamical constraints \cite{Carr & Sakellariadou}. Using a technique first proposed by \cite{Kassiola et al.}, \cite{Wilkinson et al.} moreover used the absence of millilensing effects in non--macrolensed radio sources to place upper limits on IMBHs at $M\gtrsim 10^5\ M_\odot$. It has, however, been argued that some of these constraints may be sidestepped under certain circumstances, and that both the size evolution of early--type galaxies \cite{Totani et al.} and entropy considerations \cite{Frampton et al.} favour scenarios in which essentially all of the dark matter is in the form of $\sim 10^5\ M_\odot$ primordial black holes. 
+% 
+%Intermediate--mass black holes that were not produced primordially may instead either form as the end products of very massive population III stars \cite[e.g.][]{Madau & Rees}, through the direct collapse of gas in small halos at high redshift \cite[e.g.][]{Begelman et al.} or the collapse of dense star clusters \cite[e.g.][]{Devecchi & Volonteri,Davies et al.}. Such IMBHs may now be hiding in globular clusters \cite[e.g.][]{Vesperini et al.}, in satellite galaxies \cite{van Wassenhove et al.}, or be freely floating in the halos of galaxies \cite[e.g.][]{Micic et al.}. There is indeed some evidence for IMBHs in globular clusters \cite[e.g.][]{Noyola et al.}, and IMBHs may also explain some of the ultraluminous X--ray sources detected in other galaxies \cite[e.g.][]{Feng & Soria,Webb et al.}. However, since only a small fraction of the cosmic baryons can be locked up in these non--primordial IMBHs, their relative contributions to the halo masses of galaxies are typically expected to be small \cite[$f_\mathrm{IMBH}\lesssim 10^{--5}$; e.g. ][]{Islam et al.,Kawaguchi et al.}.
+
+%When simulating the potential millilensing effects of IMBHs, we treat the surface mass density fraction $f_\mathrm{IMBH}$ in IMBHs at the position of the macroimages as a free parameter, and for simplicity assume all IMBHs to have the same mass. In the case where the number density profile of IMBHs has the same shape as the density profile of the dark halo, $f_\mathrm{IMBH}$ also corresponds to the halo mass fraction in IMBHs.
+
+%In principle, primordial black holes may over time accrete substantial amounts of dark matter and develop dark matter halos of their own \cite{Mack et al.}, similar to the ultracompact minihalos discussed in Sect.~\ref{UCMH_section}. IMBHs forming through the collapse of pop III stars in minihalos may also be surrounded by their own, highly contracted dark matter halos \cite[][]{Sandick et al.}. Such compound objects are expected to have lensing properties intermediate between IMBHs and ultracompact minihalos, but are not treated in detail in our simulations. 
+
+%\subsection{Ultracompact minihalos}
+%\label{UCMH_section}
+%Primordial density perturbations with $\Delta\rho/\rho\equiv\delta\lesssim0.3$ are too small to form primordial black holes as they enter the horizon.  Those with $\delta\gtrsim10^{-3}$ may nonetheless still be large enough to seed the formation of ultracompact minihalos (UCMHs).  Such perturbations might be produced during phase transitions, around topological defects, or in the primordial spectrum of perturbations from inflation.  The dark matter contained in these perturbations would collapse into UCMHs shortly after matter--radiation equality, via radial infall from a universally cold, smooth cosmological background.  This radial collapse would leave UCMHs with much steeper central density profiles than standard CDM halos \cite{Ricotti & Gould}.
+
+%If dark matter exists in the form of self--annihilating WIMPs, UCMHs would be gamma--ray emitters, and strong limits on their cosmological density have already been derived from the effect that this would have on Fermi--LAT source identifications, the diffuse gamma--ray background and cosmic reionization \cite{Scott & Sivertsson,Josan & Green,Yang et al. a,Yang et al. b,Zhang,Bringmann et al. a}. If dark matter does not annihilate, UCMHs in the $\sim$$10^{--2}$---$10^2\,M_\odot$ range may still be detectable in the future by their astrometric lensing effects on Milky Way stars \cite{Li et al.}.
+
+%Here, we explore to what extent submilliarcsecond observations of macrolensed jets would be able to constrain the properties of UCMHs. Because dark matter self--annihilation would reduce the central density of UCMHs \cite[e.g.][]{Scott & Sivertsson}, UCMHs made out of self--annihilating WIMPs would not be efficient mililenses. We therefore focus on UCMHs made out of non--annihilating dark matter (e.g. asymmetric dark matter, axions, sterile neutrinos).
+
+%Radial infall leads to a density profile $\rho\propto r^{-2.25}$, slightly steeper than the $\rho\propto r^{-2}$ profile of a singular isothermal sphere (often used to model lensing by the inner regions of large galaxies).  The dark matter profile in a UCMH \cite[see][ for a detailed discussion]{Ricotti & Gould,Bringmann et al. a} is given by
+%\begin{equation}
+%\label{UCMHprofile}
+%\rho(r,z)=\frac{3f_\mathrm{CDM} M_\mathrm{UCMH}(z)}{16\pi R_\mathrm{UCMH}(z)^\frac34r^\frac94},
+%\end{equation}
+%where $f_\mathrm{CDM}$ is the cosmological fraction of matter in CDM, $M_\mathrm{UCMH}(z)$ indicates the UCMH mass at redshift $z$, and
+%\begin{equation}
+%\label{UCMHradius}
+%\frac{R_\mathrm{UCMH}(z)}{\mathrm{pc}}=0.019\left(\frac{1000}{z+1}\right)\left(\frac{M_\mathrm{UCMH}(z)}{M_\odot}\right)^\frac13,
+%\end{equation}
+%is the UCMH radius, defined as the distance within which the density is at least twice that of the cosmological background.  Following matter--radiation equality at $z_{\rm eq}$, a UCMH born from an initial dark matter overdensity of mass $M_i$ accretes both dark and baryonic matter as
+%\begin{equation}
+%\label{Mz}
+%M_{\rm UCMH}(z)= \frac{z_{\rm eq}+1}{z+1}M_i\,.
+%\end{equation}
+%This accretion presumably cuts out when the cosmological background is no longer smooth, i.e. when the first substantial structure formation occurs and the smallest star--forming minihalos appear.  In this case, present--day UCMH masses and radii can be obtained by setting $z\sim10$ in Eqs. (\ref{UCMHprofile}) and (\ref{UCMHradius}), so that 
+%\begin{align}
+%M^0_\mathrm{UCMH} &\equiv M_\mathrm{UCMH}(z\lesssim10) = M_\mathrm{UCMH}(z=10),\\R^0_\mathrm{UCMH} &\equiv R_\mathrm{UCMH}(z\lesssim10) = R_\mathrm{UCMH}(z=10).
+%\end{align}
+
+%However, the finite temperature of the smooth cosmological background from which UCMHs accrete softens the density profile in the innermost region, due to conservation of angular momentum.  This can be conservatively modelled as a cutoff at some inner radius $r_{\rm min}$, inside which one assumes the density to be constant.  Following previous work \cite{Bringmann et al. a}, we adopt this strategy here, taking a flat density profile within
+%\begin{equation}
+%\label{rmin}
+%\frac{r_\mathrm{min}}{R^0_\mathrm{UCMH}} \approx 2.9\times10^{-7}\left(\frac{1000}{z_c+1}\right)^{2.43}\left(\frac{M^0_\mathrm{UCMH}}{M_\odot}\right)^{-0.06}\,.
+%\end{equation}
+%Here $z_c$ refers to the redshift of UCMH collapse (the point at which the growth of the matter overdensity becomes non--linear); we adopt $z_c=1000$, also in line with earlier work \cite{Ricotti & Gould, Bringmann et al. a}.
+
+
+%\section{Lensing simulations}
+%\label{simulations}
+%To simulate the effects of dark halo substructure on the morphologies of macrolensed jets, we use a numerical scheme similar to that developed by \cite{Metcalf & Madau}. An extended source is assumed to be multiply--imaged by a foreground galaxy, and the lens equation is used to determine the lens plane positions of the corresponding macroimages. A small region around each such macroimage is then populated with randomly distributed dark halo substructures and simulated in greater detail. The deflection angles (with contributions both from substructures and the macrolens) are computed for every pixel within this region and converted into a numerical surface brightness map of the macroimage. These maps are initially generated with a very fine pixel scale, but are then convolved with a Gaussian filter to match the finite resolution  of the VLBI arrays we consider. Both the resolution and the intrinsic source dimensions are determined by the frequency at which we assume the jets to be observed, as described in Sect.~\ref{VLBI} and~\ref{source size}. 
+% 
+%The macrolens is modelled as a singular isothermal sphere \cite[as appropriate for early--type galaxies acting as strong lenses; e.g.][]{Rusin et al. b} at $z_\mathrm{l}=0.5$, with line--of--sight velocity dispersion $\sigma_\mathrm{v}=240$ km s$^{-1}$, giving a mass of $\sim 10^{13} \ M_\odot$ within the virial radius, and two macroimages with separation $\approx 2\arcsec$. We furthermore adjust the alignment of the source and main lens to ensure a macrolens magnification that is not unrealistically high. The simulations presented in this paper are all based on a lens--source configuration that in the absence of substructure would give magnifications $\mu_1\approx 10$ and $\mu_2\approx 8$ for the two macroimages. All simulations are based on a $\Lambda$CDM cosmology with $H_0=70$ km s$^{-1}$ Mpc$^{-1}$, $\Omega_\mathrm{M}=0.27$, $\Omega_\Lambda=0.73$. 
+
+%When distributing halo substructures within the simulated region, we for simplicity assume that the surface mass density across the macroimage is completely dominated by dark matter. While this assumption may be violated in multiply--imaged systems where one of the macroimages happens to lie very close to the lensing galaxy, this nonetheless seems to be a fair approximation in the majority of cases \cite[e.g.][]{Bate et al.,Pooley et al.}. In the case of intermediate mass black holes and ultracompact minihalos, we moreover assume that their number densities trace that of the dark matter. The surface number density of such substructure then simply depends on their relative contribution to dark matter $\Omega_\mathrm{sub}/\Omega_\mathrm{CDM}$ and their mass distribution. These dark matter fractions in intermediate--mass black holes and ultracompact minihalos are referred to as $f_\mathrm{IMBH}$ and $f_\mathrm{UCMH}$ respectively. Since detailed predictions for the mass distribution of IMBHs and UCMHs are highly model--dependent, we assume all such objects to have the same mass, which we then vary to explore what parts of the ($f_\mathrm{IMBH}$,$M_\mathrm{IMBH}$) or ($f_\mathrm{UCMH}$,$M_\mathrm{UCMH}$) parameter space that a given set of observations would be able to probe.
+
+%In the case of standard CDM subhalos, we adopt the mass distributions inferred from either simulations or observations. As discussed in Sect.~\ref{standard CDM}, current simulations suggest $f_\mathrm{NFW}=0.002$ at the typical positions of macroimages in galaxy--sized dark halos, and the subhalo mass function given by Eq. (\ref{subhalo mass function}). However, since the recent lensing detections of subhalos by \cite{Vegetti et al. b,Vegetti et al. c} hint at a flatter mass function and a mass fraction that is an order of magnitude higher, we also explore the consequences of setting $f_\mathrm{NFW}=0.03$ and changing the mass function slope of Eq.~(\ref{subhalo mass function}) to $\alpha=1.1$.
+
+%\begin{figure*}
+%\includegraphics[scale=0.29]{f1a.eps}
+%\includegraphics[scale=0.29]{f1b.eps}
+%\includegraphics[scale=0.28]{f1c.eps}
+%\\
+%\includegraphics[scale=0.29]{f1d.eps}
+%\includegraphics[scale=0.29]{f1e.eps}
+%\includegraphics[scale=0.28]{f1f.eps}
+%\caption{Simulated radio maps of strongly lensed quasar jets at 86 GHz, 22 GHz and 8.4 GHz, respectively from left to right (source sizes $2\times 0.5$ pc, $10\times 2.5$ pc and $40\times 10$ pc), subject to macrolensing by the main lens. The two subplots of each image show the two macroimages of the source. The bottom row contains the contour representations of the macroimages in the upper row, with the outermost contours corresponding to $\approx 10\%$ of the peak flux in these images. Please note the different scales of the images at the three frequencies.}
+%\label{imagemap_nosub_all}
+%\end{figure*}
+
+
+%\subsection{VLBI observations}
+%\label{VLBI}
+%A number of macrolensed radio jets are already known and have been observed using VLBI techniques \cite[e.g.][]{Garrett et al.,King et al.,Ros et al.,Rusin et al. a,Biggs et al.,York et al.}, although typically not with arrays capable of resolving submilliarcsecond scales. Designing a survey aimed to search for small--scale distortions in targets like these does, however, also involve other considerations than just the resolution. The frequency at which one chooses to observe these jets limits the resolution at which the jets can be mapped using suitable VLBI arrays, but also affects the intrinsic source size \cite[e.g.][]{Torniainen et al.}. To identify the observational strategy that maximizes the scientific output in terms of detection prospects for dark halo substructure, we here consider observations at three different frequencies, each using a different VLBI array:
+%\begin{itemize}
+%\item Observations at 8.4 GHz using the global array, including the European VLBI Network (EVN\footnote{http://www.evlbi.org/}) and the Very Long Baseline Array (VLBA\footnote{http://www.vlba.nrao.edu/}), giving a resolution of $\approx 0.7$ milliarcseconds
+%\item Observations at 22 GHz using the EVN, giving a resolution of $\approx 0.25$ milliarcseconds 
+%\item Observations at 86 GHz using the full Atacama Large Millimeter (ALMA\footnote{http://www.almaobservatory.org/}) array (66 antennas) connected to the global 3 mm array\footnote{http://www.mpifr-bonn.mpg.de/div/vlbi/globalmm/}, giving a resolution of $\approx 0.05$ milliarcsec. This observing mode is not available at the current time, but is likely to come on line in a few years. 
+%\end{itemize}  
+%These arrays also have different sensitivities, which constrains the numbers of potential targets and also the apparent lengths of the jets. However, since we are simulating the effects of generic sources rather than individual targets, this is not addressed in our current simulations. 
+
+%\subsection{Source size and morphology}
+%\label{source size}
+%We assume the source to be an intrinsically straight jet with a
+%2--dimensional Gaussian surface brightness profile and length 40, 10 and 2 pc at 8.4,
+%22 and 86 GHz, respectively, and a width that is a quarter of the
+%length. These sizes are in a reasonable agreement with source size
+%estimates presented in \cite{Torniainen et al.} and the jet lengths
+%calculated from the MOJAVE sample \cite{Lister et
+%  al.}\footnote{http://www.physics.purdue.edu/MOJAVE/}.
+%  
+%The source morphology and length--to--width ratio are mainly adopted for illustrative
+%purposes. The limits presented in Sect.~\ref{results} are fairly insensitive
+%to these assumptions, and depend mainly on the intrinsic jet area. At fixed
+%angular resolution, a larger jet results in a stronger constraint
+%whereas a smaller jet makes the constraints weaker. The results of
+%Sect.~\ref{results} can therefore be rescaled to accommodate other jet
+%sizes. In broad terms, our assumptions on the source sizes are similar
+%to those used by \cite{Inoue & Chiba a}. 
+%   
+%\section{Results}
+%\label{results}
+%\begin{figure*}
+%\includegraphics[scale=0.4]{f2a.eps}
+%\includegraphics[scale=0.4]{f2b.eps}\\
+%\includegraphics[scale=0.4]{f2c.eps}
+%\includegraphics[scale=0.4]{f2d.eps}
+%\caption{Examples of simulated radio maps of a macrolensed quasar jet at 86 GHz (source size $2\times 0.5$ pc and resolution 0.05 milliarcseconds), subject to millilensing distortions by IMBHs with $f_\mathrm{IMBH}=0.02$ in the halo of the main lens. Each image pair represents the two macroimages from Fig.~\ref{imagemap_nosub_all}, distorted by millilensing effects from IMBHs with either $M_\mathrm{IMBH}=10^3$, $10^4$, $10^5\ M_\odot$ or $10^6\ M_\odot$. The positions of the IMBHs are indicated by red dots. The slight macroimage distortions and displacements seen in right panels for the $10^5$ or $10^6\ M_\odot$ cases are produced by IMBHs just outside the plotted region.}
+%\label{imagemap_IMBH_86GHz}
+%\end{figure*}
+
+%\begin{figure*}
+%\includegraphics[scale=0.3]{f3a.eps}
+%\includegraphics[scale=0.3]{f3b.eps}
+%\includegraphics[scale=0.3]{f3c.eps}
+%\caption{Examples of simulated radio maps of a macrolensed quasar jet at 22 GHz (source size $10\times 2.5$ pc and resolution 0.25 milliarcseconds), subject to millilensing distortions by IMBHs with $f_\mathrm{IMBH}=0.01$ in the halo of the main lens. Each image pair represents the two macroimages from Fig.~\ref{imagemap_nosub_all}, distorted by millilensing effects from IMBHs with either $M_\mathrm{IMBH}=10^4$, $10^5$ or $10^6\ M_\odot$. The positions of the IMBHs are indicated by red dots.}
+%\label{imagemaps_IMBH_22GHz}
+%\end{figure*}
+
+%\begin{figure*}
+%\includegraphics[scale=0.4]{f4a.eps}
+%\includegraphics[scale=0.4]{f4b.eps}
+%\caption{Examples of simulated radio maps of a macrolensed quasar jet at 8.4 GHz (source size $40\times 10$ pc and resolution 0.7 milliarcseconds), subject to millilensing distortions by IMBHs with $f_\mathrm{IMBH}=0.005$ in the halo of the main lens. Each image pair represents the two macroimages from Fig.~\ref{imagemap_nosub_all}, distorted by millilensing effects from IMBHs with either $M_\mathrm{IMBH}=10^5$ or $10^6\ M_\odot$. The positions of the IMBHs are indicated by red dots.}
+%\label{imagemap_IMBH_8.4GHz}
+%\end{figure*}
+
+%In Fig.~\ref{imagemap_nosub_all}, we present our simulated images of strongly lensed quasar jets at 86, 22 and 8.4 GHz. Each image pair in the figure corresponds to the two macroimages of a single radio jet as produced by the main lens in the absence of any millilensing effects. While initially generated using a much smaller pixel scale, these images have been degraded using a Gaussian filter to match the resolution relevant for observations at these frequencies (0.05, 0.25 and 0.7 milliarcseconds respectively). The bottom row shows the corresponding isoflux contour plots, where the outermost contours correspond to $\approx 10\%$ of the peak flux in these images. All subsequent figures depict how these contours are distorted by various kinds of halo substructure within the main lens.
+% 
+%\subsection{Detecting intermediate--mass black holes}
+%In Fig.~\ref{imagemap_IMBH_86GHz} we present examples of the simulated macroimages in the case where a fraction $f_\mathrm{IMBH}=0.02$ of the dark halo of the main lens is in the form of intermediate--mass black holes with mass $M_\mathrm{IMBH}=10^{3} -- 10^{6}\ M_\odot$. In this case, 86 GHz observations (ALMA + global array) are assumed, implying the smallest jet size (intrinsic length 2 pc) and the highest resolution (0.05 milliarcseconds) considered in this paper. Since $f_\mathrm{IMBH}$ is kept fixed, the number of IMBHs per unit area drops by a factor of $10^3$ in the lens plane when going from $M_\mathrm{IMBH}=10^3\ M_\odot$ to $10^6\ M_\odot$. However, because the more massive IMBHs also have larger Einstein radii, potentially detectable distortions are produced in all the cases plotted. Since the distortions in the two macroimages are uncorrelated, millilensing should also be straightforward to separate from intrinsic jet features (but see Sect.~\ref{discussion} for potential caveats).
+
+%The probability of seeing millilensing effects in at least one macroimage of a given two--image system depends on $M_\mathrm{IMBH}$, the angular resolution and $f_\mathrm{IMBH}$, but is deemed to be $P_\mathrm{milli}\gtrsim 50\%$ in all the simulations presented in Fig.~\ref{imagemap_IMBH_86GHz}. When analysing a survey of $N$ such macrolens systems, the probability $P_\mathrm{detection}$ of detecting millilensing becomes $P_\mathrm{detection}=1--(1--P_\mathrm{milli})^N$. By adopting $P_\mathrm{milli}\gtrsim 50\%$, one should therefore be able to rule out $f_\mathrm{IMBH}=0.02$ for IMBHs in the mass range $M_\mathrm{IMBH}=10^{3}$----$10^6\ M_\odot$ at the $\gtrsim 95\%$ level by surveying $N\approx 5$ systems. By further increasing the size of the survey, even lower $f_\mathrm{IMBH}$ can in principle be probed. To first order $P_\mathrm{milli}$ scales with $f_\mathrm{IMBH}$, so that $P_\mathrm{milli}\gtrsim 5\%$ if $f_\mathrm{IMBH}\sim 0.002$. Hence, to reach a detection probability of $P_\mathrm{detection}\gtrsim 68\%$ if $f_\mathrm{IMBH}=0.002$, one needs to observe $N\geq 22$ systems.
+
+%As demonstrated in Fig.~\ref{imagemaps_IMBH_22GHz}, the larger source size assumed for the 22 GHz (EVN) observations (10 pc) allows IMBHs with dark matter fractions as low as $f_\mathrm{IMBH}=0.01$ to be detected with probability $P_\mathrm{milli}\gtrsim 50\%$. The lower resolution (0.25 milliarcseconds) provided by the EVN at the same time prohibits the detection of IMBHs with mass $M_\mathrm{IMBH} \sim 10^3\ M_\odot$. By surveying $N\approx 5$ systems, one should be able to rule out $f_\mathrm{IMBH}=0.01$ for $M_\mathrm{IMBH} \sim 10^4$---$10^6\ M_\odot$ at 95\% confidence level. A detection probability of $P_\mathrm{detection}\gtrsim 68\%$ can also be reached at $f_\mathrm{IMBH}=0.001$ if one is able to observe $N\geq 22$ systems.
+
+%Similarly, the even larger jet (intrinsic length 40 pc) adopted for our simulated 8.4 GHz observations allows for stronger constraints on $f_\mathrm{IMBH}$, but the lower resolution (0.7 milliarcseconds) at the same time limits the IMBH mass range for which millilensing effects can be detected. Still the macroimage distortions produced by $10^5$---$10^6\ M_\odot$ IMBHs would be detectable with this resolution, and such effects would turn up with $P_\mathrm{milli}\gtrsim 50\%$ probability even if the IMBH halo mass fraction is as low as $f_\mathrm{IMBH}=0.005$. Fig.~\ref{imagemap_IMBH_8.4GHz} includes an example of such millilensing distortions produced by $10^5 M_\odot$ and $10^6 M_\odot$ IMBHs with $f_\mathrm{IMBH}=0.005$.
+
+%Table~\ref{IMBH_limits} summarizes the $f_\mathrm{IMBH}$ limits that observations of a single macrolensed jet (one image pair) at 86, 22 and 8.4 GHz would be able to probe (with $\geq 50\%$ detection probability). As described above, these limits can easily be rescaled to accommodate observations of larger number of multiply--imaged systems. The constraints resulting from a survey of $N\approx 5$ systems would produce constraints that are a factor of a few better than the \cite{Wilkinson et al.} millilensing constraints on $10^6\ M_\odot$ primordial black holes\footnote{Formally, the \cite{Wilkinson et al.} constraints apply to millilenses located anywhere along the line of sight to the radio sources in their sample (mean redshift $z\approx 1.3$), whereas ours apply only to millilenses within the main lens. The difference may be relevant in scenarios in which the IMBHs do not follow the distribution of dark matter on large scales (e.g. if they are formed through baryonic processes in the vicinity of galaxies.). Moreover, our approach could in principle produce somewhat stronger constraints if we were to consider millilenses along the entire line of sight}. There are no competitive {\it lensing} constraints on IMBH at $10^3$---$10^5 \ M_\odot$, but there are still a host of other constraints that may be applicable, in particular those related to accretion onto these objects \cite[see][ for a review]{Carr et al.}.
+
+%\begin{table}
+%\caption{The lowest halo mass fraction in IMBHs, $f_\mathrm{IMBH}$, that would produce detectable millilensing distortions with $P_\mathrm{milli}\gtrsim 50\%$ probability in a single macroimage pair.}
+%\begin{tabular}{@{}llll@{}}
+%\hline
+%Frequency (GHz) & Mass ($M_\odot$) & Source size (pc) & min $f_\mathrm{IMBH}$ \\
+%\hline
+%86 & $10^3--10^6$  & $2 \times 0.5$& $2\times 10^{-2}$\\
+%22 & $10^4--10^6$  & $10 \times 2.5$& $1\times 10^{-2}$\\
+%8.4 & $10^5--10^6$  & $40 \times 10$& $5\times 10^{-3}$\\
+%\hline
+%\label{IMBH_limits}
+%\end{tabular}
+%\end{table}
+
+%\begin{table}
+%\caption{The lowest halo mass fraction in UCMHs, $f_\mathrm{UCMH}$, that would produce detectable millilensing distortions with $P_\mathrm{milli}\gtrsim 10\%$ probability in a single macroimage pair.}
+%\begin{tabular}{@{}llll@{}}
+%\hline
+%Frequency (GHz) & Mass ($M_\odot$) & Source size (pc) & min $f_\mathrm{UCMH}$ \\
+%\hline
+%86 & $10^6--10^8$  & $2 \times 0.5$& $2\times 10^{-1}$\\
+%22 & $10^7--10^8$  & $10 \times 2.5$& $1\times 10^{-1}$\\
+%8.4 & $10^8$  & $40 \times 10$& $5\times 10^{-2}$\\
+%\hline
+%\label{UCMH_limits}
+%\end{tabular}
+%\end{table}
+
+
+%\begin{figure*}
+%\includegraphics[scale=0.4]{f5a.eps}
+%\includegraphics[scale=0.4]{f5b.eps}
+%\caption{Examples of simulated radio maps of a macrolensed quasar jet at 86 GHz (source size $2\times 0.5$ pc and resolution 0.05 milliarcseconds), by UCMHs with $M_\mathrm{UCMH}=10^6$ and $10^8 \ M_\odot$  in the halo of the main lens. The probabilities of detecting such effects are, however, negligibly small unless the UCMH dark halo fraction is $f_\mathrm{UCMH}\sim 0.2$.}
+%\label{imagemap_UCMH_86GHz}
+%\end{figure*}
+
+%\subsection{Detecting ultracompact minihalos}
+%When compared to IMBHs of the same mass, UCMHs have much smaller Einstein radii and are far more difficult to detect through 
+%millilensing effects. Our simulations show, that while $M_\mathrm{UCMH}\sim 10^6$---$10^8\ M_\odot$ UCMHs may in principle be detectable through small--scale macroimage distortions, the probability of observing this effect is exceedingly small unlessthe UCMH dark matter fraction $f_\mathrm{UCMH}$ is very large. 
+
+%In Fig.~\ref{imagemap_UCMH_86GHz}, we show examples of the millilensing distortions that $10^6$ and $10^8\ M_\odot$ UCMHs would produce in the case of 86 GHz observations (ALMA + the global array). However, the probability of seeing effects of this type in a given macroimage pair is only $P_\mathrm{milli}\approx 10\%$, even for a UCMH dark halo fraction as high as $f_\mathrm{UCMH}=0.2$. The detection prospects become somewhat better at 22 and 8.4 GHz ($f_\mathrm{UCMH}\gtrsim 0.05$--0.1 at $P_\mathrm{milli}\approx 10\%$) due to the larger source adopted sizes at these frequencies, but only for $10^7$---$10^8\ M_\odot$ objects (see Table~\ref{UCMH_limits}). 
+
+%By probing $N\approx 11$ (28) macroimage pairs, the detection probability can be pushed to $P_\mathrm{detection}\approx 68\%$ ($95\%$) at these $f_\mathrm{UCMH}$ limits. In order to probe UCMH dark halo fractions significantly below $f_\mathrm{UCMH}\sim 0.1$, hundreds of images would therefore need to be observed. While there are no competitive lensing constraints at $\sim 10^6 \ M_\odot$, it is possible that the \cite{Wilkinson et al.} observations of 300 $z\sim 1$ radio sources (not macrolensed) at $\sim 1$ milliarcsecond resolution would be able to do better for $\sim 10^8 \ M_\odot$ UCMHs than the predicted limits we give in this paper.
+
+%\subsection{Detecting standard CDM subhalos}
+%\begin{figure*}
+%\includegraphics[scale=0.4]{f6a.eps}
+%\includegraphics[scale=0.4]{f6b.eps}
+%\caption{Examples of simulated radio maps of a macrolensed quasar jet at 22 GHz (source size $10\times 2.5$ pc and resolution 0.25 milliarcseconds), subject to millilensing distortions by NFW subhalos with masses of either $\sim 10^7$ or $10^8\ M_\odot$. The red dots mark the positions of the centres of these subhalos. As the left pair of images shows, $\sim 10^7\ M_\odot$ NFWs produce very mild distortions only, whereas NFW subhalos of mass $\sim 10^8\ M_\odot$ may produce more significant distortions if they are placed sufficiently close to a macroimage. The probability for such superpositions to occur is, however, very small.}
+%\label{imagemap_NFW}
+%\end{figure*}
+
+%As expected, standard CDM subhalos (assumed to have NFW density profiles) are not detectable using the observational scheme considered in this paper. In Fig.~\ref{imagemap_NFW}, we show examples of the $\sim 10^7$ and $\sim 10^8\ M_\odot$ subhalos close to the macroimages in our simulations at 22 GHz, assuming the \cite{Bullock et al.} relation between mass and concentration parameter. In the standard case of $f_\mathrm{sub}\approx 0.002$, only $M\lesssim 10^7 M_\odot$ subhalos are sufficiently numerous to have a decent probability of showing up in the vicinity of the macroimages, and even though such objects may affect the overall magnification and the curvature of the jet (see left panel of Fig.~\ref{imagemap_NFW}), the associated small--scale distortion is too small to be resolved. NFW subhalos at $\sim 10^8\ M_\odot$ may in principle give rise to the detectable distortions (right panel of Fig.~\ref{imagemap_NFW}), but the probability of attaining the required aligment between macroimage and subhalo is negligibly small. We estimate that the probability of detecting small--scale distortions due to $10^8 M_\odot$ NFW subhalos in a single macroimage pair is no more than $P_\mathrm{milli}\approx 3\times10^{-4}$ in this case. At $10^9 M_\odot$, the probability is even lower ($P_\mathrm{milli}\approx 4\times10^{-5}$). 
+
+%Recent results by \cite{Vegetti et al. b, Vegetti et al. c} hint at a higher surface mass density contribution ($f_\mathrm{sub}\approx 0.03$) and a flatter subhalo mass function ($\alpha=1.1$ in Eq. (\ref{subhalo mass function})) than predicted by current CDM simulations, but even if we adopt these values, the probability for detection remains too low ($\approx 5\times 10^{-4}$ for NFWs of mass $10^8$---$10^9\ M_\odot$) to make this search strategy attractive.
+
+%The problem is one of source size --- the macrolensed jets we consider cover an area in the lens plane that is several orders of magnitude too small to intersect such massive subhalos. The intrinsic source size would need to have an area $\sim 10^3$ times greater than the largest jets we consider ($40\times 10$ pc at 8.4 GHz) to push the detection probabilities into the interesting range $P_\mathrm{milli}\gtrsim 10\%$. This essentially requires a completely different kind of source, like the dusty sub--mm galaxies considered by \cite{Inoue & Chiba b}.
+
+%These result are admittedly sensitive to the concentration parameters adopted for the NFW subhalos. In the examples above, we have used the $c(M_\mathrm{vir})$ relation from \cite{Bullock et al.}, which for objects in the relevant mass range ($10^7$---$10^8\ M_\odot$) results in concentration parameters a factor of $\approx 2$ higher than the ones predicted by the \cite{Maccio et al. a} relation. If we instead adopt the \cite{Maccio et al. a} $c(M_\mathrm{vir})$ scaling, the detection threshold shifts upward by an order of magnitude in mass, so that image distortions predicted for $10^7$ and $10^8\ M_\odot$ NFW in the Bullock et al. case (Fig.~\ref{imagemap_NFW}) instead are produced at masses of $\sim 10^8$ and $\sim 10^9\ M_\odot$. 
+
+%\section{Discussion}
+%\label{discussion}
+%In previous sections, we have argued that millilensing--induced distortions of quasar jets may be distinguished from morphological features intrinsic to these sources, since the latter would be reproduced in all macroimages whereas millilensing should affect each image independently. However, this argument comes with a caveat. The time delay between the images in quasar--galaxy lenses can be up to a year \cite[for a compilation of time delays, see][]{Oguri}, which means that intrinsic, transient features in the jet may, at any given time, be visible in just one of the images and be mistaken for millilensing effects. This is for instance likely to be the case in superluminal radio jets, where blobs are seen to move $\sim 1$ milliarcseconds yr$^{-1}$ along the jet \cite[e.g.][]{Jorstad et al.}. For macrolensed jets that show signs of millilensing distortions, it may therefore become necessary to obtain data at two or more epochs. Since halo substructures give rise to millilensing magnification pattern that will appear stationary over decades\footnote{assuming a typical effective transverse velocity due to the bulk motions of the source, macrolens and observer \cite[][]{Gil--Merino et al.}, and that the velocity of the millilenses within the macrolens is similar to the velocity dispersion of the latter (240 km s$^{-1}$ in our case)}, any distortions that seem to move along the jet are bound to be intrinsic to the source. Small--scale features that are not duplicated in the other macroimages and appear with a fixed angular position (as, for instance, measured from the base of the jet) over the course of more than a year is on the other hand likely caused by millilensing.  
+
+%The detection of milliarcsecond or submilliarcsecond--scale image distortions would prove the existence of substructures within the macrolens, and also allow constraints on their surface number densities to be set. However, the exact nature of the millilenses may still be very difficult to determine. While \cite{Inoue & Chiba c} has demonstrated that the distortions induced in extended images (like the ones we model here) contain some information about the density profiles of the lenses, the finite resolution and sensitivity of actual observations could still allow for considerable degeneracies in cases where neither the masses nor the density profiles of the millilenses are known. In our simulations, IMBHs and UCMHs can for instance sometimes produce very similar lensing distortions (although at different masses --- an UCMH typically needs to be a factor of $\sim 10^3$ more massive than an IMBH to reproduce a given feature).
+
+%\section{Summary}
+%\label{summary}
+%Using simulations of strongly lensed quasar jets, we argue that very dense forms of halo substructure (intermediate--mass black holes and ultracompact minihalos) within the main lens may reveal itself through small--scale morphological distortions in the macroimages. Such distortions can be distinguished from intrinsic source features by obtaining data at multiple epochs. By mapping a handful of macrolensed jet systems at submilliarcsecond resolution, we argue that $\sim 10^3$---$10^6\ M_\odot$ intermediate--mass black holes can be detected or ruled out if they contribute a surface mass fraction of $f_\mathrm{IMBH}\gtrsim 0.01$ (depending on the  VLBI array and frequency used) to the dark matter of the main lens at the macroimage positions. Ultracompact minihalos in the $\sim 10^6$---$10^8\ M_\odot$ mass range may similarily produce detectable small--scale effects if such objects comprise  $f_\mathrm{UCMH}\gtrsim 0.1$ of the dark matter. While standard CDM subhalos at masses of $\gtrsim 10^8\ M_\odot$ can in principle also produce milliarcsecond--scale distortions, provided that such objects are projected sufficiently close to the macroimages, the probability of this is too small ($P_\mathrm{milli}\sim 10^{-4}$) for sources of the type we consider.
+
+%\section{Acknowledgements}
+%E.Z. acknowledges funding from the Swedish Research Council and the Swedish National Space Board. P.S. is supported by the Lorne Trottier Chair in Astrophysics, and institute for Particle Physics Theory Fellowship and a Banting Fellowship, administered by the Natural Science and Engineering Research Council of Canada.
+
+%\begin{thebibliography}{}
+%\bibitem[\protect\citeauthoryear{Begelman et al.}{2011}]{Bate et al.} 
+%Bate, N. F., Floyd, D. J. E., Webster, R. L., Wyithe, J. S. B. 2011, ApJ, 731, 71
+%\bibitem[\protect\citeauthoryear{Belikov et al.}{2011}]{Belikov et al.} 
+%Belikov, A, V., Hooper, D., Buckley, M. R. 2011, arXiv:1111.2613
+%\bibitem[\protect\citeauthoryear{Begelman et al.}{2006}]{Begelman et al.} 
+%Begelman, M. C., Volonteri, M., Rees, M. J. 2006, MNRAS, 370, 289
+%\bibitem[\protect\citeauthoryear{Biggs et al.}{2004}]{Biggs et al.}
+%Biggs, A. D., Browne, I. W. A., Jackson, N. J., York, T.; Norbury, M. A.; McKean, J. P.; Phillips, P. M. 2004, MNRAS, 350, 949
+%\bibitem[\protect\citeauthoryear{Bringmann}{2009}]{Bringmann} 
+%Bringmann, T. 2009, New Journal of Physics, 11, 105027
+%\bibitem[\protect\citeauthoryear{Bringmann et al.}{2012a}]{Bringmann et al. a} 
+%Bringmann, T., Scott, P., Akrami, Y. 2012, PhRvD, 85, l5027
+%\bibitem[\protect\citeauthoryear{Bringmann et al.}{2012b}]{Bringmann et al. b} 
+%Bringmann, T., Huang, X., Ibarra, A., Vogl, S., Weniger, C. 2012, JCAP, 07, 054 
+%\bibitem[\protect\citeauthoryear{Bullock et al.}{2001}]{Bullock et al.}
+%Bullock, J. S., Kolatt, T. S., Sigad, y., Somerville, R. S., Kravtsov, A. V., Klypin, A. A., Primack, J. R., \& Dekel, A., 2001, MNRAS, 321, 559
+%\bibitem[\protect\citeauthoryear{Carr \& Sakellariadou}{1999}]{Carr & Sakellariadou}
+%Carr, B. J., \& Sakellariadou, M. 1999, ApJ, 516, 195
+%\bibitem[\protect\citeauthoryear{Carr et al.}{2010}]{Carr et al.}
+%Carr, B. J., Kohri, K., Sendouda, Y., Yokoyama, J.  2010, PhRvD, 81, id 104019 
+%\bibitem[\protect\citeauthoryear{Chen et al.}{2011}]{Chen et al.}
+%Chen, J., Koushiappas, S. M., Zentner, A. R. 2011, ApJ, 741, 117
+%\bibitem[\protect\citeauthoryear{Chiba}{2002}]{Chiba}
+%Chiba, M. 2002, ApJ, 565, 17
+%\bibitem[\protect\citeauthoryear{Davies et al.}{2011}]{Davies et al.}
+%Davies, M. B.. Miller, M. C., Bellovary, J. M. 2011, ApJ, 740 , L42
+%\bibitem[\protect\citeauthoryear{Devecchi \& Volonteri}{2009}]{Devecchi & Volonteri}
+%Devecchi, B., \& Volonteri, M. 2009, ApJ, 694, 302
+%\bibitem[\protect\citeauthoryear{Feng \& Soria}{2011}]{Feng & Soria}
+%Feng, H., Soria, R. 2011, NewAR, 55, 166
+%\bibitem[\protect\citeauthoryear{Font et al.}{2011}]{Font et al.}
+%Font, A. S., Benson, A. J., Bower, R. G, et al. 2011, MNRAS, 417, 1260 
+%\bibitem[\protect\citeauthoryear{Frampton et al.}{2010}]{Frampton et al.}
+%Frampton, P. H., Kawasaki, M., Takahashi, F., Yanagida, T. T. 2010, JCAP, 04, 023
+%\bibitem[\protect\citeauthoryear{Gao et al.}{2011}]{Gao et al.}
+%Gao, L., Frenk, C. S., Boylan-Kolchin, et al. 2011, MNRAS, 410, 2309
+%\bibitem[\protect\citeauthoryear{Garrett et al.}{1994}]{Garrett et al.}
+%Garrett, M. A., Calder, R. J., Porcas, R. W., King, L. J., Walsh, D., Wilkinson, P. N. 1994, MNRAS, 270, 457
+%\bibitem[\protect\citeauthoryear{Gil-Merino et al.}{2005}]{Gil-Merino et al.}
+%Gil-Merino, R.,Wambsganss, J., Goicoechea, L. J., Lewis, G. F. 2005, A\&A 432, 83
+%\bibitem[\protect\citeauthoryear{Hayashi et al.}{2003}]{Hayashi et al.}
+%Hayashi, E., Navarro, J. F., Taylor, J. E., Stadel, J., \& Quinn, T. 2003, ApJ, 584, 541 
+%\bibitem[\protect\citeauthoryear{Hisano et al.}{2006}]{Hisano et al.}
+%Hisano, J., Inoue, K. T., \& Takahashi, T. 2006, PhLB, 643, 141
+%\bibitem[\protect\citeauthoryear{Hooper et al.}{2007}]{Hooper et al.}
+%Hooper, D., Kaplinghat, M., Strigari, L. E., \& Zurek, K. M. 2007, PhRvD 76, 103515
+%\bibitem[\protect\citeauthoryear{Hooper \& Linden}{2012}]{Hooper & Linden} 
+%Hooper, D., \& Linden, T. 2012, arXiv1208.0828  
+%\bibitem[\protect\citeauthoryear{Inoue \& Chiba}{2003}]{Inoue & Chiba a}
+%Inoue, K. T., \& Chiba, M. 2003, ApJ, 591, L83
+%\bibitem[\protect\citeauthoryear{Inoue \& Chiba}{2005a}]{Inoue & Chiba b}
+%Inoue, K. T., \& Chiba, M. 2005a, ApJ, 633, 23
+%\bibitem[\protect\citeauthoryear{Inoue \& Chiba}{2005b}]{Inoue & Chiba c}
+%Inoue, K. T., \& Chiba, M. 2005b, ApJ, 634, 77
+%\bibitem[\protect\citeauthoryear{Islam et al.}{2004}]{Islam et al.}
+%Islam, R.R.,  Taylor, J. E., Silk, J. 2004, MNRAS 354, 427
+%\bibitem[\protect\citeauthoryear{Jorstad et al.}{2001}]{Jorstad et al.}
+%Jorstad, S. G., Marscher, A. P., Mattox, J. R., Aller, M. F., Aller, H. D., Wehrle, A. E., Bloom, S. D. 2001, ApJ, 556, 738
+%\bibitem[\protect\citeauthoryear{Josan  \& Green}{2010}]{Josan & Green}
+%Josan, A. S., \& Green, A M. 2010, PhRvD, 82, 083527
+%\bibitem[\protect\citeauthoryear{Kassiola et al.}{1991}]{Kassiola et al.}
+%Kassiola, A., Kovner, I, \& Blandford, R. D. 1991, ApJ 381, 6
+%\bibitem[\protect\citeauthoryear{Kawaguchi et al.}{2008}]{Kawaguchi et al.}
+%Kawaguchi, T., Kawasaki, M., Takayama, T. Yamaguchi, M., Yokoyama, J. 2008, MNRAS, 388, 1426
+%\bibitem[\protect\citeauthoryear{Kazantzidis et al.}{2004}]{Kazantzidis et al.}
+%Kazantzidis, S., Mayer, L., Mastropietro, C., Diemand, J., Stadel, J., Moore, B. 2004, ApJ, 608, 663 
+%\bibitem[\protect\citeauthoryear{Keeton et al.}{2003}]{Keeton et al.}
+%Keeton, C. R., Gaudi, B. S., Petters, A. O. 2003, ApJ, 598, 138
+%\bibitem[\protect\citeauthoryear{King et al.}{1997}]{King et al.} 
+%King, L. J., Browne, I. W. A., Muxlow, T. W. B., Narasimha, D., Patnaik, A. R., Porcas, R. W., Wilkinson, P. N. 1997, MNRAS, 289, 450
+%\bibitem[\protect\citeauthoryear{Klypin et al.}{1999}]{Klypin et al.}
+%Klypin, A., Kravtsov, A. V., Valenzuela, O., \& Prada, F., 1999, ApJ, 522, 82
+%\bibitem[\protect\citeauthoryear{Kochanek \& Dalal}{2004}]{Kochanek & Dalal}
+%Kochanek, C. S., \& Dalal, N. 2004, ApJ, 610, 69
+%\bibitem[\protect\citeauthoryear{Li et al.}{2012}]{Li et al.}
+%Li, F., Erickcek, A. L., Law, N. M. 2012, arXiv:1202.1284
+%\bibitem[\protect\citeauthoryear{Lister et al.}{2009}]{Lister et al.} Lister, M.~L., Aller, H.~D., Aller, M.~F., et al.\ 2009, AJ, 137, 3718 
+%\bibitem[\protect\citeauthoryear{Macci\`o \& Miranda}{2006}]{Maccio & Miranda}
+%Macci\`o, A. V., \& Miranda, M. 2006, MNRAS, 368, 599
+%\bibitem[\protect\citeauthoryear{Macci\`o et al.}{2008}]{Maccio et al. a}
+%Macci\`o, A. V., Dutton, A. A., van den Bosch, F. C.  2008, MNRAS, 391, 1940
+%\bibitem[\protect\citeauthoryear{Macci\`o et al.}{2010}]{Maccio et al. b}
+%Macci\`o, A. V., Kang, X., Fontanot, F., et al. 2010, MNRAS, 402, 1995 
+%\bibitem[\protect\citeauthoryear{Maciejewski et al.}{2011}]{Maciejewski et al.}
+%Maciejewski, M., Vogelsberger, M., White, S. D. M., \& Springel, V. 2011, MNRAS, 415, 2475 
+%\bibitem[\protect\citeauthoryear{Mack et al.}{2007}]{Mack et al.}
+%Mack, K. J., Ostriker, J. P.. Ricotti, M. 2007, ApJ, 665, 1277
+%\bibitem[\protect\citeauthoryear{Maciejewski et al.}{2001}]{Madau & Rees}
+%Madau, P., Rees, M. J. 2001, ApJ, 551, L27
+%\bibitem[\protect\citeauthoryear{Mao \& Schneider}{1998}]{Mao & Schneider}
+%Mao, S. \& Schneider, P. 1998, MNRAS, 295, 587
+%\bibitem[\protect\citeauthoryear{Metcalf \& Madau}{2001}]{Metcalf & Madau}
+%Metcalf, R. B., Madau, P. 2001, ApJ, 563, 9
+%\bibitem[\protect\citeauthoryear{Metcalf}{2002}]{Metcalf}
+%Metcalf, R. B.	2002, ApJ, 580, 696
+%\bibitem[\protect\citeauthoryear{Metcalf \& Amara}{2010}]{Metcalf & Amara}
+%Metcalf, R. B., \& Amara A. 2010 arXiv1007.1599
+%\bibitem[\protect\citeauthoryear{Micic et al.}{2011}]{Micic et al.}
+%Micic, M., Holley-Bockelmann, K., Sigurdsson, S. 2011, MNRAS, 414, 1127
+%\bibitem[\protect\citeauthoryear{Moore et al.}{1999}]{Moore et al.} 		
+%Moore, B., Ghigna, S., Governato, F., et al.  1999, ApJL 524, L19
+%\bibitem[\protect\citeauthoryear{Navarro, Frenk, \& White}{1996}]{NFW}
+%Navarro, J. F., Frenk, C. S., White, S. D. M. 1996, ApJ, 462, 563 (NFW)
+%\bibitem[\protect\citeauthoryear{Navarro et al.}{2010}]{Navarro et al. 10}
+%Navarro, J. F., et al. 2010, MNRAS, 402, 21
+%\bibitem[\protect\citeauthoryear{Noyola et al.}{2010}]{Noyola et al.}
+%Noyola, E., Gebhardt, K., Kissler-Patig, M., Lutzgendorf, N., Jalali, B., de Zeeuw, P. T.., Baumgardt H. 2010, ApJL, 719, L60
+%\bibitem[\protect\citeauthoryear{Oguri}{2007}]{Oguri}
+%Oguri, M. 2007, ApJ 660, 1
+%\bibitem[\protect\citeauthoryear{Ohashi et al.}{2009}]{Ohashi et al.}
+%Ohashi, S., Chiba, M., \& Inoue, K. T. 2009, In: Approaching Micro-Arcsecond Resolution with VSOP-2: Astrophysics and Technologies ASP Conference Series, Eds. Yoshiaki Hagiwara, Ed Fomalont, Masato Tsuboi, and Yasuhiro Murata, 402, p. 290
+%\bibitem[\protect\citeauthoryear{Pooley et al.}{2012}]{Pooley et al.}
+%Pooley, D., Rappaport, S., Blackburne, J. A., Schechter, P. L., Wambsganss, J. 2012, ApJ, 744, 111
+%\bibitem[\protect\citeauthoryear{Ricotti, Ostriker \& Mack}{2008}]{Ricotti et al.}
+%Ricotti, M., Ostriker, J. P., Mack, K. J. 2008, ApJ, 680, 829
+%\bibitem[\protect\citeauthoryear{Ricotti \& Gould}{2009}]{Ricotti & Gould}
+%Ricotti, M., Gould, A. 2009, ApJ, 707, 979
+%\bibitem[\protect\citeauthoryear{Riehm et al.}{2009}]{Riehm et al.}	 
+%Riehm, T., Zackrisson, E., M\"ortsell, E. \& Wiik, K. 2009, ApJ, 700, 1552
+%\bibitem[\protect\citeauthoryear{Ros et al.}{2000}]{Ros et al.}
+%Ros, E., Guirado, J. C., Marcaide, J. M., P\'erez-Torres, M. A., Falco, E. E., Mu\~noz, J. A., Alberdi, A., Lara, L. 2000, A\&A, 362, 845
+%\bibitem[\protect\citeauthoryear{Rusin et al.}{2002}]{Rusin et al. a}
+%Rusin, D., Norbury, M., Biggs, A. D., Marlow, D. R., Jackson, N. J., Browne, I. W. A., Wilkinson, P. N., Myers, S. T., 2002, MNRAS, 330, 205
+%\bibitem[\protect\citeauthoryear{Rusin, Kochanek \& Keeton}{2003}]{Rusin et al. b}
+%Rusin, D., Kochanek, C. S., Keeton, C. R. 2003, ApJ, 595, 29
+%\bibitem[\protect\citeauthoryear{Sandick et al.}{2011}]{Sandick et al.}
+%Sandick, P., Diemand, J., Freese, K., Spolyar, D. 2011, JCAP, 01, 018
+%\bibitem[\protect\citeauthoryear{Saito \& Yokoyama}{2010}]{Saito & Yokoyama}
+%Saito, R. \& Yokoyama, J. 2010 Prog. Theor. Phys. 123, 867
+%\bibitem[\protect\citeauthoryear{Scott \& Sivertsson}{2009}]{Scott & Sivertsson}
+%Scott, P., Sivertsson, S. 2009, PhRvL, 103, 1301
+%\bibitem[\protect\citeauthoryear{Springel et al.}{2008}]{Springel et al.}
+%Springel, V., et al. 2008, MNRAS, 391, 1685
+%\bibitem[\protect\citeauthoryear{Su \& Finkbeiner}{2012}]{Su & Finkbeiner} 
+%Su, M., Finkbeiner, D. P. 2012, arXiv1207.7060
+%\bibitem[\protect\citeauthoryear{Torniainen et al.}{2008}]{Torniainen et al.}
+%Torniainen, I, et al. 2008, A\&A, 482, 483
+%\bibitem[\protect\citeauthoryear{Totani et al.}{2010}]{Totani et al.}
+%Totani, T. 2010, PASJ, 62, L1
+%\bibitem[\protect\citeauthoryear{Vale \& Ostriker}{2006}]{Vale & Ostriker}
+%Vale, A., Ostriker, J. P. 2006, MNRAS, 371, 1173
+%\bibitem[\protect\citeauthoryear{van Wassenhove et al.}{2010}]{van Wassenhove et al.}
+%van Wassenhove, S., Volonteri, M., Walker, M. G., Gair, J. R. 2010, MNRAS, 408, 1139
+%\bibitem[\protect\citeauthoryear{Vegetti \& Koopmans}{2009a}]{Vegetti & Koopmans a}
+%Vegetti, S., \& Koopmans, L. V. E. 2009a, MNRAS, 392, 945
+%\bibitem[\protect\citeauthoryear{Vegetti \& Koopmans}{2009b}]{Vegetti & Koopmans b}
+%Vegetti, S., \& Koopmans, L. V. E. 2009b, MNRAS, 400, 1583 
+%\bibitem[\protect\citeauthoryear{Vegetti et al.}{2010a}]{Vegetti et al. a}
+%Vegetti, S., Czoske, O., \& Koopmans, L. V. E. 2010, MNRAS, 407, 225
+%\bibitem[\protect\citeauthoryear{Vegetti et al.}{2010b}]{Vegetti et al. b}
+%Vegetti, S., Koopmans, L. V. E., Bolton, A., Treu, T., \& Gavazzi, R. 2010, MNRAS, 408, 1969
+%\bibitem[\protect\citeauthoryear{Vegetti et al.}{2012}]{Vegetti et al. c}
+%Vegetti, S., Lagattuta, D. J., McKean, J. P., Auger, M. W., Fassnacht, C. D., Koopmans, L. V. E. 2012, Natur, 481, 341
+%\bibitem[\protect\citeauthoryear{Vesperini et al.}{2010}]{Vesperini et al.}
+%Vesperini, E., McMillan, S. L. W., D\'Ercole, A., D\'Antona, F. 2010, ApJ, 713, L41
+%\bibitem[\protect\citeauthoryear{Wambsganss \& Paczynski}{1992}]{Wambsganss & Paczynski}
+%Wambsganss, J., \& Paczynski, B. 1992 ApJ, 397, L1
+%\bibitem[\protect\citeauthoryear{Webb et al.}{2012}]{Webb et al.}
+%Webb, N., et al. 2012, Science, 337, 554
+%\bibitem[\protect\citeauthoryear{Wilkinson et al.}{2001}]{Wilkinson et al.}
+%Wilkinson, P. N., et al. 2001, PhRvL, 86, 584
+%\bibitem[\protect\citeauthoryear{Xu et al.}{2009}]{Xu et al. a}	 
+%Xu, D. D., Mao, S., Wang, J., et al. 2009, MNRAS, 398, 1235
+%\bibitem[\protect\citeauthoryear{Xu et al.}{2010}]{Xu et al. b}
+%Xu, D. D., Mao, S. Cooper, A. P.; Wang, J., Gao, L., Frenk, C. S., Springel, V. 2010, MNRAS, 408, 1721
+%\bibitem[\protect\citeauthoryear{Xu et al.}{2011}]{Xu et al. c}
+%Xu, D. D., Mao, S., Cooper, A., et al. 2011, arXiv1110.1185
+%\bibitem[\protect\citeauthoryear{Yang et al.}{2011a}]{Yang et al. a}
+%Yang, Y., Huang, X., Chen, X., Zong, H. 2011a, PhRvD, 84, 43506
+%\bibitem[\protect\citeauthoryear{Yang et al.}{2011b}]{Yang et al. b}
+%Yang, Y., Feng, L., Huang, X., Chen, X., Lu, T., Zong, H. 2011b, JCAP, 12, 020
+%\bibitem[\protect\citeauthoryear{Yonehara et al.}{2003}]{Yonehara et al.}
+%Yonehara, A., Umemura, M., \& Susa, H. 2003, PASJ 55, 1059 
+%\bibitem[\protect\citeauthoryear{York et al.}{2005}]{York et al.}
+%York, T., et al. 2005, MNRAS, 361, 259
+%\bibitem[\protect\citeauthoryear{Zackrisson et al.}{2008}]{Zackrisson et al.}
+%Zackrisson, E., Riehm, T., M\"oller, O., Wiik, K. \& Nurmi, P. 2008, ApJ, 684, 804
+%\bibitem[\protect\citeauthoryear{Zackrisson \& Riehm}{2010}]{Zackrisson & Riehm}
+%Zackrisson, E.,\& Riehm, T. 2010, Advances in Astronomy, article id 478910 (arXiv:0905.4075)
+%\bibitem[\protect\citeauthoryear{Zechlin et al.}{2012}]{Zechlin et al.} 
+%Zechlin, H.-S., Fernandes, M. V., Els\"asser, D., Horns,  D. 2012, A\&A, 538, 93
+%\bibitem[\protect\citeauthoryear{Zhang}{2011}]{Zhang}
+%Zhang, D. 2011, MNRAS, 418, 1850
+%\end{thebibliography}
+\end{document}
+
+
+
+
+
+
+
+
+
+  
